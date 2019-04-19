@@ -18,7 +18,11 @@ import {
 	ArgumentType
 } from "@nickjmorrow/react-component-library";
 
-const themeInputs: ArgumentType<typeof updateThemeInputs>[0] = {};
+const themeInputs: ArgumentType<typeof updateThemeInputs>[0] = {
+	typography: {
+		fontFamily: "Overpass, sans-serif"
+	}
+};
 
 const Layout = ({ children }) => {
 	return (
