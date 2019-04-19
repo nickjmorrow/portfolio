@@ -13,7 +13,8 @@ import cors = require("cors");
 export const app = express();
 // applyMiddleware(middleware, app);
 // applyRoutes(routes, app);
-// applyMiddleware(errorHandlers, app);
+// TODO: figure out what middleware was breaking this
+applyMiddleware(errorHandlers, app);
 app.use(express.json());
 
 // app.use(passport.initialize());
@@ -25,5 +26,6 @@ app.use(
 	})
 );
 
+// TODO: look into merging schemas
 app.use("/", bodyParser.json(), graphqlExpress({ schema: userSchema }));
 useGoogleTokenStrategy(passport);
