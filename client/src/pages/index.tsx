@@ -1,12 +1,13 @@
+import { graphql, Link } from "gatsby";
+import { Experience, Project, Setting, Technology } from "portfolio-server";
 import React from "react";
-import { Link, graphql } from "gatsby";
-
 import Layout from "../components/layout";
+import { Projects } from "../components/Projects";
 import SEO from "../components/seo";
 
 export const GatsbyQuery = graphql`
 	{
-		server {
+		data {
 			settings {
 				settingId
 				value
@@ -15,10 +16,16 @@ export const GatsbyQuery = graphql`
 				experienceId
 				name
 				experienceDetails {
+					experienceDetailId
 					description
 				}
 				technologies {
+					technologyId
 					name
+					skillLevel {
+						skillLevelId
+						description
+					}
 				}
 			}
 			projects {
@@ -28,12 +35,14 @@ export const GatsbyQuery = graphql`
 					description
 				}
 				technologies {
+					technologyId
 					name
 				}
 			}
 			technologies {
 				name
 				skillLevel {
+					skillLevelId
 					description
 				}
 			}
@@ -41,8 +50,15 @@ export const GatsbyQuery = graphql`
 	}
 `;
 
-const IndexPage = ({ data }) => {
-	console.log(data);
+type Data = {
+	settings: Setting[];
+	experiences: Experience[];
+	projects: Project[];
+	technologies: Technology[];
+};
+
+const IndexPage = ({ data }: { data: Data }) => {
+	// console.log(data);
 	return (
 		<Layout>
 			<SEO
@@ -51,6 +67,7 @@ const IndexPage = ({ data }) => {
 				description={"personal portfolio"}
 			/>
 			<Link to="/page-2/">Go to page 2</Link>
+			<Projects />
 		</Layout>
 	);
 };

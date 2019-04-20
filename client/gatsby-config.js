@@ -34,8 +34,8 @@ module.exports = {
 		{
 			resolve: "gatsby-source-graphql",
 			options: {
-				typeName: "Server",
-				fieldName: "server",
+				typeName: "Data",
+				fieldName: "data",
 				url: "http://localhost:3000"
 			}
 		}

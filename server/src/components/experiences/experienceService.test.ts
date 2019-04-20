@@ -12,6 +12,8 @@ describe("experience service test", () => {
 	});
 	test("my test", async () => {
 		const experiences = await experienceService.getExperiences();
-		console.log(experiences.map(e => e.technologies));
+		console.log(
+			experiences.map(e => e.technologies.map(t => t.skillLevel))
+		);
 	});
 });
