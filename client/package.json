@@ -6,7 +6,7 @@
 	"license": "MIT",
 	"author": "Nicholas Morrow <njmorrow95@gmail.com>",
 	"dependencies": {
-		"@nickjmorrow/portfolio-server": "^0.1.0",
+		"@nickjmorrow/portfolio-server": "^0.1.1",
 		"@nickjmorrow/react-component-library": "0.0.1",
 		"gatsby": "^2.1.23",
 		"gatsby-image": "^2.0.31",
