@@ -5,6 +5,7 @@
 	"version": "0.1.0",
 	"author": "Nicholas Morrow <njmorrow95@gmail.com>",
 	"dependencies": {
+		"@nickjmorrow/portfolio-server": "^0.1.0",
 		"@nickjmorrow/react-component-library": "0.0.1",
 		"gatsby": "^2.1.23",
 		"gatsby-image": "^2.0.31",
@@ -22,8 +23,7 @@
 		"react-helmet": "^5.2.0",
 		"react-router": "^4.3.1",
 		"react-router-dom": "^4.3.1",
-		"styled-components": "^4.1.3",
-		"@nickjmorrow/portfolio-server": "^1.0.0"
+		"styled-components": "^4.1.3"
 	},
 	"devDependencies": {
 		"prettier": "^1.16.4"
