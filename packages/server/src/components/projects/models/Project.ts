@@ -1,0 +1,26 @@
+import {
+	Column,
+	Entity,
+	OneToMany,
+	PrimaryGeneratedColumn,
+	ManyToMany,
+	JoinTable
+} from "typeorm";
+import { Technology } from "../../technologies/models/Technology";
+import { ProjectDetail } from "./ProjectDetail";
+
+@Entity({ schema: "portfolio", name: "projects" })
+export class Project {
+	@PrimaryGeneratedColumn({ name: "project_id" })
+	projectId!: number;
+
+	@Column()
+	name!: string;
+
+	@OneToMany(type => ProjectDetail, projectDetail => projectDetail.Project)
+	projectDetails!: ProjectDetail[];
+
+	@ManyToMany(type => Technology, technology => technology.technologyId)
+	@JoinTable({ name: "Project_Project__technologies" })
+	technologies!: Technology[];
+}
