@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"description": "",
 	"main": "index.js",
+	"private": false,
 	"scripts": {
 		"test": "jest --detectOpenHandles",
 		"test:watch": "jest --watch",
@@ -64,5 +65,6 @@
 	"engines": {
 		"node": "10.15.1",
 		"npm": "6.8.0"
-	}
+	},
+	"gitHead": "6e12d68bfa93337408572a77ee0376200c8434d2"
 }

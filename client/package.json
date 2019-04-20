@@ -1,8 +1,9 @@
 {
-	"name": "portfolio-client",
+	"name": "@nickmorrow/portfolio-client",
 	"private": true,
 	"description": "A simple starter to get up and developing quickly with Gatsby",
 	"version": "0.1.0",
+	"license": "MIT",
 	"author": "Nicholas Morrow <njmorrow95@gmail.com>",
 	"dependencies": {
 		"@nickjmorrow/portfolio-server": "^0.1.0",
