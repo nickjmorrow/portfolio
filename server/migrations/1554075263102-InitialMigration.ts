@@ -3,77 +3,65 @@ import { MigrationInterface, QueryRunner } from "typeorm";
 export class InitialMigration1554075263102 implements MigrationInterface {
 	public async up(queryRunner: QueryRunner): Promise<any> {
 		const query = `
-			CREATE SCHEMA reddit_subscriber;
+			CREATE SCHEMA portfolio;
 
-			CREATE TABLE reddit_subscriber.database_settings (
-				setting_id VARCHAR(100) NOT NULL PRIMARY KEY
-				, setting_name VARCHAR(255) NOT NULL
-			);
-
-			INSERT INTO reddit_subscriber.database_settings
-			VALUES
-				('appName', 'Reddit Subscriber');
-
-			CREATE TABLE reddit_subscriber.users (
-				user_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
+			CREATE TABLE portfolio.projects (
+				project_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
 				, name VARCHAR(255) NOT NULL
-				, email VARCHAR(255) NOT NULL UNIQUE
-				, password VARCHAR(255) NULL
-				, local_token VARCHAR(255) NULL
-				, pocket_access_token VARCHAR(255) NULL
-				, google_access_token VARCHAR(255) NULL
-				, date_created DATE NOT NULL DEFAULT CURRENT_DATE
-				, date_deleted DATE NULL
-				, date_modified DATE NOT NULL DEFAULT CURRENT_DATE
 			);
 
-			INSERT INTO reddit_subscriber.users (name, email, password, pocket_access_token)
-			SELECT 'f', 'e', 'p', '${process.env.ACCESS_TOKEN}';
+			INSERT INTO portfolio.projects (name)
+			SELECT 'project one' UNION
+			SELECT 'project two';
 
-			CREATE TABLE reddit_subscriber.lookbacks (
-				lookback_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
-				, name VARCHAR(100) NOT NULL
+			CREATE TABLE portfolio.experiences (
+				experience_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
+				, name VARCHAR(255) NOT NULL
 			);
 
-			INSERT INTO reddit_subscriber.lookbacks (name)
-			VALUES
-				('day')
-				, ('week')
-				, ('month')
-				, ('year')
-				, ('all time');
+			INSERT INTO portfolio.experiences (name)
+			SELECT 'experience one' UNION
+			SELECT 'experience two';
 
-			CREATE TABLE reddit_subscriber.cadences (
-				cadence_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
-				, name VARCHAR(100) NOT NULL
+			CREATE TABLE portfolio.technologies (
+				technology_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
+				, name VARCHAR(255) NOT NULL
 			);
 
-			INSERT INTO reddit_subscriber.cadences (name) (
-			VALUES
-				('daily')
-				, ('weekly')
-				, ('monthly')
-				, ('yearly')
+			INSERT INTO portfolio.technologies (name)
+			SELECT 'technology a' UNION
+			SELECT 'technology b';
+
+			CREATE TABLE portfolio.experience_details (
+				experience_detail_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
+				, experience_id INT NOT NULL REFERENCES portfolio.experiences(experience_id)
+				, description VARCHAR(255) NOT NULL
 			);
 
-			CREATE TABLE reddit_subscriber.jobs (
-				job_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
-				, subreddit_name VARCHAR(255) NOT NULL
-				, user_id INT NOT NULL REFERENCES reddit_subscriber.users(user_id)
-				, cadence_id INT NOT NULL REFERENCES reddit_subscriber.cadences(cadence_id)
-				, lookback_id INT NOT NULL REFERENCES reddit_subscriber.lookbacks(lookback_id)
-				, num_entries INT NOT NULL
-				, date_created DATE NOT NULL DEFAULT CURRENT_DATE
-				, date_modified DATE NOT NULL DEFAULT CURRENT_DATE
-				, date_deleted DATE NULL
-				, last_run_date DATE NULL
-				, next_run_date DATE NULL
+			INSERT INTO portfolio.experience_details (experience_id, description)
+			SELECT 1, 'exp det one - 1' UNION
+			SELECT 2, 'exp det one - 2' UNION
+			SELECT 2, 'exp det two - 2';
+
+
+			CREATE TABLE portfolio.experience_technologies (
+				experience_id INT NOT NULL REFERENCES portfolio.experiences(experience_id)
+				, technology_id INT NOT NULL REFERENCES portfolio.technologies(technology_id)
 			);
 
-			CREATE TABLE reddit_subscriber.job_tags (
-				subreddit_job_id INT NOT NULL REFERENCES reddit_subscriber.jobs(job_id)
-				, tag VARCHAR(100) NOT NULL
+			INSERT INTO portfolio.experience_technologies (experience_id, technology_id)
+			SELECT 1, 2 UNION
+			SELECT 2, 1 UNION
+			SELECT 2, 2;
+
+			CREATE TABLE portfolio.project_technologies (
+				project_id INT NOT NULL REFERENCES portfolio.projects(project_id)
+				, technology_id INT NOT NULL REFERENCES portfolio.technologies(technology_id)
 			);
+
+			INSERT INTO portfolio.project_technologies (project_id, technology_id)
+			SELECT 1, 1 UNION
+			SELECT 2, 2;
         `;
 
 		await queryRunner.query(query);
@@ -81,14 +69,21 @@ export class InitialMigration1554075263102 implements MigrationInterface {
 
 	public async down(queryRunner: QueryRunner): Promise<any> {
 		const query = `
-			DROP TABLE reddit_subscriber.job_tags;
-			DROP TABLE reddit_subscriber.jobs;
-			DROP TABLE reddit_subscriber.database_settings;
-			DROP TABLE reddit_subscriber.lookbacks;
-			DROP TABLE reddit_subscriber.cadences;
-			DROP TABLE reddit_subscriber.users;
-			DROP SCHEMA reddit_subscriber;
-        `;
+			DROP TABLE portfolio.experience_details;
+
+			DROP TABLE portfolio.experience_technologies;
+
+			DROP TABLE portfolio.project_technologies;
+
+			DROP TABLE portfolio.projects;
+
+			DROP TABLE portfolio.experiences;
+
+			DROP TABLE portfolio.technologies;
+
+			DROP SCHEMA portfolio;
+		`;
+
 		await queryRunner.query(query);
 	}
 }

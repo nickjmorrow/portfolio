@@ -1,5 +1,6 @@
 // Config that is common to more than one part of the app.
 import { PostgresConnectionOptions } from "typeorm/driver/postgres/PostgresConnectionOptions";
+import { entities } from "../entities";
 
 const typeOrmConfig: PostgresConnectionOptions = {
 	type: "postgres",
@@ -19,7 +20,7 @@ const typeOrmConfig: PostgresConnectionOptions = {
 	cli: {
 		migrationsDir: "migrations"
 	},
-	entities: ["dist/src/components/**/models/*.js"]
+	entities
 };
 
 export { typeOrmConfig };

@@ -7,17 +7,15 @@ import { applyMiddleware, applyRoutes } from "./utils";
 import passport from "passport";
 import { useGoogleTokenStrategy } from "./passport";
 import bodyParser = require("body-parser");
-import { userSchema } from "../components/graphql/userSchema";
+import { mergedSchema } from "../components/graphql/mergedSchema";
 import cors = require("cors");
 
 export const app = express();
-// applyMiddleware(middleware, app);
-// applyRoutes(routes, app);
-// TODO: figure out what middleware was breaking this
-applyMiddleware(errorHandlers, app);
+applyMiddleware(middleware, app);
+applyRoutes(routes, app);
+
 app.use(express.json());
 
-// app.use(passport.initialize());
 app.use("*", cors());
 app.use(
 	"/graphiql",
@@ -27,5 +25,7 @@ app.use(
 );
 
 // TODO: look into merging schemas
-app.use("/", bodyParser.json(), graphqlExpress({ schema: userSchema }));
+
+app.use("/", bodyParser.json(), graphqlExpress({ schema: mergedSchema }));
 useGoogleTokenStrategy(passport);
+applyMiddleware(errorHandlers, app);
