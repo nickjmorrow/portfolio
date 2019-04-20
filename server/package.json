@@ -1,6 +1,6 @@
 {
-	"name": "portfolio-server",
-	"version": "0.0.1",
+	"name": "@nickjmorrow/portfolio-server",
+	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
 	"scripts": {

@@ -1,5 +1,10 @@
 import { graphql, Link } from "gatsby";
-import { Experience, Project, Setting, Technology } from "portfolio-server";
+import {
+	Experience,
+	Project,
+	Setting,
+	Technology
+} from "@nickjmorrow/portfolio-server";
 import React from "react";
 import Layout from "../components/layout";
 import { Projects } from "../components/Projects";
@@ -58,7 +63,6 @@ type Data = {
 };
 
 const IndexPage = ({ data }: { data: Data }) => {
-	// console.log(data);
 	return (
 		<Layout>
 			<SEO

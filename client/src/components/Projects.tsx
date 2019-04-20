@@ -1,5 +1,6 @@
 import * as React from "react";
 import { graphql, useStaticQuery } from "gatsby";
+import { Project } from "@nickmorrow/portfolio-server";
 
 export const GatsbyQuery = graphql`
 	{
@@ -20,7 +21,16 @@ export const GatsbyQuery = graphql`
 `;
 
 export const Projects: React.FC = () => {
-	const data = useStaticQuery(GatsbyQuery);
-	console.log(data);
-	return <div>Projects</div>;
+	const {
+		data: { projects }
+	} = useStaticQuery<{ data: { projects: Project[] } }>(GatsbyQuery);
+	console.log(projects);
+	// return <div>Hello</div>;
+	return (
+		<>
+			{projects.map(d => (
+				<div key={d.projectId}>{d.name}</div>
+			))}
+		</>
+	);
 };
