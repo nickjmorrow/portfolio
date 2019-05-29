@@ -38,6 +38,7 @@
 		"build": "gatsby build",
 		"dev": "gatsby develop",
 		"format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
+		"deploy": "npm install -g gatsby && npm install && npm run serve",
 		"serve": "NODE_ENV=production gatsby serve",
 		"test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
 	},
