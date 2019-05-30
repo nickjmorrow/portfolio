@@ -1,6 +1,6 @@
 import * as React from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import { Project } from "@nickmorrow/portfolio-server";
+import { Project } from "../types";
 
 export const GatsbyQuery = graphql`
 	{

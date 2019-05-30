@@ -1,0 +1,40 @@
+export interface Experience {
+	experienceId: number;
+	name: string;
+	experienceDetails: ExperienceDetail[];
+	technologies: Technology[];
+}
+
+export interface Project {
+	projectId: number;
+	name: string;
+	projectDetails: ProjectDetail[];
+	technologies: Technology[];	
+}
+
+export interface Setting {
+	settingId: string;
+	value: string;
+}
+
+export interface Technology {
+	technologyId: number;
+	name: string;
+	experiences: Experience[];
+	skillLevel: SkillLevel;
+}
+
+export interface ExperienceDetail {
+	experienceDetailId: number;
+	description: string;
+}
+
+export interface ProjectDetail {
+	projectDetailId: number;
+	description: string;
+}
+
+export interface SkillLevel {
+	skillLevelId: number;
+	description: string;
+}

@@ -4,7 +4,7 @@ import {
 	Project,
 	Setting,
 	Technology
-} from "@nickjmorrow/portfolio-server";
+} from "../types";
 import React from "react";
 import Layout from "../components/layout";
 import { Projects } from "../components/Projects";
