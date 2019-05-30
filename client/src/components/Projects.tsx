@@ -29,7 +29,7 @@ export const Projects: React.FC = () => {
 	return (
 		<>
 			{projects.map(d => (
-				<div key={d.projectId}>{d.name}</div>
+				<div key={d.projectId + 1}>{d.name}</div>
 			))}
 		</>
 	);
