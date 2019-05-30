@@ -26,15 +26,18 @@ export interface Technology {
 
 export interface ExperienceDetail {
 	experienceDetailId: number;
+	experience: Experience;
 	description: string;
 }
 
 export interface ProjectDetail {
 	projectDetailId: number;
+	project: Project;
 	description: string;
 }
 
 export interface SkillLevel {
 	skillLevelId: number;
 	description: string;
+	technology: Technology;
 }
