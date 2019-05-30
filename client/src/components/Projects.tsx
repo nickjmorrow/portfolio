@@ -25,7 +25,6 @@ export const Projects: React.FC = () => {
 		data: { projects }
 	} = useStaticQuery<{ data: { projects: Project[] } }>(GatsbyQuery);
 	console.log(projects);
-	// return <div>Hello</div>;
 	return (
 		<>
 			{projects.map(d => (

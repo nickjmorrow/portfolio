@@ -8,6 +8,7 @@ import {
 import React from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
+import { Projects } from "../components/Projects";
 
 export const GatsbyQuery = graphql`
 	{
@@ -70,7 +71,7 @@ const IndexPage = ({ data }: { data: Data }) => {
 				description={"personal portfolio"}
 			/>
 			<Link to="/page-2/">Go to page 2</Link>
-			{/* <Projects /> */}
+			<Projects />
 		</Layout>
 	);
 };
