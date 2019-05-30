@@ -8,12 +8,11 @@
 		"test": "jest --detectOpenHandles",
 		"test:watch": "jest --watch",
 		"dev": "tsc-watch --onSuccess \"node dist/src/infrastructure/server.js\"",
+		"prebuild": "npm install -g tsc && npm install",
 		"build": "rm -rf dist && tsc",
-		"start": "node dist/src/infrastructure/server.js",
+		"start": "npm run build && node dist/src/infrastructure/server.js",
 		"deploy": "heroku push origin master",
-		"typeorm:cli:dev": "cross-env NODE_ENV=development ts-node ./node_modules/typeorm/cli -f ./src/infrastructure/config/ormConfig.ts",
-		"executeJobs": "node dist/src/components/jobs/executeJobs",
-		"postinstall": "npm run build"
+		"typeorm:cli:dev": "cross-env NODE_ENV=development ts-node ./node_modules/typeorm/cli -f ./src/infrastructure/config/ormConfig.ts"
 	},
 	"keywords": [],
 	"author": "Nicholas Morrow <njmorrow95@gmail.com> (https://github.com/nickjmorrow)",

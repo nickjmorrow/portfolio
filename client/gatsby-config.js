@@ -1,3 +1,5 @@
+var getServerUrl = require('./getServerUrl');
+
 module.exports = {
 	siteMetadata: {
 		title: `Portfolio`,
@@ -36,7 +38,7 @@ module.exports = {
 			options: {
 				typeName: "Data",
 				fieldName: "data",
-				url: "http://localhost:3000"
+				url: getServerUrl()
 			}
 		}
 	]
