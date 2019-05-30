@@ -7,10 +7,10 @@
 	"scripts": {
 		"test": "jest --detectOpenHandles",
 		"test:watch": "jest --watch",
-		"dev": "tsc-watch --onSuccess \"node dist/src/infrastructure/server.js\"",
+		"dev": "cross-env NODE_ENV=development tsc-watch --onSuccess \"node dist/src/infrastructure/server.js\"",
 		"prebuild": "npm install -g typescript@latest && npm install",
-		"build": "rm -rf dist && tsc",
-		"start": "npm run build && node dist/src/infrastructure/server.js",
+		"build": "rm -rf dist && cross-env NODE_ENV=production tsc",
+		"start": "node ./dist/server.js",
 		"deploy": "heroku push origin master",
 		"typeorm:cli:dev": "cross-env NODE_ENV=development ts-node ./node_modules/typeorm/cli -f ./src/infrastructure/config/ormConfig.ts"
 	},
