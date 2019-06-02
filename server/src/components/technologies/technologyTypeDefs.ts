@@ -3,6 +3,7 @@ export const technologyTypeDefs = `
         technologyId: String!
         name: String!
         skillLevel: SkillLevel!
+		version: String
     }
 
     type Query {

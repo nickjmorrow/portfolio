@@ -17,6 +17,21 @@ export class Experience {
 	@Column()
 	name!: string;
 
+	@Column({name: 'start_date'})
+	startDate!: Date;
+
+	@Column({name: 'end_date'})
+	endDate!: Date;
+
+	@Column({name: 'is_current'})
+	isCurrent!: boolean;
+
+	@Column({name: 'role_name'})
+	roleName!: string;
+
+	@Column()
+	location!: string;
+
 	@OneToMany(
 		type => ExperienceDetail,
 		experienceDetail => experienceDetail.Experience

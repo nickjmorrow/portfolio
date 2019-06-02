@@ -3,6 +3,10 @@ export interface Experience {
 	name: string;
 	experienceDetails: ExperienceDetail[];
 	technologies: Technology[];
+	startDate: string;
+	endDate: string;
+	isCurrent: boolean;
+	roleName: string;
 }
 
 export interface Project {

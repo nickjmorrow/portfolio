@@ -10,6 +10,7 @@ import React from "react";
 import styled from "styled-components";
 import "./layout.css";
 import { AppBar } from "./AppBar";
+import { Experiences } from './Experiences';
 import {
 	Footer,
 	ThemeContext,
@@ -17,45 +18,38 @@ import {
 	updateThemeInputs,
 	ArgumentType
 } from "@nickjmorrow/react-component-library";
+import { Headline } from "./Headline";
+import { About } from "./About";
+import { Projects } from "./Projects";
 
 const themeInputs: ArgumentType<typeof updateThemeInputs>[0] = {
 	typography: {
-		fontFamily: "Overpass, sans-serif"
+		fontFamily: {
+			default: 'Overpass, sans-serif'
+		}
 	}
 };
 
-const Layout = ({ children }) => {
+export const Main : React.FC = () => {
 	return (
 		<ThemeContext.Provider value={getThemeFromNewInputs(themeInputs)}>
 			<Wrapper>
 				<AppBar />
-				<div
-					style={{
-						margin: `0 auto`,
-						maxWidth: 960,
-						padding: `0px 1.0875rem 1.45rem`,
-						paddingTop: 0
-					}}>
-					{children}
-					<footer>
-						© {new Date().getFullYear()}, Built with
-						{` `}
-						<a href="https://www.gatsbyjs.org">
-							Gatsby
-						</a>
-					</footer>
-				</div>
+				<Headline />
+				<About />
+				<Experiences />
+				<Projects />
 				<Footer />
 			</Wrapper>
 		</ThemeContext.Provider>
 	);
 };
 
-Layout.propTypes = {
+Main.propTypes = {
 	children: PropTypes.node.isRequired
 };
 
-export default Layout;
+export default Main;
 
 const Wrapper = styled.div`
 	height: 100vh;

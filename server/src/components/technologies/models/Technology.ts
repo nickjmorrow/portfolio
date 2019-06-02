@@ -1,14 +1,4 @@
-import {
-	Column,
-	Entity,
-	PrimaryGeneratedColumn,
-	ManyToMany,
-	JoinTable,
-	OneToMany,
-	OneToOne,
-	ManyToOne,
-	JoinColumn
-} from "typeorm";
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Experience } from "../../experiences/models/Experience";
 import { SkillLevel } from "../SkillLevel";
 
@@ -19,6 +9,9 @@ export class Technology {
 
 	@Column()
 	name!: string;
+
+	@Column()
+	version!: string;
 
 	@ManyToMany(type => Experience, experience => experience.experienceId)
 	@JoinTable({ name: "Experience_Experience__technologies" })

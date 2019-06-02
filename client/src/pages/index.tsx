@@ -6,7 +6,7 @@ import {
 	Technology
 } from "../types";
 import React from "react";
-import Layout from "../components/layout";
+import Main from "../components/Main";
 import SEO from "../components/seo";
 import { Projects } from "../components/Projects";
 
@@ -64,7 +64,7 @@ type Data = {
 
 const IndexPage = ({ data }: { data: Data }) => {
 	return (
-		<Layout>
+		<Main>
 			<SEO
 				title="Home"
 				keywords={[`gatsby`, `application`, `react`]}
@@ -72,7 +72,7 @@ const IndexPage = ({ data }: { data: Data }) => {
 			/>
 			<Link to="/page-2/">Go to page 2</Link>
 			<Projects />
-		</Layout>
+		</Main>
 	);
 };
 
