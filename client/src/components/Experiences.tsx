@@ -25,7 +25,7 @@ export const Experiences: React.FC = () => {
 		<>
 			<Header>Work</Header>
 			{experiences.map(d => (
-				<div key={d.experienceId}>{d.name}</div>
+				<div key={d.experienceId}>{d.name}{" "}{d.roleName}</div>
 			))}
 		</>
 	);
