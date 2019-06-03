@@ -26,6 +26,7 @@ export interface Technology {
 	name: string;
 	experiences: Experience[];
 	skillLevel: SkillLevel;
+	version: string;
 }
 
 export interface ExperienceDetail {

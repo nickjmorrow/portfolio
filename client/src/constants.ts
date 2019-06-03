@@ -5,5 +5,8 @@ export const enterTimeout = {
 	et2: INITIAL_DELAY + 400,
 	et3: INITIAL_DELAY + 600,
 	et4: INITIAL_DELAY + 800,
-	et5: INITIAL_DELAY + 1000 
+	et5: INITIAL_DELAY + 1000,
+	et6: INITIAL_DELAY + 1200,
 }
+
+export const FOOTER_HEIGHT = '42px';
