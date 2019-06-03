@@ -1,14 +1,14 @@
-import * as React from "react";
-import { Header } from "./shared/Header";
 import {
-  Typography,
   StyleConstant,
+  Typography,
   useThemeContext
 } from "@nickjmorrow/react-component-library";
 import { graphql, useStaticQuery } from "gatsby";
-import { Technology } from "../types";
+import * as React from "react";
 import styled from "styled-components";
+import { Technology } from "../types";
 import { DelayedSlideInFade } from "./shared/DelayedSlideInFade";
+import { Header } from "./shared/Header";
 
 export const GatsbyQuery = graphql`
   {
@@ -28,7 +28,7 @@ export const About: React.FC = () => {
   const { spacing } = useThemeContext();
   return (
     <AboutWrapper>
-      <DelayedSlideInFade enterTimeout={0}>
+      <DelayedSlideInFade enterTimeout={500}>
         <Header>About</Header>
         <div>
           <Typography>

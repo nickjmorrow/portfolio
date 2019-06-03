@@ -57,6 +57,8 @@ const StyledAppBar = styled("div")<{ spacing: StyleConstant<"spacing"> }>`
   height: ${p => p.spacing.ss24};
   align-items: center;
   position: absolute;
+  padding: 0 ${p => p.spacing.ss8};
   right: 0;
   left: 0;
+  z-index: 1;
 `;

@@ -9,9 +9,10 @@ export const SlideInFade: React.FC<
       in={true}
       appear={true}
       enterTimeout={enterTimeout}
-      styleKeys={["margin-top"]}
-      unmounted={{ marginTop: "-20px" }}
-      mounted={{ marginTop: "0px" }}
+      styleKeys={["top"]}
+      unmounted={{ top: "-20px" }}
+      mounted={{ top: "0px" }}
+      style={{ position: "relative" }}
       {...props}
     >
       {children}
