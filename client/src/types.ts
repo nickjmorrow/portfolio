@@ -1,48 +1,48 @@
 export interface Experience {
-	experienceId: number;
-	name: string;
-	experienceDetails: ExperienceDetail[];
-	technologies: Technology[];
-	startDate: string;
-	endDate: string;
-	isCurrent: boolean;
-	roleName: string;
+  experienceId: number;
+  name: string;
+  experienceDetails: ExperienceDetail[];
+  technologies: Technology[];
+  startDate: string;
+  endDate: string;
+  isCurrent: boolean;
+  roleName: string;
 }
 
 export interface Project {
-	projectId: number;
-	name: string;
-	projectDetails: ProjectDetail[];
-	technologies: Technology[];	
+  projectId: number;
+  name: string;
+  projectDetails: ProjectDetail[];
+  technologies: Technology[];
 }
 
 export interface Setting {
-	settingId: string;
-	value: string;
+  settingId: string;
+  value: string;
 }
 
 export interface Technology {
-	technologyId: number;
-	name: string;
-	experiences: Experience[];
-	skillLevel: SkillLevel;
-	version: string;
+  technologyId: number;
+  name: string;
+  experiences: Experience[];
+  skillLevel: SkillLevel;
+  version: string;
 }
 
 export interface ExperienceDetail {
-	experienceDetailId: number;
-	experience: Experience;
-	description: string;
+  experienceDetailId: number;
+  experience: Experience;
+  description: string;
 }
 
 export interface ProjectDetail {
-	projectDetailId: number;
-	project: Project;
-	description: string;
+  projectDetailId: number;
+  project: Project;
+  description: string;
 }
 
 export interface SkillLevel {
-	skillLevelId: number;
-	description: string;
-	technology: Technology;
+  skillLevelId: number;
+  description: string;
+  technology: Technology;
 }

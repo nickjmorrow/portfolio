@@ -1,6 +1,6 @@
-import React from "react"
-import { Link } from "gatsby"
-import SEO from "../components/seo"
+import React from "react";
+import { Link } from "gatsby";
+import SEO from "../components/seo";
 
 const SecondPage = () => (
   <>
@@ -9,6 +9,6 @@ const SecondPage = () => (
     <p>Welcome to page 2</p>
     <Link to="/">Go back to the homepage</Link>
   </>
-)
+);
 
-export default SecondPage
+export default SecondPage;
