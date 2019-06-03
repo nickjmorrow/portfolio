@@ -1,57 +1,54 @@
 /* tslint:disable:max-classes-per-file */
 /* tslint:disable:member-access */
 class NotImplementedException extends Error {
-	name: string;
-	constructor() {
+	public readonly name: string;
+	public constructor() {
 		super();
-		this.name = "NotImplementedException";
+		this.name = 'NotImplementedException';
 		Object.setPrototypeOf(this, NotImplementedException.prototype);
 	}
 }
 
 class ShouldNeverGetHereException extends Error {
-	name: string;
+	public readonly name: string;
 
-	constructor() {
+	public constructor() {
 		super();
-		this.name = "ShouldNeverGetHereException";
+		this.name = 'ShouldNeverGetHereException';
 		Object.setPrototypeOf(this, ShouldNeverGetHereException.prototype);
 	}
 }
 
 class ArgumentException extends Error {
-	name: string;
-	message: string;
+	public readonly name: string;
+	public readonly message: string;
 
-	constructor(message: string) {
+	public constructor(message: string) {
 		super(message);
-		this.name = "ArgumentException";
+		this.name = 'ArgumentException';
 		this.message = message;
 	}
 }
 
 export class Throw {
-	static if: (condition: boolean, message: string) => void = (
-		condition,
-		message
-	) => {
+	public static if: (condition: boolean, message: string) => void = (condition, message) => {
 		if (condition) {
 			throw new ArgumentException(message);
 		}
 	};
 
-	static ifNull: (obj: any, message?: string) => void = (obj, message) => {
+	public static ifNull: (obj: any, message?: string) => void = (obj, message) => {
 		if (obj === null || obj === undefined) {
 			// TODO: this seems messy
-			throw new ArgumentException(message || "");
+			throw new ArgumentException(message || '');
 		}
 	};
 
-	static notImplementedException: () => never = () => {
+	public static notImplementedException: () => never = () => {
 		throw new NotImplementedException();
 	};
 
-	static shouldNeverGetHereException: () => never = () => {
+	public static shouldNeverGetHereException: () => never = () => {
 		throw new ShouldNeverGetHereException();
 	};
 }

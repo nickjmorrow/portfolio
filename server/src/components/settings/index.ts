@@ -1,2 +1,2 @@
-export { Setting } from "./models/Setting";
-export { settingsProvider } from "./settingsProvider";
+export { Setting } from './models/Setting';
+export { settingsProvider } from './settingsProvider';

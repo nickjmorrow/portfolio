@@ -50,12 +50,12 @@ export const GatsbyQuery = graphql`
   }
 `;
 
-type Data = {
+interface Data {
   settings: Setting[];
   experiences: Experience[];
   projects: Project[];
   technologies: Technology[];
-};
+}
 
 const IndexPage = ({ data }: { data: Data }) => {
   return (

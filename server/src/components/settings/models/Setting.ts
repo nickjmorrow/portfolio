@@ -1,10 +1,10 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity({ schema: "portfolio", name: "settings" })
+@Entity({ schema: 'portfolio', name: 'settings' })
 export class Setting {
-	@PrimaryColumn({ name: "setting_id" })
-	settingId!: string;
+	@PrimaryColumn({ name: 'setting_id' })
+	public settingId!: string;
 
-	@Column({ name: "value" })
-	value!: string;
+	@Column({ name: 'value' })
+	public value!: string;
 }

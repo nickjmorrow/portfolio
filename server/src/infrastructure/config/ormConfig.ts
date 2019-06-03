@@ -1,9 +1,9 @@
 // Config that is common to more than one part of the app.
-import { PostgresConnectionOptions } from "typeorm/driver/postgres/PostgresConnectionOptions";
-import { entities } from "../entities";
+import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
+import { entities } from '../entities';
 
 const typeOrmConfig: PostgresConnectionOptions = {
-	type: "postgres",
+	type: 'postgres',
 	host: process.env.TYPEORM_HOST,
 	port: parseInt(process.env.TYPEORM_PORT!, 10),
 	username: process.env.TYPEORM_USERNAME,
@@ -13,14 +13,14 @@ const typeOrmConfig: PostgresConnectionOptions = {
 	logging: false,
 	extra: {
 		max: 2,
-		min: 1
+		min: 1,
 	},
-	migrationsTableName: "migration_table",
-	migrations: ["migrations/*.js"],
+	migrationsTableName: 'migration_table',
+	migrations: ['migrations/*.js'],
 	cli: {
-		migrationsDir: "migrations"
+		migrationsDir: 'migrations',
 	},
-	entities
+	entities,
 };
 
 export { typeOrmConfig };

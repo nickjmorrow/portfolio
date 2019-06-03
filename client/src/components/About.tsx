@@ -53,7 +53,7 @@ export const About: React.FC = () => {
           <div>
             <TechnologiesWrapper spacing={spacing}>
               {technologies.map(t => (
-                <TechnologyWrapper>
+                <TechnologyWrapper key={t.technologyId}>
                   <Typography>{t.name}</Typography>
                 </TechnologyWrapper>
               ))}
