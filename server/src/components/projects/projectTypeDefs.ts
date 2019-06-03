@@ -4,6 +4,7 @@ export const projectTypeDefs = `
         name: String!
         projectDetails: [ProjectDetail!]!
         technologies: [Technology!]!
+		orderId: Int!
     }
 
     type Query {

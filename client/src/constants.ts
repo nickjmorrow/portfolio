@@ -15,3 +15,5 @@ export const enterTimeout = {
 };
 
 export const FOOTER_HEIGHT = "42px";
+
+export const NUM_FEATURED_PROJECTS = 3;

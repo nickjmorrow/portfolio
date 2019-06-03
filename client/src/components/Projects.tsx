@@ -1,53 +1,65 @@
-import * as React from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import { Project } from "../types";
-import { Header } from "./shared/Header";
-import { Typography } from "@nickjmorrow/react-component-library";
-import styled from "styled-components";
-import { DelayedSlideInFade } from "./shared/DelayedSlideInFade";
+import * as React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import { Project } from '../types';
+import { Header } from './shared/Header';
+import { Typography } from '@nickjmorrow/react-component-library';
+import styled from 'styled-components';
+import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
+import { FeaturedProjectList } from './FeaturedProjectList';
+import { NUM_FEATURED_PROJECTS } from '../constants';
+import { OtherProjectList } from './OtherProjectList';
 
 export const GatsbyQuery = graphql`
-  {
-    data {
-      projects {
-        projectId
-        name
-        projectDetails {
-          description
-        }
-        technologies {
-          technologyId
-          name
-        }
-      }
-    }
-  }
+	{
+		data {
+			projects {
+				projectId
+				name
+				orderId
+				projectDetails {
+					description
+				}
+				technologies {
+					technologyId
+					name
+				}
+			}
+		}
+	}
 `;
 
 export const Projects: React.FC = () => {
-  const {
-    data: { projects }
-  } = useStaticQuery<{ data: { projects: Project[] } }>(GatsbyQuery);
+	const {
+		data: { projects },
+	} = useStaticQuery<{ data: { projects: Project[] } }>(GatsbyQuery);
 
-  return (
-    <>
-      <ProjectsWrapper>
-        <DelayedSlideInFade enterTimeout={0}>
-          <Header>Work</Header>
-          {projects.map(d => (
-            <div key={d.projectId}>
-              <Typography>{d.name}</Typography>
-            </div>
-          ))}
-        </DelayedSlideInFade>
-      </ProjectsWrapper>
-    </>
-  );
+	const sortedProjects = projects
+							.sort((a, b) => (a.orderId > b.orderId ? 1 : -1));
+							
+	const featuredProjects = sortedProjects
+		.filter((p, i) => i < NUM_FEATURED_PROJECTS);
+	
+	const otherProjects = sortedProjects
+		.filter((p, i) => i >= NUM_FEATURED_PROJECTS);
+
+	return (
+		<>
+			<ProjectsWrapper>
+				<DelayedSlideInFade enterTimeout={0}>
+					<Header>Work</Header>
+					<FeaturedProjectList
+						projects={featuredProjects}
+					/>
+					<OtherProjectList projects={otherProjects}/>
+				</DelayedSlideInFade>
+			</ProjectsWrapper>
+		</>
+	);
 };
 
 const ProjectsWrapper = styled.div`
-  height: 90vh;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+	height: 90vh;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
 `;

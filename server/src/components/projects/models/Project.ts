@@ -13,6 +13,12 @@ export class Project {
 	@OneToMany(type => ProjectDetail, projectDetail => projectDetail.Project)
 	public projectDetails!: ProjectDetail[];
 
+	@Column({name: 'order_id'})
+	public orderId!: number;
+
+	@Column({name: 'date_deleted'})
+	public dateDeleted!: Date;
+
 	@ManyToMany(type => Technology, technology => technology.technologyId)
 	@JoinTable({ name: 'Project_Project__technologies' })
 	public technologies!: Technology[];

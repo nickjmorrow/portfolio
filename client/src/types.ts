@@ -14,6 +14,7 @@ export interface Project {
   name: string;
   projectDetails: ProjectDetail[];
   technologies: Technology[];
+  orderId: number;
 }
 
 export interface Setting {

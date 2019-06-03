@@ -10,7 +10,7 @@ import React from "react";
 import styled from "styled-components";
 import "./layout.css";
 import { AppBar } from "./AppBar";
-import { Experiences } from "./Experiences";
+import { ExperienceList } from "./ExperienceList";
 import {
   Footer,
   ThemeContext,
@@ -23,6 +23,7 @@ import { Headline } from "./Headline";
 import { About } from "./About";
 import { Projects } from "./Projects";
 import { FOOTER_HEIGHT } from "../constants";
+import { Contact } from "./Contact";
 
 const themeInputs: ArgumentType<typeof updateThemeInputs>[0] = {
   typography: {
@@ -42,8 +43,9 @@ export const Main: React.FC = () => {
         <StyledMain spacing={spacing}>
           <Headline />
           <About />
-          <Experiences />
+          <ExperienceList />
           <Projects />
+		  <Contact />
         </StyledMain>
         <Footer />
       </Wrapper>
