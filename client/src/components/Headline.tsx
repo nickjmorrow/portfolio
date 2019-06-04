@@ -4,10 +4,12 @@ import {
   Button,
   Fade,
   StyleConstant,
-  useThemeContext
+  useThemeContext,
+  Typography
 } from "@nickjmorrow/react-component-library";
 import { SlideInFade } from "./shared/SlideInFade";
 import { enterTimeout } from "../constants";
+import Img from "gatsby-image";
 
 export const Headline: React.FC = () => {
   const { spacing } = useThemeContext();
@@ -17,16 +19,15 @@ export const Headline: React.FC = () => {
         <div style={{ marginBottom: spacing.ss4 }}>
           <Fade in={true} appear={true} enterTimeout={enterTimeout.et7}>
             <Content spacing={spacing}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.{" "}
-            </Content>
-          </Fade>
-          <Fade in={true} appear={true} enterTimeout={enterTimeout.et8}>
-            <Content spacing={spacing}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              <div style={{marginBottom: '16px'}}>
+				  <Typography>Hello, my name is</Typography>
+			  </div>
+			  <div>
+				  <Typography styleVariant={1}>Nicholas Morrow</Typography>
+			  </div>
+			  <div>
+				  <Typography>I like working with data and building things.</Typography>
+			  </div>
             </Content>
           </Fade>
         </div>
@@ -34,6 +35,7 @@ export const Headline: React.FC = () => {
           <Button useMargin={false}>Get In Touch</Button>
         </SlideInFade>
       </HeadlineWrapper>
+	  <img src="../images/cityscape.jpeg" />
     </SlideInFade>
   );
 };
