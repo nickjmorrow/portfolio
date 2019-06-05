@@ -13,6 +13,8 @@ export const SlideInFade: React.FC<
       unmounted={{ top: "-20px" }}
       mounted={{ top: "0px" }}
       style={{ position: "relative" }}
+	  transitionVariant={'slow'}
+	  
       {...props}
     >
       {children}

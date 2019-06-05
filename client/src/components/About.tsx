@@ -30,7 +30,7 @@ export const About: React.FC = () => {
     <AboutWrapper>
       <DelayedSlideInFade enterTimeout={500}>
         <Header>About</Header>
-        <div>
+        <div style={{maxWidth: spacing.ss160}}>
           <Typography>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -78,9 +78,10 @@ const TechnologyWrapper = styled.li`
   margin: 0;
 `;
 
-const AboutWrapper = styled.div`
+const AboutWrapper = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100vh;
+  
 `;

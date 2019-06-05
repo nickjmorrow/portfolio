@@ -36,16 +36,19 @@ const themeInputs: ArgumentType<typeof updateThemeInputs>[0] = {
 
 export const Main: React.FC = () => {
   const { spacing } = useThemeContext();
+  const horizontalMargin = spacing.ss16;
   return (
     <ThemeContext.Provider value={getThemeFromNewInputs(themeInputs)}>
       <Wrapper>
         <AppBar />
         <StyledMain spacing={spacing}>
           <Headline />
+		  <div style={{margin: `0 ${horizontalMargin}`}}>
           <About />
           <ExperienceList />
           <Projects />
 		  <Contact />
+		  </div>
         </StyledMain>
         <Footer />
       </Wrapper>
@@ -69,5 +72,5 @@ const Wrapper = styled.div`
 `;
 
 const StyledMain = styled("div")<{ spacing: StyleConstant<"spacing"> }>`
-  margin: 0px ${p => p.spacing.ss16};
+  
 `;

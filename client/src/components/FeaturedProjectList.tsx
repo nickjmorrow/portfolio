@@ -6,12 +6,9 @@ import { FeaturedProject } from './FeaturedProject';
 export const FeaturedProjectList: React.FC<{ projects: Project[] }> = ({ projects }) => {
 	return (
 		<>
-		<div>
-			<Typography styleVariant={3}>Featured Projects</Typography>
-		</div>
-			{projects.map(p => (
+			{projects.map((p, i) => (
 				<div>
-					<FeaturedProject project={p} />
+					<FeaturedProject project={p} rightAlign={i%2 === 0}/>
 				</div>
 			))}
 		</>

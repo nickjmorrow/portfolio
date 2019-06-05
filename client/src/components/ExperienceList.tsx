@@ -1,4 +1,4 @@
-import { Typography } from "@nickjmorrow/react-component-library";
+import { Typography, horizontalWidth } from "@nickjmorrow/react-component-library";
 import { graphql, useStaticQuery } from "gatsby";
 import * as React from "react";
 import { Experience as ExperienceType } from "../types";
@@ -36,9 +36,10 @@ export const ExperienceList: React.FC = () => {
   );
 };
 
-const ExperiencesWrapper = styled.div`
+const ExperiencesWrapper = styled('div')`
   height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 0 ${p => p.horizontalMargin};
 `;
