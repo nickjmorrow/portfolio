@@ -1,12 +1,4 @@
-import {
-	Typography,
-	StyleConstant,
-	useThemeContext,
-	Button,
-	Fade,
-	GetComponentProps,
-} from '@nickjmorrow/react-component-library';
-import { graphql, StaticQuery } from 'gatsby';
+import { Button, Fade, StyleConstant, Typography, useThemeContext } from '@nickjmorrow/react-component-library';
 import * as React from 'react';
 import styled from 'styled-components';
 import { enterTimeout } from '../constants';
@@ -15,28 +7,34 @@ import { SlideInFade } from './shared/SlideInFade';
 export const AppBar: React.FC = () => {
 	const { spacing } = useThemeContext();
 	return (
-
-				<Fade in={true} appear={true} enterTimeout={enterTimeout.appBarAppears} styleKeys={['top']} unmounted={{top: '-100px'}} mounted={{top: '0px'}} style={{position: 'absolute'}} transitionVariant={'slow'}>
-					<StyledAppBar spacing={spacing}>
-						<SlideInFade enterTimeout={enterTimeout.aboutAppears}>
-							<Typography sizeVariant={4}>About</Typography>
-						</SlideInFade>
-						<SlideInFade enterTimeout={enterTimeout.experienceAppears}>
-							<Typography sizeVariant={4}>Experience</Typography>
-						</SlideInFade>
-						<SlideInFade enterTimeout={enterTimeout.workAppears}>
-							<Typography sizeVariant={4}>Work</Typography>
-						</SlideInFade>
-						<SlideInFade enterTimeout={enterTimeout.contactAppears}>
-							<Typography sizeVariant={4}>Contact</Typography>
-						</SlideInFade>
-						<SlideInFade enterTimeout={enterTimeout.resumeAppears}>
-							<Button styleVariant={'secondary'}>Resume</Button>
-						</SlideInFade>
-					</StyledAppBar>
-				</Fade>
-			
-		
+		<Fade
+			in={true}
+			appear={true}
+			enterTimeout={enterTimeout.appBarAppears}
+			styleKeys={['top']}
+			unmounted={{ top: '-100px' }}
+			mounted={{ top: '0px' }}
+			style={{ position: 'absolute' }}
+			transitionVariant={'slow'}
+		>
+			<StyledAppBar spacing={spacing}>
+				<SlideInFade enterTimeout={enterTimeout.aboutAppears}>
+					<Typography sizeVariant={4}>About</Typography>
+				</SlideInFade>
+				<SlideInFade enterTimeout={enterTimeout.experienceAppears}>
+					<Typography sizeVariant={4}>Experience</Typography>
+				</SlideInFade>
+				<SlideInFade enterTimeout={enterTimeout.workAppears}>
+					<Typography sizeVariant={4}>Work</Typography>
+				</SlideInFade>
+				<SlideInFade enterTimeout={enterTimeout.contactAppears}>
+					<Typography sizeVariant={4}>Contact</Typography>
+				</SlideInFade>
+				<SlideInFade enterTimeout={enterTimeout.resumeAppears}>
+					<Button styleVariant={'secondary'}>Resume</Button>
+				</SlideInFade>
+			</StyledAppBar>
+		</Fade>
 	);
 };
 

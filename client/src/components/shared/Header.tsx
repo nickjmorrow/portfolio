@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Typography } from "@nickjmorrow/react-component-library";
+import { Typography, GetComponentProps } from "@nickjmorrow/react-component-library";
 
-export const Header: React.FC = ({ children }) => {
-  return <Typography styleVariant={1}>{children}</Typography>;
+export const Header: React.FC<GetComponentProps<typeof Typography> & {style?: React.CSSProperties}> = ({ children, style,...props }) => {
+  return <Typography styleVariant={1} style={{display: 'block', ...style}}{...props}>{children}</Typography>;
 };

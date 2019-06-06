@@ -21,6 +21,7 @@ export const GatsbyQuery = graphql`
   }
 `;
 
+// TODO: Why am I hitting key errors when using technologyId?
 export const About: React.FC = () => {
   const {
     data: { technologies }
@@ -52,8 +53,8 @@ export const About: React.FC = () => {
           </Typography>
           <div>
             <TechnologiesWrapper spacing={spacing}>
-              {technologies.map(t => (
-                <TechnologyWrapper key={t.technologyId}>
+              {technologies.map((t, i) => (
+                <TechnologyWrapper key={i}>
                   <Typography>{t.name}</Typography>
                 </TechnologyWrapper>
               ))}
@@ -82,6 +83,5 @@ const AboutWrapper = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
-  
+  min-height: 100vh;
 `;

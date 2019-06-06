@@ -46,7 +46,7 @@ export const Projects: React.FC = () => {
 		<>
 			<ProjectsWrapper>
 				<DelayedSlideInFade enterTimeout={0}>
-					<Header>Work</Header>
+					<Header style={{marginBottom: '64px'}}>Work</Header>
 					<FeaturedProjectList
 						projects={featuredProjects}
 					/>
@@ -58,8 +58,8 @@ export const Projects: React.FC = () => {
 };
 
 const ProjectsWrapper = styled.div`
-	height: 90vh;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
+	margin-bottom: 64px;
 `;

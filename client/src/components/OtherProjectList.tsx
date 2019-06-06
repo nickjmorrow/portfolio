@@ -8,7 +8,7 @@ export const OtherProjectList : React.FC<{projects: Project[]}> = ({projects}) =
 	return (
 		<>
 		<div>
-			<Typography styleVariant={3}>Other Projects</Typography>
+			<Typography styleVariant={2}>Other Projects</Typography>
 		</div>
 			{projects.map(p => (
 				<OtherProject project={p} />

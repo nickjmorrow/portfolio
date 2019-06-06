@@ -4,16 +4,18 @@ import styled from 'styled-components';
 import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
 import { Header } from './shared/Header';
 import { TextInput, useThemeContext, StyleConstant, Button } from '@nickjmorrow/react-component-library';
+import { Theme } from '../types';
 
 export const Contact: React.FC = () => {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [message, setMessage] = useState('');
-	const { border, colors, typography, spacing } = useThemeContext();
+	const theme = useThemeContext();
+	const { border, colors, typography, spacing } = theme;
 	return (
 		<DelayedSlideInFade enterTimeout={0}>
 			<Header>Contact</Header>
-			<ContactWrapper>
+			<ContactWrapper theme={theme}>
 				<Form spacing={spacing}>
 					<TextInput
 						style={{ width: '100%' }}
@@ -52,11 +54,13 @@ const Form = styled('form')<{ spacing: StyleConstant<'spacing'> }>`
 	max-width: 600px;
 `;
 
-const ContactWrapper = styled.div`
+const ContactWrapper = styled('div')<{theme: Theme}>`
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
+	position: relative;
+	margin-top: ${({theme}) => theme.spacing.ss16}
 `;
 
 const TextArea = styled('textarea')<{
