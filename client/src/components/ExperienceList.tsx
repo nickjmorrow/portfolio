@@ -31,6 +31,9 @@ export const ExperienceList: React.FC = () => {
     data
   } = useStaticQuery<{ data: { experiences: ExperienceType[] } }>(GatsbyQuery);
   console.log(data);
+  if (data === null) {
+	  return null;
+  }
   const { experiences } = data;
   const [activeExperience, setActiveExperience] = React.useState(experiences[0]);
 	const { spacing } = useThemeContext();

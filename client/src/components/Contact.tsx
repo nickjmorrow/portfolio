@@ -5,6 +5,8 @@ import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
 import { Header } from './shared/Header';
 import { TextInput, useThemeContext, StyleConstant, Button } from '@nickjmorrow/react-component-library';
 import { Theme } from '../types';
+import { enterTimeout } from '../constants';
+import { SlideInFade } from './shared/SlideInFade';
 
 export const Contact: React.FC = () => {
 	const [name, setName] = useState('');
@@ -13,32 +15,40 @@ export const Contact: React.FC = () => {
 	const theme = useThemeContext();
 	const { border, colors, typography, spacing } = theme;
 	return (
-		<DelayedSlideInFade enterTimeout={0}>
+		<DelayedSlideInFade enterTimeout={enterTimeout.contactAppears}>
 			<Header>Contact</Header>
 			<ContactWrapper theme={theme}>
 				<Form spacing={spacing}>
-					<TextInput
-						style={{ width: '100%' }}
-						value={name}
-						onChange={e => setName(e.currentTarget.value)}
-						placeholder={'Name'}
-					/>
-					<TextInput
-						style={{ width: '100%' }}
-						value={email}
-						onChange={e => setEmail(e.currentTarget.value)}
-						placeholder={'Email'}
-					/>
-					<TextArea
-						spacing={spacing}
-						colors={colors}
-						typography={typography}
-						border={border}
-						value={message}
-						onChange={e => setMessage(e.currentTarget.value)}
-						placeholder={'Enter your message here'}
-					/>
-					<Button useMargin={false} style={{justifySelf: 'flex-end', width: 'max-content'}}>Send Message</Button>
+					<SlideInFade enterTimeout={enterTimeout.contactNameAppears}>
+						<TextInput
+							style={{ width: '100%' }}
+							value={name}
+							onChange={e => setName(e.currentTarget.value)}
+							placeholder={'Name'}
+						/>
+					</SlideInFade>
+					<SlideInFade enterTimeout={enterTimeout.contactEmailAppears}>
+						<TextInput
+							style={{ width: '100%' }}
+							value={email}
+							onChange={e => setEmail(e.currentTarget.value)}
+							placeholder={'Email'}
+						/>
+					</SlideInFade>
+					<SlideInFade enterTimeout={enterTimeout.contactMessageAppears}>
+						<TextArea
+							spacing={spacing}
+							colors={colors}
+							typography={typography}
+							border={border}
+							value={message}
+							onChange={e => setMessage(e.currentTarget.value)}
+							placeholder={'Enter your message here'}
+						/>
+					</SlideInFade>
+					<SlideInFade enterTimeout={enterTimeout.contactSendMessageAppears}>
+						<Button useMargin={false} style={{justifySelf: 'flex-end', width: 'max-content'}}>Send Message</Button>
+					</SlideInFade>
 				</Form>
 			</ContactWrapper>
 		</DelayedSlideInFade>
@@ -59,7 +69,6 @@ const ContactWrapper = styled('div')<{theme: Theme}>`
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	position: relative;
 	margin-top: ${({theme}) => theme.spacing.ss16}
 `;
 

@@ -30,9 +30,12 @@ export const GatsbyQuery = graphql`
 
 export const Projects: React.FC = () => {
 	const {
-		data: { projects },
+		data
 	} = useStaticQuery<{ data: { projects: Project[] } }>(GatsbyQuery);
-
+	if (data === null) {
+		return null;
+	}
+	const { projects } = data;
 	const sortedProjects = projects
 							.sort((a, b) => (a.orderId > b.orderId ? 1 : -1));
 							

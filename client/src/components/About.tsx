@@ -9,6 +9,7 @@ import styled from "styled-components";
 import { Technology } from "../types";
 import { DelayedSlideInFade } from "./shared/DelayedSlideInFade";
 import { Header } from "./shared/Header";
+import { TechnologyEmphasizedTypography } from "./TechnologyEmphasizedTypography";
 
 export const GatsbyQuery = graphql`
   {
@@ -24,23 +25,19 @@ export const GatsbyQuery = graphql`
 // TODO: Why am I hitting key errors when using technologyId?
 export const About: React.FC = () => {
   const {
-    data: { technologies }
+    data
   } = useStaticQuery<{ data: { technologies: Technology[] } }>(GatsbyQuery);
+  if (data === null) {
+	  return null;
+  }
+  const { technologies } = data;
   const { spacing } = useThemeContext();
   return (
     <AboutWrapper>
       <DelayedSlideInFade enterTimeout={500}>
         <Header>About</Header>
         <div style={{maxWidth: spacing.ss160}}>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </Typography>
+          <TechnologyEmphasizedTypography text={'I enjoy using Redux. I also like using other technologies.'} />
           <Typography>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
