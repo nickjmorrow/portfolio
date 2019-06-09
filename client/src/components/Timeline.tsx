@@ -14,8 +14,8 @@ export const Timeline: React.FC<{ experiences: Experience[]; activeExperience: E
 	
 	return (
 		<TimelineWrapper theme={theme}>
-			{experiences.sort((a, b) => a.experienceId < b.experienceId ? -1 : 1).map(e => (
-				<TimelineExperience key={e.experienceId} onClick={() => setActiveExperience(e)} theme={theme} isActive={e.experienceId === activeExperience.experienceId} >
+			{experiences.sort((a, b) => a.experienceId < b.experienceId ? -1 : 1).map((e, i, arr) => (
+				<TimelineExperience key={e.experienceId} onClick={() => setActiveExperience(e)} theme={theme} isActive={e.experienceId === activeExperience.experienceId} isFirst={i === 0} isLast={i === arr.length - 1}>
 					<Typography>{e.name}</Typography>
 				</TimelineExperience>
 			))}
@@ -32,7 +32,7 @@ const TimelineWrapper = styled('div')<{theme: Theme}>`
 	height: min-content;
 `;
 
-const TimelineExperience = styled('div')<{theme: Theme}>`
+const TimelineExperience = styled('div')<{theme: Theme; isFirst: boolean; isLast: boolean}>`
 	padding: ${p => p.theme.spacing.ss3};
 	background-color: ${p => p.isActive ? p.theme.colors.core.cs2 : p.theme.colors.neutral.cs2};
 	border-left: ${p => p.isActive && `${p.theme.border.borderStyle.bs3} ${p.theme.colors.core.cs3}`};
@@ -41,4 +41,11 @@ const TimelineExperience = styled('div')<{theme: Theme}>`
 	transition-duration: ${p => p.theme.transitions.durations.fast}ms;
 	min-width: ${p => p.theme.spacing.ss48};
 	cursor: pointer;
+	border-top-left-radius: ${p => p.isFirst ? p.theme.border.borderRadius.br1 : 'none'};
+	border-top-right-radius: ${p => p.isFirst ? p.theme.border.borderRadius.br1 : 'none'};
+	border-bottom-left-radius: ${p => p.isLast ? p.theme.border.borderRadius.br1 : 'none'};
+	border-bottom-right-radius: ${p => p.isLast ? p.theme.border.borderRadius.br1 : 'none'};
+	&: hover {
+		background-color: ${p => p.isActive ? p.theme.colors.core.cs2 : p.theme.colors.core.cs1};
+	}
 `;

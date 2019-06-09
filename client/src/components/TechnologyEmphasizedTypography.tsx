@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { Technology } from '../types';
 import { findKeyPhrases } from '../algorithms/find-key-phrases';
 import { Typography } from '@nickjmorrow/react-component-library';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 export const GatsbyQuery = graphql`
 	{
@@ -20,42 +21,45 @@ export const TechnologyEmphasizedTypography: React.FC<{ text: string }> = ({ tex
 		data: { technologies },
 	} = useStaticQuery<{ data: { technologies: Technology[] } }>(GatsbyQuery);
 	const keyPhrases = technologies.map(t => t.name);
-	console.log(keyPhrases);
 
-	console.log(text);
 	const identifiedKeyPhrases = findKeyPhrases(text, keyPhrases);
-	console.log(identifiedKeyPhrases);
+
+	if (identifiedKeyPhrases.length === 0) {
+		return <Typography>{text}</Typography>
+	}
+
 	const output: JSX.Element[] = [];
 	if (identifiedKeyPhrases.length === 0) {
-		return <Typography>{text}</Typography>;
+		return <Typography  style={{display: 'inline'}}>{text}</Typography>;
 	}
 	const splitText = text.split(' ');
 	const firstParagraphIndex = identifiedKeyPhrases[0].paragraphIndex;
-	const firstPart = (
-		<Typography>
-			{splitText
-				.slice(0, firstParagraphIndex)
-				.join(' ')}
-		</Typography>
-	);
+	const firstPart = <Typography style={{display: 'inline'}}>{splitText.slice(0, firstParagraphIndex).join(' ')}</Typography>;
 
 	output.push(firstPart);
-	identifiedKeyPhrases.forEach((ikp, i) => {
-		// push key phrase
+	identifiedKeyPhrases.forEach((ikp, i, arr) => {
+		if (i < arr.length - 1) {
+			// push key phrase
 		const keyPhrase = splitText[ikp.paragraphIndex];
-		output.push(<Typography colorVariant={'core'}>{keyPhrase}</Typography>)
+		output.push(<Typography style={{display: 'inline'}} colorVariant={'core'}>{keyPhrase}</Typography>);
+
+
+		// push text that comes after key phrase
+		const nextKeyPhraseParagraphIndex = identifiedKeyPhrases[i + 1];
+		const nextTextSegment = splitText.slice(ikp.paragraphIndex, nextKeyPhraseParagraphIndex.paragraphIndex);
+		console.log(`adding key phrase ${keyPhrase}`);
 		
-		if (i !== identifiedKeyPhrases.length - 1) {
-			// push text that comes after key phrase
-			const nextKeyPhraseParagraphIndex = identifiedKeyPhrases[i + 1];
-			const nextTextSegment = splitText.slice(i, nextKeyPhraseParagraphIndex.paragraphIndex);	
-			output.push(<Typography>{nextTextSegment}</Typography>)
-		} else {
-			// push rest of text
-			// const nextTextSegment = splitText.slice(i, splitText.length);
-			// output.push(<Typography>{nextTextSegment}</Typography>)
+		output.push(<Typography style={{display: 'inline'}} colorVariant={'accent'}>{nextTextSegment}</Typography>);
 		}
-	})
-	
+		
+	});
+
+	const lastIdentifiedKeyPhrase = identifiedKeyPhrases[identifiedKeyPhrases.length - 1];
+	const actualKeyPhrase = keyPhrases[lastIdentifiedKeyPhrase.keyPhraseIndex];
+	const keyPhraseLength = actualKeyPhrase.split(' ').length;
+	output.push(<Typography link="#about" style={{display: 'inline'}}>{" " + actualKeyPhrase + " "}</Typography>)
+	const nextTextSegment = splitText.slice(identifiedKeyPhrases[identifiedKeyPhrases.length - 1].paragraphIndex + keyPhraseLength, splitText.length).join(' ');
+	output.push(<Typography style={{display: 'inline'}}>{nextTextSegment}</Typography>);
+
 	return output;
 };

@@ -2,19 +2,17 @@ import * as React from "react";
 import { Fade, GetComponentProps } from "@nickjmorrow/react-component-library";
 
 export const SlideInFade: React.FC<
-  { enterTimeout: number } & GetComponentProps<typeof Fade>
-> = ({ children, enterTimeout, ...props }) => {
+GetComponentProps<typeof Fade>
+> = ({ children, ...props }) => {
   return (
     <Fade
       in={true}
       appear={true}
-      enterTimeout={enterTimeout}
       styleKeys={["top"]}
-      unmounted={{ top: "-20px" }}
+      unmounted={{ top: "-40px" }}
       mounted={{ top: "0px" }}
       style={{ position: "relative" }}
 	  transitionVariant={'slow'}
-	  
       {...props}
     >
       {children}

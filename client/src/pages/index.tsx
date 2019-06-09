@@ -4,6 +4,7 @@ import React from "react";
 import Main from "../components/Main";
 import SEO from "../components/seo";
 import { Projects } from "../components/Projects";
+import Helmet from 'react-helmet';
 
 export const GatsbyQuery = graphql`
   {
@@ -60,11 +61,13 @@ interface Data {
 const IndexPage = ({ data }: { data: Data }) => {
   return (
     <Main>
+		<Helmet title={'Nick J Morrow'}><title>Nick J Morrow</title></Helmet>
       <SEO
         title="Home"
         keywords={[`gatsby`, `application`, `react`]}
         description={"personal portfolio"}
       />
+	  
       <Link to="/page-2/">Go to page 2</Link>
       <Projects />
     </Main>

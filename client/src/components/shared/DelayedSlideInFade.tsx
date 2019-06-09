@@ -19,7 +19,7 @@ export const DelayedSlideInFade: React.FC<
         return (
           <SlideInFade
             in={isVisible || hasAlreadyBeenVisible}
-            enterTimeout={500}
+            enterTimeout={enterTimeout}
           >
             {children}
           </SlideInFade>

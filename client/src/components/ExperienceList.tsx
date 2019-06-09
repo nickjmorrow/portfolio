@@ -36,15 +36,18 @@ export const ExperienceList: React.FC = () => {
   }
   const { experiences } = data;
   const [activeExperience, setActiveExperience] = React.useState(experiences[0]);
-	const { spacing } = useThemeContext();
+	const theme = useThemeContext();
   return (
     <>
 	<DelayedSlideInFade enterTimeout={500}>
-	<Header style={{marginBottom: spacing.ss16}}>Experience</Header>
-      <ExperiencesWrapper>
-        <Timeline setActiveExperience={setActiveExperience} experiences={experiences} activeExperience={activeExperience}>Timeline</Timeline>
-		<Experience experience={activeExperience} />
-      </ExperiencesWrapper>
+	<ExperienceListWrapper>
+		
+		<Header style={{marginBottom: theme.spacing.ss16}} id="header">Experience</Header>
+	      <ExperiencesWrapper theme={theme}>
+	        <Timeline setActiveExperience={setActiveExperience} experiences={experiences} activeExperience={activeExperience}>Timeline</Timeline>
+			<Experience experience={activeExperience} />
+	      </ExperiencesWrapper>
+	</ExperienceListWrapper>
 	  </DelayedSlideInFade>
     </>
   );
@@ -58,4 +61,11 @@ const ExperiencesWrapper = styled('div')`
   justify-content: center;
   max-width: 800px;
   margin: 0 auto;
+`;
+
+const ExperienceListWrapper = styled('div')<{theme: Theme}>`
+	min-height: 100vh;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 32px;
 `;

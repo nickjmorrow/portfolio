@@ -1,7 +1,9 @@
-import { Button, Fade, StyleConstant, Typography, useThemeContext } from '@nickjmorrow/react-component-library';
+import { Fade, StyleConstant, Typography, useThemeContext } from '@nickjmorrow/react-component-library';
 import * as React from 'react';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 import styled from 'styled-components';
 import { enterTimeout } from '../constants';
+import { Button } from './shared/Button';
 import { SlideInFade } from './shared/SlideInFade';
 
 export const AppBar: React.FC = () => {
@@ -18,20 +20,38 @@ export const AppBar: React.FC = () => {
 			transitionVariant={'slow'}
 		>
 			<StyledAppBar spacing={spacing}>
-				<SlideInFade enterTimeout={enterTimeout.aboutAppears}>
-					<Typography sizeVariant={4}>About</Typography>
-				</SlideInFade>
-				<SlideInFade enterTimeout={enterTimeout.experienceAppears}>
-					<Typography sizeVariant={4}>Experience</Typography>
-				</SlideInFade>
-				<SlideInFade enterTimeout={enterTimeout.workAppears}>
-					<Typography sizeVariant={4}>Work</Typography>
-				</SlideInFade>
-				<SlideInFade enterTimeout={enterTimeout.contactAppears}>
-					<Typography sizeVariant={4}>Contact</Typography>
-				</SlideInFade>
+				<AnchorLink href="#about" offset={'-52'}>
+					<SlideInFade enterTimeout={enterTimeout.aboutAppears}>
+						<Typography weightVariant={8} colorVariant={'primaryLight'} sizeVariant={4}>
+							About
+						</Typography>
+					</SlideInFade>
+				</AnchorLink>
+				<AnchorLink href="#experience" offset={'300'}>
+					<SlideInFade enterTimeout={enterTimeout.experienceAppears}>
+						<Typography weightVariant={8} colorVariant={'primaryLight'} sizeVariant={4}>
+							Experience
+						</Typography>
+					</SlideInFade>
+				</AnchorLink>
+				<AnchorLink href="#work" offset={100}>
+					<SlideInFade enterTimeout={enterTimeout.workAppears}>
+						<Typography weightVariant={8} colorVariant={'primaryLight'} sizeVariant={4}>
+							Work
+						</Typography>
+					</SlideInFade>
+				</AnchorLink>
+				<AnchorLink href="#contact" >
+					<SlideInFade enterTimeout={enterTimeout.contactAppears}>
+						<Typography weightVariant={8} colorVariant={'primaryLight'} sizeVariant={4}>
+							Contact
+						</Typography>
+					</SlideInFade>
+				</AnchorLink>
 				<SlideInFade enterTimeout={enterTimeout.resumeAppears}>
-					<Button styleVariant={'secondary'}>Resume</Button>
+					<Button leftColor={'hsl(50, 100%, 50%)'} rightColor={'hsl(330, 100%, 50%)'}>
+						Resume
+					</Button>
 				</SlideInFade>
 			</StyledAppBar>
 		</Fade>
@@ -51,6 +71,5 @@ const StyledAppBar = styled('div')<{ spacing: StyleConstant<'spacing'> }>`
 	left: 0;
 	position: absolute;
 	z-index: 1;
-	background-color: white;
 	opacity: 0.8;
 `;

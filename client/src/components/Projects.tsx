@@ -46,8 +46,7 @@ export const Projects: React.FC = () => {
 		.filter((p, i) => i >= NUM_FEATURED_PROJECTS);
 
 	return (
-		<>
-			<ProjectsWrapper>
+			<ProjectsWrapper id="work">
 				<DelayedSlideInFade enterTimeout={0}>
 					<Header style={{marginBottom: '64px'}}>Work</Header>
 					<FeaturedProjectList
@@ -56,7 +55,6 @@ export const Projects: React.FC = () => {
 					<OtherProjectList projects={otherProjects}/>
 				</DelayedSlideInFade>
 			</ProjectsWrapper>
-		</>
 	);
 };
 

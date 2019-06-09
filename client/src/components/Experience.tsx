@@ -1,8 +1,9 @@
+import { ArrowIcon, Link, Typography, useThemeContext } from '@nickjmorrow/react-component-library';
 import * as React from 'react';
-import { Experience as ExperienceType, Theme } from '../types';
 import styled from 'styled-components';
+import { Experience as ExperienceType, Theme } from '../types';
 import { getFormattedDate } from '../utilities';
-import { Typography, useThemeContext } from '@nickjmorrow/react-component-library';
+import { TechnologyEmphasizedTypography } from './TechnologyEmphasizedTypography';
 
 // TODO: need I rename the type? is that a linting configuration?
 export const Experience: React.FC<{ experience: ExperienceType }> = ({ experience }) => {
@@ -14,16 +15,19 @@ export const Experience: React.FC<{ experience: ExperienceType }> = ({ experienc
 				<Typography sizeVariant={5}>{experience.roleName}</Typography>
 			</RoleName>
 			<OrganizationName>
-				<Typography colorVariant={'secondaryDark'}>{experience.name}</Typography>
+				<Link route={'mastercard.com'}><Typography colorVariant={'secondaryDark'}>{experience.name}</Typography></Link>
 			</OrganizationName>
 			<Timeframe experience={experience} />
 			<ExperienceDetailList theme={theme}>
 				{experience.experienceDetails.map(ed => (
 					<ExperienceDetail key={ed.description}>
 						<BulletPointWrapper>
-							<BulletPoint />
+							<ArrowIcon style={{position: 'relative', top: '5px'}}sizeVariant={1} />
+						
 						</BulletPointWrapper>
-						<Typography>{ed.description}</Typography>
+						<div>
+							<TechnologyEmphasizedTypography text={ed.description} />
+						</div>
 					</ExperienceDetail>
 				))}
 			</ExperienceDetailList>
@@ -31,14 +35,7 @@ export const Experience: React.FC<{ experience: ExperienceType }> = ({ experienc
 	);
 };
 
-const BulletPoint = styled.div`
-	width: 5px;
-	height: 5px;
-	border-radius: 5px;
-	background-color: darkgray;
-	position: relative;
-	top: 7px;
-`;
+
 
 const BulletPointWrapper = styled.div`
 	display: flex;

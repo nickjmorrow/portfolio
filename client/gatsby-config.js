@@ -54,6 +54,7 @@ module.exports = {
 				fonts: [
 					{
 						family: 'Overpass',
+						variants: [`400`, `600`,`700`, `800`]
 					},
 				],
 			},

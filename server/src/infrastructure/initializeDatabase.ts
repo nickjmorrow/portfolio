@@ -71,6 +71,7 @@ export const initializeDatabase = `
 		, start_date DATE NOT NULL
 		, end_date DATE NULL
 		, is_current BOOLEAN NOT NULL
+		, link VARCHAR(255) NOT NULL
 	);
 
 	INSERT INTO portfolio.experiences (name, start_date, end_date, is_current, role_name, location)
@@ -100,14 +101,16 @@ export const initializeDatabase = `
 		, name VARCHAR(255) NOT NULL
 		, order_id INT NOT NULL
 		, date_deleted DATE NULL
+		, github_link VARCHAR(255) NOT NULL
+		, site_link VARCHAR(255) NOT NULL
 	);
 
-	INSERT INTO portfolio.projects (name, order_id)
+	INSERT INTO portfolio.projects (name, order_id, github_link, site_link)
 	VALUES
-		('Hierarchical Clustering of Google Maps Locations', 1)
-		, ('Weather Analytics and Extrema Monitoring', 2)
-		, ('React UI Component Library', 3)
-		, ('Spoiler-Free TV Show Information Aggregator', 4);
+		('Hierarchical Clustering of Google Maps Locations', 1, 'https://github.com/nickjmorrow/map-clustering', 'https://nickjmorrow.github.io/map-clustering/')
+		, ('Weather Analytics and Extrema Monitoring', 2, 'https://github.com/nickjmorrow/weird-weather', 'https://nickjmorrow.github.io/weird-weather/')
+		, ('React UI Component Library', 3, 'https://github.com/nickjmorrow/react-component-library', 'https://nickjmorrow.github.io/react-component-library/')
+		, ('Spoiler-Free TV Show Information Aggregator', 4, 'https://github.com/nickjmorrow/first-few', 'https://nickjmorrow.github.io/first-few/')
 
 	CREATE TABLE portfolio.project_details (
 		project_detail_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
