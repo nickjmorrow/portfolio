@@ -37,9 +37,9 @@ export const ExperienceList: React.FC = () => {
 	const theme = useThemeContext();
 	return (
 		<>
-			<DelayedSlideInFade enterTimeout={500} style={{backgroundColor: theme.colors.background}}>
+			<DelayedSlideInFade enterTimeout={500} style={{backgroundColor: theme.colors.background, position: 'relative'}}>
 				<ExperienceListWrapper theme={theme} id="experience">
-					<Typography link={'#experience'} sizeVariant={9} style={{ marginBottom: theme.spacing.ss16 }} id="header">
+					<Typography link={'#experience'} weightVariant={7} sizeVariant={9} style={{ marginBottom: theme.spacing.ss16 }} id="header">
 						Experience
 					</Typography>
 					<ExperiencesWrapper theme={theme}>

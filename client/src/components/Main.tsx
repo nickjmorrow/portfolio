@@ -23,7 +23,7 @@ import { Contact } from './Contact';
 import { ExperienceList } from './ExperienceList';
 import { Headline } from './Headline';
 import './layout.css';
-import { Projects } from './Projects';
+import { ProjectList } from './ProjectList';
 
 const themeInputs: ArgumentType<typeof updateThemeInputs>[0] = {
 	typography: {
@@ -47,7 +47,7 @@ export const Main: React.FC = () => {
 						
 							<About />
 							<ExperienceList />
-							<Projects />
+							<ProjectList />
 							<Contact />
 						
 					</div>

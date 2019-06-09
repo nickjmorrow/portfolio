@@ -3,10 +3,11 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
 import { Header } from './shared/Header';
-import { TextInput, useThemeContext, StyleConstant, Button } from '@nickjmorrow/react-component-library';
+import { TextInput, useThemeContext, StyleConstant } from '@nickjmorrow/react-component-library';
 import { Theme } from '../types';
 import { enterTimeout } from '../constants';
 import { SlideInFade } from './shared/SlideInFade';
+import { Button } from './shared/Button';
 
 export const Contact: React.FC = () => {
 	const [name, setName] = useState('');
@@ -15,8 +16,7 @@ export const Contact: React.FC = () => {
 	const theme = useThemeContext();
 	const { border, colors, typography, spacing } = theme;
 	return (
-		
-			<DelayedSlideInFade enterTimeout={enterTimeout.contactAppears} style={{backgroundColor: theme.colors.background}}>
+		<DelayedSlideInFade enterTimeout={enterTimeout.contactAppears} style={{ backgroundColor: 'white', position: 'relative' }}>
 			<section id="contact">
 				<ContactWrapper theme={theme}>
 					<Header>Contact</Header>
@@ -49,13 +49,20 @@ export const Contact: React.FC = () => {
 							/>
 						</SlideInFade>
 						<SlideInFade enterTimeout={enterTimeout.contactSendMessageAppears}>
-							<Button useMargin={false} style={{justifySelf: 'flex-end', width: 'max-content'}}>Send Message</Button>
+							<Button
+								useMargin={false}
+								styleVariant={1}
+								leftColor={'white'}
+								rightColor={'white'}
+								style={{ backgroundImage: 'linear-gradient(40deg, pink, purple)' }}
+							>
+								Send Message
+							</Button>
 						</SlideInFade>
 					</Form>
 				</ContactWrapper>
-				</section>
-			</DelayedSlideInFade>
-		
+			</section>
+		</DelayedSlideInFade>
 	);
 };
 
@@ -68,7 +75,7 @@ const Form = styled('form')<{ spacing: StyleConstant<'spacing'> }>`
 	max-width: 600px;
 `;
 
-const ContactWrapper = styled('div')<{theme: Theme}>`
+const ContactWrapper = styled('div')<{ theme: Theme }>`
 	height: 100vh;
 	display: flex;
 	flex-direction: column;

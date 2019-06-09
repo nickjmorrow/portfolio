@@ -3,7 +3,7 @@ import { Experience, Project, Setting, Technology } from "../types";
 import React from "react";
 import Main from "../components/Main";
 import SEO from "../components/seo";
-import { Projects } from "../components/Projects";
+import { ProjectList } from "../components/ProjectList";
 import Helmet from 'react-helmet';
 
 export const GatsbyQuery = graphql`
@@ -69,7 +69,7 @@ const IndexPage = ({ data }: { data: Data }) => {
       />
 	  
       <Link to="/page-2/">Go to page 2</Link>
-      <Projects />
+      <ProjectList />
     </Main>
   );
 };

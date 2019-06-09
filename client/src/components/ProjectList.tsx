@@ -28,7 +28,7 @@ export const GatsbyQuery = graphql`
 	}
 `;
 
-export const Projects: React.FC = () => {
+export const ProjectList: React.FC = () => {
 	const {
 		data
 	} = useStaticQuery<{ data: { projects: Project[] } }>(GatsbyQuery);

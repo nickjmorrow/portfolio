@@ -43,7 +43,7 @@ export const AppBar: React.FC = () => {
 				</AnchorLink>
 				<AnchorLink href="#contact" >
 					<SlideInFade enterTimeout={enterTimeout.contactAppears}>
-						<Typography weightVariant={8} colorVariant={'primaryLight'} sizeVariant={4}>
+						<Typography isInteractive={true} weightVariant={8} colorVariant={'primaryLight'} sizeVariant={4}>
 							Contact
 						</Typography>
 					</SlideInFade>

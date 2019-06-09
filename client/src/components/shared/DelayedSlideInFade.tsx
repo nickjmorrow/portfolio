@@ -5,7 +5,7 @@ import { GetComponentProps } from "@nickjmorrow/react-component-library";
 
 export const DelayedSlideInFade: React.FC<
   GetComponentProps<typeof SlideInFade>
-> = ({ children, enterTimeout = 500 }) => {
+> = ({ children, enterTimeout = 500, ...props }) => {
   const [hasAlreadyBeenVisible, setHasAlreadyBeenVisible] = React.useState(
     false
   );
@@ -20,6 +20,7 @@ export const DelayedSlideInFade: React.FC<
           <SlideInFade
             in={isVisible || hasAlreadyBeenVisible}
             enterTimeout={enterTimeout}
+			{...props}
           >
             {children}
           </SlideInFade>
