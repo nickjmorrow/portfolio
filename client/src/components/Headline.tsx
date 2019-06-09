@@ -39,9 +39,9 @@ export const Headline: React.FC = () => {
 								
 									<Typography colorVariant={'primaryLight'} style={{display: 'block', marginBottom: '16px'}}>Hello, my name is</Typography>
 								
-									<Typography styleVariant={1} colorVariant={'primaryLight'} style={{display: 'block'}}>Nicholas Morrow</Typography>
+									<Typography weightVariant={7} styleVariant={1} colorVariant={'primaryLight'} style={{display: 'block'}}>Nicholas Morrow</Typography>
 								
-									<Typography colorVariant={'primaryLight'} sizeVariant={6} style={{display: 'block'}}>I like working with data and building things.</Typography>
+									<Typography weightVariant={7} colorVariant={'primaryLight'} sizeVariant={6} style={{display: 'block'}}>I like working with data and building things.</Typography>
 								
 							</Content>
 						
