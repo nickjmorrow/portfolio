@@ -31,8 +31,10 @@ export const Technologies : React.FC = () => {
 									<DelayedSlideInFade enterTimeout={i * 100}>
 										<TechnologyWrapper key={i}>
 											{iconMap[t.name]}
-											<ArrowIcon sizeVariant={1} style={{ marginRight: '6px' }} />
-											<Typography>{t.name}</Typography>
+											{/* <ArrowIcon sizeVariant={1} style={{ marginRight: '6px' }} /> */}
+											<div style={{display: 'flex', justifyContent: 'flex-start', width: '180px'}}>
+												<Typography>{t.name}</Typography>
+											</div>
 										</TechnologyWrapper>
 									</DelayedSlideInFade>
 								))}
@@ -57,12 +59,14 @@ const TechnologyWrapper = styled.li`
 	display: flex;
 	align-items: center;
 	margin: 4px 0;
+	width: 220px;
+	justify-content: space-between;
 `;
 
 const iconMap = {
 	'C#': <CSharpIcon sizeVariant={3} />,
 	'SQL Server': <SQLServerIcon sizeVariant={3} />,
-	'React.js': <ReactJSIcon sizeVariant={3} />,
+	'React': <ReactJSIcon sizeVariant={3} />,
 	'Node.js': <NodeJSIcon sizeVariant={3} />,
 	'MongoDB': <MongoDBIcon sizeVariant={3} />,
 	'.NET Core': <NETCoreIcon sizeVariant={3} />,

@@ -15,9 +15,9 @@ export const Contact: React.FC = () => {
 	const theme = useThemeContext();
 	const { border, colors, typography, spacing } = theme;
 	return (
-		<section id="contact">
-			<DelayedSlideInFade enterTimeout={enterTimeout.contactAppears}>
-				
+		
+			<DelayedSlideInFade enterTimeout={enterTimeout.contactAppears} style={{backgroundColor: theme.colors.background}}>
+			<section id="contact">
 				<ContactWrapper theme={theme}>
 					<Header>Contact</Header>
 					<Form spacing={spacing}>
@@ -53,8 +53,9 @@ export const Contact: React.FC = () => {
 						</SlideInFade>
 					</Form>
 				</ContactWrapper>
+				</section>
 			</DelayedSlideInFade>
-		</section>
+		
 	);
 };
 
@@ -72,7 +73,7 @@ const ContactWrapper = styled('div')<{theme: Theme}>`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	margin-top: ${({theme}) => theme.spacing.ss16}
+	padding: ${p => p.theme.spacing.ss16};
 `;
 
 const TextArea = styled('textarea')<{

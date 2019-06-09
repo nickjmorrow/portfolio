@@ -30,9 +30,11 @@ const TimelineWrapper = styled('div')<{theme: Theme}>`
 	border-radius: 60px;
 	overflow: none;
 	height: min-content;
+	box-sizing: border-box;
 `;
 
 const TimelineExperience = styled('div')<{theme: Theme; isFirst: boolean; isLast: boolean}>`
+	box-sizing: border-box;
 	padding: ${p => p.theme.spacing.ss3};
 	background-color: ${p => p.isActive ? p.theme.colors.core.cs2 : p.theme.colors.neutral.cs2};
 	border-left: ${p => p.isActive && `${p.theme.border.borderStyle.bs3} ${p.theme.colors.core.cs3}`};

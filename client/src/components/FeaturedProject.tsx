@@ -37,6 +37,7 @@ const ProjectInfoWrapper = styled('div')<{shouldRightAlign: boolean}>`
 	align-items: ${p => p.shouldRightAlign ? 'flex-end' : 'flex-start'};
 	text-align: ${p => p.shouldRightAlign ? 'right' : 'left'};
 	flex-direction: column;
+	z-index: 1;
 `;
 
 const Description = styled('div')<{spacing: StyleConstant<'spacing'>, colors: StyleConstant<'colors'>}>`
@@ -45,6 +46,7 @@ const Description = styled('div')<{spacing: StyleConstant<'spacing'>, colors: St
 	border-radius: ${p => p.borderRadius.br1};
 	width: 70%;
 	margin-bottom: ${p => p.spacing.ss6};
+	
 `;
 
 const Name = styled.div`
@@ -62,5 +64,5 @@ const Image = styled('div')<{shouldRightAlign: boolean}>`
 	position: absolute;
 	${p => p.shouldRightAlign ? 'left: 0' : 'right: 0'};
 	top: 0;
-	z-index: -1;
+	z-index: 0;
 `;

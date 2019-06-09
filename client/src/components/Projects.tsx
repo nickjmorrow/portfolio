@@ -2,7 +2,7 @@ import * as React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Project } from '../types';
 import { Header } from './shared/Header';
-import { Typography } from '@nickjmorrow/react-component-library';
+import { Typography, useThemeContext, Theme } from '@nickjmorrow/react-component-library';
 import styled from 'styled-components';
 import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
 import { FeaturedProjectList } from './FeaturedProjectList';
@@ -32,6 +32,7 @@ export const Projects: React.FC = () => {
 	const {
 		data
 	} = useStaticQuery<{ data: { projects: Project[] } }>(GatsbyQuery);
+	const theme = useThemeContext();
 	if (data === null) {
 		return null;
 	}
@@ -46,21 +47,25 @@ export const Projects: React.FC = () => {
 		.filter((p, i) => i >= NUM_FEATURED_PROJECTS);
 
 	return (
-			<ProjectsWrapper id="work">
-				<DelayedSlideInFade enterTimeout={0}>
-					<Header style={{marginBottom: '64px'}}>Work</Header>
-					<FeaturedProjectList
-						projects={featuredProjects}
-					/>
-					<OtherProjectList projects={otherProjects}/>
-				</DelayedSlideInFade>
-			</ProjectsWrapper>
+			<DelayedSlideInFade enterTimeout={500}>
+				<ProjectsWrapper id="work" theme={theme}>
+					<div style={{padding: '64px'}}>
+						
+							<Header style={{marginBottom: '64px'}}>Work</Header>
+							<FeaturedProjectList
+								projects={featuredProjects}
+							/>
+							<OtherProjectList projects={otherProjects}/>
+						
+					</div>
+				</ProjectsWrapper>
+			</DelayedSlideInFade>
 	);
 };
 
-const ProjectsWrapper = styled.div`
+const ProjectsWrapper = styled('section')<{theme: Theme}>`
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	margin-bottom: 64px;
+	background-color: ${p => p.theme.colors.background};
 `;

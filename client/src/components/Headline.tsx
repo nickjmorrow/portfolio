@@ -27,7 +27,7 @@ export const Headline: React.FC = () => {
 	const { file } = useStaticQuery(query);
 
 	return (
-		<div style={{ position: 'relative', height: '100vh' }}>
+		<div style={{ position: 'fixed', height: '100vh', width: '100%', zIndex: -1 }}>
 			<ImageWrapper style={{ position: 'relative' }}>
 				<Image fluid={file.childImageSharp.fluid} />
 			</ImageWrapper>
@@ -36,15 +36,13 @@ export const Headline: React.FC = () => {
 					<div style={{ marginBottom: spacing.ss4 }}>
 						
 							<Content spacing={spacing}>
-								<div style={{ marginBottom: '16px' }}>
-									<Typography colorVariant={'primaryLight'}>Hello, my name is</Typography>
-								</div>
-								<div>
-									<Typography styleVariant={1} colorVariant={'primaryLight'}>Nicholas Morrow</Typography>
-								</div>
-								<div>
-									<Typography colorVariant={'primaryLight'} sizeVariant={6}>I like working with data and building things.</Typography>
-								</div>
+								
+									<Typography colorVariant={'primaryLight'} style={{display: 'block', marginBottom: '16px'}}>Hello, my name is</Typography>
+								
+									<Typography styleVariant={1} colorVariant={'primaryLight'} style={{display: 'block'}}>Nicholas Morrow</Typography>
+								
+									<Typography colorVariant={'primaryLight'} sizeVariant={6} style={{display: 'block'}}>I like working with data and building things.</Typography>
+								
 							</Content>
 						
 					</div>
@@ -54,7 +52,7 @@ export const Headline: React.FC = () => {
 				</HeadlineWrapper>
 				</Fade>
 				<div style={{position: 'absolute', bottom: 0, top: 'none !important', width: '100%', display: 'flex', justifyContent: 'center'}}>
-					<SlideInFade enterTimeout={enterTimeout.downArrowIconAppears} style={{width: 'max-content'}}>
+					<SlideInFade enterTimeout={enterTimeout.downArrowIconAppears} style={{width: 'max-content', position: 'relative' }}>
 						<ArrowIcon sizeVariant={4} colorVariant={'primaryLight'} style={{transform: 'rotate(90deg)'}}/>
 					</SlideInFade>
 				</div>

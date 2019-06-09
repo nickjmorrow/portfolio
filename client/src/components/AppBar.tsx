@@ -16,7 +16,7 @@ export const AppBar: React.FC = () => {
 			styleKeys={['top']}
 			unmounted={{ top: '-100px' }}
 			mounted={{ top: '0px' }}
-			style={{ position: 'absolute' }}
+			style={{ position: 'fixed' }}
 			transitionVariant={'slow'}
 		>
 			<StyledAppBar spacing={spacing}>
@@ -58,7 +58,7 @@ export const AppBar: React.FC = () => {
 	);
 };
 
-const StyledAppBar = styled('div')<{ spacing: StyleConstant<'spacing'> }>`
+const StyledAppBar = styled('header')<{ spacing: StyleConstant<'spacing'> }>`
 	display: grid;
 	flex-direction: row;
 	justify-content: flex-end;
@@ -70,6 +70,6 @@ const StyledAppBar = styled('div')<{ spacing: StyleConstant<'spacing'> }>`
 	right: 0;
 	left: 0;
 	position: absolute;
-	z-index: 1;
 	opacity: 0.8;
+	z-index: 1;
 `;

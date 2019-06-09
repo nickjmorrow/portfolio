@@ -1,71 +1,76 @@
-import { graphql, useStaticQuery } from "gatsby";
-import * as React from "react";
-import styled from "styled-components";
-import { Experience as ExperienceType } from "../types";
-import { Experience } from "./Experience";
-import { DelayedSlideInFade } from "./shared/DelayedSlideInFade";
-import { Header } from "./shared/Header";
-import { Timeline } from "./Timeline";
-import { useThemeContext } from "@nickjmorrow/react-component-library";
+import { graphql, useStaticQuery } from 'gatsby';
+import * as React from 'react';
+import styled from 'styled-components';
+import { Experience as ExperienceType } from '../types';
+import { Experience } from './Experience';
+import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
+import { Header } from './shared/Header';
+import { Timeline } from './Timeline';
+import { useThemeContext, Typography } from '@nickjmorrow/react-component-library';
 
 export const GatsbyQuery = graphql`
-  {
-    data {
-      experiences {
-        experienceId
-        name
-        roleName
-		startDate
-		endDate
-		experienceDetails {
-			experienceDetailId
-			description
+	{
+		data {
+			experiences {
+				experienceId
+				name
+				roleName
+				startDate
+				endDate
+				experienceDetails {
+					experienceDetailId
+					description
+				}
+			}
 		}
-      }
-    }
-  }
+	}
 `;
 
 export const ExperienceList: React.FC = () => {
-  const {
-    data
-  } = useStaticQuery<{ data: { experiences: ExperienceType[] } }>(GatsbyQuery);
-  console.log(data);
-  if (data === null) {
-	  return null;
-  }
-  const { experiences } = data;
-  const [activeExperience, setActiveExperience] = React.useState(experiences[0]);
+	const { data } = useStaticQuery<{ data: { experiences: ExperienceType[] } }>(GatsbyQuery);
+	console.log(data);
+	if (data === null) {
+		return null;
+	}
+	const { experiences } = data;
+	const [activeExperience, setActiveExperience] = React.useState(experiences[0]);
 	const theme = useThemeContext();
-  return (
-    <>
-	<DelayedSlideInFade enterTimeout={500}>
-	<ExperienceListWrapper>
-		
-		<Header style={{marginBottom: theme.spacing.ss16}} id="header">Experience</Header>
-	      <ExperiencesWrapper theme={theme}>
-	        <Timeline setActiveExperience={setActiveExperience} experiences={experiences} activeExperience={activeExperience}>Timeline</Timeline>
-			<Experience experience={activeExperience} />
-	      </ExperiencesWrapper>
-	</ExperienceListWrapper>
-	  </DelayedSlideInFade>
-    </>
-  );
+	return (
+		<>
+			<DelayedSlideInFade enterTimeout={500} style={{backgroundColor: theme.colors.background}}>
+				<ExperienceListWrapper theme={theme} id="experience">
+					<Typography link={'#experience'} sizeVariant={9} style={{ marginBottom: theme.spacing.ss16 }} id="header">
+						Experience
+					</Typography>
+					<ExperiencesWrapper theme={theme}>
+						<Timeline
+							setActiveExperience={setActiveExperience}
+							experiences={experiences}
+							activeExperience={activeExperience}
+						>
+							Timeline
+						</Timeline>
+						<Experience experience={activeExperience} />
+					</ExperiencesWrapper>
+				</ExperienceListWrapper>
+			</DelayedSlideInFade>
+		</>
+	);
 };
 
 const ExperiencesWrapper = styled('div')`
-  min-height: 100vh;
-  display: flex;
-  flex-direction: row;
-  margin: 0 ${p => p.horizontalMargin};
-  justify-content: center;
-  max-width: 800px;
-  margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	max-width: 800px;
+
 `;
 
-const ExperienceListWrapper = styled('div')<{theme: Theme}>`
+const ExperienceListWrapper = styled('div')<{ theme: Theme }>`
 	min-height: 100vh;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 32px;
+	justify-content: center;
+	padding: 64px;
+	background-color: ${p => p.theme.colors.background};
 `;
