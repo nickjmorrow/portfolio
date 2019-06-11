@@ -52,7 +52,7 @@ export const ProjectList: React.FC = () => {
 	return (
 			<DelayedSlideInFade enterTimeout={500}>
 				<ProjectsWrapper id="work" theme={theme}>
-					<div style={{padding: '64px'}}>
+					<div style={{padding: '72px'}}>
 						
 							<div>
 								<Header link="#work" id="work">Work</Header>
