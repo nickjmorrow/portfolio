@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Experience as ExperienceType, Theme } from '../types';
 import { getFormattedDate } from '../utilities';
 import { TechnologyEmphasizedTypography } from './TechnologyEmphasizedTypography';
+import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
 
 // TODO: need I rename the type? is that a linting configuration?
 export const Experience: React.FC<{ experience: ExperienceType }> = ({ experience }) => {
@@ -20,15 +21,17 @@ export const Experience: React.FC<{ experience: ExperienceType }> = ({ experienc
 			<Timeframe experience={experience} />
 			<ExperienceDetailList theme={theme}>
 				{experience.experienceDetails.map(ed => (
-					<ExperienceDetail key={ed.description}>
-						<BulletPointWrapper>
-							<ArrowIcon style={{position: 'relative', top: '5px'}}sizeVariant={1} />
-						
-						</BulletPointWrapper>
-						<div>
-							<TechnologyEmphasizedTypography text={ed.description} />
-						</div>
-					</ExperienceDetail>
+					<DelayedSlideInFade enterTimeout={500}>
+						<ExperienceDetail key={ed.description}>
+							<BulletPointWrapper>
+								<ArrowIcon style={{position: 'relative', top: '5px'}}sizeVariant={1} />
+							
+							</BulletPointWrapper>
+							<div>
+								<TechnologyEmphasizedTypography text={ed.description} />
+							</div>
+						</ExperienceDetail>
+					</DelayedSlideInFade>
 				))}
 			</ExperienceDetailList>
 		</ExperienceWrapper>

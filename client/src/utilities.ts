@@ -1,3 +1,8 @@
 export const getFormattedDate = (date: string) => {
-	return "July 2018";
+	const formattedDate = new Date(parseInt(date, 10));
+	return `${monthNames[formattedDate.getMonth()]} ${formattedDate.getFullYear()}`;
 }
+
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];

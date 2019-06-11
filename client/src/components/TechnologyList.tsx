@@ -25,15 +25,15 @@ export const Technologies : React.FC = () => {
 	const theme = useThemeContext();
 	return (
 		<DelayedSlideInFade enterTimeout={1000}>
-			<div>
+			<div style={{width: '260px'}}>
 							<TechnologiesWrapper theme={theme}>
 								{technologies.map((t, i) => (
 									<DelayedSlideInFade enterTimeout={i * 100}>
-										<TechnologyWrapper key={i}>
+										<TechnologyWrapper key={i} theme={theme}>
 											{iconMap[t.name]}
-											{/* <ArrowIcon sizeVariant={1} style={{ marginRight: '6px' }} /> */}
-											<div style={{display: 'flex', justifyContent: 'flex-start', width: '180px'}}>
-												<Typography>{t.name}</Typography>
+											<div style={{display: 'flex', justifyContent: 'flex-start', width: '160px'}}>
+												<Typography colorVariant={'inherit'}>{t.name}</Typography>
+												<Typography colorVariant={'inherit'} style={{marginLeft: '4px'}}>{t.version}</Typography>
 											</div>
 										</TechnologyWrapper>
 									</DelayedSlideInFade>
@@ -47,20 +47,30 @@ export const Technologies : React.FC = () => {
 
 const TechnologiesWrapper = styled('ul')<{ theme: Theme}>`
 	display: grid;
-	grid-template-columns: repeat(2, ${p => p.theme.spacing.ss48});
+	grid-template-columns: repeat(2, 100%);
 	margin: 0;
 	margin-top: ${p => p.theme.spacing.ss12};
 	margin-bottom: ${p => p.theme.spacing.ss24};
 `;
 
-const TechnologyWrapper = styled.li`
+const TechnologyWrapper = styled('li')<{theme: Theme}>`
 	list-style-type: none;
 	margin: 0;
 	display: flex;
 	align-items: center;
-	margin: 4px 0;
+	padding: 8px;
+	margin: 4px;
 	width: 220px;
 	justify-content: space-between;
+	border-radius: 6px;
+	cursor: pointer;
+	color: ${p => p.theme.colors.neutral.cs5};
+	transition: all ${p => p.theme.transitions.medium};
+	&: hover {
+		box-shadow: ${p => p.theme.boxShadow.bs1};
+		transition: all ${p => p.theme.transitions.medium};
+		color: ${p => p.theme.colors.core.cs5};
+	}
 `;
 
 const iconMap = {
@@ -69,7 +79,7 @@ const iconMap = {
 	'React': <ReactJSIcon sizeVariant={3} />,
 	'Node.js': <NodeJSIcon sizeVariant={3} />,
 	'MongoDB': <MongoDBIcon sizeVariant={3} />,
-	'.NET Core': <NETCoreIcon sizeVariant={3} />,
+	'.NET': <NETCoreIcon sizeVariant={3} />,
 	'JavaScript': <JavaScriptIcon sizeVariant={3} />,
 	'TypeScript': <TypeScriptIcon sizeVariant={3} />,
 	'Git': <GitIcon sizeVariant={3} />,
