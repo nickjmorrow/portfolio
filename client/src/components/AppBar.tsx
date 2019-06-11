@@ -22,34 +22,34 @@ export const AppBar: React.FC = () => {
 			<StyledAppBar spacing={spacing}>
 				<AnchorLink href="#about" offset={'-52'}>
 					<SlideInFade enterTimeout={enterTimeout.aboutAppears}>
-						<Typography weightVariant={8} colorVariant={'primaryLight'} sizeVariant={4}>
+						<LinkTypography>
 							About
-						</Typography>
+						</LinkTypography>
 					</SlideInFade>
 				</AnchorLink>
 				<AnchorLink href="#experience" offset={'300'}>
 					<SlideInFade enterTimeout={enterTimeout.experienceAppears}>
-						<Typography weightVariant={8} colorVariant={'primaryLight'} sizeVariant={4}>
+						<LinkTypography>
 							Experience
-						</Typography>
+						</LinkTypography>
 					</SlideInFade>
 				</AnchorLink>
 				<AnchorLink href="#work" offset={100}>
 					<SlideInFade enterTimeout={enterTimeout.workAppears}>
-						<Typography weightVariant={8} colorVariant={'primaryLight'} sizeVariant={4}>
+						<LinkTypography>
 							Work
-						</Typography>
+						</LinkTypography>
 					</SlideInFade>
 				</AnchorLink>
 				<AnchorLink href="#contact" >
 					<SlideInFade enterTimeout={enterTimeout.contactAppears}>
-						<Typography isInteractive={true} weightVariant={8} colorVariant={'primaryLight'} sizeVariant={4}>
+						<LinkTypography>
 							Contact
-						</Typography>
+						</LinkTypography>
 					</SlideInFade>
 				</AnchorLink>
 				<SlideInFade enterTimeout={enterTimeout.resumeAppears}>
-					<Button leftColor={'hsl(50, 100%, 50%)'} rightColor={'hsl(330, 100%, 50%)'}>
+					<Button leftColor={'hsl(50, 100%, 50%)'} rightColor={'hsl(330, 100%, 70%)'}>
 						Resume
 					</Button>
 				</SlideInFade>
@@ -57,6 +57,12 @@ export const AppBar: React.FC = () => {
 		</Fade>
 	);
 };
+
+const LinkTypography : React.FC = ({children}) => (
+	<Typography isInteractive={true} colorSet={{color: 'hsla(0,0%,100%,1)', colorActive: 'hsla(0,0%,100%,0.7)', colorHover: 'hsla(0,0%,100%,0.7)'}} weightVariant={8} colorVariant={'primaryLight'} sizeVariant={4}>
+							{children}
+	</Typography>
+)
 
 const StyledAppBar = styled('header')<{ spacing: StyleConstant<'spacing'> }>`
 	display: grid;
@@ -71,5 +77,5 @@ const StyledAppBar = styled('header')<{ spacing: StyleConstant<'spacing'> }>`
 	left: 0;
 	position: absolute;
 	opacity: 0.8;
-	z-index: 1;
+	z-index: 2;
 `;

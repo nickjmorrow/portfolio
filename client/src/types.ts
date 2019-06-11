@@ -14,6 +14,9 @@ export interface Experience {
 export interface Project {
   projectId: number;
   name: string;
+  tagline: string;
+  githubUrl: string;
+  demoUrl: string;
   projectDetails: ProjectDetail[];
   technologies: Technology[];
   orderId: number;

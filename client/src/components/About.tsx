@@ -11,20 +11,15 @@ export const About: React.FC = () => {
 	const theme = useThemeContext();
 	return (
 		<AboutWrapper id="about" theme={theme}>
+		
 			<DelayedSlideInFade enterTimeout={500}>
-				<Header>About</Header>
+				<Header link="#about" id="about">About</Header>
 				<div style={{ maxWidth: theme.spacing.ss160 }}>
-					<TechnologyEmphasizedTypography
-						text={'I enjoy using Redux. I also like using other technologies.'}
-					/>
-					<Typography>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat.
+					<Typography style={{marginBottom: theme.spacing.ss2}}>
+						Hi! I'm Nick, and I live and work in New York. I enjoy creating beautiful, performant web applications both by user experience and code quality. 
 					</Typography>
 					<Typography>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et dolore magna aliqua.
+						After graduating from University of Virginia, I fell in love with software engineering and data analysis. Below are some of the tools and technologies I've worked with recently:
 					</Typography>
 				</div>
 				<Technologies />

@@ -6,7 +6,7 @@ import { Experience } from './Experience';
 import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
 import { Header } from './shared/Header';
 import { Timeline } from './Timeline';
-import { useThemeContext, Typography } from '@nickjmorrow/react-component-library';
+import { useThemeContext, Typography, Theme } from '@nickjmorrow/react-component-library';
 
 export const GatsbyQuery = graphql`
 	{
@@ -33,15 +33,14 @@ export const ExperienceList: React.FC = () => {
 		return null;
 	}
 	const { experiences } = data;
-	const [activeExperience, setActiveExperience] = React.useState(experiences[0]);
+	const [activeExperience, setActiveExperience] = React.useState(experiences.sort((e1, e2) => parseInt(e1.startDate, 10) > parseInt(e2.startDate, 10) ? -1 : 1)[0]);
 	const theme = useThemeContext();
 	return (
-		<>
 			<DelayedSlideInFade enterTimeout={500} style={{backgroundColor: theme.colors.background, position: 'relative'}}>
-				<ExperienceListWrapper theme={theme} id="experience">
-					<Typography link={'#experience'} weightVariant={7} sizeVariant={9} style={{ marginBottom: theme.spacing.ss16 }} id="header">
+				<ExperienceListWrapper theme={theme}>
+					<Header id={"experience"} link={"#experience"}>
 						Experience
-					</Typography>
+					</Header>
 					<ExperiencesWrapper theme={theme}>
 						<Timeline
 							setActiveExperience={setActiveExperience}
@@ -54,7 +53,6 @@ export const ExperienceList: React.FC = () => {
 					</ExperiencesWrapper>
 				</ExperienceListWrapper>
 			</DelayedSlideInFade>
-		</>
 	);
 };
 

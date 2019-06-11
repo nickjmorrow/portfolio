@@ -16,7 +16,7 @@ export const Timeline: React.FC<{ experiences: Experience[]; activeExperience: E
 		<TimelineWrapper theme={theme}>
 			{experiences.sort((a, b) => a.experienceId < b.experienceId ? -1 : 1).map((e, i, arr) => (
 				<TimelineExperience key={e.experienceId} onClick={() => setActiveExperience(e)} theme={theme} isActive={e.experienceId === activeExperience.experienceId} isFirst={i === 0} isLast={i === arr.length - 1}>
-					<Typography>{e.name}</Typography>
+					<Typography weightVariant={e.experienceId === activeExperience.experienceId ? 7 : 5}>{e.name}</Typography>
 				</TimelineExperience>
 			))}
 		</TimelineWrapper>

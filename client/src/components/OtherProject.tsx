@@ -12,7 +12,7 @@ export const OtherProject: React.FC<{ project: ProjectType }> = ({ project }) =>
 		<DelayedSlideInFade enterTimeout={500}>
 			<OtherProjectWrapper theme={theme}>
 				<Typography style={{marginBottom: theme.spacing.ss6}} sizeVariant={4} colorVariant={'primaryDark'}>{project.name}</Typography>
-				<Typography>{'A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track.'}</Typography>
+				<Typography>{project.tagline}</Typography>
 				<Typography
 					style={{ marginBottom: theme.spacing.ss6, display: 'block', bottom: '0', position: 'absolute' }}
 					sizeVariant={2}

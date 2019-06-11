@@ -16,6 +16,9 @@ export const GatsbyQuery = graphql`
 				projectId
 				name
 				orderId
+				tagline
+				githubUrl
+				demoUrl
 				projectDetails {
 					description
 				}
@@ -51,7 +54,9 @@ export const ProjectList: React.FC = () => {
 				<ProjectsWrapper id="work" theme={theme}>
 					<div style={{padding: '64px'}}>
 						
-							<Header style={{marginBottom: '64px'}}>Work</Header>
+							<div>
+								<Header link="#work" id="work">Work</Header>
+							</div>
 							<FeaturedProjectList
 								projects={featuredProjects}
 							/>

@@ -6,7 +6,7 @@
 	"license": "MIT",
 	"author": "Nicholas Morrow <njmorrow95@gmail.com>",
 	"dependencies": {
-		"@nickjmorrow/react-component-library": "0.0.32",
+		"@nickjmorrow/react-component-library": "0.0.35",
 		"babel-plugin-styled-components": "^1.10.0",
 		"gatsby": "^2.8.2",
 		"gatsby-image": "^2.1.2",

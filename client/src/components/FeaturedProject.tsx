@@ -1,4 +1,4 @@
-import { GithubIcon, Theme, Typography, useThemeContext } from '@nickjmorrow/react-component-library';
+import { GithubIcon, Theme, Typography, useThemeContext, ShareIcon } from '@nickjmorrow/react-component-library';
 import * as React from 'react';
 import styled from 'styled-components';
 import { Project } from '../types';
@@ -16,9 +16,7 @@ export const FeaturedProject: React.FC<{ project: Project; rightAlign: boolean }
 					</Typography>
 					<Description theme={theme}>
 						<Typography>
-							{
-								'A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more.'
-							}
+							{project.tagline}
 						</Typography>
 					</Description>
 					<Typography
@@ -29,7 +27,8 @@ export const FeaturedProject: React.FC<{ project: Project; rightAlign: boolean }
 						{project.technologies.map(t => t.name).join(', ')}
 					</Typography>
 					<Links>
-						<GithubIcon sizeVariant={3} colorVariant={'secondaryDark'} />
+						<a href={project.githubUrl}><GithubIcon sizeVariant={3} colorVariant={'secondaryDark'} style={{display: 'block'}} /></a>
+						<a href={project.demoUrl}><ShareIcon sizeVariant={3} colorVariant={'secondaryDark'} style={{transform: 'scale(1.6)', display: 'block'}}/></a>
 					</Links>
 				</ProjectInfoWrapper>
 			</FeaturedProjectWrapper>
@@ -66,7 +65,12 @@ const Description = styled('div')<{ theme: Theme }>`
 
 const Name = styled.div``;
 
-const Links = styled.div``;
+const Links = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 60px;
+`;
 
 const Image = styled('div')<{ shouldRightAlign: boolean; theme: Theme }>`
 	background-color: lightblue;

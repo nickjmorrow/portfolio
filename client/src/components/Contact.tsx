@@ -54,7 +54,9 @@ export const Contact: React.FC = () => {
 								styleVariant={1}
 								leftColor={'white'}
 								rightColor={'white'}
-								style={{ backgroundImage: 'linear-gradient(40deg, pink, purple)' }}
+								style={{ backgroundImage: 'linear-gradient(40deg, pink, purple)', opacity: 0.9, '&:hover': {
+									color: 'red'
+								} }}
 							>
 								Send Message
 							</Button>
@@ -95,6 +97,8 @@ const TextArea = styled('textarea')<{
 	font-family: ${p => p.typography.fontFamily.default};
 	font-size: ${p => p.typography.fontSizes.fs3};
 	padding: ${p => p.spacing.ss3};
+	width: 100%;
+	min-height: 100px;
 	&:focus {
 		border: none;
 		outline: none;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Technology, Theme } from '../types';
 import { BulletPoint } from './shared/BulletPoint';
-import { Typography, StyleConstant, useThemeContext, ArrowIcon, CSharpIcon, SQLServerIcon, ReactJSIcon, NodeJSIcon, MongoDBIcon, NETCoreIcon, JavaScriptIcon, TypeScriptIcon } from '@nickjmorrow/react-component-library';
+import { Typography, SeleniumIcon, GitIcon, ReduxIcon, PostgreSQLIcon, JenkinsCIIcon, JestIcon, StyledComponentsIcon, useThemeContext, ArrowIcon, CSharpIcon, SQLServerIcon, ReactJSIcon, NodeJSIcon, MongoDBIcon, NETCoreIcon, JavaScriptIcon, TypeScriptIcon, GithubIcon } from '@nickjmorrow/react-component-library';
 import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
 export const GatsbyQuery = graphql`
 	{
@@ -72,4 +72,11 @@ const iconMap = {
 	'.NET Core': <NETCoreIcon sizeVariant={3} />,
 	'JavaScript': <JavaScriptIcon sizeVariant={3} />,
 	'TypeScript': <TypeScriptIcon sizeVariant={3} />,
+	'Git': <GitIcon sizeVariant={3} />,
+	'Redux': <ReduxIcon sizeVariant={3} />,
+	'PostgreSQL': <PostgreSQLIcon sizeVariant={3} />,
+	'Jenkins CI': <JenkinsCIIcon sizeVariant={3} />,
+	'Styled Components': <StyledComponentsIcon />,
+	'Jest': <JestIcon sizeVariant={3} />,
+	'Selenium': <SeleniumIcon sizeVariant={3} />
 }
