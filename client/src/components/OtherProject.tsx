@@ -34,10 +34,10 @@ const OtherProjectWrapper = styled('div')<{
 	theme: Theme
 }>`
 	height: 300px;
-	width: 2px75;
-	background-color: ${p => p.theme.colors.neutral.cs2};
+	width: 300px;
+	background-color: ${p => p.theme.colors.neutral.cs1};
 	border-radius: ${p => p.theme.border.borderRadius.br1};
-	padding: ${p => p.theme.spacing.ss6};
+	padding: ${p => p.theme.spacing.ss8};
 	position: relative;
 	box-shadow: ${p => p.theme.boxShadow.bs2};
 	transition: all ${p => p.theme.transitions.medium};
@@ -47,6 +47,7 @@ const OtherProjectWrapper = styled('div')<{
 		top: -4px;
 		box-shadow: ${p => p.theme.boxShadow.bs3};
 		transition: all ${p => p.theme.transitions.medium};
+		background-color: ${p => p.theme.colors.background};
 	}
 `;
 

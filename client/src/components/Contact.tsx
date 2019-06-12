@@ -68,21 +68,22 @@ export const Contact: React.FC = () => {
 	);
 };
 
-const Form = styled('form')<{ spacing: StyleConstant<'spacing'> }>`
-	display: grid;
-	grid-auto-flow: row;
-	grid-row-gap: ${p => p.spacing.ss8};
-	width: 100%;
-	margin: ${p => p.spacing.ss6} auto 0 auto;
-	max-width: 600px;
-`;
-
 const ContactWrapper = styled('div')<{ theme: Theme }>`
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	padding: ${p => p.theme.spacing.ss16};
+	margin: 0 auto;
+	max-width: ${p => p.theme.spacing.ss192};
+`;
+
+const Form = styled('form')<{ spacing: StyleConstant<'spacing'> }>`
+	display: grid;
+	grid-auto-flow: row;
+	grid-row-gap: ${p => p.spacing.ss8};
+	width: 100%;
+	margin: ${p => p.spacing.ss6} auto 0 auto;
 `;
 
 const TextArea = styled('textarea')<{

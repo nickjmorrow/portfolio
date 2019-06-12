@@ -10,7 +10,7 @@ export const OtherProjectList : React.FC<{projects: Project[]}> = ({projects}) =
 	const theme = useThemeContext();
 	return (
 		<DelayedSlideInFade enterTimeout={500}>
-		<div>
+		<div style={{textAlign: 'center'}}>
 			<Typography weightVariant={7} styleVariant={2} style={{marginBottom: '48px'}}>Other Projects</Typography>
 		</div>
 			<div style={{display: 'flex', justifyContent: 'center'}}>
@@ -29,7 +29,7 @@ const StyledOtherProjectList = styled('div')<{theme: Theme}>`
 	flex-wrap: wrap;
 	justify-content: center;
 	grid-column-gap: ${p => p.theme.spacing.ss6};
-	grid-template-columns: repeat(auto-fit, 275px);
+	grid-template-columns: repeat(auto-fit, 300px);
 	width: 100%;
 	max-width: 873px;
 `;

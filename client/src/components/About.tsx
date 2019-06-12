@@ -11,7 +11,6 @@ export const About: React.FC = () => {
 	const theme = useThemeContext();
 	return (
 		<AboutWrapper id="about" theme={theme}>
-		
 			<DelayedSlideInFade enterTimeout={500}>
 				<Header link="#about" id="about">About</Header>
 				<div style={{ maxWidth: theme.spacing.ss160 }}>
@@ -39,7 +38,9 @@ const AboutWrapper = styled('div')<{theme: Theme}>`
 	justify-content: center;
 	min-height: 100vh;
 	position: relative;
-	margin-top: 100vh;
 	padding: 0 64px;
 	background-color: ${p => p.theme.colors.background};
+	margin: 100vh auto 0 auto;
+	padding-top: ${p => p.theme.spacing.ss16};
+	width: max-content;
 `;

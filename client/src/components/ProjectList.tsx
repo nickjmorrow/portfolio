@@ -54,9 +54,7 @@ export const ProjectList: React.FC = () => {
 				<ProjectsWrapper id="work" theme={theme}>
 					<div style={{padding: '72px'}}>
 						
-							<div>
-								<Header link="#work" id="work">Work</Header>
-							</div>
+							
 							<FeaturedProjectList
 								projects={featuredProjects}
 							/>

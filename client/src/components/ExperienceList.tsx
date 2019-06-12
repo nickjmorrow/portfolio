@@ -40,8 +40,9 @@ export const ExperienceList: React.FC = () => {
 				<ExperienceListWrapper theme={theme}>
 					<Header id={"experience"} link={"#experience"}>
 						Experience
-					</Header>
+					</Header>					
 					<ExperiencesWrapper theme={theme}>
+
 						<Timeline
 							setActiveExperience={setActiveExperience}
 							experiences={experiences}
@@ -71,4 +72,6 @@ const ExperienceListWrapper = styled('div')<{ theme: Theme }>`
 	justify-content: center;
 	padding: 64px;
 	background-color: ${p => p.theme.colors.background};
+	margin: 0 auto;
+	width: max-content;
 `;

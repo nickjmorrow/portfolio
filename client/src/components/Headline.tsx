@@ -1,11 +1,20 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Fade, StyleConstant, useThemeContext, Typography, ArrowIcon } from '@nickjmorrow/react-component-library';
+import {
+	Fade,
+	StyleConstant,
+	useThemeContext,
+	Typography,
+	ArrowIcon,
+	Theme,
+	ThemeContext,
+} from '@nickjmorrow/react-component-library';
 import { SlideInFade } from './shared/SlideInFade';
 import { enterTimeout } from '../constants';
 import Img from 'gatsby-image';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Button } from './shared/Button';
+import { flickerWord } from '../utilities';
 
 export const query = graphql`
 	query {
@@ -22,8 +31,23 @@ export const query = graphql`
 `;
 
 export const Headline: React.FC = () => {
-	const { spacing } = useThemeContext();
+	const theme = useThemeContext();
 	const { file } = useStaticQuery(query);
+	const availableCallToActions = flickerWord(['beautiful', 'performant', 'secure', 'beautiful'], 40);
+	const [index, setIndex] = React.useState(0);
+	const incrementIndex = () => {
+		const newIndex = index >= availableCallToActions.length - 1 ? 0 : index + 1;
+		console.log(newIndex);
+		setIndex(newIndex);
+	};
+
+	React.useEffect(() => {
+		if (index < 0) {
+			return;
+		}
+		const id = setInterval(incrementIndex, 100);
+		return () => clearInterval(id);
+	}, [index]);
 
 	return (
 		<div style={{ position: 'fixed', height: '100vh', width: '100%', zIndex: -1 }}>
@@ -31,9 +55,9 @@ export const Headline: React.FC = () => {
 				<Image fluid={file.childImageSharp.fluid} />
 			</ImageWrapper>
 			<Fade in={true} appear={true} enterTimeout={enterTimeout.headlineAppears} transitionVariant={'slow'}>
-				<HeadlineWrapper>
-					<div style={{ marginBottom: spacing.ss4 }}>
-						<Content spacing={spacing}>
+				<HeadlineWrapper theme={theme}>
+					<div style={{ marginBottom: theme.spacing.ss4 }}>
+						<Content spacing={theme.spacing}>
 							<Typography
 								colorVariant={'primaryLight'}
 								sizeVariant={5}
@@ -45,7 +69,7 @@ export const Headline: React.FC = () => {
 							<Typography
 								weightVariant={7}
 								styleVariant={1}
-								sizeVariant={10}
+								sizeVariant={11}
 								colorVariant={'primaryLight'}
 								style={{ display: 'block', marginBottom: '36px' }}
 							>
@@ -58,8 +82,14 @@ export const Headline: React.FC = () => {
 								sizeVariant={6}
 								style={{ display: 'block' }}
 							>
-								Let's build something.
-							</Typography>
+								Let's build something {availableCallToActions[index].split('').map(letter => {
+									return (
+										<Typography fontFamilyVariant={'monospace'} style={{color: letter === "#" ? 'hsla(220,100%,90%,90%)' : 'hsla(310,100%,90%,90%)'}} sizeVariant={6} weightVariant={7}>
+											{letter}
+										</Typography>
+									)
+								})}
+								</Typography>
 						</Content>
 					</div>
 					<SlideInFade enterTimeout={enterTimeout.getInTouchAppears} transitionVariant={'medium'}>
@@ -90,7 +120,7 @@ export const Headline: React.FC = () => {
 	);
 };
 
-const HeadlineWrapper = styled.div`
+const HeadlineWrapper = styled('div')<{ theme: Theme }>`
 	height: 100vh;
 	display: flex;
 	align-items: flex-start;
@@ -98,7 +128,7 @@ const HeadlineWrapper = styled.div`
 	justify-content: flex-start;
 	position: relative;
 	top: 180px;
-	margin: 0 32px;
+	margin-left: ${p => p.theme.spacing.ss24};
 	width: max-content;
 	height: max-content;
 	padding: 18px;
