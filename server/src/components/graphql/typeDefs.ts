@@ -5,6 +5,7 @@ import { technologyTypeDefs } from '../technologies/technologyTypeDefs';
 import { projectTypeDefs, projectDetailTypeDefs, projectTechnologyTypeDefs } from '../projects';
 import { settingTypeDefs } from '../settings/settingTypeDefs';
 import { skillLevelTypeDefs } from '../technologies/skillLevelTypeDefs';
+import { technologyTypeTypeDefs } from '../technologies/technologyTypeTypeDefs';
 
 export const typeDefs = mergeTypes([
 	projectTypeDefs,
@@ -15,4 +16,5 @@ export const typeDefs = mergeTypes([
 	projectDetailTypeDefs,
 	settingTypeDefs,
 	skillLevelTypeDefs,
+	technologyTypeTypeDefs
 ]);

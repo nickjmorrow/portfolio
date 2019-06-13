@@ -1,20 +1,19 @@
-import * as React from 'react';
-import styled from 'styled-components';
 import {
+	ArrowIcon,
 	Fade,
 	StyleConstant,
-	useThemeContext,
-	Typography,
-	ArrowIcon,
 	Theme,
-	ThemeContext,
+	Typography,
+	useThemeContext,
 } from '@nickjmorrow/react-component-library';
-import { SlideInFade } from './shared/SlideInFade';
-import { enterTimeout } from '../constants';
-import Img from 'gatsby-image';
 import { graphql, useStaticQuery } from 'gatsby';
-import { Button } from './shared/Button';
+import Img from 'gatsby-image';
+import * as React from 'react';
+import styled from 'styled-components';
+import { enterTimeout } from '../constants';
 import { flickerWord } from '../utilities';
+import { Button } from './shared/Button';
+import { SlideInFade } from './shared/SlideInFade';
 
 export const query = graphql`
 	query {
@@ -37,7 +36,6 @@ export const Headline: React.FC = () => {
 	const [index, setIndex] = React.useState(0);
 	const incrementIndex = () => {
 		const newIndex = index >= availableCallToActions.length - 1 ? 0 : index + 1;
-		console.log(newIndex);
 		setIndex(newIndex);
 	};
 
@@ -45,13 +43,13 @@ export const Headline: React.FC = () => {
 		if (index < 0) {
 			return;
 		}
-		const id = setInterval(incrementIndex, 100);
+		const id = setInterval(incrementIndex, 60);
 		return () => clearInterval(id);
 	}, [index]);
 
 	return (
-		<div style={{ position: 'fixed', height: '100vh', width: '100%', zIndex: -1 }}>
-			<ImageWrapper style={{ position: 'relative' }}>
+		<div style={{ position: 'fixed', height: '100vh', width: '100%', zIndex: -1}}>
+			<ImageWrapper style={{ position: 'relative', zIndex: -10 }}>
 				<Image fluid={file.childImageSharp.fluid} />
 			</ImageWrapper>
 			<Fade in={true} appear={true} enterTimeout={enterTimeout.headlineAppears} transitionVariant={'slow'}>
@@ -71,7 +69,7 @@ export const Headline: React.FC = () => {
 								styleVariant={1}
 								sizeVariant={11}
 								colorVariant={'primaryLight'}
-								style={{ display: 'block', marginBottom: '36px' }}
+								style={{ display: 'block', marginBottom: '48px' }}
 							>
 								Nicholas Morrow
 							</Typography>
@@ -82,21 +80,27 @@ export const Headline: React.FC = () => {
 								sizeVariant={6}
 								style={{ display: 'block' }}
 							>
-								Let's build something {availableCallToActions[index].split('').map(letter => {
+								Let's build something{' '}
+								{availableCallToActions[index].split('').map(letter => {
 									return (
-										<Typography fontFamilyVariant={'monospace'} style={{color: letter === "#" ? 'hsla(220,100%,90%,90%)' : 'hsla(310,100%,90%,90%)'}} sizeVariant={6} weightVariant={7}>
+										<Typography
+											fontFamilyVariant={'monospace'}
+											style={{
+												color:
+													letter === '#'
+														? 'hsla(220,100%,90%,90%)'
+														: 'hsla(310,100%,90%,90%)',
+											}}
+											sizeVariant={6}
+											weightVariant={7}
+										>
 											{letter}
 										</Typography>
-									)
+									);
 								})}
-								</Typography>
+							</Typography>
 						</Content>
 					</div>
-					<SlideInFade enterTimeout={enterTimeout.getInTouchAppears} transitionVariant={'medium'}>
-						<Button leftColor={'white'} rightColor={'white'}>
-							Get In Touch
-						</Button>
-					</SlideInFade>
 				</HeadlineWrapper>
 			</Fade>
 			<div
@@ -143,7 +147,7 @@ const Image = styled(Img)`
 	position: absolute !important;
 	width: 100%;
 	height: 100vh;
-	z-index: 0;
+	z-index: -10;
 	filter: brightness(60%) contrast(110%);
 `;
 

@@ -33,7 +33,7 @@ export const findKeyPhrases = (
 	const wordList = text.split(' ').map(word =>
 		word
 			.split('')
-			.filter(letter => !punctuation.some(p => p === letter))
+			.filter((letter, i) => !punctuation.some(p => p === letter) || i === 0)
 			.join(''),
 	);
 

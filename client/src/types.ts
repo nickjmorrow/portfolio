@@ -33,6 +33,12 @@ export interface Technology {
   experiences: Experience[];
   skillLevel: SkillLevel;
   version: string;
+  technologyType: TechnologyType;
+}
+
+export interface TechnologyType {
+	technologyTypeId: number;
+	name: string;
 }
 
 export interface ExperienceDetail {

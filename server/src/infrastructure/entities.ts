@@ -4,6 +4,8 @@ import { ExperienceDetail } from '../components/experiences/models/ExperienceDet
 import { Technology } from '../components/technologies/models/Technology';
 import { Project, ProjectDetail } from '../components/projects/models';
 import { SkillLevel } from '../components/technologies/SkillLevel';
+import { TechnologyType } from '../components/technologies/TechnologyType';
+
 
 export const entities = [
 	Setting,
@@ -14,4 +16,5 @@ export const entities = [
 	ProjectDetail,
 	Setting,
 	SkillLevel,
+	TechnologyType
 ];

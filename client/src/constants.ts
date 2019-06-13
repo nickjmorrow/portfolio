@@ -1,6 +1,6 @@
-export const INITIAL_DELAY = 300;
+export const INITIAL_DELAY = 100;
 
-const INCREMENTAL_DELAY = 300;
+const INCREMENTAL_DELAY = 200;
 
 const APP_BAR_APPEARS = INITIAL_DELAY;
 const APP_BAR_DELAY = 400;
@@ -38,4 +38,3 @@ export const enterTimeout = {
 export const FOOTER_HEIGHT = '42px';
 
 export const NUM_FEATURED_PROJECTS = 3;
-

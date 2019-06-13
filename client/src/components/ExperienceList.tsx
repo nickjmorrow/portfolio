@@ -36,24 +36,26 @@ export const ExperienceList: React.FC = () => {
 	const [activeExperience, setActiveExperience] = React.useState(experiences.sort((e1, e2) => parseInt(e1.startDate, 10) > parseInt(e2.startDate, 10) ? -1 : 1)[0]);
 	const theme = useThemeContext();
 	return (
-			<DelayedSlideInFade enterTimeout={500} style={{backgroundColor: theme.colors.background, position: 'relative'}}>
-				<ExperienceListWrapper theme={theme}>
-					<Header id={"experience"} link={"#experience"}>
-						Experience
-					</Header>					
-					<ExperiencesWrapper theme={theme}>
-
-						<Timeline
-							setActiveExperience={setActiveExperience}
-							experiences={experiences}
-							activeExperience={activeExperience}
-						>
-							Timeline
-						</Timeline>
-						<Experience experience={activeExperience} />
-					</ExperiencesWrapper>
-				</ExperienceListWrapper>
-			</DelayedSlideInFade>
+			<Wrapper theme={theme}>
+				<DelayedSlideInFade enterTimeout={500} style={{backgroundColor: theme.colors.background, position: 'relative'}}>
+					<ExperienceListWrapper theme={theme}>
+						<Header id={"experience"} link={"#experience"}>
+							Experience
+						</Header>					
+						<ExperiencesWrapper theme={theme}>
+	
+							<Timeline
+								setActiveExperience={setActiveExperience}
+								experiences={experiences}
+								activeExperience={activeExperience}
+							>
+								Timeline
+							</Timeline>
+							<Experience experience={activeExperience} />
+						</ExperiencesWrapper>
+					</ExperienceListWrapper>
+				</DelayedSlideInFade>
+			</Wrapper>
 	);
 };
 
@@ -66,12 +68,16 @@ const ExperiencesWrapper = styled('div')`
 `;
 
 const ExperienceListWrapper = styled('div')<{ theme: Theme }>`
-	min-height: 100vh;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	padding: 64px;
 	background-color: ${p => p.theme.colors.background};
 	margin: 0 auto;
-	width: max-content;
+	max-width: max-content;
+`;
+
+const Wrapper = styled('div')<{theme: Theme}>`
+	background-color: ${p => p.theme.colors.background};
+	min-height: 100vh;
 `;

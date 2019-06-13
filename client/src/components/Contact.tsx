@@ -16,55 +16,57 @@ export const Contact: React.FC = () => {
 	const theme = useThemeContext();
 	const { border, colors, typography, spacing } = theme;
 	return (
-		<DelayedSlideInFade enterTimeout={enterTimeout.contactAppears} style={{ backgroundColor: 'white', position: 'relative' }}>
-			<section id="contact">
-				<ContactWrapper theme={theme}>
-					<Header>Contact</Header>
-					<Form spacing={spacing}>
-						<SlideInFade enterTimeout={enterTimeout.contactNameAppears}>
-							<TextInput
-								style={{ width: '100%' }}
-								value={name}
-								onChange={e => setName(e.currentTarget.value)}
-								placeholder={'Name'}
-							/>
-						</SlideInFade>
-						<SlideInFade enterTimeout={enterTimeout.contactEmailAppears}>
-							<TextInput
-								style={{ width: '100%' }}
-								value={email}
-								onChange={e => setEmail(e.currentTarget.value)}
-								placeholder={'Email'}
-							/>
-						</SlideInFade>
-						<SlideInFade enterTimeout={enterTimeout.contactMessageAppears}>
-							<TextArea
-								spacing={spacing}
-								colors={colors}
-								typography={typography}
-								border={border}
-								value={message}
-								onChange={e => setMessage(e.currentTarget.value)}
-								placeholder={'Enter your message here'}
-							/>
-						</SlideInFade>
-						<SlideInFade enterTimeout={enterTimeout.contactSendMessageAppears}>
-							<Button
-								useMargin={false}
-								styleVariant={1}
-								leftColor={'white'}
-								rightColor={'white'}
-								style={{ backgroundImage: 'linear-gradient(40deg, pink, purple)', opacity: 0.9, '&:hover': {
-									color: 'red'
-								} }}
-							>
-								Send Message
-							</Button>
-						</SlideInFade>
-					</Form>
-				</ContactWrapper>
-			</section>
-		</DelayedSlideInFade>
+		<Wrapper>
+			<DelayedSlideInFade enterTimeout={enterTimeout.contactAppears} style={{ backgroundColor: 'white', position: 'relative' }}>
+				<section id="contact">
+					<ContactWrapper theme={theme}>
+						<Header>Contact</Header>
+						<Form spacing={spacing}>
+							<SlideInFade enterTimeout={enterTimeout.contactNameAppears}>
+								<TextInput
+									style={{ width: '100%' }}
+									value={name}
+									onChange={e => setName(e.currentTarget.value)}
+									placeholder={'Name'}
+								/>
+							</SlideInFade>
+							<SlideInFade enterTimeout={enterTimeout.contactEmailAppears}>
+								<TextInput
+									style={{ width: '100%' }}
+									value={email}
+									onChange={e => setEmail(e.currentTarget.value)}
+									placeholder={'Email'}
+								/>
+							</SlideInFade>
+							<SlideInFade enterTimeout={enterTimeout.contactMessageAppears}>
+								<TextArea
+									spacing={spacing}
+									colors={colors}
+									typography={typography}
+									border={border}
+									value={message}
+									onChange={e => setMessage(e.currentTarget.value)}
+									placeholder={'Enter your message here'}
+								/>
+							</SlideInFade>
+							<SlideInFade enterTimeout={enterTimeout.contactSendMessageAppears}>
+								<Button
+									useMargin={false}
+									styleVariant={1}
+									leftColor={'white'}
+									rightColor={'white'}
+									style={{ backgroundImage: 'linear-gradient(40deg, pink, purple)', opacity: 0.9, '&:hover': {
+										color: 'red'
+									} }}
+								>
+									Send Message
+								</Button>
+							</SlideInFade>
+						</Form>
+					</ContactWrapper>
+				</section>
+			</DelayedSlideInFade>
+		</Wrapper>
 	);
 };
 
@@ -104,4 +106,10 @@ const TextArea = styled('textarea')<{
 		border: none;
 		outline: none;
 	}
+`;
+
+const Wrapper = styled.div`
+	background-color: white;
+	min-height: 100vh;
+	width: 100%;
 `;

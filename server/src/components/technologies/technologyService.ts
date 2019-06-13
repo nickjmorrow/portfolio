@@ -4,7 +4,7 @@ import { Technology } from './models/Technology';
 export const technologyService = {
 	getTechnologies: async () => {
 		return await getConnection().manager.find(Technology, {
-			relations: ['skillLevel'],
+			relations: ['skillLevel', 'technologyType'],
 		});
 	},
 };
