@@ -1,23 +1,15 @@
-import {
-	ArrowIcon,
-	Fade,
-	StyleConstant,
-	Theme,
-	Typography,
-	useThemeContext,
-} from '@nickjmorrow/react-component-library';
+import { ArrowIcon, Fade, StyleConstant, Theme, Typography, useThemeContext } from '@nickjmorrow/react-component-library';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import * as React from 'react';
 import styled from 'styled-components';
 import { enterTimeout } from '../constants';
 import { flickerWord } from '../utilities';
-import { Button } from './shared/Button';
 import { SlideInFade } from './shared/SlideInFade';
 
 export const query = graphql`
 	query {
-		file(relativePath: { eq: "headline.jpg" }) {
+		file(relativePath: { eq: "space.jpg" }) {
 			childImageSharp {
 				# Specify the image processing specifications right in the query.
 				# Makes it trivial to update as your page's design changes.
