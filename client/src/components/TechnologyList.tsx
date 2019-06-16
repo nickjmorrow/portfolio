@@ -46,6 +46,7 @@ export const TechnologyList: React.FC = () => {
 		return null;
 	}
 	const { technologies } = data;
+	// TODO: remove this comment
 	const theme = useThemeContext();
 	const technologyTypeIds = [...new Set(data.technologies.map(t => t.technologyType.technologyTypeId))];
 	const technologyTypes = technologies.reduce<TechnologyType[]>((agg, cur) => {
