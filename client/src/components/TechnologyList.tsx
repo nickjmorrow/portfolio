@@ -23,6 +23,8 @@ import {
 	JavaScriptIcon,
 	TypeScriptIcon,
 	GithubIcon,
+	Paper,
+	ExpansionPanel,
 } from '@nickjmorrow/react-component-library';
 import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
 export const GatsbyQuery = graphql`
@@ -34,6 +36,10 @@ export const GatsbyQuery = graphql`
 				technologyType {
 					technologyTypeId
 					name
+				}
+				skillLevel {
+					skillLevelId
+					description
 				}
 			}
 		}
@@ -48,60 +54,83 @@ export const TechnologyList: React.FC = () => {
 	const { technologies } = data;
 	// TODO: remove this comment
 	const theme = useThemeContext();
-	const technologyTypeIds = [...new Set(data.technologies.map(t => t.technologyType.technologyTypeId))];
 	const technologyTypes = technologies.reduce<TechnologyType[]>((agg, cur) => {
 		if (agg.findIndex(tti => tti.technologyTypeId === cur.technologyType.technologyTypeId) === -1) {
-			agg.push(cur.technologyType)
+			agg.push(cur.technologyType);
 		}
 		return agg;
 	}, []);
 	return (
 		<DelayedSlideInFade enterTimeout={1000}>
-			<div style={{ width: '380px' }}>
+			<Paper style={{ minWidth: theme.spacing.ss128, padding: '16px 0' }}>
 				<TechnologiesWrapper theme={theme}>
 					{technologyTypes.map(tti => {
 						const relevantTechnologies = technologies.filter(
 							t => t.technologyType.technologyTypeId === tti.technologyTypeId,
 						);
+						const proficientTechnologies = relevantTechnologies
+							.filter(rt => rt.skillLevel.skillLevelId === 2)
+							.filter((rt, i) => i < 3);
 						return (
-							<TODONameMe>
-								<Typography styleVariant={3}>{tti.name}</Typography>
-								<RelevantTechnologyListWrapper theme={theme}>
-									{relevantTechnologies.map((t, i) => (
-										<DelayedSlideInFade enterTimeout={i * 100}>
-											<TechnologyWrapper key={i} theme={theme}>
-												{iconMap[t.name]}
-												<div
-													style={{
-														display: 'flex',
-														justifyContent: 'flex-start',
-														width: '160px',
-													}}
-												>
-													<Typography colorVariant={'inherit'}>{t.name}</Typography>
-													<Typography colorVariant={'inherit'} style={{ marginLeft: '4px' }}>
-														{t.version}
-													</Typography>
+							<ExpansionPanel
+								styleApi={{
+									wrapperStyle: {
+										boxShadow: 'none',
+										width: '200px'
+									},
+								}}
+								rightComponent={(isOpened: boolean) => (
+									<TechnologyTypeWrapper>
+										<Typography sizeVariant={5}>{tti.name}</Typography>
+										<ProficientIconTechnologyList>
+											{proficientTechnologies.map(pt => (
+												<div style={{ marginRight: '16px' }}>{iconMap[pt.name]}</div>
+											))}
+										</ProficientIconTechnologyList>
+									</TechnologyTypeWrapper>
+								)}
+								hiddenContent={
+									<div style={{display: 'flex', flexFlow: 'column wrap'}}>
+										{relevantTechnologies.map(rt => (
+											<div
+												key={rt.technologyId}
+												style={{
+													marginLeft: '24px',
+													display: 'flex',
+													marginBottom: '16px',
+													opacity: rt.skillLevel.skillLevelId === 1 ? 0.6 : 1,
+													width: '200px',
+												}}
+											>
+												<div style={{minWidth: '30px', display: 'flex', alignItems: 'center'}}>
+													{iconMap[rt.name]}
 												</div>
-											</TechnologyWrapper>
-										</DelayedSlideInFade>
-									))}
-								</RelevantTechnologyListWrapper>
-							</TODONameMe>
+												<Typography style={{ marginLeft: '8px' }}>{rt.name}</Typography>
+											</div>
+										))}
+									</div>
+								}
+							/>
 						);
 					})}
 				</TechnologiesWrapper>
-			</div>
+			</Paper>
 		</DelayedSlideInFade>
 	);
 };
 
-const TODONameMe = styled.div`
-	margin: 32px 0;
+const TechnologyTypeWrapper = styled.div`
+	padding: 8px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 450px;
 `;
 
 const TechnologiesWrapper = styled('ul')<{ theme: Theme }>`
 	margin: 0;
+	display: flex;
+	flex-direction: column;
 `;
 
 const TechnologyWrapper = styled('li')<{ theme: Theme }>`
@@ -136,12 +165,17 @@ const iconMap = {
 	Redux: <ReduxIcon sizeVariant={3} />,
 	PostgreSQL: <PostgreSQLIcon sizeVariant={3} />,
 	'Jenkins CI': <JenkinsCIIcon sizeVariant={3} />,
-	'Styled Components': <StyledComponentsIcon />,
+	'Styled Components': <StyledComponentsIcon style={{fontSize: '22px'}} />,
 	Jest: <JestIcon sizeVariant={3} />,
 	Selenium: <SeleniumIcon sizeVariant={3} />,
 };
 
-const RelevantTechnologyListWrapper = styled('div')<{theme: Theme}>`
+const RelevantTechnologyListWrapper = styled('div')<{ theme: Theme }>`
 	display: flex;
 	flex-direction: column;
+`;
+
+const ProficientIconTechnologyList = styled.div`
+	display: flex;
+	flex-direction: row;
 `;

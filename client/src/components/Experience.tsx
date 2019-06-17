@@ -21,7 +21,7 @@ export const Experience: React.FC<{ experience: ExperienceType }> = ({ experienc
 			<Timeframe experience={experience} />
 			<ExperienceDetailList theme={theme}>
 				{experience.experienceDetails.map(ed => (
-					<DelayedSlideInFade enterTimeout={500}>
+					<DelayedSlideInFade enterTimeout={500} key={ed.experienceDetailId}>
 						<ExperienceDetail key={ed.description}>
 							<BulletPointWrapper>
 								<ArrowIcon style={{position: 'relative', top: '5px'}}sizeVariant={1} />

@@ -16,7 +16,7 @@ export const OtherProjectList : React.FC<{projects: Project[]}> = ({projects}) =
 			<div style={{display: 'flex', justifyContent: 'center'}}>
 				<StyledOtherProjectList theme={theme}>
 					{projects.map(p => (
-						<OtherProject project={p} />
+						<OtherProject project={p} key={p.projectId}/>
 					))}
 				</StyledOtherProjectList>
 			</div>

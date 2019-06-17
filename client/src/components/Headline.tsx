@@ -1,4 +1,11 @@
-import { ArrowIcon, Fade, StyleConstant, Theme, Typography, useThemeContext } from '@nickjmorrow/react-component-library';
+import {
+	ArrowIcon,
+	Fade,
+	StyleConstant,
+	Theme,
+	Typography,
+	useThemeContext,
+} from '@nickjmorrow/react-component-library';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import * as React from 'react';
@@ -6,6 +13,9 @@ import styled from 'styled-components';
 import { enterTimeout } from '../constants';
 import { flickerWord } from '../utilities';
 import { SlideInFade } from './shared/SlideInFade';
+import Typist from 'react-typist';
+import 'react-typist/dist/Typist.css'
+import TypistLoop from 'react-typist-loop';
 
 export const query = graphql`
 	query {
@@ -24,23 +34,10 @@ export const query = graphql`
 export const Headline: React.FC = () => {
 	const theme = useThemeContext();
 	const { file } = useStaticQuery(query);
-	const availableCallToActions = flickerWord(['beautiful', 'performant', 'secure', 'beautiful'], 40);
-	const [index, setIndex] = React.useState(0);
-	const incrementIndex = () => {
-		const newIndex = index >= availableCallToActions.length - 1 ? 0 : index + 1;
-		setIndex(newIndex);
-	};
-
-	React.useEffect(() => {
-		if (index < 0) {
-			return;
-		}
-		const id = setInterval(incrementIndex, 60);
-		return () => clearInterval(id);
-	}, [index]);
+	const availableCallToActions = ['beautiful', 'performant', 'secure', 'beautiful'];
 
 	return (
-		<div style={{ position: 'fixed', height: '100vh', width: '100%', zIndex: -1}}>
+		<div style={{ position: 'fixed', height: '100vh', width: '100%', zIndex: -1 }}>
 			<ImageWrapper style={{ position: 'relative', zIndex: -10 }}>
 				<Image fluid={file.childImageSharp.fluid} />
 			</ImageWrapper>
@@ -66,31 +63,27 @@ export const Headline: React.FC = () => {
 								Nicholas Morrow
 							</Typography>
 
-							<Typography
-								weightVariant={7}
-								colorVariant={'primaryLight'}
-								sizeVariant={6}
-								style={{ display: 'block' }}
-							>
-								Let's build something{' '}
-								{availableCallToActions[index].split('').map(letter => {
-									return (
-										<Typography
-											fontFamilyVariant={'monospace'}
-											style={{
-												color:
-													letter === '#'
-														? 'hsla(220,100%,90%,90%)'
-														: 'hsla(310,100%,90%,90%)',
-											}}
-											sizeVariant={6}
-											weightVariant={7}
-										>
-											{letter}
-										</Typography>
-									);
-								})}
-							</Typography>
+							<div style={{display: 'flex', flexDirection: 'row'}}>
+								<Typography
+									weightVariant={7}
+									colorVariant={'primaryLight'}
+									sizeVariant={6}
+									style={{ display: 'block' }}
+								>
+									Let's build something{' '}
+									
+								</Typography>
+								<Typography colorVariant={'primaryLight'} sizeVariant={6} weightVariant={7} style={{marginLeft: '7px'}}>
+									<TypistLoop interval={1000} style={{display: 'inline'}}>
+											{['beautiful', 'performant', 'secure'].map(text => (
+												<Typist key={text} startDelay={0} style={{display: 'inline'}}>
+													{text}
+													<Typist.Backspace count={text.length} delay={2000} />
+												</Typist>
+											))}
+										</TypistLoop>
+								</Typography>
+							</div>
 						</Content>
 					</div>
 				</HeadlineWrapper>

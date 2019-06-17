@@ -58,10 +58,6 @@ export const Main: React.FC = () => {
 	);
 };
 
-Main.propTypes = {
-	children: PropTypes.node.isRequired,
-};
-
 export default Main;
 
 const Wrapper = styled.div`

@@ -12,7 +12,7 @@ export const FeaturedProjectList: React.FC<{ projects: Project[] }> = ({ project
 				<Header id="work" link="#work">Work</Header>
 				<Typography styleVariant={2}>Featured Projects</Typography>
 				{projects.map((p, i) => (
-					<FeaturedProject project={p} rightAlign={i % 2 === 0} />
+					<FeaturedProject key={p.projectId} project={p} rightAlign={i % 2 === 0} />
 				))}
 			</InnerWrapper>
 		</FeaturedProjectListWrapper>
