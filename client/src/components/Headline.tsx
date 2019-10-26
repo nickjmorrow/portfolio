@@ -1,21 +1,13 @@
-import {
-	ArrowIcon,
-	Fade,
-	StyleConstant,
-	Theme,
-	Typography,
-	useThemeContext,
-} from '@nickjmorrow/react-component-library';
+import { ArrowIcon, Fade, StyleConstant, Theme, Typography, useThemeContext } from '@nickjmorrow/react-component-library';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import * as React from 'react';
+import Typist from 'react-typist';
+import TypistLoop from 'react-typist-loop';
+import 'react-typist/dist/Typist.css';
 import styled from 'styled-components';
 import { enterTimeout } from '../constants';
-import { flickerWord } from '../utilities';
 import { SlideInFade } from './shared/SlideInFade';
-import Typist from 'react-typist';
-import 'react-typist/dist/Typist.css'
-import TypistLoop from 'react-typist-loop';
 
 export const query = graphql`
 	query {

@@ -10,13 +10,13 @@ export class Project {
 	@Column()
 	public name!: string;
 
-	@Column()
+	@Column({ name: 'tagline'})
 	public tagline!: string;
 
-	@Column({name: 'github_url'})
+	@Column({name: 'github_link'})
 	public githubUrl!: string;
 
-	@Column({name: 'demo_url'})
+	@Column({name: 'site_link'})
 	public demoUrl!: string;
 
 	@OneToMany(type => ProjectDetail, projectDetail => projectDetail.Project)

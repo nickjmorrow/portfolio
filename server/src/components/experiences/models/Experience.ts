@@ -16,9 +16,6 @@ export class Experience {
 	@Column({ name: 'end_date' })
 	public endDate!: Date;
 
-	@Column({ name: 'is_current' })
-	public isCurrent!: boolean;
-
 	@Column({ name: 'role_name' })
 	public roleName!: string;
 

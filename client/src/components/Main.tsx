@@ -44,12 +44,10 @@ export const Main: React.FC = () => {
 				<StyledMain spacing={theme.spacing}>
 					<Headline />
 					<div style={{ backgroundColor: 'white' }}>
-						
-							<About />
-							<ExperienceList />
-							<ProjectList />
-							<Contact />
-						
+						<About />
+						<ExperienceList />
+						<ProjectList />
+						<Contact />
 					</div>
 				</StyledMain>
 				<Footer />
@@ -69,6 +67,4 @@ const Wrapper = styled.div`
 	padding-bottom: ${FOOTER_HEIGHT};
 `;
 
-const StyledMain = styled('div')<{ spacing: StyleConstant<'spacing'> }>`
-	
-`;
+const StyledMain = styled('div')<{ spacing: StyleConstant<'spacing'> }>``;

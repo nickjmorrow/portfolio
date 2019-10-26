@@ -9,6 +9,9 @@ export class TechnologyType {
 	@Column()
 	public name!: string;
 
+	@Column({name: 'order_id'})
+	public orderId!: number;
+
 	@OneToMany(type => Technology, technology => technology.technologyType)
 	public Technology!: Technology;
 }

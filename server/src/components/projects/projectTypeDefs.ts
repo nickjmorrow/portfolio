@@ -4,7 +4,7 @@ export const projectTypeDefs = `
         name: String!
 		tagline: String!
 		githubUrl: String!
-		demoUrl: String!
+		demoUrl: String
         projectDetails: [ProjectDetail!]!
         technologies: [Technology!]!
 		orderId: Int!

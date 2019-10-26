@@ -3,21 +3,42 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { Project } from '../types';
 import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
+import { graphql, useStaticQuery } from 'gatsby';
+import Img from 'gatsby-image';
+
+export const ImageQuery = graphql`
+	query {
+		file(relativePath: { eq: "component_library.png" }) {
+			childImageSharp {
+				# Specify the image processing specifications right in the query.
+				# Makes it trivial to update as your page's design changes.
+				fluid {
+					...GatsbyImageSharpFluid
+				}
+			}
+		}
+	}
+`;
 
 export const FeaturedProject: React.FC<{ project: Project; rightAlign: boolean }> = ({ project, rightAlign }) => {
 	const theme = useThemeContext();
+	const { file } = useStaticQuery(ImageQuery);
+
 	return (
 		<DelayedSlideInFade enterTimeout={500}>
 			<FeaturedProjectWrapper shouldRightAlign={rightAlign}>
-				<Image theme={theme} shouldRightAlign={rightAlign} />
+				<Image fluid={file.childImageSharp.fluid} theme={theme} />
 				<ProjectInfoWrapper shouldRightAlign={rightAlign}>
-					<Typography colorVariant={'primaryDark'} sizeVariant={5} weightVariant={7} style={{ marginBottom: theme.spacing.ss6 }}>
+					<Typography
+						colorVariant={'primaryDark'}
+						sizeVariant={5}
+						weightVariant={7}
+						style={{ marginBottom: theme.spacing.ss6 }}
+					>
 						{project.name}
 					</Typography>
 					<Description theme={theme}>
-						<Typography>
-							{project.tagline}
-						</Typography>
+						<Typography>{project.tagline}</Typography>
 					</Description>
 					<Typography
 						style={{ marginBottom: theme.spacing.ss6, display: 'block', maxWidth: '30%' }}
@@ -27,8 +48,16 @@ export const FeaturedProject: React.FC<{ project: Project; rightAlign: boolean }
 						{project.technologies.map(t => t.name).join(', ')}
 					</Typography>
 					<Links>
-						<a href={project.githubUrl}><GithubIcon sizeVariant={3} colorVariant={'secondaryDark'} style={{display: 'block'}} /></a>
-						<a href={project.demoUrl}><ShareIcon sizeVariant={3} colorVariant={'secondaryDark'} style={{transform: 'scale(1.6)', display: 'block'}}/></a>
+						<a href={project.githubUrl}>
+							<GithubIcon sizeVariant={3} colorVariant={'secondaryDark'} style={{ display: 'block' }} />
+						</a>
+						<a href={project.demoUrl}>
+							<ShareIcon
+								sizeVariant={3}
+								colorVariant={'secondaryDark'}
+								style={{ transform: 'scale(1.6)', display: 'block' }}
+							/>
+						</a>
 					</Links>
 				</ProjectInfoWrapper>
 			</FeaturedProjectWrapper>
@@ -71,7 +100,7 @@ const Links = styled.div`
 	width: 60px;
 `;
 
-const Image = styled('div')<{ shouldRightAlign: boolean; theme: Theme }>`
+const Image = styled(Img)<{ shouldRightAlign: boolean; theme: Theme }>`
 	background-color: lightblue;
 	opacity: 0.5;
 	width: 60%;

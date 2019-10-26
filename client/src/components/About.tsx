@@ -40,7 +40,6 @@ const AboutWrapper = styled('div')<{theme: Theme}>`
 	position: relative;
 	background-color: ${p => p.theme.colors.background};
 	margin-top: 100vh;
-	margin-bottom: 64px;
 	padding-top: ${p => p.theme.spacing.ss16};
 	width: 100%;
 `;

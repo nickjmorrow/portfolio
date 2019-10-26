@@ -29,7 +29,7 @@ export const initializeDatabase = `
 	);
 
 	CREATE TABLE portfolio.skill_levels (
-		skill_level_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
+		skill_level_id SERIAL PRIMARY KEY
 		, description VARCHAR(255) NOT NULL UNIQUE
 	);
 
@@ -39,7 +39,7 @@ export const initializeDatabase = `
 		, ('Proficient');
 
 	CREATE TABLE portfolio.technologies (
-		technology_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
+		technology_id SERIAL PRIMARY KEY
 		, name VARCHAR(255) NOT NULL UNIQUE
 		, skill_level_id INT NOT NULL REFERENCES portfolio.skill_levels(skill_level_id)
 		, version VARCHAR(255) NULL
@@ -64,7 +64,7 @@ export const initializeDatabase = `
 		, ('MongoDB', 1, NULL);
 	
 	CREATE TABLE portfolio.experiences (
-		experience_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
+		experience_id SERIAL PRIMARY KEY
 		, name VARCHAR(255) NOT NULL
 		, role_name VARCHAR(255) NOT NULL
 		, location VARCHAR(255) NOT NULL
@@ -76,11 +76,11 @@ export const initializeDatabase = `
 
 	INSERT INTO portfolio.experiences (name, start_date, end_date, is_current, role_name, location)
 	VALUES
-		('Mastercard / Applied Predictive Technologies', '2019-07-17', null, true, 'Software Quality Assurance Engineer', 'New York, NY')
-		, ('Babcock Wilcox Technologies', '2018-05-21', '2018-08-16', false, 'Engineering Intern', 'Erwin, TN');
+	('Mastercard / Applied Predictive Technologies', '2019-07-17', null, true, 'Software Quality Assurance Engineer', 'New York, NY', 'mastercard.com')
+	, ('Babcock Wilcox Technologies', '2018-05-21', '2018-08-16', false, 'Engineering Intern', 'Erwin, TN', 'nuclearfuelservices.com');
 	
 	CREATE TABLE portfolio.experience_details (
-		experience_detail_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
+		experience_detail_id SERIAL PRIMARY KEY
 		, experience_id INT NOT NULL REFERENCES portfolio.experiences(experience_id)
 		, description VARCHAR(500) NOT NULL 
 		, order_id INT NOT NULL
@@ -97,7 +97,7 @@ export const initializeDatabase = `
 		, (2, 'Designed chemical tank transfer system using AutoCAD to be used during plant operations involving a streamlined and reliable transfer of blended low-enriched Uranium.', 1);
 
 	CREATE TABLE portfolio.projects (
-		project_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
+		project_id SERIAL PRIMARY KEY
 		, name VARCHAR(255) NOT NULL
 		, order_id INT NOT NULL
 		, date_deleted DATE NULL
@@ -110,10 +110,10 @@ export const initializeDatabase = `
 		('Hierarchical Clustering of Google Maps Locations', 1, 'https://github.com/nickjmorrow/map-clustering', 'https://nickjmorrow.github.io/map-clustering/')
 		, ('Weather Analytics and Extrema Monitoring', 2, 'https://github.com/nickjmorrow/weird-weather', 'https://nickjmorrow.github.io/weird-weather/')
 		, ('React UI Component Library', 3, 'https://github.com/nickjmorrow/react-component-library', 'https://nickjmorrow.github.io/react-component-library/')
-		, ('Spoiler-Free TV Show Information Aggregator', 4, 'https://github.com/nickjmorrow/first-few', 'https://nickjmorrow.github.io/first-few/')
+		, ('Spoiler-Free TV Show Information Aggregator', 4, 'https://github.com/nickjmorrow/first-few', 'https://nickjmorrow.github.io/first-few/');
 
 	CREATE TABLE portfolio.project_details (
-		project_detail_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
+		project_detail_id SERIAL PRIMARY KEY
 		, project_id INT NOT NULL REFERENCES portfolio.projects(project_id)
 		, description VARCHAR(255) NOT NULL
 		, order_id INT NOT NULL
@@ -132,8 +132,8 @@ export const initializeDatabase = `
 			, (4, 'ReactJS and Redux front-end to display TV show analytics and recommendations to enable users to decide whether to commit to a show without risking spoilers.', 2);
 			
 	CREATE TABLE portfolio."Experience_Experience__technologies" (
-		"experiencesExperienceId" INT NOT NULL REFERENCES portfolio.experiences(experience_id)
-		, "technologiesTechnologyId" INT NOT NULL REFERENCES portfolio.technologies(technology_id)
+		"experiences_experience_id" INT NOT NULL REFERENCES portfolio.experiences(experience_id)
+		, "technology_type_id" INT NOT NULL REFERENCES portfolio.technologies(technology_id)
 		, PRIMARY KEY("experiencesExperienceId", "technologiesTechnologyId")
 	);
 

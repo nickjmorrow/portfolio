@@ -7,6 +7,12 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
 
+export const getTitleCased = (str: string) => 
+	str
+		.split(' ')
+		.map(w => w[0].toUpperCase() + w.substr(1).toLowerCase())
+		.join(' ');
+
 export const flickerWord = (words: string[], numRepeated: number): string[] => {
 	let output: string[] = [];
 	for (let i = 0; i < words.length - 1; i++) {

@@ -7,7 +7,6 @@ export const experienceTypeDefs = `
 		roleName: String!
 		startDate: String!
 		endDate: String
-		isCurrent: Boolean!
 		location: String!
     }
 
