@@ -1,4 +1,11 @@
-import { ArrowIcon, Fade, StyleConstant, Theme, Typography, useThemeContext } from '@nickjmorrow/react-component-library';
+import {
+	ArrowIcon,
+	Fade,
+	StyleConstant,
+	Theme,
+	Typography,
+	useThemeContext,
+} from '@nickjmorrow/react-component-library';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import * as React from 'react';
@@ -47,7 +54,7 @@ export const Headline: React.FC = () => {
 
 							<Typography
 								weightVariant={7}
-								styleVariant={1}
+								styleVariant={'h1'}
 								sizeVariant={11}
 								colorVariant={'primaryLight'}
 								style={{ display: 'block', marginBottom: '48px' }}
@@ -55,7 +62,7 @@ export const Headline: React.FC = () => {
 								Nicholas Morrow
 							</Typography>
 
-							<div style={{display: 'flex', flexDirection: 'row'}}>
+							<div style={{ display: 'flex', flexDirection: 'row' }}>
 								<Typography
 									weightVariant={7}
 									colorVariant={'primaryLight'}
@@ -63,17 +70,21 @@ export const Headline: React.FC = () => {
 									style={{ display: 'block' }}
 								>
 									Let's build something{' '}
-									
 								</Typography>
-								<Typography colorVariant={'primaryLight'} sizeVariant={6} weightVariant={7} style={{marginLeft: '7px'}}>
-									<TypistLoop interval={1000} style={{display: 'inline'}}>
-											{['beautiful', 'performant', 'secure'].map(text => (
-												<Typist key={text} startDelay={0} style={{display: 'inline'}}>
-													{text}
-													<Typist.Backspace count={text.length} delay={2000} />
-												</Typist>
-											))}
-										</TypistLoop>
+								<Typography
+									colorVariant={'primaryLight'}
+									sizeVariant={6}
+									weightVariant={7}
+									style={{ marginLeft: '7px' }}
+								>
+									<TypistLoop interval={1000} style={{ display: 'inline' }}>
+										{['beautiful', 'performant', 'secure'].map(text => (
+											<Typist key={text} startDelay={0} style={{ display: 'inline' }}>
+												{text}
+												<Typist.Backspace count={text.length} delay={2000} />
+											</Typist>
+										))}
+									</TypistLoop>
 								</Typography>
 							</div>
 						</Content>

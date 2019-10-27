@@ -22,18 +22,24 @@ import {
 	NETCoreIcon,
 	JavaScriptIcon,
 	TypeScriptIcon,
-	GithubIcon,
+	PythonIcon,
+	GoIcon,
+	WebpackIcon,
+	RollupIcon,
+	GatsbyIcon,
 	Paper,
 	ExpansionPanel,
 } from '@nickjmorrow/react-component-library';
 import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
 import { getTitleCased } from '../utilities';
+import { SkillLevel } from '../constants';
 export const GatsbyQuery = graphql`
 	{
 		data {
 			technologies {
 				name
 				version
+				orderId
 				technologyType {
 					technologyTypeId
 					name
@@ -63,61 +69,65 @@ export const TechnologyList: React.FC = () => {
 		return agg;
 	}, []);
 	return (
-		<DelayedSlideInFade enterTimeout={1000} style={{padding: '32px', display: 'flex', justifyContent: 'center'}}>
+		<DelayedSlideInFade enterTimeout={1000} style={{ padding: '32px', display: 'flex', justifyContent: 'center' }}>
 			<Paper style={{ minWidth: theme.spacing.ss128, padding: '16px 0' }}>
 				<TechnologiesWrapper theme={theme}>
 					{technologyTypes
-						.sort((a, b) => (a.orderId > b.orderId ? -1 : 1))
+						.sort((a, b) => (a.orderId > b.orderId ? 1 : -1))
 						.map(tti => {
 							const relevantTechnologies = technologies.filter(
 								t => t.technologyType.technologyTypeId === tti.technologyTypeId,
 							);
-							const proficientTechnologies = relevantTechnologies
-								.filter(rt => rt.skillLevel.skillLevelId === 2)
-								.filter((rt, i) => i < 3);
+							const proficientTechnology = relevantTechnologies
+								.filter(rt => rt.orderId !== null)
+								.sort((a, b) => (a.orderId > b.orderId ? 1 : -1))[0];
+
 							return (
 								<ExpansionPanel
 									styleApi={{
 										wrapperStyle: {
 											boxShadow: 'none',
-											width: '200px',
 										},
 									}}
 									rightComponent={(isOpened: boolean) => (
 										<TechnologyTypeWrapper theme={theme}>
-											<Typography sizeVariant={5} colorVariant={'inherit'}>{getTitleCased(tti.name)}</Typography>
+											<Typography sizeVariant={5} colorVariant={'inherit'}>
+												{getTitleCased(tti.name)}
+											</Typography>
 											<ProficientIconTechnologyList>
-												{proficientTechnologies.map(pt => (
-													<div>{iconMap[pt.name]}</div>
-												))}
+												{<div>{iconMap[proficientTechnology.name]}</div>}
 											</ProficientIconTechnologyList>
 										</TechnologyTypeWrapper>
 									)}
 									hiddenContent={
 										<div style={{ display: 'flex', flexFlow: 'column wrap' }}>
-											{relevantTechnologies.map(rt => (
-												<div
-													key={rt.technologyId}
-													style={{
-														marginLeft: '24px',
-														display: 'flex',
-														marginBottom: '16px',
-														opacity: rt.skillLevel.skillLevelId === 1 ? 0.6 : 1,
-														width: '200px',
-													}}
-												>
+											{relevantTechnologies
+												.sort((a, b) => (a.orderId > b.orderId ? -1 : 1))
+												.map(rt => (
 													<div
+														key={rt.technologyId}
 														style={{
-															minWidth: '30px',
+															marginLeft: '24px',
 															display: 'flex',
-															alignItems: 'center',
+															marginBottom: '16px',
+															opacity:
+																rt.skillLevel.skillLevelId === SkillLevel.Proficient
+																	? 1
+																	: 0.6,
 														}}
 													>
-														{iconMap[rt.name]}
+														<div
+															style={{
+																minWidth: '30px',
+																display: 'flex',
+																alignItems: 'center',
+															}}
+														>
+															{iconMap[rt.name]}
+														</div>
+														<Typography style={{ marginLeft: '8px' }}>{rt.name}</Typography>
 													</div>
-													<Typography style={{ marginLeft: '8px' }}>{rt.name}</Typography>
-												</div>
-											))}
+												))}
 										</div>
 									}
 								/>
@@ -154,22 +164,28 @@ const ProficientIconTechnologyList = styled.div`
 	grid-column-gap: 16px;
 `;
 
+const iconSizeVariant = 3;
 
 const iconMap = {
-	'C#': <CSharpIcon sizeVariant={3} />,
-	'SQL Server': <SQLServerIcon sizeVariant={3} />,
-	'React.js': <ReactJSIcon sizeVariant={3} />,
-	'Node.js': <NodeJSIcon sizeVariant={3} />,
-	MongoDB: <MongoDBIcon sizeVariant={3} />,
-	'.NET': <NETCoreIcon sizeVariant={3} />,
-	JavaScript: <JavaScriptIcon sizeVariant={3} />,
-	TypeScript: <TypeScriptIcon sizeVariant={3} />,
-	Git: <GitIcon sizeVariant={3} />,
-	Redux: <ReduxIcon sizeVariant={3} />,
-	PostgreSQL: <PostgreSQLIcon sizeVariant={3} />,
-	'Jenkins CI': <JenkinsCIIcon sizeVariant={3} />,
+	'C#': <CSharpIcon sizeVariant={iconSizeVariant} />,
+	'SQL Server': <SQLServerIcon sizeVariant={iconSizeVariant} />,
+	React: <ReactJSIcon sizeVariant={iconSizeVariant} />,
+	'Node.js': <NodeJSIcon sizeVariant={iconSizeVariant} />,
+	MongoDB: <MongoDBIcon sizeVariant={iconSizeVariant} />,
+	'.NET Core': <NETCoreIcon sizeVariant={iconSizeVariant} />,
+	JavaScript: <JavaScriptIcon sizeVariant={iconSizeVariant} />,
+	TypeScript: <TypeScriptIcon sizeVariant={iconSizeVariant} />,
+	Git: <GitIcon sizeVariant={iconSizeVariant} />,
+	Redux: <ReduxIcon sizeVariant={iconSizeVariant} />,
+	PostgreSQL: <PostgreSQLIcon sizeVariant={iconSizeVariant} />,
+	'Jenkins CI': <JenkinsCIIcon sizeVariant={iconSizeVariant} />,
 	'Styled Components': <StyledComponentsIcon style={{ fontSize: '22px' }} />,
-	Jest: <JestIcon sizeVariant={3} />,
-	Selenium: <SeleniumIcon sizeVariant={3} />,
-	'REST Services': <JestIcon sizeVariant={3} />,
+	Jest: <JestIcon sizeVariant={iconSizeVariant} />,
+	Selenium: <SeleniumIcon sizeVariant={iconSizeVariant} />,
+	'REST Services': <JestIcon sizeVariant={iconSizeVariant} />,
+	Python: <PythonIcon sizeVariant={iconSizeVariant} />,
+	Go: <GoIcon sizeVariant={iconSizeVariant} />,
+	Webpack: <WebpackIcon sizeVariant={iconSizeVariant} />,
+	Rollup: <RollupIcon sizeVariant={iconSizeVariant} />,
+	Gatsby: <GatsbyIcon sizeVariant={iconSizeVariant} />,
 };

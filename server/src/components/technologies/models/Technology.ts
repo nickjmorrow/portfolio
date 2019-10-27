@@ -14,6 +14,9 @@ export class Technology {
 	@Column()
 	public version!: string;
 
+	@Column({ name: 'order_id' })
+	public orderId!: number;
+
 	@ManyToMany(type => Experience, experience => experience.experienceId)
 	@JoinTable({ name: 'Experience_Experience__technologies' })
 	public experiences!: Experience[];
@@ -23,6 +26,6 @@ export class Technology {
 	public skillLevel!: SkillLevel;
 
 	@ManyToOne(type => TechnologyType, technologyType => technologyType.technologyTypeId)
-	@JoinColumn({ name: 'technology_type_id'})
+	@JoinColumn({ name: 'technology_type_id' })
 	public technologyType!: TechnologyType;
 }

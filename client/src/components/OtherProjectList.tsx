@@ -5,26 +5,27 @@ import { Typography, useThemeContext, Theme } from '@nickjmorrow/react-component
 import { OtherProject } from './OtherProject';
 import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
 
-
-export const OtherProjectList : React.FC<{projects: Project[]}> = ({projects}) => {
+export const OtherProjectList: React.FC<{ projects: Project[] }> = ({ projects }) => {
 	const theme = useThemeContext();
 	return (
 		<DelayedSlideInFade enterTimeout={500}>
-		<div style={{textAlign: 'center'}}>
-			<Typography weightVariant={7} styleVariant={2} style={{marginBottom: '48px'}}>Other Projects</Typography>
-		</div>
-			<div style={{display: 'flex', justifyContent: 'center'}}>
+			<div style={{ textAlign: 'center' }}>
+				<Typography weightVariant={7} styleVariant={'h2'} style={{ marginBottom: '48px' }}>
+					Other Projects
+				</Typography>
+			</div>
+			<div style={{ display: 'flex', justifyContent: 'center' }}>
 				<StyledOtherProjectList theme={theme}>
 					{projects.map(p => (
-						<OtherProject project={p} key={p.projectId}/>
+						<OtherProject project={p} key={p.projectId} />
 					))}
 				</StyledOtherProjectList>
 			</div>
-			</DelayedSlideInFade>
+		</DelayedSlideInFade>
 	);
-}
+};
 
-const StyledOtherProjectList = styled('div')<{theme: Theme}>`
+const StyledOtherProjectList = styled('div')<{ theme: Theme }>`
 	display: grid;
 	flex-wrap: wrap;
 	justify-content: center;

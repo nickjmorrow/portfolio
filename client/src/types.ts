@@ -29,6 +29,7 @@ export interface Setting {
 export interface Technology {
 	technologyId: number;
 	name: string;
+	orderId: number | null;
 	experiences: Experience[];
 	skillLevel: SkillLevel;
 	version: string;

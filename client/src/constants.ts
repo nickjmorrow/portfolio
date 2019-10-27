@@ -17,8 +17,6 @@ const CONTACT_EMAIL_APPEARS = CONTACT_NAME_APPEARS + INCREMENTAL_DELAY;
 const CONTACT_MESSAGE_APPEARS = CONTACT_EMAIL_APPEARS + INCREMENTAL_DELAY;
 const CONTACT_SEND_MESSAGE_APPEARS = CONTACT_MESSAGE_APPEARS + INCREMENTAL_DELAY;
 
-
-
 export const enterTimeout = {
 	appBarAppears: APP_BAR_APPEARS,
 	aboutAppears: ABOUT_APPEARS,
@@ -38,3 +36,8 @@ export const enterTimeout = {
 export const FOOTER_HEIGHT = '42px';
 
 export const NUM_FEATURED_PROJECTS = 3;
+
+export enum SkillLevel {
+	Proficient = 1,
+	Familiar = 2,
+}
