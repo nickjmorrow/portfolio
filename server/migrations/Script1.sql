@@ -51,7 +51,7 @@ CREATE TABLE portfolio.experiences (
 
 INSERT INTO portfolio.experiences (name, start_date, end_date, role_name, location)
 SELECT 'Mastercard', CAST('2017-07-01' AS DATE), NULL, 'Software Quality Engineer', 'New York, NY' UNION
-SELECT 'BWX Technologies', '2018-05-01', CAST('2018-08-01' AS DATE), 'Engineering Intern', 'Johnson City, TN' UNION
+SELECT 'BWX Technologies', '2016-05-01', CAST('2016-08-01' AS DATE), 'Engineering Intern', 'Johnson City, TN' UNION
 SELECT 'UVA Process Modelling', '2015-12-01', '2017-03-01', 'Teaching Assistant', 'Charlottesville, VA';
 
 CREATE TABLE portfolio.experience_details (

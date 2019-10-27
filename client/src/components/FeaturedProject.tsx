@@ -27,7 +27,7 @@ export const FeaturedProject: React.FC<{ project: Project; rightAlign: boolean }
 	return (
 		<DelayedSlideInFade enterTimeout={500}>
 			<FeaturedProjectWrapper shouldRightAlign={rightAlign}>
-				<Image fluid={file.childImageSharp.fluid} theme={theme} />
+				<Image fluid={file.childImageSharp.fluid} theme={theme} style={{ width: '500px', height: '300px' }} />
 				<ProjectInfoWrapper shouldRightAlign={rightAlign}>
 					<Typography
 						colorVariant={'primaryDark'}

@@ -102,7 +102,7 @@ export const TechnologyList: React.FC = () => {
 									hiddenContent={
 										<div style={{ display: 'flex', flexFlow: 'column wrap' }}>
 											{relevantTechnologies
-												.sort((a, b) => (a.orderId > b.orderId ? -1 : 1))
+												.sort((a, b) => (a.orderId > b.orderId ? 1 : -1))
 												.map(rt => (
 													<div
 														key={rt.technologyId}

@@ -6,13 +6,8 @@ export const Header: React.FC<
 > = ({ children, link, id, ...props }) => {
 	const theme = useThemeContext();
 	return (
-		<div style={{marginBottom: theme.spacing.ss16}}>
-			<Typography
-				link={link}
-				weightVariant={7}
-				sizeVariant={9}
-				id={id}
-			>
+		<div style={{ marginBottom: theme.spacing.ss16 }}>
+			<Typography link={link} weightVariant={7} sizeVariant={9} id={id} style={{ margin: '0' }}>
 				{children}
 			</Typography>
 		</div>

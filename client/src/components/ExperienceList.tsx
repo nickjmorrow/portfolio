@@ -33,29 +33,32 @@ export const ExperienceList: React.FC = () => {
 		return null;
 	}
 	const { experiences } = data;
-	const [activeExperience, setActiveExperience] = React.useState(experiences.sort((e1, e2) => parseInt(e1.startDate, 10) > parseInt(e2.startDate, 10) ? -1 : 1)[0]);
+	const [activeExperience, setActiveExperience] = React.useState(experiences.find(e => e.endDate === null)!);
 	const theme = useThemeContext();
+	console.log(experiences);
 	return (
-			<Wrapper theme={theme}>
-				<DelayedSlideInFade enterTimeout={500} style={{backgroundColor: theme.colors.background, position: 'relative'}}>
-					<ExperienceListWrapper theme={theme}>
-						<Header id={"experience"} link={"#experience"}>
-							Experience
-						</Header>					
-						<ExperiencesWrapper theme={theme}>
-	
-							<Timeline
-								setActiveExperience={setActiveExperience}
-								experiences={experiences}
-								activeExperience={activeExperience}
-							>
-								Timeline
-							</Timeline>
-							<Experience experience={activeExperience} />
-						</ExperiencesWrapper>
-					</ExperienceListWrapper>
-				</DelayedSlideInFade>
-			</Wrapper>
+		<Wrapper theme={theme}>
+			<DelayedSlideInFade
+				enterTimeout={500}
+				style={{ backgroundColor: theme.colors.background, position: 'relative' }}
+			>
+				<ExperienceListWrapper theme={theme}>
+					<Header id={'experience'} link={'#experience'}>
+						Experience
+					</Header>
+					<ExperiencesWrapper theme={theme}>
+						<Timeline
+							setActiveExperience={setActiveExperience}
+							experiences={experiences}
+							activeExperience={activeExperience}
+						>
+							Timeline
+						</Timeline>
+						<Experience experience={activeExperience} />
+					</ExperiencesWrapper>
+				</ExperienceListWrapper>
+			</DelayedSlideInFade>
+		</Wrapper>
 	);
 };
 
@@ -64,7 +67,6 @@ const ExperiencesWrapper = styled('div')`
 	flex-direction: row;
 	justify-content: center;
 	max-width: 800px;
-
 `;
 
 const ExperienceListWrapper = styled('div')<{ theme: Theme }>`
@@ -77,7 +79,7 @@ const ExperienceListWrapper = styled('div')<{ theme: Theme }>`
 	max-width: max-content;
 `;
 
-const Wrapper = styled('div')<{theme: Theme}>`
+const Wrapper = styled('div')<{ theme: Theme }>`
 	background-color: ${p => p.theme.colors.background};
 	min-height: 100vh;
 `;

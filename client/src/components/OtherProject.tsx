@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { Project as ProjectType } from '../types';
 import styled from 'styled-components';
-import { useThemeContext, StyleConstant, Typography, GithubIcon, ShareIcon } from '@nickjmorrow/react-component-library';
+import {
+	useThemeContext,
+	StyleConstant,
+	Typography,
+	GithubIcon,
+	ShareIcon,
+} from '@nickjmorrow/react-component-library';
 import { Theme } from '@nickjmorrow/react-component-library/dist/typeUtilities';
 import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
 
@@ -12,13 +18,30 @@ export const OtherProject: React.FC<{ project: ProjectType }> = ({ project }) =>
 		<DelayedSlideInFade enterTimeout={500}>
 			<OtherProjectWrapper theme={theme}>
 				<Links>
-					<a href={project.githubUrl}><GithubIcon sizeVariant={2} style={{display: 'block'}}/></a>
-					<a href={project.demoUrl}><ShareIcon sizeVariant={2} style={{display: 'block'}}/></a>
+					<a href={project.githubUrl}>
+						<GithubIcon sizeVariant={2} style={{ display: 'block' }} />
+					</a>
+					<a href={project.demoUrl}>
+						<ShareIcon sizeVariant={2} style={{ display: 'block' }} />
+					</a>
 				</Links>
-				<Typography style={{marginBottom: theme.spacing.ss6, maxWidth: '170px'}} sizeVariant={4} colorVariant={'primaryDark'} weightVariant={7}>{project.name}</Typography>
+				<Typography
+					style={{ marginBottom: theme.spacing.ss6, maxWidth: '170px', display: 'block' }}
+					sizeVariant={4}
+					colorVariant={'primaryDark'}
+					weightVariant={7}
+				>
+					{project.name}
+				</Typography>
 				<Typography>{project.tagline}</Typography>
 				<Typography
-					style={{ marginBottom: theme.spacing.ss6, display: 'block', bottom: '0', position: 'absolute', marginRight: theme.spacing.ss4 }}
+					style={{
+						marginBottom: theme.spacing.ss6,
+						display: 'block',
+						bottom: '0',
+						position: 'absolute',
+						marginRight: theme.spacing.ss4,
+					}}
 					sizeVariant={2}
 					fontFamilyVariant={'monospace'}
 					colorVariant={'secondaryDark'}
@@ -31,7 +54,7 @@ export const OtherProject: React.FC<{ project: ProjectType }> = ({ project }) =>
 };
 
 const OtherProjectWrapper = styled('div')<{
-	theme: Theme
+	theme: Theme;
 }>`
 	height: 300px;
 	width: 300px;

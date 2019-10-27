@@ -5,6 +5,10 @@ import {
 	useThemeContext,
 	GithubIcon,
 	LinkedInIcon,
+	GITHUB_LINK,
+	LINKED_IN_LINK,
+	InvisibleLink,
+	MailIcon,
 } from '@nickjmorrow/react-component-library';
 import * as React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
@@ -30,27 +34,33 @@ export const AppBar: React.FC = () => {
 		>
 			<StyledAppBar spacing={spacing}>
 				<LeftWrapper theme={theme}>
-					<GithubIcon colorVariant={'secondaryLight'} />
-					<LinkedInIcon colorVariant={'secondaryLight'} />
-					
+					<InvisibleLink href={GITHUB_LINK}>
+						<GithubIcon colorVariant={'secondaryLight'} style={{ cursor: 'pointer' }} />
+					</InvisibleLink>
+					<InvisibleLink href={LINKED_IN_LINK}>
+						<LinkedInIcon colorVariant={'secondaryLight'} style={{ cursor: 'pointer' }} />
+					</InvisibleLink>
+					<InvisibleLink href={'mailto:njmorrow95@gmail.com'}>
+						<MailIcon colorVariant={'secondaryLight'} style={{ cursor: 'pointer' }} />
+					</InvisibleLink>
 				</LeftWrapper>
 				<RightWrapper theme={theme}>
-					<AnchorLink href="#about" offset={'-52'}>
+					<AnchorLink href="#about" offset={'-52'} style={{ textDecoration: 'none' }}>
 						<SlideInFade enterTimeout={enterTimeout.aboutAppears}>
 							<LinkTypography>About</LinkTypography>
 						</SlideInFade>
 					</AnchorLink>
-					<AnchorLink href="#experience">
+					<AnchorLink href="#experience" style={{ textDecoration: 'none' }}>
 						<SlideInFade enterTimeout={enterTimeout.experienceAppears}>
 							<LinkTypography>Experience</LinkTypography>
 						</SlideInFade>
 					</AnchorLink>
-					<AnchorLink href="#work">
+					<AnchorLink href="#work" style={{ textDecoration: 'none' }}>
 						<SlideInFade enterTimeout={enterTimeout.workAppears}>
 							<LinkTypography>Work</LinkTypography>
 						</SlideInFade>
 					</AnchorLink>
-					<AnchorLink href="#contact">
+					<AnchorLink href="#contact" style={{ textDecoration: 'none' }}>
 						<SlideInFade enterTimeout={enterTimeout.contactAppears}>
 							<LinkTypography>Contact</LinkTypography>
 						</SlideInFade>
@@ -73,6 +83,7 @@ const LinkTypography: React.FC = ({ children }) => (
 		weightVariant={8}
 		colorVariant={'primaryLight'}
 		sizeVariant={4}
+		style={{ textDecoration: 'none' }}
 	>
 		{children}
 	</Typography>
@@ -102,7 +113,8 @@ const RightWrapper = styled('div')<{ theme: Theme }>`
 `;
 
 const LeftWrapper = styled('div')<{ theme: Theme }>`
-	display: grid;
-	grid-auto-flow: column;
-	grid-column-gap: ${p => p.theme.spacing.ss8};
+	display: flex;
+	width: 150px;
+	justify-content: space-between;
+	align-items: center;
 `;

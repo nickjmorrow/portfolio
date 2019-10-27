@@ -16,7 +16,9 @@ export const Experience: React.FC<{ experience: ExperienceType }> = ({ experienc
 				<Typography sizeVariant={5}>{experience.roleName}</Typography>
 			</RoleName>
 			<OrganizationName>
-				<Link route={'mastercard.com'}><Typography colorVariant={'secondaryDark'}>{experience.name}</Typography></Link>
+				<Link route={'mastercard.com'}>
+					<Typography colorVariant={'secondaryDark'}>{experience.name}</Typography>
+				</Link>
 			</OrganizationName>
 			<Timeframe experience={experience} />
 			<ExperienceDetailList theme={theme}>
@@ -24,8 +26,7 @@ export const Experience: React.FC<{ experience: ExperienceType }> = ({ experienc
 					<DelayedSlideInFade enterTimeout={500} key={ed.experienceDetailId}>
 						<ExperienceDetail key={ed.description}>
 							<BulletPointWrapper>
-								<ArrowIcon style={{position: 'relative', top: '5px'}}sizeVariant={1} />
-							
+								<ArrowIcon style={{ position: 'relative', top: '5px' }} sizeVariant={1} />
 							</BulletPointWrapper>
 							<div>
 								<TechnologyEmphasizedTypography text={ed.description} />
@@ -37,8 +38,6 @@ export const Experience: React.FC<{ experience: ExperienceType }> = ({ experienc
 		</ExperienceWrapper>
 	);
 };
-
-
 
 const BulletPointWrapper = styled.div`
 	display: flex;
