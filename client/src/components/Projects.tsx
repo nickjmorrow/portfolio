@@ -31,7 +31,7 @@ export const GatsbyQuery = graphql`
 	}
 `;
 
-export const ProjectList: React.FC = () => {
+export const Projects: React.FC = () => {
 	const { data } = useStaticQuery<{ data: { projects: Project[] } }>(GatsbyQuery);
 
 	const theme = useThemeContext();
@@ -46,14 +46,12 @@ export const ProjectList: React.FC = () => {
 	const otherProjects = sortedProjects.filter((p, i) => i >= NUM_FEATURED_PROJECTS);
 
 	return (
-		<DelayedSlideInFade enterTimeout={500}>
-			<ProjectsWrapper id="work" theme={theme}>
-				<div style={{ padding: '72px' }}>
-					<FeaturedProjectList projects={featuredProjects} />
-					<OtherProjectList projects={otherProjects} />
-				</div>
-			</ProjectsWrapper>
-		</DelayedSlideInFade>
+		<ProjectsWrapper theme={theme}>
+			<div style={{ padding: '72px' }}>
+				<FeaturedProjectList projects={featuredProjects} />
+				<OtherProjectList projects={otherProjects} />
+			</div>
+		</ProjectsWrapper>
 	);
 };
 
@@ -62,4 +60,5 @@ const ProjectsWrapper = styled('section')<{ theme: Theme }>`
 	justify-content: center;
 	flex-direction: column;
 	background-color: ${p => p.theme.colors.background};
+	position: relative;
 `;

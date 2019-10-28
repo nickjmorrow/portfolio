@@ -26,7 +26,7 @@ export const GatsbyQuery = graphql`
 	}
 `;
 
-export const ExperienceList: React.FC = () => {
+export const Experiences: React.FC = () => {
 	const { data } = useStaticQuery<{ data: { experiences: ExperienceType[] } }>(GatsbyQuery);
 	console.log(data);
 	if (data === null) {
@@ -35,29 +35,24 @@ export const ExperienceList: React.FC = () => {
 	const { experiences } = data;
 	const [activeExperience, setActiveExperience] = React.useState(experiences.find(e => e.endDate === null)!);
 	const theme = useThemeContext();
-	console.log(experiences);
+
 	return (
 		<Wrapper theme={theme}>
-			<DelayedSlideInFade
-				enterTimeout={500}
-				style={{ backgroundColor: theme.colors.background, position: 'relative' }}
-			>
-				<ExperienceListWrapper theme={theme}>
-					<Header id={'experience'} link={'#experience'}>
-						Experience
-					</Header>
-					<ExperiencesWrapper theme={theme}>
-						<Timeline
-							setActiveExperience={setActiveExperience}
-							experiences={experiences}
-							activeExperience={activeExperience}
-						>
-							Timeline
-						</Timeline>
-						<Experience experience={activeExperience} />
-					</ExperiencesWrapper>
-				</ExperienceListWrapper>
-			</DelayedSlideInFade>
+			<ExperienceListWrapper theme={theme}>
+				<Header id={'experience'} link={'#experience'}>
+					Experience
+				</Header>
+				<ExperiencesWrapper theme={theme}>
+					<Timeline
+						setActiveExperience={setActiveExperience}
+						experiences={experiences}
+						activeExperience={activeExperience}
+					>
+						Timeline
+					</Timeline>
+					<Experience experience={activeExperience} />
+				</ExperiencesWrapper>
+			</ExperienceListWrapper>
 		</Wrapper>
 	);
 };
@@ -79,7 +74,7 @@ const ExperienceListWrapper = styled('div')<{ theme: Theme }>`
 	max-width: max-content;
 `;
 
-const Wrapper = styled('div')<{ theme: Theme }>`
+const Wrapper = styled('section')<{ theme: Theme }>`
+	position: relative;
 	background-color: ${p => p.theme.colors.background};
-	min-height: 100vh;
 `;

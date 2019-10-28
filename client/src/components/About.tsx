@@ -10,18 +10,22 @@ import { TechnologyList } from './TechnologyList';
 export const About: React.FC = () => {
 	const theme = useThemeContext();
 	return (
-		<AboutWrapper id="about" theme={theme}>
-			<DelayedSlideInFade enterTimeout={500} style={{margin: '0 auto', maxWidth: 'max-content'}}>
-				<Header link="#about" id="about">About</Header>
+		<AboutWrapper theme={theme}>
+			<DelayedSlideInFade enterTimeout={500} style={{ margin: '0 auto', maxWidth: 'max-content' }}>
+				<Header link="#about" id="about">
+					About
+				</Header>
 				<div style={{ maxWidth: theme.spacing.ss160, marginBottom: theme.spacing.ss24 }}>
 					<DelayedSlideInFade enterTimeout={250}>
-						<Typography style={{marginBottom: theme.spacing.ss2}} sizeVariant={4}>
-							Hi! I'm Nick, and I live and work in New York. I enjoy creating beautiful, performant web applications both by user experience and code quality. 
+						<Typography style={{ marginBottom: theme.spacing.ss2 }} sizeVariant={4}>
+							Hi! I'm Nick, and I live and work in New York. I enjoy creating beautiful, performant web
+							applications both by user experience and code quality.
 						</Typography>
 					</DelayedSlideInFade>
 					<DelayedSlideInFade enterTimeout={250}>
 						<Typography sizeVariant={4}>
-							After graduating from University of Virginia, I fell in love with software engineering and data analysis. Below are some of the tools and technologies I've worked with recently:
+							After graduating from University of Virginia, I fell in love with software engineering and
+							data analysis. Below are some of the tools and technologies I've worked with recently:
 						</Typography>
 					</DelayedSlideInFade>
 				</div>
@@ -31,8 +35,7 @@ export const About: React.FC = () => {
 	);
 };
 
-
-const AboutWrapper = styled('div')<{theme: Theme}>`
+const AboutWrapper = styled('section')<{ theme: Theme }>`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

@@ -16,9 +16,12 @@ export const Contact: React.FC = () => {
 	const theme = useThemeContext();
 	const { border, colors, typography, spacing } = theme;
 	return (
-		<Wrapper>
-			<DelayedSlideInFade enterTimeout={enterTimeout.contactAppears} style={{ backgroundColor: 'white', position: 'relative' }}>
-				<section id="contact">
+		<Wrapper theme={theme}>
+			<DelayedSlideInFade
+				enterTimeout={enterTimeout.contactAppears}
+				style={{ backgroundColor: 'white', position: 'relative' }}
+			>
+				<div id="contact">
 					<ContactWrapper theme={theme}>
 						<Header>Contact</Header>
 						<Form spacing={spacing}>
@@ -55,16 +58,20 @@ export const Contact: React.FC = () => {
 									styleVariant={1}
 									leftColor={'white'}
 									rightColor={'white'}
-									style={{ backgroundImage: 'linear-gradient(40deg, pink, purple)', opacity: 0.9, '&:hover': {
-										color: 'red'
-									} }}
+									style={{
+										backgroundImage: 'linear-gradient(40deg, pink, purple)',
+										opacity: 0.9,
+										'&:hover': {
+											color: 'red',
+										},
+									}}
 								>
 									Send Message
 								</Button>
 							</SlideInFade>
 						</Form>
 					</ContactWrapper>
-				</section>
+				</div>
 			</DelayedSlideInFade>
 		</Wrapper>
 	);
@@ -108,8 +115,9 @@ const TextArea = styled('textarea')<{
 	}
 `;
 
-const Wrapper = styled.div`
-	background-color: white;
+const Wrapper = styled('section')<{ theme: Theme }>`
+	background-color: ${p => p.theme.colors.background};
 	min-height: 100vh;
 	width: 100%;
+	position: relative;
 `;

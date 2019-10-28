@@ -21,10 +21,10 @@ import { FOOTER_HEIGHT } from '../constants';
 import { About } from './About';
 import { AppBar } from './AppBar';
 import { Contact } from './Contact';
-import { ExperienceList } from './ExperienceList';
+import { Experiences } from './Experiences';
 import { Headline } from './Headline';
 import './layout.css';
-import { ProjectList } from './ProjectList';
+import { Projects } from './Projects';
 
 const themeInputs: ArgumentType<typeof updateThemeInputs>[0] = {
 	typography: {
@@ -46,8 +46,8 @@ export const Main: React.FC = () => {
 					<Headline />
 					<div style={{ backgroundColor: 'white' }}>
 						<About />
-						<ExperienceList />
-						<ProjectList />
+						<Experiences />
+						<Projects />
 						<Contact />
 					</div>
 				</StyledMain>
