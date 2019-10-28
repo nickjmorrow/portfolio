@@ -12,6 +12,7 @@ import {
 	ThemeContext,
 	updateThemeInputs,
 	useThemeContext,
+	PopulatedFooter,
 } from '@nickjmorrow/react-component-library';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -50,7 +51,7 @@ export const Main: React.FC = () => {
 						<Contact />
 					</div>
 				</StyledMain>
-				<Footer />
+				<PopulatedFooter />
 			</Wrapper>
 		</ThemeContext.Provider>
 	);
