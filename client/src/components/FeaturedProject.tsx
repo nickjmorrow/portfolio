@@ -1,4 +1,11 @@
-import { GithubIcon, Theme, Typography, useThemeContext, ShareIcon } from '@nickjmorrow/react-component-library';
+import {
+	GithubIcon,
+	Theme,
+	Typography,
+	useThemeContext,
+	ShareIcon,
+	InvisibleLink,
+} from '@nickjmorrow/react-component-library';
 import * as React from 'react';
 import styled from 'styled-components';
 import { Project } from '../types';
@@ -6,29 +13,30 @@ import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 
-export const ImageQuery = graphql`
-	query {
-		file(relativePath: { eq: "component_library.png" }) {
-			childImageSharp {
-				# Specify the image processing specifications right in the query.
-				# Makes it trivial to update as your page's design changes.
-				fluid {
-					...GatsbyImageSharpFluid
+export const FeaturedProject: React.FC<{ project: Project; rightAlign: boolean }> = ({ project, rightAlign }) => {
+	const ImageQuery = graphql`
+		query {
+			file(relativePath: { eq: "map_clustering_1.png" }) {
+				childImageSharp {
+					# Specify the image processing specifications right in the query.
+					# Makes it trivial to update as your page's design changes.
+					fixed(width: 500, height: 300) {
+						...GatsbyImageSharpFixed
+					}
 				}
 			}
 		}
-	}
-`;
+	`;
 
-export const FeaturedProject: React.FC<{ project: Project; rightAlign: boolean }> = ({ project, rightAlign }) => {
 	const theme = useThemeContext();
 	const { file } = useStaticQuery(ImageQuery);
 
+	const rightAlignProxy = true;
 	return (
 		<DelayedSlideInFade enterTimeout={500}>
-			<FeaturedProjectWrapper shouldRightAlign={rightAlign}>
-				<Image fluid={file.childImageSharp.fluid} theme={theme} style={{ width: '500px', height: '300px' }} />
-				<ProjectInfoWrapper shouldRightAlign={rightAlign}>
+			<FeaturedProjectWrapper shouldRightAlign={rightAlignProxy}>
+				<Image fixed={file.childImageSharp.fixed} theme={theme} />
+				<ProjectInfoWrapper shouldRightAlign={rightAlignProxy}>
 					<Typography
 						colorVariant={'primaryDark'}
 						sizeVariant={5}
