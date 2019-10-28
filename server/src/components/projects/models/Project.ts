@@ -10,22 +10,25 @@ export class Project {
 	@Column()
 	public name!: string;
 
-	@Column({ name: 'tagline'})
+	@Column({ name: 'tagline' })
 	public tagline!: string;
 
-	@Column({name: 'github_link'})
+	@Column({ name: 'github_link' })
 	public githubUrl!: string;
 
-	@Column({name: 'site_link'})
+	@Column({ name: 'site_link' })
 	public demoUrl!: string;
 
 	@OneToMany(type => ProjectDetail, projectDetail => projectDetail.Project)
 	public projectDetails!: ProjectDetail[];
 
-	@Column({name: 'order_id'})
+	@Column({ name: 'file_name' })
+	public fileName!: string;
+
+	@Column({ name: 'order_id' })
 	public orderId!: number;
 
-	@Column({name: 'date_deleted'})
+	@Column({ name: 'date_deleted' })
 	public dateDeleted!: Date;
 
 	@ManyToMany(type => Technology, technology => technology.technologyId)

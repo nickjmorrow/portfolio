@@ -6,7 +6,8 @@ export const projectTypeDefs = `
 		githubUrl: String!
 		demoUrl: String
         projectDetails: [ProjectDetail!]!
-        technologies: [Technology!]!
+		technologies: [Technology!]!
+		fileName: String!
 		orderId: Int!
     }
 

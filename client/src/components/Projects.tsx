@@ -19,6 +19,7 @@ export const GatsbyQuery = graphql`
 				tagline
 				githubUrl
 				demoUrl
+				fileName
 				projectDetails {
 					description
 				}

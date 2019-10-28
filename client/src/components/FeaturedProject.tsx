@@ -16,7 +16,7 @@ import Img from 'gatsby-image';
 export const FeaturedProject: React.FC<{ project: Project; rightAlign: boolean }> = ({ project, rightAlign }) => {
 	const ImageQuery = graphql`
 		query {
-			file(relativePath: { eq: "map_clustering_1.png" }) {
+			file(relativePath: { eq: "map_clustering.png" }) {
 				childImageSharp {
 					# Specify the image processing specifications right in the query.
 					# Makes it trivial to update as your page's design changes.

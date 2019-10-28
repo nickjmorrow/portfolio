@@ -16,6 +16,7 @@ export interface Project {
 	tagline: string;
 	githubUrl: string;
 	demoUrl: string;
+	fileName: string;
 	projectDetails: ProjectDetail[];
 	technologies: Technology[];
 	orderId: number;
