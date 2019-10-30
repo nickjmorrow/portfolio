@@ -22,6 +22,9 @@ export class Experience {
 	@Column()
 	public location!: string;
 
+	@Column({ name: 'company_url' })
+	public companyUrl!: string;
+
 	@OneToMany(type => ExperienceDetail, experienceDetail => experienceDetail.Experience)
 	public experienceDetails!: ExperienceDetail[];
 

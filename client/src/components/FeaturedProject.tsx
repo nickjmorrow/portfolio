@@ -1,41 +1,18 @@
-import {
-	GithubIcon,
-	Theme,
-	Typography,
-	useThemeContext,
-	ShareIcon,
-	InvisibleLink,
-} from '@nickjmorrow/react-component-library';
+import { GithubIcon, Theme, Typography, useThemeContext, ShareIcon } from '@nickjmorrow/react-component-library';
 import * as React from 'react';
 import styled from 'styled-components';
 import { Project } from '../types';
 import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
-import { graphql, useStaticQuery } from 'gatsby';
-import Img from 'gatsby-image';
+import { Image } from './images/Image';
 
 export const FeaturedProject: React.FC<{ project: Project; rightAlign: boolean }> = ({ project, rightAlign }) => {
-	const ImageQuery = graphql`
-		query {
-			file(relativePath: { eq: "map_clustering.png" }) {
-				childImageSharp {
-					# Specify the image processing specifications right in the query.
-					# Makes it trivial to update as your page's design changes.
-					fixed(width: 500, height: 300) {
-						...GatsbyImageSharpFixed
-					}
-				}
-			}
-		}
-	`;
-
 	const theme = useThemeContext();
-	const { file } = useStaticQuery(ImageQuery);
 
 	const rightAlignProxy = true;
 	return (
 		<DelayedSlideInFade enterTimeout={500}>
 			<FeaturedProjectWrapper shouldRightAlign={rightAlignProxy}>
-				<Image fixed={file.childImageSharp.fixed} theme={theme} />
+				<Image fileName={project.fileName} />
 				<ProjectInfoWrapper shouldRightAlign={rightAlignProxy}>
 					<Typography
 						colorVariant={'primaryDark'}
@@ -106,17 +83,4 @@ const Links = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	width: 60px;
-`;
-
-const Image = styled(Img)<{ shouldRightAlign: boolean; theme: Theme }>`
-	background-color: lightblue;
-	opacity: 0.5;
-	width: 60%;
-	height: 100%;
-	max-width: 400px;
-	position: absolute;
-	${p => (p.shouldRightAlign ? 'left: 0' : 'right: 0')};
-	top: 0;
-	z-index: 0;
-	box-shadow: ${p => p.theme.boxShadow.bs2};
 `;

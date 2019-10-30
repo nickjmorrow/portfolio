@@ -8,6 +8,7 @@ export const experienceTypeDefs = `
 		startDate: String!
 		endDate: String
 		location: String!
+		companyUrl: String!
     }
 
     type Query {

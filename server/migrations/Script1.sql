@@ -47,12 +47,14 @@ CREATE TABLE portfolio.experiences (
     , end_date DATE NULL
     , role_name VARCHAR(255) NOT NULL
     , location VARCHAR(255) NOT NULL
+    , company_url VARCHAR NOT NULL
 );
 
-INSERT INTO portfolio.experiences (name, start_date, end_date, role_name, location)
-SELECT 'Mastercard', CAST('2017-07-01' AS DATE), NULL, 'Software Quality Engineer', 'New York, NY' UNION
-SELECT 'BWX Technologies', '2016-05-01', CAST('2016-08-01' AS DATE), 'Engineering Intern', 'Johnson City, TN' UNION
-SELECT 'UVA Process Modelling', '2015-12-01', '2017-03-01', 'Teaching Assistant', 'Charlottesville, VA';
+INSERT INTO portfolio.experiences (experience_id, name, start_date, end_date, role_name, location, company_url)
+OVERRIDING SYSTEM VALUE 
+SELECT 1, 'Mastercard', CAST('2017-07-01' AS DATE), NULL, 'Software Quality Engineer', 'New York, NY', 'https://www.mastercard.com' UNION
+SELECT 2, 'BWX Technologies', '2016-05-01', CAST('2016-08-01' AS DATE), 'Engineering Intern', 'Johnson City, TN', 'http://www.nuclearfuelservices.com' UNION
+SELECT 3, 'UVA Process Modelling', '2015-12-01', '2017-03-01', 'Teaching Assistant', 'Charlottesville, VA', 'https://engineering.virginia.edu/departments/chemical-engineering';
 
 CREATE TABLE portfolio.experience_details (
     experience_detail_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY

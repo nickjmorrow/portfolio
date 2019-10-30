@@ -6,7 +6,6 @@ import { getFormattedDate } from '../utilities';
 import { TechnologyEmphasizedTypography } from './TechnologyEmphasizedTypography';
 import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
 
-// TODO: need I rename the type? is that a linting configuration?
 export const Experience: React.FC<{ experience: ExperienceType }> = ({ experience }) => {
 	const theme = useThemeContext();
 
@@ -16,14 +15,14 @@ export const Experience: React.FC<{ experience: ExperienceType }> = ({ experienc
 				<Typography sizeVariant={5}>{experience.roleName}</Typography>
 			</RoleName>
 			<OrganizationName>
-				<Link route={'mastercard.com'}>
+				<Link route={experience.companyUrl}>
 					<Typography colorVariant={'secondaryDark'}>{experience.name}</Typography>
 				</Link>
 			</OrganizationName>
 			<Timeframe experience={experience} />
 			<ExperienceDetailList theme={theme}>
-				{experience.experienceDetails.map(ed => (
-					<DelayedSlideInFade enterTimeout={500} key={ed.experienceDetailId}>
+				<DelayedSlideInFade enterTimeout={500}>
+					{experience.experienceDetails.map(ed => (
 						<ExperienceDetail key={ed.description}>
 							<BulletPointWrapper>
 								<ArrowIcon style={{ position: 'relative', top: '5px' }} sizeVariant={1} />
@@ -32,8 +31,8 @@ export const Experience: React.FC<{ experience: ExperienceType }> = ({ experienc
 								<TechnologyEmphasizedTypography text={ed.description} />
 							</div>
 						</ExperienceDetail>
-					</DelayedSlideInFade>
-				))}
+					))}
+				</DelayedSlideInFade>
 			</ExperienceDetailList>
 		</ExperienceWrapper>
 	);

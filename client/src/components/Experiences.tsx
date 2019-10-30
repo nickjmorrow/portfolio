@@ -17,6 +17,7 @@ export const GatsbyQuery = graphql`
 				roleName
 				startDate
 				endDate
+				companyUrl
 				experienceDetails {
 					experienceDetailId
 					description

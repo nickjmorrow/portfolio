@@ -9,12 +9,12 @@ import {
 	LINKED_IN_LINK,
 	InvisibleLink,
 	MailIcon,
+	Button,
 } from '@nickjmorrow/react-component-library';
 import * as React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import styled from 'styled-components';
 import { enterTimeout } from '../constants';
-import { Button } from './shared/Button';
 import { SlideInFade } from './shared/SlideInFade';
 import { Theme } from '@nickjmorrow/react-component-library/dist/typeUtilities';
 
@@ -66,15 +66,33 @@ export const AppBar: React.FC = () => {
 						</SlideInFade>
 					</AnchorLink>
 					<SlideInFade enterTimeout={enterTimeout.resumeAppears}>
-						<Button leftColor={'hsl(50, 100%, 50%)'} rightColor={'hsl(330, 100%, 70%)'}>
-							Resume
-						</Button>
+						<StyledButton theme={theme} styleVariant={2} onClick={() => alert('not implemented')}>
+							<StyledTypography theme={theme}>Resume</StyledTypography>
+						</StyledButton>
 					</SlideInFade>
 				</RightWrapper>
 			</StyledAppBar>
 		</Fade>
 	);
 };
+
+const StyledButton = styled(Button)<{ theme: Theme }>`
+	border-color: ${p => p.theme.colors.neutral.cs1};
+	&: hover {
+		border-color: ${p => p.theme.colors.neutral.cs1};
+		background-color: hsla(0, 0%, 100%, 30%);
+		transition: ${p => p.theme.transitions.fast} all;
+	}
+	&: active {
+		border-color: ${p => p.theme.colors.neutral.cs1};
+	}
+`;
+
+const StyledTypography = styled(Typography)<{ theme: Theme }>`
+	background: -webkit-linear-gradient(60deg, hsl(179.5, 93.4%, 75.6%), hsl(54.6, 100%, 58.9%));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: ${p => p.theme.colors.transparent};
+`;
 
 const LinkTypography: React.FC = ({ children }) => {
 	const theme = useThemeContext();

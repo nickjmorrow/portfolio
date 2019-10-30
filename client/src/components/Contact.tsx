@@ -3,11 +3,10 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
 import { Header } from './shared/Header';
-import { TextInput, useThemeContext, StyleConstant } from '@nickjmorrow/react-component-library';
+import { TextInput, useThemeContext, StyleConstant, Button } from '@nickjmorrow/react-component-library';
 import { Theme } from '../types';
 import { enterTimeout } from '../constants';
 import { SlideInFade } from './shared/SlideInFade';
-import { Button } from './shared/Button';
 
 export const Contact: React.FC = () => {
 	const [name, setName] = useState('');
@@ -53,21 +52,9 @@ export const Contact: React.FC = () => {
 								/>
 							</SlideInFade>
 							<SlideInFade enterTimeout={enterTimeout.contactSendMessageAppears}>
-								<Button
-									useMargin={false}
-									styleVariant={1}
-									leftColor={'white'}
-									rightColor={'white'}
-									style={{
-										backgroundImage: 'linear-gradient(40deg, pink, purple)',
-										opacity: 0.9,
-										'&:hover': {
-											color: 'red',
-										},
-									}}
-								>
+								<StyledButton styleVariant={1} onClick={() => alert('not implemented')}>
 									Send Message
-								</Button>
+								</StyledButton>
 							</SlideInFade>
 						</Form>
 					</ContactWrapper>
@@ -76,6 +63,15 @@ export const Contact: React.FC = () => {
 		</Wrapper>
 	);
 };
+
+const StyledButton = styled(Button)`
+	margin: 0;
+	background: linear-gradient(40deg, pink, purple);
+	border: none;
+	&: hover {
+		filter: brightness(110%);
+	}
+`;
 
 const ContactWrapper = styled('div')<{ theme: Theme }>`
 	height: 100vh;

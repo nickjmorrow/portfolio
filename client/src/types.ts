@@ -8,6 +8,7 @@ export interface Experience {
 	startDate: string;
 	endDate: string | null;
 	roleName: string;
+	companyUrl: string;
 }
 
 export interface Project {
