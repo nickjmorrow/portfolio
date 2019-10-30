@@ -76,18 +76,26 @@ export const AppBar: React.FC = () => {
 	);
 };
 
-const LinkTypography: React.FC = ({ children }) => (
-	<Typography
-		isInteractive={true}
-		colorSet={{ color: 'hsla(0,0%,100%,1)', colorActive: 'hsla(0,0%,100%,0.7)', colorHover: 'hsla(0,0%,100%,0.7)' }}
-		weightVariant={8}
-		colorVariant={'primaryLight'}
-		sizeVariant={4}
-		style={{ textDecoration: 'none' }}
-	>
-		{children}
-	</Typography>
-);
+const LinkTypography: React.FC = ({ children }) => {
+	const theme = useThemeContext();
+	const StyledTypography = styled(Typography)<{ theme: Theme }>`
+		color: ${p => p.theme.colors.neutral.cs3};
+		&: hover {
+			color: ${p => p.theme.colors.neutral.cs1};
+		}
+	`;
+	return (
+		<StyledTypography
+			weightVariant={8}
+			colorVariant={'primaryLight'}
+			sizeVariant={4}
+			theme={theme}
+			style={{ textDecoration: 'none' }}
+		>
+			{children}
+		</StyledTypography>
+	);
+};
 
 const StyledAppBar = styled('header')<{ spacing: StyleConstant<'spacing'> }>`
 	display: grid;
