@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Technology, Theme, TechnologyType } from '../types';
-import { BulletPoint } from './shared/BulletPoint';
+import { Popover } from '@material-ui/core';
 import {
 	Typography,
 	SeleniumIcon,
@@ -59,8 +59,25 @@ export const TechnologyList: React.FC = () => {
 	if (data === null) {
 		return null;
 	}
+	const [anchorEl, setAnchorEl] = React.useState(null);
+	const [currentTechnology, setTechnology] = React.useState<Technology>(null);
+
+	const handlePopoverOpen = (event: React.MouseEvent, technology: Technology) => {
+		event.preventDefault();
+		setTechnology(technology);
+		setAnchorEl(event.currentTarget);
+	};
+
+	const handlePopoverClose = (event: React.MouseEvent) => {
+		console.log('closing');
+		event.preventDefault();
+		setAnchorEl(null);
+	};
+
+	const open = Boolean(anchorEl);
+	const id = open ? 'simple-popover' : undefined;
+
 	const { technologies } = data;
-	// TODO: remove this comment
 	const theme = useThemeContext();
 	const technologyTypes = technologies.reduce<TechnologyType[]>((agg, cur) => {
 		if (agg.findIndex(tti => tti.technologyTypeId === cur.technologyType.technologyTypeId) === -1) {
@@ -70,6 +87,26 @@ export const TechnologyList: React.FC = () => {
 	}, []);
 	return (
 		<DelayedSlideInFade enterTimeout={1000} style={{ padding: '32px', display: 'flex', justifyContent: 'center' }}>
+			<Popover
+				id={id}
+				open={open}
+				anchorEl={anchorEl}
+				onClose={handlePopoverClose}
+				anchorOrigin={{
+					vertical: 'top',
+					horizontal: 'right',
+				}}
+				transformOrigin={{
+					vertical: 'top',
+					horizontal: 'left',
+				}}
+				disableRestoreFocus={true}
+				style={{ pointerEvents: 'none', padding: '16px' }}
+			>
+				<Typography style={{ padding: '16px' }}>
+					{currentTechnology && currentTechnology.skillLevel.description}
+				</Typography>
+			</Popover>
 			<Paper style={{ minWidth: theme.spacing.ss128, padding: '16px 0' }}>
 				<TechnologiesWrapper theme={theme}>
 					{technologyTypes
@@ -125,7 +162,19 @@ export const TechnologyList: React.FC = () => {
 														>
 															{iconMap[rt.name]}
 														</div>
-														<Typography style={{ marginLeft: '8px' }}>{rt.name}</Typography>
+														<div
+															onMouseLeave={handlePopoverClose}
+															style={{ paddingRight: '64px' }}
+														>
+															<div
+																onMouseEnter={event => handlePopoverOpen(event, rt)}
+																style={{ paddingRight: '16px' }}
+															>
+																<Typography style={{ marginLeft: '8px' }}>
+																	{rt.name}
+																</Typography>
+															</div>
+														</div>
 													</div>
 												))}
 										</div>
