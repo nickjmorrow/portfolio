@@ -133,9 +133,9 @@ CREATE TABLE portfolio.projects (
 );
 
 INSERT INTO portfolio.projects (name, tagline, github_link, site_link, file_name, order_id)
-SELECT 'Hierarchical Clustering of Google Maps Locations', 'Cluster locations in popular cities and view optimal paths between them for better sight-seeing.', 'https://github.com/nickjmorrow/maps-clustering', 'https://nickjmorrow.github.io/maps-clustering', 'map_clustering.png', 1 
-UNION SELECT 'Weather Analytics and Extrema Monitoring', 'Analyze weather extrema across various lookback periods to surface trends across time and region.', 'https://github.com/nickjmorrow/weird-weather', 'https://nickjmorrow.github.io/weird-weather', 'weird_weather.png', 2 
-UNION SELECT 'React UI Component Library', 'Define design-decisions up-front with a component library while leaving space for one-off departures.', 'https://github.com/nickjmorrow/react-component-library', 'https://nickjmorrow.github.io/react-component-library', 'react_component_library.png', 3 
+SELECT 'Geospatial Clustering', 'Cluster locations in popular cities and view optimal paths between them for better sight-seeing.', 'https://github.com/nickjmorrow/maps-clustering', 'https://nickjmorrow.github.io/maps-clustering', 'map_clustering.png', 1 
+UNION SELECT 'Weird Weather', 'Analyze weather extrema across various lookback periods to surface trends across time and region.', 'https://github.com/nickjmorrow/weird-weather', 'https://nickjmorrow.github.io/weird-weather', 'weird_weather.png', 2 
+UNION SELECT 'Component Library', 'Define design-decisions up-front with a component library while leaving space for one-off departures.', 'https://github.com/nickjmorrow/react-component-library', 'https://nickjmorrow.github.io/react-component-library', 'react_component_library.png', 3 
 UNION SELECT 'Spoiler-Free TV Show Information Aggregator', 'Check out various analytics for a TV show before watching it, and ensure you won''t get spoiled in the process.', 'https://github.com/nickjmorrow/first-few', 'https://nickjmorrow.github.io/first-few', 'first_few.png', 4 
 UNION SELECT 'Subreddit Subscription Automated Job', 'Automically import top posts from selected subreddits into your Pocket account.', 'https://github.com/nickjmorrow/subreddit-subscriber', 'https://nickjmorrow.github.io/subreddit-subscriber/', 'subreddit_subscriber.png', 5
 UNION SELECT 'Professional Portfolio v1', 'Portfolio to showcase experiences, projects, and technologies.', 'https://github.com/nickjmorrow/portfolio', 'https://nickjmorrow.com/', 'portfolio.png', 6 

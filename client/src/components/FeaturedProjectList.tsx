@@ -24,11 +24,12 @@ export const FeaturedProjectList: React.FC<{ projects: Project[] }> = ({ project
 };
 
 const FeaturedProjectListWrapper = styled.div`
-	max-width: 800px;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	margin: 0 auto;
+	max-width: 1200px;
+	padding: 0 72px;
 `;
 
 const InnerWrapper = styled.div`

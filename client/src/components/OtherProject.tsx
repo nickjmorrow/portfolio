@@ -62,10 +62,10 @@ const OtherProjectWrapper = styled('div')<{
 	border-radius: ${p => p.theme.border.borderRadius.br1};
 	padding: ${p => p.theme.spacing.ss8};
 	position: relative;
+	margin-bottom: ${p => p.theme.spacing.ss8};
 	box-shadow: ${p => p.theme.boxShadow.bs2};
 	transition: all ${p => p.theme.transitions.medium};
 	top: 0px;
-	margin-bottom: ${p => p.theme.spacing.ss8};
 	&: hover {
 		top: -4px;
 		box-shadow: ${p => p.theme.boxShadow.bs3};

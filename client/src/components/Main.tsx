@@ -31,6 +31,19 @@ const themeInputs: ArgumentType<typeof updateThemeInputs>[0] = {
 		fontFamily: {
 			default: 'Overpass, sans-serif',
 		},
+		fontSizes: {
+			fs1: 12,
+			fs2: 16,
+			fs3: 18,
+			fs4: 24,
+			fs5: 24,
+			fs6: 24,
+			fs7: 30,
+			fs8: 36,
+			fs9: 48,
+			fs10: 60,
+			fs11: 72,
+		},
 	},
 	defaultShowBoxShadow: false,
 };

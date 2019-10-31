@@ -12,7 +12,7 @@ export const FeaturedProject: React.FC<{ project: Project; rightAlign: boolean }
 	return (
 		<DelayedSlideInFade enterTimeout={500}>
 			<FeaturedProjectWrapper shouldRightAlign={rightAlignProxy}>
-				<Image fileName={project.fileName} url={project.demoUrl} />
+				<Image fileName={project.fileName} url={project.d} />
 				<ProjectInfoWrapper shouldRightAlign={rightAlignProxy}>
 					<Typography
 						colorVariant={'primaryDark'}
@@ -52,28 +52,29 @@ export const FeaturedProject: React.FC<{ project: Project; rightAlign: boolean }
 
 const FeaturedProjectWrapper = styled('div')<{ shouldRightAlign: boolean }>`
 	position: relative;
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
 	height: 400px;
-	display: flex;
 	justify-content: ${p => (p.shouldRightAlign ? 'flex-end' : 'flex-start')};
 	align-items: center;
-	margin: 32px auto 64px auto;
+	margin: 96px 0;
 `;
 
 const ProjectInfoWrapper = styled('div')<{ shouldRightAlign: boolean }>`
 	display: flex;
+	grid-column: 7 / -1;
 	align-items: ${p => (p.shouldRightAlign ? 'flex-end' : 'flex-start')};
 	text-align: ${p => (p.shouldRightAlign ? 'right' : 'left')};
 	flex-direction: column;
-	z-index: 1;
 `;
 
 const Description = styled('div')<{ theme: Theme }>`
 	background-color: ${p => p.theme.colors.neutral.cs2};
 	padding: 16px;
 	border-radius: ${p => p.theme.border.borderRadius.br1};
-	width: 70%;
 	margin-bottom: ${p => p.theme.spacing.ss6};
 	box-shadow: ${p => p.theme.boxShadow.bs1};
+	z-index: 1;
 `;
 
 const Name = styled.div``;
