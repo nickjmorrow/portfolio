@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { MapClusteringImage } from './MapClusteringImage';
-import { ReactComponentLibraryImage } from './ReactComponentLibraryImage';
 import { graphql, useStaticQuery } from 'gatsby';
 import { useThemeContext, Theme } from '@nickjmorrow/react-component-library';
 import { StyledImage } from '../shared/StyledImage';
@@ -29,10 +27,15 @@ export const imageQuery = graphql`
 	}
 `;
 
-export const Image: React.FC<{ fileName: string }> = ({ fileName }): React.ReactNode => {
+export const Image: React.FC<{ fileName: string; url: string }> = ({ fileName, url }): React.ReactNode => {
 	const theme = useThemeContext();
 	const result = useStaticQuery(imageQuery);
 	const { mapClustering, reactComponentLibrary, weirdWeather } = result;
+
+	const handleClick = () => {
+		window.location.href = url;
+	};
+
 	const mappings = [
 		{
 			name: 'map_clustering.png',
@@ -49,5 +52,14 @@ export const Image: React.FC<{ fileName: string }> = ({ fileName }): React.React
 	];
 
 	const { component } = mappings.find(m => m.name === fileName)!;
-	return <StyledImage fluid={component.childImageSharp.fluid} theme={theme} />;
+	return (
+		<div onClick={handleClick} style={{ position: 'relative', width: '100%', height: '100%' }}>
+			<StyledImage
+				sizes={{ ...component.childImageSharp.fluid, aspectRatio: 3 / 4 }}
+				onClick={handleClick}
+				fluid={component.childImageSharp.fluid}
+				theme={theme}
+			/>
+		</div>
+	);
 };
