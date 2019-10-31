@@ -1,4 +1,3 @@
-import { mergeTypes } from 'merge-graphql-schemas';
 import { experienceTypeDefs } from '../experiences/experienceTypeDefs';
 import { experienceDetailTypeDefs } from '../experiences/experienceDetailTypeDefs';
 import { technologyTypeDefs } from '../technologies/technologyTypeDefs';
@@ -6,6 +5,7 @@ import { projectTypeDefs, projectDetailTypeDefs, projectTechnologyTypeDefs } fro
 import { settingTypeDefs } from '../settings/settingTypeDefs';
 import { skillLevelTypeDefs } from '../technologies/skillLevelTypeDefs';
 import { technologyTypeTypeDefs } from '../technologies/technologyTypeTypeDefs';
+import { mergeTypes } from 'merge-graphql-schemas';
 
 export const typeDefs = mergeTypes([
 	projectTypeDefs,
@@ -16,5 +16,5 @@ export const typeDefs = mergeTypes([
 	projectDetailTypeDefs,
 	settingTypeDefs,
 	skillLevelTypeDefs,
-	technologyTypeTypeDefs
+	technologyTypeTypeDefs,
 ]);
