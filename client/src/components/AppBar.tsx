@@ -10,13 +10,14 @@ import {
 	InvisibleLink,
 	MailIcon,
 	Button,
+	Theme,
 } from '@nickjmorrow/react-component-library';
 import * as React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import styled from 'styled-components';
 import { enterTimeout } from '../constants';
 import { SlideInFade } from './shared/SlideInFade';
-import { Theme } from '@nickjmorrow/react-component-library/dist/typeUtilities';
+import { withPrefix } from 'gatsby';
 
 export const AppBar: React.FC = () => {
 	const theme = useThemeContext();
@@ -66,9 +67,11 @@ export const AppBar: React.FC = () => {
 						</SlideInFade>
 					</AnchorLink>
 					<SlideInFade enterTimeout={enterTimeout.resumeAppears}>
-						<StyledButton theme={theme} styleVariant={2} onClick={() => alert('not implemented')}>
-							<StyledTypography theme={theme}>Resume</StyledTypography>
-						</StyledButton>
+						<a rel="noopener noreferrer" target="_blank" href={withPrefix('/resume.pdf')} download>
+							<StyledButton theme={theme} styleVariant={2}>
+								<StyledTypography theme={theme}>Resume</StyledTypography>
+							</StyledButton>
+						</a>
 					</SlideInFade>
 				</RightWrapper>
 			</StyledAppBar>

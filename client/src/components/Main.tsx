@@ -25,6 +25,7 @@ import { Experiences } from './Experiences';
 import { Headline } from './Headline';
 import './layout.css';
 import { Projects } from './Projects';
+import { Skills } from './Skills';
 
 const themeInputs: ArgumentType<typeof updateThemeInputs>[0] = {
 	typography: {
@@ -55,16 +56,15 @@ export const Main: React.FC = () => {
 		<ThemeContext.Provider value={getThemeFromNewInputs(themeInputs)}>
 			<Wrapper>
 				<AppBar />
-				<StyledMain spacing={theme.spacing}>
-					<Headline />
-					<div style={{ backgroundColor: 'white' }}>
-						<About />
-						<Experiences />
-						<Projects />
-						<Contact />
-					</div>
-				</StyledMain>
-				<PopulatedFooter />
+				<Headline />
+				<ContentWrapper>
+					<About />
+					<Skills />
+					<Experiences />
+					<Projects />
+					<Contact />
+					<PopulatedFooter />
+				</ContentWrapper>
 			</Wrapper>
 		</ThemeContext.Provider>
 	);
@@ -81,4 +81,4 @@ const Wrapper = styled.div`
 	padding-bottom: ${FOOTER_HEIGHT};
 `;
 
-const StyledMain = styled('div')<{ spacing: StyleConstant<'spacing'> }>``;
+const ContentWrapper = styled.div``;

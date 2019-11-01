@@ -86,7 +86,7 @@ export const TechnologyList: React.FC = () => {
 		return agg;
 	}, []);
 	return (
-		<DelayedSlideInFade enterTimeout={1000} style={{ padding: '32px', display: 'flex', justifyContent: 'center' }}>
+		<DelayedSlideInFade enterTimeout={1000} style={{ padding: '16px 0' }}>
 			<Popover
 				id={id}
 				open={open}
@@ -107,7 +107,7 @@ export const TechnologyList: React.FC = () => {
 					{currentTechnology && currentTechnology.skillLevel.description}
 				</Typography>
 			</Popover>
-			<Paper style={{ minWidth: theme.spacing.ss128, padding: '16px 0' }}>
+			<Paper style={{ minWidth: theme.spacing.ss128 }}>
 				<TechnologiesWrapper theme={theme}>
 					{technologyTypes
 						.sort((a, b) => (a.orderId > b.orderId ? 1 : -1))
@@ -124,18 +124,16 @@ export const TechnologyList: React.FC = () => {
 									styleApi={{
 										wrapperStyle: {
 											boxShadow: 'none',
+											padding: '0 16px',
 										},
 									}}
-									rightComponent={(isOpened: boolean) => (
-										<TechnologyTypeWrapper theme={theme}>
-											<Typography sizeVariant={5} colorVariant={'inherit'}>
-												{getTitleCased(tti.name)}
-											</Typography>
-											<ProficientIconTechnologyList>
-												{<div>{iconMap[proficientTechnology.name]}</div>}
-											</ProficientIconTechnologyList>
-										</TechnologyTypeWrapper>
-									)}
+									isFullWidth={true}
+									rightComponent={(isOpened: boolean) => iconMap[proficientTechnology.name]}
+									visibleContent={
+										<Typography sizeVariant={5} colorVariant={'primaryDark'}>
+											{getTitleCased(tti.name)}
+										</Typography>
+									}
 									hiddenContent={
 										<div style={{ display: 'flex', flexFlow: 'column wrap' }}>
 											{relevantTechnologies
@@ -193,7 +191,7 @@ const TechnologyTypeWrapper = styled('div')<{ theme: Theme }>`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	width: 450px;
+	width: 100%;
 	color: ${p => p.theme.colors.neutral.cs5};
 	&: hover {
 		color: ${p => p.theme.colors.core.cs5};
@@ -205,12 +203,6 @@ const TechnologiesWrapper = styled('ul')<{ theme: Theme }>`
 	margin: 0;
 	display: flex;
 	flex-direction: column;
-`;
-
-const ProficientIconTechnologyList = styled.div`
-	display: grid;
-	grid-auto-flow: column;
-	grid-column-gap: 16px;
 `;
 
 const iconSizeVariant = 3;

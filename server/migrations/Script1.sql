@@ -94,27 +94,28 @@ CREATE TABLE portfolio.technologies (
     , order_id INT NULL
 );
 
-INSERT INTO portfolio.technologies (name, skill_level_id, technology_type_id, order_id)
-SELECT 'C#', 1, 1, 2
-UNION SELECT 'TypeScript', 1, 1, 1
-UNION SELECT 'JavaScript', 1, 1, 3 
-UNION SELECT 'Node.js', 2, 1, 4 
-UNION SELECT 'Go', 2, 1, 5
-UNION SELECT 'Python', 2, 1, 4 
-UNION SELECT 'React', 1, 2, 1
-UNION SELECT 'Redux', 1, 2, 2
-UNION SELECT 'Styled Components', 1, 2, 3
-UNION SELECT '.NET Core', 2, 2, 4
-UNION SELECT 'SQL Server', 1, 3, 1
-UNION SELECT 'PostgreSQL', 2, 3, 3
-UNION SELECT 'MongoDB', 2, 3, 2
-UNION SELECT 'Git', 1, 4, 1
-UNION SELECT 'Jenkins CI', 2, 4, 2
-UNION SELECT 'Gatsby', 2, 2, 5
-UNION SELECT 'Webpack', 2, 4, 4 
-UNION SELECT 'Rollup', 2, 4, 3
-UNION SELECT 'Selenium', 1, 5, 1
-UNION SELECT 'Jest', 2, 5, 2; 
+INSERT INTO portfolio.technologies (technology_id, name, skill_level_id, technology_type_id, order_id)
+OVERRIDING SYSTEM VALUE 
+SELECT 1, 'C#', 1, 1, 2
+UNION SELECT 2, 'TypeScript', 1, 1, 1
+UNION SELECT 3, 'JavaScript', 1, 1, 3 
+UNION SELECT 4, 'Node.js', 2, 1, 4 
+UNION SELECT 5, 'Go', 2, 1, 5
+UNION SELECT 6, 'Python', 2, 1, 4 
+UNION SELECT 7, 'React', 1, 2, 1
+UNION SELECT 8, 'Redux', 1, 2, 2
+UNION SELECT 9, 'Styled Components', 1, 2, 3
+UNION SELECT 10, '.NET Core', 2, 2, 4
+UNION SELECT 11, 'SQL Server', 1, 3, 1
+UNION SELECT 12, 'PostgreSQL', 2, 3, 3
+UNION SELECT 13, 'MongoDB', 2, 3, 2
+UNION SELECT 14, 'Git', 1, 4, 1
+UNION SELECT 15, 'Jenkins CI', 2, 4, 2
+UNION SELECT 16, 'Gatsby', 2, 2, 5
+UNION SELECT 17, 'Webpack', 2, 4, 4 
+UNION SELECT 18, 'Rollup', 2, 4, 3
+UNION SELECT 19, 'Selenium', 1, 5, 1
+UNION SELECT 20, 'Jest', 2, 5, 2; 
 
 CREATE TABLE portfolio."Experience_Experience__technologies" (
     "experiencesExperienceId" INT NOT NULL REFERENCES portfolio.experiences(experience_id)
@@ -132,15 +133,16 @@ CREATE TABLE portfolio.projects (
     , date_deleted DATE NULL
 );
 
-INSERT INTO portfolio.projects (name, tagline, github_link, site_link, file_name, order_id)
-SELECT 'Geospatial Clustering', 'Cluster locations in popular cities and view optimal paths between them for better sight-seeing.', 'https://github.com/nickjmorrow/maps-clustering', 'https://nickjmorrow.github.io/maps-clustering', 'map_clustering.png', 1 
-UNION SELECT 'Weird Weather', 'Analyze weather extrema across various lookback periods to surface trends across time and region.', 'https://github.com/nickjmorrow/weird-weather', 'https://nickjmorrow.github.io/weird-weather', 'weird_weather.png', 2 
-UNION SELECT 'Component Library', 'Define design-decisions up-front with a component library while leaving space for one-off departures.', 'https://github.com/nickjmorrow/react-component-library', 'https://nickjmorrow.github.io/react-component-library', 'react_component_library.png', 3 
-UNION SELECT 'Spoiler-Free TV Show Information Aggregator', 'Check out various analytics for a TV show before watching it, and ensure you won''t get spoiled in the process.', 'https://github.com/nickjmorrow/first-few', 'https://nickjmorrow.github.io/first-few', 'first_few.png', 4 
-UNION SELECT 'Subreddit Subscription Automated Job', 'Automically import top posts from selected subreddits into your Pocket account.', 'https://github.com/nickjmorrow/subreddit-subscriber', 'https://nickjmorrow.github.io/subreddit-subscriber/', 'subreddit_subscriber.png', 5
-UNION SELECT 'Professional Portfolio v1', 'Portfolio to showcase experiences, projects, and technologies.', 'https://github.com/nickjmorrow/portfolio', 'https://nickjmorrow.com/', 'portfolio.png', 6 
-UNION SELECT 'Blogging Platform', 'Personal blog to jot down thoughts on technology, software, and general development.', 'https://github.com/nickjmorrow/blog', 'https://nickjmorrow.com/blog', 'blog.png', 7 
-UNION SELECT 'Chore Scheduler', 'Productivity app to predictably schedule chores for the NY Mastercard WeWork office.', 'https://github.com/nickjmorrow/wework-scheduler', 'https://fervent-saha-b4b2b7.netlify.com/', 'wework_scheduler.png', 8;
+INSERT INTO portfolio.projects (project_id, name, tagline, github_link, site_link, file_name, order_id)
+OVERRIDING SYSTEM VALUE 
+SELECT 1, 'Geospatial Clustering', 'Cluster locations in popular cities and view optimal paths between them for better sight-seeing.', 'https://github.com/nickjmorrow/maps-clustering', 'https://nickjmorrow.github.io/maps-clustering', 'map_clustering.png', 1 
+UNION SELECT 2, 'Weird Weather', 'Analyze weather extrema across various lookback periods to surface trends across time and region.', 'https://github.com/nickjmorrow/weird-weather', 'https://nickjmorrow.github.io/weird-weather', 'weird_weather.png', 2 
+UNION SELECT 3, 'Component Library', 'Define design-decisions up-front with a component library while leaving space for one-off departures.', 'https://github.com/nickjmorrow/react-component-library', 'https://nickjmorrow.github.io/react-component-library', 'react_component_library.png', 3 
+UNION SELECT 4, 'Spoiler-Free TV Show Information Aggregator', 'Check out various analytics for a TV show before watching it, and ensure you won''t get spoiled in the process.', 'https://github.com/nickjmorrow/first-few', 'https://nickjmorrow.github.io/first-few', 'first_few.png', 4 
+UNION SELECT 5, 'Subreddit Subscription Automated Job', 'Automically import top posts from selected subreddits into your Pocket account.', 'https://github.com/nickjmorrow/subreddit-subscriber', 'https://nickjmorrow.github.io/subreddit-subscriber/', 'subreddit_subscriber.png', 5
+UNION SELECT 6, 'Professional Portfolio v1', 'Portfolio to showcase experiences, projects, and technologies.', 'https://github.com/nickjmorrow/portfolio', 'https://nickjmorrow.com/', 'portfolio.png', 6 
+UNION SELECT 7, 'Blogging Platform', 'Personal blog to jot down thoughts on technology, software, and general development.', 'https://github.com/nickjmorrow/blog', 'https://nickjmorrow.com/blog', 'blog.png', 7 
+UNION SELECT 8, 'Chore Scheduler', 'Productivity app to predictably schedule chores for the NY Mastercard WeWork office.', 'https://github.com/nickjmorrow/wework-scheduler', 'https://fervent-saha-b4b2b7.netlify.com/', 'wework_scheduler.png', 8;
 
 CREATE TABLE portfolio."Project_Project__technologies" (
     "projectsProjectId" INT NOT NULL REFERENCES portfolio.projects(project_id)
@@ -148,14 +150,47 @@ CREATE TABLE portfolio."Project_Project__technologies" (
 );
 
 INSERT INTO portfolio."Project_Project__technologies" ("projectsProjectId", "technologiesTechnologyId")
-SELECT 6, 20 
-UNION SELECT 8, 20 
-UNION SELECT 3, 20 
-UNION SELECT 7, 20 
-UNION SELECT 2, 20 
-UNION SELECT 5, 20 
-UNION SELECT 4, 20 
-UNION SELECT 1, 20;
+SELECT 8, 2
+UNION SELECT 8, 4
+UNION SELECT 8, 7
+UNION SELECT 8, 12
+UNION SELECT 8, 16
+UNION SELECT 7, 2
+UNION SELECT 7, 5
+UNION SELECT 7, 7
+UNION SELECT 7, 12
+UNION SELECT 7, 16
+UNION SELECT 6, 2
+UNION SELECT 6, 4
+UNION SELECT 6, 7
+UNION SELECT 6, 12
+UNION SELECT 6, 16
+UNION SELECT 5, 2
+UNION SELECT 5, 7
+UNION SELECT 5, 13
+UNION SELECT 4, 2
+UNION SELECT 4, 4
+UNION SELECT 4, 7
+UNION SELECT 4, 13
+UNION SELECT 3, 2
+UNION SELECT 3, 7
+UNION SELECT 3, 9
+UNION SELECT 3, 17
+UNION SELECT 3, 20
+UNION SELECT 2, 1
+UNION SELECT 2, 2
+UNION SELECT 2, 7
+UNION SELECT 2, 10
+UNION SELECT 2, 11
+UNION SELECT 2, 17
+UNION SELECT 1, 1
+UNION SELECT 1, 2
+UNION SELECT 1, 7
+UNION SELECT 1, 8
+UNION SELECT 1, 9
+UNION SELECT 1, 10
+UNION SELECT 1, 11
+UNION SELECT 1, 17;
 
 CREATE TABLE portfolio.project_details (
     project_detail_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
