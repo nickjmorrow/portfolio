@@ -45,6 +45,5 @@ const AboutWrapper = styled('section')<{ theme: Theme }>`
 	position: relative;
 	background-color: ${p => p.theme.colors.background};
 	margin-top: 100vh;
-	padding-top: ${p => p.theme.spacing.ss16};
-	width: 100%;
+	padding: ${p => p.theme.spacing.ss16};
 `;

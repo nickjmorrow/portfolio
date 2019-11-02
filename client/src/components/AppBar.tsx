@@ -1,5 +1,4 @@
 import {
-	Fade,
 	StyleConstant,
 	Typography,
 	useThemeContext,
@@ -11,6 +10,7 @@ import {
 	MailIcon,
 	Button,
 	Theme,
+	MenuIcon,
 } from '@nickjmorrow/react-component-library';
 import * as React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
@@ -18,66 +18,142 @@ import styled from 'styled-components';
 import { enterTimeout } from '../constants';
 import { SlideInFade } from './shared/SlideInFade';
 import { withPrefix } from 'gatsby';
+import Media from 'react-media';
+import { SideMenu } from './SideMenu';
+import { Transition } from 'react-transition-group';
 
 export const AppBar: React.FC = () => {
 	const theme = useThemeContext();
 	const { spacing } = theme;
+	const [isOpen, setIsOpen] = React.useState(false);
+	const navLinks = [
+		{
+			label: 'About',
+			route: '#about',
+			enterTimeout: enterTimeout.aboutAppears,
+		},
+		{
+			label: 'Experience',
+			route: '#experience',
+			enterTimeout: enterTimeout.experienceAppears,
+		},
+		{
+			label: 'Work',
+			route: '#work',
+			enterTimeout: enterTimeout.workAppears,
+		},
+		{
+			label: 'Contact',
+			route: '#contact',
+			enterTimeout: enterTimeout.contactAppears,
+		},
+	];
+	const unmounted = {
+		transform: 'translateX(-290px)',
+	};
+	const mounted = {
+		transform: 'translateX(0px)',
+	};
+	const transitionStyles = {
+		entering: unmounted,
+		entered: mounted,
+		exiting: unmounted,
+		exited: unmounted,
+	};
+	const timeout = 250;
 	return (
-		<Fade
-			in={true}
-			appear={true}
-			enterTimeout={enterTimeout.appBarAppears}
-			styleKeys={['top']}
-			unmounted={{ top: '-100px' }}
-			mounted={{ top: '0px' }}
-			style={{ position: 'fixed', zIndex: 0 }}
-			transitionVariant={'slow'}
+		<Media
+			queries={{
+				large: '(min-width: 1200px)',
+				mobile: `(max-width: 1199px)`,
+			}}
 		>
-			<StyledAppBar spacing={spacing}>
-				<LeftWrapper theme={theme}>
-					<InvisibleLink href={GITHUB_LINK}>
-						<GithubIcon colorVariant={'secondaryLight'} style={{ cursor: 'pointer' }} />
-					</InvisibleLink>
-					<InvisibleLink href={LINKED_IN_LINK}>
-						<LinkedInIcon colorVariant={'secondaryLight'} style={{ cursor: 'pointer' }} />
-					</InvisibleLink>
-					<InvisibleLink href={'mailto:njmorrow95@gmail.com'}>
-						<MailIcon colorVariant={'secondaryLight'} style={{ cursor: 'pointer' }} />
-					</InvisibleLink>
-				</LeftWrapper>
-				<RightWrapper theme={theme}>
-					<AnchorLink href="#about" offset={'-52'} style={{ textDecoration: 'none' }}>
-						<SlideInFade enterTimeout={enterTimeout.aboutAppears}>
-							<LinkTypography>About</LinkTypography>
-						</SlideInFade>
-					</AnchorLink>
-					<AnchorLink href="#experience" style={{ textDecoration: 'none' }}>
-						<SlideInFade enterTimeout={enterTimeout.experienceAppears}>
-							<LinkTypography>Experience</LinkTypography>
-						</SlideInFade>
-					</AnchorLink>
-					<AnchorLink href="#work" style={{ textDecoration: 'none' }}>
-						<SlideInFade enterTimeout={enterTimeout.workAppears}>
-							<LinkTypography>Work</LinkTypography>
-						</SlideInFade>
-					</AnchorLink>
-					<AnchorLink href="#contact" style={{ textDecoration: 'none' }}>
-						<SlideInFade enterTimeout={enterTimeout.contactAppears}>
-							<LinkTypography>Contact</LinkTypography>
-						</SlideInFade>
-					</AnchorLink>
-					<SlideInFade enterTimeout={enterTimeout.resumeAppears}>
-						<a rel="noopener noreferrer" target="_blank" href={withPrefix('/resume.pdf')} download>
-							<StyledButton theme={theme} styleVariant={2}>
-								<StyledTypography theme={theme}>Resume</StyledTypography>
-							</StyledButton>
-						</a>
-					</SlideInFade>
-				</RightWrapper>
-			</StyledAppBar>
-		</Fade>
+			{matches => (
+				<>
+					{matches.large && (
+						<StyledAppBar spacing={spacing}>
+							<SlideInFade enterTimeout={enterTimeout.appBarAppears}>
+								<LeftWrapper theme={theme}>
+									<InvisibleLink href={GITHUB_LINK}>
+										<GithubIcon colorVariant={'secondaryLight'} style={{ cursor: 'pointer' }} />
+									</InvisibleLink>
+									<InvisibleLink href={LINKED_IN_LINK}>
+										<LinkedInIcon colorVariant={'secondaryLight'} style={{ cursor: 'pointer' }} />
+									</InvisibleLink>
+									<InvisibleLink href={'mailto:njmorrow95@gmail.com'}>
+										<MailIcon colorVariant={'secondaryLight'} style={{ cursor: 'pointer' }} />
+									</InvisibleLink>
+								</LeftWrapper>
+							</SlideInFade>
+							<RightWrapper theme={theme}>
+								{navLinks.map(nl => (
+									<AnchorLink key={nl.label} href={nl.route} style={{ textDecoration: 'none' }}>
+										<SlideInFade enterTimeout={nl.enterTimeout}>
+											<LinkTypography>{nl.label}</LinkTypography>
+										</SlideInFade>
+									</AnchorLink>
+								))}
+								<SlideInFade enterTimeout={enterTimeout.resumeAppears}>
+									<a
+										rel="noopener noreferrer"
+										style={{ textDecoration: 'none' }}
+										target="_blank"
+										href={withPrefix('/resume.pdf')}
+										download
+									>
+										<StyledButton theme={theme} styleVariant={2}>
+											<StyledTypography theme={theme}>Resume</StyledTypography>
+										</StyledButton>
+									</a>
+								</SlideInFade>
+							</RightWrapper>
+						</StyledAppBar>
+					)}
+					{matches.mobile && (
+						<div style={{ position: 'relative' }}>
+							<StyledMenuIcon
+								theme={theme}
+								style={{
+									cursor: 'pointer',
+									position: 'absolute',
+									zIndex: 1,
+									top: theme.spacing.ss4,
+									left: theme.spacing.ss4,
+								}}
+								onClick={() => setIsOpen(currentIsOpen => !currentIsOpen)}
+							/>
+							{
+								<div style={{}} onClick={() => setIsOpen(false)}>
+									<Transition in={isOpen} timeout={timeout} unmountOnExit={true}>
+										{state => (
+											<div
+												style={{
+													position: 'absolute',
+													width: '40%',
+													transition: `transform ${timeout}ms`,
+													...transitionStyles[state],
+												}}
+											>
+												<SideMenu navLinks={navLinks} />
+											</div>
+										)}
+									</Transition>
+								</div>
+							}
+						</div>
+					)}
+				</>
+			)}
+		</Media>
 	);
 };
+
+const StyledMenuIcon = styled(MenuIcon)<{ theme: Theme }>`
+	color: ${p => p.theme.colors.neutral.cs4};
+	&: hover {
+		color: ${p => p.theme.colors.neutral.cs2};
+	}
+`;
 
 const StyledButton = styled(Button)<{ theme: Theme }>`
 	border-color: ${p => p.theme.colors.neutral.cs1};
@@ -129,9 +205,9 @@ const StyledAppBar = styled('header')<{ spacing: StyleConstant<'spacing'> }>`
 	padding: 0 120px;
 	right: 0;
 	left: 0;
-	position: absolute;
+	position: fixed;
 	opacity: 0.8;
-	z-index: -1;
+	z-index: 0;
 `;
 
 const RightWrapper = styled('div')<{ theme: Theme }>`
@@ -142,8 +218,7 @@ const RightWrapper = styled('div')<{ theme: Theme }>`
 `;
 
 const LeftWrapper = styled('div')<{ theme: Theme }>`
-	display: flex;
-	width: 150px;
-	justify-content: space-between;
-	align-items: center;
+	display: grid;
+	grid-auto-flow: column;
+	grid-column-gap: 16px;
 `;
