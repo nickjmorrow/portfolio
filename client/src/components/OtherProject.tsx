@@ -17,13 +17,15 @@ export const OtherProject: React.FC<{ project: ProjectType }> = ({ project }) =>
 	return (
 		<DelayedSlideInFade enterTimeout={500}>
 			<OtherProjectWrapper theme={theme}>
-				<Links>
+				<Links theme={theme}>
 					<a target="_blank" href={project.githubUrl}>
 						<GithubIcon sizeVariant={2} style={{ display: 'block' }} />
 					</a>
-					<a target="_blank" href={project.demoUrl}>
-						<ShareIcon sizeVariant={2} style={{ display: 'block' }} />
-					</a>
+					{project.demoUrl && (
+						<a target="_blank" href={project.demoUrl}>
+							<ShareIcon sizeVariant={2} style={{ display: 'block' }} />
+						</a>
+					)}
 				</Links>
 				<Typography
 					style={{ marginBottom: theme.spacing.ss6, maxWidth: '170px', display: 'block' }}
@@ -74,11 +76,13 @@ const OtherProjectWrapper = styled('div')<{
 	}
 `;
 
-const Links = styled.div`
+const Links = styled('div')<{ theme: Theme }>`
 	position: absolute;
 	right: 20px;
 	top: 27px;
 	width: 40px;
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	grid-auto-flow: column;
+	grid-column-gap: ${p => p.theme.spacing.ss2};
+	justify-content: flex-end;
 `;
