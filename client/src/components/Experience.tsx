@@ -11,15 +11,15 @@ export const Experience: React.FC<{ experience: ExperienceType }> = ({ experienc
 
 	return (
 		<ExperienceWrapper theme={theme}>
-			<RoleName>
-				<Typography sizeVariant={5}>{experience.roleName}</Typography>
-			</RoleName>
-			<OrganizationName>
+			<div style={{ display: 'grid', gridAutoFlow: 'row', gridRowGap: theme.spacing.ss2 }}>
+				<Typography style={{ display: 'block' }} sizeVariant={5}>
+					{experience.roleName}
+				</Typography>
 				<Link route={experience.companyUrl}>
-					<Typography colorVariant={'secondaryDark'}>{experience.name}</Typography>
+					<Typography colorVariant={'inherit'}>{experience.name}</Typography>
 				</Link>
-			</OrganizationName>
-			<Timeframe experience={experience} />
+				<Timeframe experience={experience} />
+			</div>
 			<ExperienceDetailList theme={theme}>
 				<DelayedSlideInFade enterTimeout={500}>
 					{experience.experienceDetails.map(ed => (
@@ -44,10 +44,6 @@ const BulletPointWrapper = styled.div`
 	margin-right: 10px;
 `;
 
-const RoleName = styled.div``;
-
-const OrganizationName = styled.div``;
-
 const Timeframe: React.FC<{ experience: ExperienceType }> = ({ experience }) => (
 	<Typography colorVariant={'secondaryDark'}>
 		{getFormattedDate(experience.startDate)}
@@ -55,10 +51,6 @@ const Timeframe: React.FC<{ experience: ExperienceType }> = ({ experience }) => 
 		{experience.endDate ? getFormattedDate(experience.endDate) : 'Present'}
 	</Typography>
 );
-
-const ExperienceInfoList = styled.div``;
-
-const ExperienceInfo = styled.div``;
 
 const ExperienceWrapper = styled('div')<{ theme: Theme }>`
 	min-width: ${p => p.theme.spacing.ss96};

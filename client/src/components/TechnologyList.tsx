@@ -105,6 +105,7 @@ export const TechnologyList: React.FC = () => {
 
 							return (
 								<ExpansionPanel
+									key={tti.technologyTypeId}
 									styleApi={{
 										wrapperStyle: {
 											boxShadow: 'none',
