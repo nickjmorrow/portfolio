@@ -3,7 +3,14 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
 import { Header } from './shared/Header';
-import { TextInput, useThemeContext, StyleConstant, Button } from '@nickjmorrow/react-component-library';
+import {
+	TextInput,
+	useThemeContext,
+	StyleConstant,
+	Button,
+	Typography,
+	InvisibleLink,
+} from '@nickjmorrow/react-component-library';
 import { Theme } from '../types';
 import { enterTimeout } from '../constants';
 import { SlideInFade } from './shared/SlideInFade';
@@ -23,40 +30,16 @@ export const Contact: React.FC = () => {
 				<div id="contact">
 					<ContactWrapper theme={theme}>
 						<Header>Contact</Header>
-						<Form spacing={spacing}>
-							<SlideInFade enterTimeout={enterTimeout.contactNameAppears}>
-								<TextInput
-									style={{ width: '100%' }}
-									value={name}
-									onChange={e => setName(e.currentTarget.value)}
-									placeholder={'Name'}
-								/>
-							</SlideInFade>
-							<SlideInFade enterTimeout={enterTimeout.contactEmailAppears}>
-								<TextInput
-									style={{ width: '100%' }}
-									value={email}
-									onChange={e => setEmail(e.currentTarget.value)}
-									placeholder={'Email'}
-								/>
-							</SlideInFade>
-							<SlideInFade enterTimeout={enterTimeout.contactMessageAppears}>
-								<TextArea
-									spacing={spacing}
-									colors={colors}
-									typography={typography}
-									border={border}
-									value={message}
-									onChange={e => setMessage(e.currentTarget.value)}
-									placeholder={'Enter your message here'}
-								/>
-							</SlideInFade>
-							<SlideInFade enterTimeout={enterTimeout.contactSendMessageAppears}>
-								<StyledButton styleVariant={1} onClick={() => alert('not implemented')}>
-									Send Message
-								</StyledButton>
-							</SlideInFade>
-						</Form>
+						<Typography>
+							Although I'm not actively looking for new opportunities, my inbox is always open. Whether
+							for a potential project or just to connect, I'll try my best to answer your email!
+						</Typography>
+						<InvisibleLink
+							style={{ textDecoration: 'none', marginTop: '32px' }}
+							href={'mailto:njmorrow95@gmail.com'}
+						>
+							<StyledButton styleVariant={1}>Send Message</StyledButton>
+						</InvisibleLink>
 					</ContactWrapper>
 				</div>
 			</DelayedSlideInFade>

@@ -29,7 +29,6 @@ export const GatsbyQuery = graphql`
 
 export const Experiences: React.FC = () => {
 	const { data } = useStaticQuery<{ data: { experiences: ExperienceType[] } }>(GatsbyQuery);
-	console.log(data);
 	if (data === null) {
 		return null;
 	}

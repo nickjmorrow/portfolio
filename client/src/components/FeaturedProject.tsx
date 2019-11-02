@@ -26,7 +26,7 @@ export const FeaturedProject: React.FC<{ project: Project; rightAlign: boolean }
 						<Typography>{project.tagline}</Typography>
 					</Description>
 					<Typography
-						style={{ marginBottom: theme.spacing.ss6, display: 'block', maxWidth: '30%' }}
+						style={{ marginBottom: theme.spacing.ss6, display: 'block', maxWidth: '60%' }}
 						sizeVariant={2}
 						fontFamilyVariant={'monospace'}
 					>

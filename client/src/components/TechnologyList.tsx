@@ -61,6 +61,8 @@ export const TechnologyList: React.FC = () => {
 	}
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const [currentTechnology, setTechnology] = React.useState<Technology>(null);
+	const [isHoveringOverPopover, setIsHoveringOverPopover] = React.useState(false);
+	const [isHoveringOverTechnology, setIsHoveringOverTechnology] = React.useState(false);
 
 	const handlePopoverOpen = (event: React.MouseEvent, technology: Technology) => {
 		event.preventDefault();
@@ -69,7 +71,9 @@ export const TechnologyList: React.FC = () => {
 	};
 
 	const handlePopoverClose = (event: React.MouseEvent) => {
-		console.log('closing');
+		if (isHoveringOverPopover) {
+			return;
+		}
 		event.preventDefault();
 		setAnchorEl(null);
 	};
@@ -87,26 +91,6 @@ export const TechnologyList: React.FC = () => {
 	}, []);
 	return (
 		<DelayedSlideInFade enterTimeout={1000} style={{ padding: '16px 0' }}>
-			<Popover
-				id={id}
-				open={open}
-				anchorEl={anchorEl}
-				onClose={handlePopoverClose}
-				anchorOrigin={{
-					vertical: 'top',
-					horizontal: 'right',
-				}}
-				transformOrigin={{
-					vertical: 'top',
-					horizontal: 'left',
-				}}
-				disableRestoreFocus={true}
-				style={{ pointerEvents: 'none', padding: '16px' }}
-			>
-				<Typography style={{ padding: '16px' }}>
-					{currentTechnology && currentTechnology.skillLevel.description}
-				</Typography>
-			</Popover>
 			<Paper style={{ minWidth: theme.spacing.ss128 }}>
 				<TechnologiesWrapper theme={theme}>
 					{technologyTypes
@@ -164,10 +148,7 @@ export const TechnologyList: React.FC = () => {
 															onMouseLeave={handlePopoverClose}
 															style={{ paddingRight: '64px' }}
 														>
-															<div
-																onMouseEnter={event => handlePopoverOpen(event, rt)}
-																style={{ paddingRight: '16px' }}
-															>
+															<div style={{ paddingRight: '16px' }}>
 																<Typography style={{ marginLeft: '8px' }}>
 																	{rt.name}
 																</Typography>

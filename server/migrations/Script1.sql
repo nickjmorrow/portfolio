@@ -138,11 +138,11 @@ OVERRIDING SYSTEM VALUE
 SELECT 1, 'Geospatial Clustering', 'Cluster locations in popular cities and view optimal paths between them for better sight-seeing.', 'https://github.com/nickjmorrow/maps-clustering', 'https://nickjmorrow.github.io/maps-clustering', 'map_clustering.png', 1 
 UNION SELECT 2, 'Weird Weather', 'Analyze weather extrema across various lookback periods to surface trends across time and region.', 'https://github.com/nickjmorrow/weird-weather', 'https://nickjmorrow.github.io/weird-weather', 'weird_weather.png', 2 
 UNION SELECT 3, 'Component Library', 'Define design-decisions up-front with a component library while leaving space for one-off departures.', 'https://github.com/nickjmorrow/react-component-library', 'https://nickjmorrow.github.io/react-component-library', 'react_component_library.png', 3 
-UNION SELECT 4, 'Spoiler-Free TV Show Information Aggregator', 'Check out various analytics for a TV show before watching it, and ensure you won''t get spoiled in the process.', 'https://github.com/nickjmorrow/first-few', 'https://nickjmorrow.github.io/first-few', 'first_few.png', 4 
+UNION SELECT 4, 'TV Show Information Aggregator', 'Check out various analytics for a TV show before watching it.', 'https://github.com/nickjmorrow/first-few', 'https://nickjmorrow.github.io/first-few', 'first_few.png', 4 
 UNION SELECT 5, 'Subreddit Subscription Automated Job', 'Automically import top posts from selected subreddits into your Pocket account.', 'https://github.com/nickjmorrow/subreddit-subscriber', 'https://nickjmorrow.github.io/subreddit-subscriber/', 'subreddit_subscriber.png', 5
 UNION SELECT 6, 'Professional Portfolio v1', 'Portfolio to showcase experiences, projects, and technologies.', 'https://github.com/nickjmorrow/portfolio', 'https://nickjmorrow.com/', 'portfolio.png', 6 
 UNION SELECT 7, 'Blogging Platform', 'Personal blog to jot down thoughts on technology, software, and general development.', 'https://github.com/nickjmorrow/blog', 'https://nickjmorrow.com/blog', 'blog.png', 7 
-UNION SELECT 8, 'Chore Scheduler', 'Productivity app to predictably schedule chores for the NY Mastercard WeWork office.', 'https://github.com/nickjmorrow/wework-scheduler', 'https://fervent-saha-b4b2b7.netlify.com/', 'wework_scheduler.png', 8;
+UNION SELECT 8, 'Chore Scheduler', 'Predictably schedule chores for the NY Mastercard WeWork office.', 'https://github.com/nickjmorrow/wework-scheduler', 'https://fervent-saha-b4b2b7.netlify.com/', 'wework_scheduler.png', 8;
 
 CREATE TABLE portfolio."Project_Project__technologies" (
     "projectsProjectId" INT NOT NULL REFERENCES portfolio.projects(project_id)
