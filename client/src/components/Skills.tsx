@@ -69,6 +69,7 @@ export const Skills: React.FC = () => {
 		}
 		return agg;
 	}, []);
+
 	return (
 		<div
 			style={{
@@ -113,7 +114,7 @@ export const Skills: React.FC = () => {
 												},
 											}}
 											isFullWidth={true}
-											rightComponent={(isOpened: boolean) => iconMap[technologyTypeLabel.name]}
+											rightComponent={() => iconMap[technologyTypeLabel.name]}
 											visibleContent={
 												<Typography sizeVariant={5} colorVariant={'primaryDark'}>
 													{getTitleCased(tti.name)}

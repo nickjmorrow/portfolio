@@ -2,8 +2,7 @@ import * as React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Technology } from '../types';
 import { findKeyPhrases } from '../algorithms/find-key-phrases';
-import { Typography } from '@nickjmorrow/react-component-library';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
+import { Typography, useThemeContext } from '@nickjmorrow/react-component-library';
 
 export const GatsbyQuery = graphql`
 	{
@@ -20,6 +19,7 @@ export const TechnologyEmphasizedTypography: React.FC<{ text: string }> = ({ tex
 	const {
 		data: { technologies },
 	} = useStaticQuery<{ data: { technologies: Technology[] } }>(GatsbyQuery);
+	const theme = useThemeContext();
 	const keyPhrases = technologies.map(t => t.name);
 
 	const identifiedKeyPhrases = findKeyPhrases(text, keyPhrases);
@@ -35,26 +35,19 @@ export const TechnologyEmphasizedTypography: React.FC<{ text: string }> = ({ tex
 	);
 
 	output.push(firstPart);
+	const keyPhraseStyle = { color: theme.colors.neutral.cs8 };
 	identifiedKeyPhrases.forEach((ikp, i, arr) => {
 		if (i < arr.length - 1) {
 			// push key phrase
 			const keyPhrase = splitText[ikp.paragraphIndex];
-			output.push(
-				<Typography link="#about" style={{ display: 'inline' }} colorVariant={'core'}>
-					{' ' + keyPhrase}
-				</Typography>,
-			);
+			output.push(<Typography style={{ display: 'inline', ...keyPhraseStyle }}>{' ' + keyPhrase}</Typography>);
 
 			// push text that comes after key phrase
 			const nextKeyPhraseParagraphIndex = identifiedKeyPhrases[i + 1];
 			const nextTextSegment = splitText.slice(ikp.paragraphIndex + 1, nextKeyPhraseParagraphIndex.paragraphIndex);
 
 			if (nextTextSegment.length > 0) {
-				output.push(
-					<Typography style={{ display: 'inline' }}>
-						{' ' + nextTextSegment.join(' ')}
-					</Typography>,
-				);
+				output.push(<Typography style={{ display: 'inline' }}>{' ' + nextTextSegment.join(' ')}</Typography>);
 			}
 		}
 	});
@@ -62,13 +55,11 @@ export const TechnologyEmphasizedTypography: React.FC<{ text: string }> = ({ tex
 	const lastIdentifiedKeyPhrase = identifiedKeyPhrases[identifiedKeyPhrases.length - 1];
 	const actualKeyPhrase = keyPhrases[lastIdentifiedKeyPhrase.keyPhraseIndex];
 	const keyPhraseLength = actualKeyPhrase.split(' ').length;
-	output.push(
-		<Typography link="#about" style={{ display: 'inline' }}>
-			{' ' + actualKeyPhrase}
-		</Typography>,
+	output.push(<Typography style={{ display: 'inline', ...keyPhraseStyle }}>{' ' + actualKeyPhrase}</Typography>);
+	const nextTextSegment = splitText.slice(
+		identifiedKeyPhrases[identifiedKeyPhrases.length - 1].paragraphIndex + keyPhraseLength,
+		splitText.length,
 	);
-	const nextTextSegment = splitText
-		.slice(identifiedKeyPhrases[identifiedKeyPhrases.length - 1].paragraphIndex + keyPhraseLength, splitText.length);
 
 	if (nextTextSegment.length > 0) {
 		output.push(<Typography style={{ display: 'inline' }}>{' ' + nextTextSegment.join(' ')}</Typography>);

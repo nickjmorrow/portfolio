@@ -24,13 +24,16 @@ export const imageQuery = graphql`
 		weirdWeather: file(relativePath: { eq: "weird_weather.png" }) {
 			...fluidImage
 		}
+		weworkScheduler: file(relativePath: { eq: "wework_scheduler.png" }) {
+			...fluidImage
+		}
 	}
 `;
 
 export const Image: React.FC<{ fileName: string; url: string }> = ({ fileName, url }): React.ReactNode => {
 	const theme = useThemeContext();
 	const result = useStaticQuery(imageQuery);
-	const { mapClustering, reactComponentLibrary, weirdWeather } = result;
+	const { mapClustering, reactComponentLibrary, weirdWeather, weworkScheduler } = result;
 
 	const handleClick = () => {
 		window.location.href = url;
@@ -49,12 +52,16 @@ export const Image: React.FC<{ fileName: string; url: string }> = ({ fileName, u
 			name: 'weird_weather.png',
 			component: weirdWeather,
 		},
+		{
+			name: 'wework_scheduler.png',
+			component: weworkScheduler,
+		},
 	];
 
 	const { component } = mappings.find(m => m.name === fileName)!;
 	return (
-		<div onClick={handleClick} style={{ position: 'absolute', width: '100%', height: '100%' }}>
+		<a href={url} target="_blank" style={{ position: 'absolute', width: '100%', height: '100%' }}>
 			<StyledImage onClick={handleClick} fixed={component.childImageSharp.fixed} theme={theme} />
-		</div>
+		</a>
 	);
 };

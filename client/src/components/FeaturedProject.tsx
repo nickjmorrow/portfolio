@@ -12,7 +12,7 @@ export const FeaturedProject: React.FC<{ project: Project; rightAlign: boolean }
 	return (
 		<DelayedSlideInFade enterTimeout={500}>
 			<FeaturedProjectWrapper shouldRightAlign={rightAlignProxy}>
-				<Image fileName={project.fileName} url={project.d} />
+				<Image fileName={project.fileName} url={project.demoUrl} />
 				<ProjectInfoWrapper shouldRightAlign={rightAlignProxy}>
 					<Typography
 						colorVariant={'primaryDark'}

@@ -179,35 +179,3 @@ const TechnologyTypeWrapper = styled('div')<{ theme: Theme }>`
 		transition: ${p => p.theme.transitions.fast} all;
 	}
 `;
-
-const TechnologiesWrapper = styled('ul')<{ theme: Theme }>`
-	margin: 0;
-	display: flex;
-	flex-direction: column;
-`;
-
-const iconSizeVariant = 3;
-
-const iconMap = {
-	'C#': <CSharpIcon sizeVariant={iconSizeVariant} />,
-	'SQL Server': <SQLServerIcon sizeVariant={iconSizeVariant} />,
-	React: <ReactJSIcon sizeVariant={iconSizeVariant} />,
-	'Node.js': <NodeJSIcon sizeVariant={iconSizeVariant} />,
-	MongoDB: <MongoDBIcon sizeVariant={iconSizeVariant} />,
-	'.NET Core': <NETCoreIcon sizeVariant={iconSizeVariant} />,
-	JavaScript: <JavaScriptIcon sizeVariant={iconSizeVariant} />,
-	TypeScript: <TypeScriptIcon sizeVariant={iconSizeVariant} />,
-	Git: <GitIcon sizeVariant={iconSizeVariant} />,
-	Redux: <ReduxIcon sizeVariant={iconSizeVariant} />,
-	PostgreSQL: <PostgreSQLIcon sizeVariant={iconSizeVariant} />,
-	'Jenkins CI': <JenkinsCIIcon sizeVariant={iconSizeVariant} />,
-	'Styled Components': <StyledComponentsIcon style={{ fontSize: '22px' }} />,
-	Jest: <JestIcon sizeVariant={iconSizeVariant} />,
-	Selenium: <SeleniumIcon sizeVariant={iconSizeVariant} />,
-	'REST Services': <JestIcon sizeVariant={iconSizeVariant} />,
-	Python: <PythonIcon sizeVariant={iconSizeVariant} />,
-	Go: <GoIcon sizeVariant={iconSizeVariant} />,
-	Webpack: <WebpackIcon sizeVariant={iconSizeVariant} />,
-	Rollup: <RollupIcon sizeVariant={iconSizeVariant} />,
-	Gatsby: <GatsbyIcon sizeVariant={iconSizeVariant} />,
-};
