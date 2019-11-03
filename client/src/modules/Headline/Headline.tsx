@@ -35,7 +35,7 @@ export const Headline: React.FC = () => {
 	const { file } = useStaticQuery(query);
 
 	return (
-		<section style={{ position: 'absolute', height: '100vh', width: '100%', zIndex: -1 }}>
+		<section style={{ position: 'fixed', height: '100vh', width: '100%', zIndex: -1 }}>
 			<ImageWrapper style={{ position: 'relative', zIndex: -10 }}>
 				<Image fluid={file.childImageSharp.fluid} />
 			</ImageWrapper>
