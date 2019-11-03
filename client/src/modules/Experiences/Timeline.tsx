@@ -1,7 +1,7 @@
 import { Typography, useThemeContext } from '@nickjmorrow/react-component-library';
 import * as React from 'react';
 import styled from 'styled-components';
-import { Experience } from '../types';
+import { Experience } from '../../types';
 
 type Theme = ReturnType<typeof useThemeContext>;
 

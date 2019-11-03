@@ -13,8 +13,8 @@ import Typist from 'react-typist';
 import TypistLoop from 'react-typist-loop';
 import 'react-typist/dist/Typist.css';
 import styled from 'styled-components';
-import { enterTimeout } from '../constants';
-import { SlideInFade } from './shared/SlideInFade';
+import { enterTimeout } from '../../constants';
+import { SlideInFade } from '../Core/SlideInFade';
 
 export const query = graphql`
 	query {
@@ -33,10 +33,9 @@ export const query = graphql`
 export const Headline: React.FC = () => {
 	const theme = useThemeContext();
 	const { file } = useStaticQuery(query);
-	const availableCallToActions = ['beautiful', 'performant', 'secure', 'beautiful'];
 
 	return (
-		<div style={{ position: 'fixed', height: '100vh', width: '100%', zIndex: -1 }}>
+		<section style={{ position: 'absolute', height: '100vh', width: '100%', zIndex: -1 }}>
 			<ImageWrapper style={{ position: 'relative', zIndex: -10 }}>
 				<Image fluid={file.childImageSharp.fluid} />
 			</ImageWrapper>
@@ -108,7 +107,7 @@ export const Headline: React.FC = () => {
 					<ArrowIcon sizeVariant={4} colorVariant={'primaryLight'} style={{ transform: 'rotate(90deg)' }} />
 				</SlideInFade>
 			</div>
-		</div>
+		</section>
 	);
 };
 

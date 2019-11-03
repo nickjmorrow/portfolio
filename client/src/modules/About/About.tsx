@@ -1,8 +1,8 @@
 import { Typography, useThemeContext, Theme } from '@nickjmorrow/react-component-library';
 import * as React from 'react';
 import styled from 'styled-components';
-import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
-import { Header } from './shared/Header';
+import { DelayedSlideInFade } from '../Core/DelayedSlideInFade';
+import { Header } from '../Core/Header';
 
 // TODO: Why am I hitting key errors when using technologyId?
 export const About: React.FC = () => {

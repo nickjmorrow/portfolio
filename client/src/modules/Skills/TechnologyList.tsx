@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
-import { Technology, Theme, TechnologyType } from '../types';
+import { Technology, Theme, TechnologyType } from '../../types';
 import { Popover } from '@material-ui/core';
 import {
 	Typography,
@@ -31,8 +31,8 @@ import {
 	ExpansionPanel,
 } from '@nickjmorrow/react-component-library';
 import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
-import { getTitleCased } from '../utilities';
-import { SkillLevel } from '../constants';
+import { getTitleCased } from '../../utilities';
+import { SkillLevel } from '../../constants';
 export const GatsbyQuery = graphql`
 	{
 		data {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { useThemeContext, Theme } from '@nickjmorrow/react-component-library';
-import { StyledImage } from '../shared/StyledImage';
+import { StyledImage } from './StyledImage';
 
 export const fluidImage = graphql`
 	fragment fluidImage on File {

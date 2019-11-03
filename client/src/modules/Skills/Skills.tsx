@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Header } from './shared/Header';
-import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
+import { Header } from '../Core/Header';
+import { DelayedSlideInFade } from '../Core/DelayedSlideInFade';
 import {
 	Paper,
 	ExpansionPanel,
@@ -28,11 +28,11 @@ import {
 	GatsbyIcon,
 	useThemeContext,
 } from '@nickjmorrow/react-component-library';
-import { getTitleCased } from '../utilities';
-import { SkillLevel } from '../constants';
+import { getTitleCased } from '../../utilities';
+import { SkillLevel } from '../../constants';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
-import { Technology, TechnologyType } from '../types';
+import { Technology, TechnologyType } from '../../types';
 
 export const GatsbyQuery = graphql`
 	{
@@ -71,16 +71,7 @@ export const Skills: React.FC = () => {
 	}, []);
 
 	return (
-		<div
-			style={{
-				margin: '0 auto',
-				position: 'relative',
-				minHeight: '60vh',
-				display: 'flex',
-				justifyContent: 'center',
-				backgroundColor: 'white',
-			}}
-		>
+		<SkillsWrapper>
 			<div>
 				<Header link="#skills" id="skills">
 					Skills
@@ -140,7 +131,7 @@ export const Skills: React.FC = () => {
 					</Paper>
 				</DelayedSlideInFade>
 			</div>
-		</div>
+		</SkillsWrapper>
 	);
 };
 
@@ -185,6 +176,15 @@ const TechnologiesWrapper = styled('ul')<{ theme: Theme }>`
 	margin: 0;
 	display: flex;
 	flex-direction: column;
+`;
+
+const SkillsWrapper = styled('section')<{ theme: Theme }>`
+	margin: 0 auto;
+	position: relative;
+	min-height: 60vh;
+	display: flex;
+	justify-content: center;
+	background-color: white;
 `;
 
 const iconSizeVariant = 3;

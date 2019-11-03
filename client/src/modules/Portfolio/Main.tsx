@@ -1,31 +1,22 @@
-/**
- * Layout component that queries for data
- * with Gatsby's StaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/static-query/
- */
-
 import {
 	ArgumentType,
-	Footer,
 	getThemeFromNewInputs,
+	PopulatedFooter,
 	ThemeContext,
 	updateThemeInputs,
 	useThemeContext,
-	PopulatedFooter,
 } from '@nickjmorrow/react-component-library';
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import { FOOTER_HEIGHT } from '../constants';
-import { About } from './About';
-import { AppBar } from './AppBar';
-import { Contact } from './Contact';
-import { Experiences } from './Experiences';
-import { Headline } from './Headline';
-import './layout.css';
-import { Projects } from './Projects';
-import { Skills } from './Skills';
+import { FOOTER_HEIGHT } from '../../constants';
+import { About } from '../About/About';
+import { AppBar } from '../Headline/AppBar';
+import { Contact } from '../Contact/Contact';
+import { Experiences } from '../Experiences/Experiences';
+import { Headline } from '../Headline/Headline';
+import '../Core/layout.css';
+import { Projects } from '../Projects/Projects';
+import { Skills } from '../Skills/Skills';
 
 const themeInputs: ArgumentType<typeof updateThemeInputs>[0] = {
 	typography: {
@@ -51,20 +42,19 @@ const themeInputs: ArgumentType<typeof updateThemeInputs>[0] = {
 
 export const Main: React.FC = () => {
 	const theme = useThemeContext();
-	const horizontalMargin = theme.spacing.ss16;
 	return (
 		<ThemeContext.Provider value={getThemeFromNewInputs(themeInputs)}>
 			<Wrapper>
 				<AppBar />
 				<Headline />
-				<ContentWrapper>
+				<main>
 					<About />
 					<Skills />
 					<Experiences />
 					<Projects />
 					<Contact />
 					<PopulatedFooter />
-				</ContentWrapper>
+				</main>
 			</Wrapper>
 		</ThemeContext.Provider>
 	);
@@ -80,5 +70,3 @@ const Wrapper = styled.div`
 	flex-direction: column;
 	padding-bottom: ${FOOTER_HEIGHT};
 `;
-
-const ContentWrapper = styled.div``;

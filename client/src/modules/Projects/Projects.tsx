@@ -1,12 +1,10 @@
-import * as React from 'react';
+import { Theme, useThemeContext } from '@nickjmorrow/react-component-library';
 import { graphql, useStaticQuery } from 'gatsby';
-import { Project } from '../types';
-import { Header } from './shared/Header';
-import { Typography, useThemeContext, Theme } from '@nickjmorrow/react-component-library';
+import * as React from 'react';
 import styled from 'styled-components';
-import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
+import { NUM_FEATURED_PROJECTS } from '../../constants';
+import { Project } from '../../types';
 import { FeaturedProjectList } from './FeaturedProjectList';
-import { NUM_FEATURED_PROJECTS } from '../constants';
 import { OtherProjectList } from './OtherProjectList';
 
 export const GatsbyQuery = graphql`

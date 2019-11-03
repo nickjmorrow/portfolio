@@ -1,9 +1,9 @@
 import { GithubIcon, Theme, Typography, useThemeContext, ShareIcon } from '@nickjmorrow/react-component-library';
 import * as React from 'react';
 import styled from 'styled-components';
-import { Project } from '../types';
-import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
-import { Image } from './images/Image';
+import { Project } from '../../types';
+import { DelayedSlideInFade } from '../Core/DelayedSlideInFade';
+import { Image } from '../Core/Image';
 
 export const FeaturedProject: React.FC<{ project: Project; rightAlign: boolean }> = ({ project, rightAlign }) => {
 	const theme = useThemeContext();

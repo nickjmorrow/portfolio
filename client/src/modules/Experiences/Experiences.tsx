@@ -1,10 +1,10 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import styled from 'styled-components';
-import { Experience as ExperienceType } from '../types';
+import { Experience as ExperienceType } from '../../types';
 import { Experience } from './Experience';
 import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
-import { Header } from './shared/Header';
+import { Header } from '../Core/Header';
 import { Timeline } from './Timeline';
 import { useThemeContext, Typography, Theme } from '@nickjmorrow/react-component-library';
 

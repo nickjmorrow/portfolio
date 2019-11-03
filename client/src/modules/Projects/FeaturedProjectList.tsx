@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Project } from '../types';
+import { Project } from '../../types';
 import { Typography } from '@nickjmorrow/react-component-library';
 import { FeaturedProject } from './FeaturedProject';
 import styled from 'styled-components';
-import { Header } from './shared/Header';
+import { Header } from '../Core/Header';
 
 export const FeaturedProjectList: React.FC<{ projects: Project[] }> = ({ projects }) => {
 	return (

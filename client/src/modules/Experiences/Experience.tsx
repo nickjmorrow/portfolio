@@ -1,10 +1,10 @@
 import { ArrowIcon, Link, Typography, useThemeContext } from '@nickjmorrow/react-component-library';
 import * as React from 'react';
 import styled from 'styled-components';
-import { Experience as ExperienceType, Theme } from '../types';
-import { getFormattedDate } from '../utilities';
-import { TechnologyEmphasizedTypography } from './TechnologyEmphasizedTypography';
-import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
+import { Experience as ExperienceType, Theme } from '../../types';
+import { getFormattedDate } from '../../utilities';
+import { TechnologyEmphasizedTypography } from '../Core/TechnologyEmphasizedTypography';
+import { DelayedSlideInFade } from '../Core/DelayedSlideInFade';
 
 export const Experience: React.FC<{ experience: ExperienceType }> = ({ experience }) => {
 	const theme = useThemeContext();

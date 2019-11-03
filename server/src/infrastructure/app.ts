@@ -18,7 +18,5 @@ app.use(
 	}),
 );
 
-// TODO: look into merging schemas
-
 app.use('/', bodyParser.json(), graphqlExpress({ schema: mergedSchema }));
 applyMiddleware(errorHandlers, app);

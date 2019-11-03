@@ -1,26 +1,19 @@
-import * as React from 'react';
-import { useState } from 'react';
-import styled from 'styled-components';
-import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
-import { Header } from './shared/Header';
 import {
-	TextInput,
-	useThemeContext,
-	StyleConstant,
 	Button,
-	Typography,
 	InvisibleLink,
+	StyleConstant,
+	Typography,
+	useThemeContext,
 } from '@nickjmorrow/react-component-library';
-import { Theme } from '../types';
-import { enterTimeout } from '../constants';
-import { SlideInFade } from './shared/SlideInFade';
+import * as React from 'react';
+import styled from 'styled-components';
+import { Theme } from '../../types';
+import { Header } from '../Core/Header';
+import { DelayedSlideInFade } from '../Core/DelayedSlideInFade';
+import { enterTimeout } from '../../constants';
 
 export const Contact: React.FC = () => {
-	const [name, setName] = useState('');
-	const [email, setEmail] = useState('');
-	const [message, setMessage] = useState('');
 	const theme = useThemeContext();
-	const { border, colors, typography, spacing } = theme;
 	return (
 		<Wrapper theme={theme}>
 			<DelayedSlideInFade

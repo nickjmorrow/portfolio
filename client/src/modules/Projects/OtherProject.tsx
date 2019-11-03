@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Project as ProjectType } from '../types';
+import { Project as ProjectType } from '../../types';
 import styled from 'styled-components';
 import {
 	useThemeContext,
@@ -9,7 +9,7 @@ import {
 	ShareIcon,
 } from '@nickjmorrow/react-component-library';
 import { Theme } from '@nickjmorrow/react-component-library/dist/typeUtilities';
-import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
+import { DelayedSlideInFade } from '../Core/DelayedSlideInFade';
 
 // TODO: think about how and why I had to rename the type to ProjectType
 export const OtherProject: React.FC<{ project: ProjectType }> = ({ project }) => {

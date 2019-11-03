@@ -15,8 +15,8 @@ import {
 import * as React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import styled from 'styled-components';
-import { enterTimeout } from '../constants';
-import { SlideInFade } from './shared/SlideInFade';
+import { enterTimeout } from '../../constants';
+import { SlideInFade } from '../Core/SlideInFade';
 import { withPrefix } from 'gatsby';
 import Media from 'react-media';
 import { SideMenu } from './SideMenu';
@@ -49,7 +49,7 @@ export const AppBar: React.FC = () => {
 		},
 	];
 	const unmounted = {
-		transform: 'translateX(-290px)',
+		transform: 'translateX(-320px)',
 	};
 	const mounted = {
 		transform: 'translateX(0px)',
@@ -60,7 +60,7 @@ export const AppBar: React.FC = () => {
 		exiting: unmounted,
 		exited: unmounted,
 	};
-	const timeout = 250;
+	const timeout = 100;
 	return (
 		<Media
 			queries={{
@@ -110,7 +110,7 @@ export const AppBar: React.FC = () => {
 						</StyledAppBar>
 					)}
 					{matches.mobile && (
-						<div style={{ position: 'relative' }}>
+						<header style={{ position: 'relative' }}>
 							<StyledMenuIcon
 								theme={theme}
 								style={{
@@ -140,7 +140,7 @@ export const AppBar: React.FC = () => {
 									</Transition>
 								</div>
 							}
-						</div>
+						</header>
 					)}
 				</>
 			)}

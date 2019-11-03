@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Project } from '../types';
+import { Project } from '../../types';
 import { Typography, useThemeContext, Theme } from '@nickjmorrow/react-component-library';
 import { OtherProject } from './OtherProject';
-import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
+import { DelayedSlideInFade } from '../Core/DelayedSlideInFade';
 
 export const OtherProjectList: React.FC<{ projects: Project[] }> = ({ projects }) => {
 	const theme = useThemeContext();

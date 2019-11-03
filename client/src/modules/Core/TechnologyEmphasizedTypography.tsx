@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import { Technology } from '../types';
-import { findKeyPhrases } from '../algorithms/find-key-phrases';
+import { Technology } from '../../types';
+import { findKeyPhrases } from './find-key-phrases';
 import { Typography, useThemeContext } from '@nickjmorrow/react-component-library';
 
 export const GatsbyQuery = graphql`
