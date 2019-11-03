@@ -74,10 +74,10 @@ export const AppBar: React.FC = () => {
 						<StyledAppBar spacing={spacing}>
 							<SlideInFade enterTimeout={enterTimeout.appBarAppears}>
 								<LeftWrapper theme={theme}>
-									<InvisibleLink href={GITHUB_LINK}>
+									<InvisibleLink target="_blank" href={GITHUB_LINK}>
 										<GithubIcon colorVariant={'secondaryLight'} style={{ cursor: 'pointer' }} />
 									</InvisibleLink>
-									<InvisibleLink href={LINKED_IN_LINK}>
+									<InvisibleLink target="_blank" href={LINKED_IN_LINK}>
 										<LinkedInIcon colorVariant={'secondaryLight'} style={{ cursor: 'pointer' }} />
 									</InvisibleLink>
 									<InvisibleLink href={'mailto:njmorrow95@gmail.com'}>
