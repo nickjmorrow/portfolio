@@ -72,11 +72,12 @@ export const Skills: React.FC = () => {
 
 	return (
 		<SkillsWrapper>
-			<div>
-				<Header link="#skills" id="skills">
-					Skills
-				</Header>
-				<DelayedSlideInFade enterTimeout={1000} style={{ padding: '16px 0' }}>
+			<DelayedSlideInFade enterTimeout={1000} style={{ padding: '16px 0' }}>
+				<div>
+					<Header link="#skills" id="skills">
+						Skills
+					</Header>
+
 					<Paper style={{ minWidth: theme.spacing.ss128 }}>
 						<TechnologiesWrapper theme={theme}>
 							{technologyTypes
@@ -129,8 +130,8 @@ export const Skills: React.FC = () => {
 								})}
 						</TechnologiesWrapper>
 					</Paper>
-				</DelayedSlideInFade>
-			</div>
+				</div>
+			</DelayedSlideInFade>
 		</SkillsWrapper>
 	);
 };
