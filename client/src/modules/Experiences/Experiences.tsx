@@ -1,12 +1,11 @@
+import { Theme, useThemeContext } from '@nickjmorrow/react-component-library';
 import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import styled from 'styled-components';
 import { Experience as ExperienceType } from '../../types';
-import { Experience } from './Experience';
-import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
 import { Header } from '../Core/Header';
+import { Experience } from './Experience';
 import { Timeline } from './Timeline';
-import { useThemeContext, Typography, Theme } from '@nickjmorrow/react-component-library';
 
 export const GatsbyQuery = graphql`
 	{

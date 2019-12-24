@@ -4,8 +4,8 @@ const path = require('path');
 module.exports = {
 	siteMetadata: {
 		title: `Nicholas Morrow | Software Engineering`,
-		description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-		author: `@gatsbyjs`,
+		description: `Personal technical portfolio.`,
+		author: `Nicholas Morrow`,
 	},
 	plugins: [
 		`gatsby-plugin-react-helmet`,
@@ -54,7 +54,7 @@ module.exports = {
 				fonts: [
 					{
 						family: 'Overpass',
-						variants: [`400`, `600`,`700`, `800`]
+						variants: [`400`, `600`, `700`, `800`],
 					},
 				],
 			},
@@ -67,7 +67,7 @@ module.exports = {
 			options: {
 				name: `images`,
 				path: path.join(__dirname, `src`, `images`),
-			}
+			},
 		},
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-sharp`,
