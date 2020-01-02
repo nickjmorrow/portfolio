@@ -18,11 +18,11 @@ export const OtherProject: React.FC<{ project: ProjectType }> = ({ project }) =>
 		<DelayedSlideInFade enterTimeout={500}>
 			<OtherProjectWrapper theme={theme}>
 				<Links theme={theme}>
-					<a target="_blank" href={project.githubUrl}>
+					<a target="_blank" rel="noopener noreferrer" href={project.githubUrl}>
 						<GithubIcon sizeVariant={2} style={{ display: 'block' }} />
 					</a>
 					{project.demoUrl && (
-						<a target="_blank" href={project.demoUrl}>
+						<a target="_blank" rel="noopener noreferrer" href={project.demoUrl}>
 							<ShareIcon sizeVariant={2} style={{ display: 'block' }} />
 						</a>
 					)}

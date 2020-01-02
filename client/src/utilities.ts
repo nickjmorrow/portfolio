@@ -1,13 +1,24 @@
 export const getFormattedDate = (date: string) => {
 	const formattedDate = new Date(parseInt(date, 10));
 	return `${monthNames[formattedDate.getMonth()]} ${formattedDate.getFullYear()}`;
-}
+};
 
-const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
+const monthNames = [
+	'January',
+	'February',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December',
 ];
 
-export const getTitleCased = (str: string) => 
+export const getTitleCased = (str: string) =>
 	str
 		.split(' ')
 		.map(w => w[0].toUpperCase() + w.substr(1).toLowerCase())

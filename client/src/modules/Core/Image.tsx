@@ -60,7 +60,12 @@ export const Image: React.FC<{ fileName: string; url: string }> = ({ fileName, u
 
 	const { component } = mappings.find(m => m.name === fileName)!;
 	return (
-		<a href={url} target="_blank" style={{ position: 'absolute', width: '100%', height: '100%' }}>
+		<a
+			href={url}
+			target="_blank"
+			rel="noopener noreferrer"
+			style={{ position: 'absolute', width: '100%', height: '100%' }}
+		>
 			<StyledImage onClick={handleClick} fixed={component.childImageSharp.fixed} theme={theme} />
 		</a>
 	);

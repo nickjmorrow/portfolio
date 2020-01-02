@@ -9,7 +9,7 @@ export const SideMenu: React.FC<{ navLinks: { route: string; label: string }[] }
 	return (
 		<StyledSideMenu theme={theme}>
 			{navLinks.map(nl => (
-				<AnchorLink style={{ textDecoration: 'none' }} href={nl.route}>
+				<AnchorLink key={nl.route} style={{ textDecoration: 'none' }} href={nl.route}>
 					<LinkContainer theme={theme}>
 						<StyledTypography colorVariant={'secondaryLight'} theme={theme} key={nl.route}>
 							{nl.label}

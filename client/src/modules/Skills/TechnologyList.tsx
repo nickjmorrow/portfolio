@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Technology, Theme, TechnologyType } from '../../types';
+import { iconMap } from '../../constants';
 import { Popover } from '@material-ui/core';
 import {
 	Typography,
@@ -92,7 +93,7 @@ export const TechnologyList: React.FC = () => {
 	return (
 		<DelayedSlideInFade enterTimeout={1000} style={{ padding: '16px 0' }}>
 			<Paper style={{ minWidth: theme.spacing.ss128 }}>
-				<TechnologiesWrapper theme={theme}>
+				<TechnologyTypeWrapper theme={theme}>
 					{technologyTypes
 						.sort((a, b) => (a.orderId > b.orderId ? 1 : -1))
 						.map(tti => {
@@ -162,7 +163,7 @@ export const TechnologyList: React.FC = () => {
 								/>
 							);
 						})}
-				</TechnologiesWrapper>
+				</TechnologyTypeWrapper>
 			</Paper>
 		</DelayedSlideInFade>
 	);

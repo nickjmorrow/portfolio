@@ -29,7 +29,7 @@ import {
 	useThemeContext,
 } from '@nickjmorrow/react-component-library';
 import { getTitleCased } from '../../utilities';
-import { SkillLevel } from '../../constants';
+import { SkillLevel, iconMap } from '../../constants';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Technology, TechnologyType } from '../../types';
@@ -187,29 +187,3 @@ const SkillsWrapper = styled('section')<{ theme: Theme }>`
 	justify-content: center;
 	background-color: white;
 `;
-
-const iconSizeVariant = 3;
-
-const iconMap = {
-	'C#': <CSharpIcon sizeVariant={iconSizeVariant} />,
-	'SQL Server': <SQLServerIcon sizeVariant={iconSizeVariant} />,
-	React: <ReactJSIcon sizeVariant={iconSizeVariant} />,
-	'Node.js': <NodeJSIcon sizeVariant={iconSizeVariant} />,
-	MongoDB: <MongoDBIcon sizeVariant={iconSizeVariant} />,
-	'.NET Core': <NETCoreIcon sizeVariant={iconSizeVariant} />,
-	JavaScript: <JavaScriptIcon sizeVariant={iconSizeVariant} />,
-	TypeScript: <TypeScriptIcon sizeVariant={iconSizeVariant} />,
-	Git: <GitIcon sizeVariant={iconSizeVariant} />,
-	Redux: <ReduxIcon sizeVariant={iconSizeVariant} />,
-	PostgreSQL: <PostgreSQLIcon sizeVariant={iconSizeVariant} />,
-	'Jenkins CI': <JenkinsCIIcon sizeVariant={iconSizeVariant} />,
-	'Styled Components': <StyledComponentsIcon style={{ fontSize: '22px' }} />,
-	Jest: <JestIcon sizeVariant={iconSizeVariant} />,
-	Selenium: <SeleniumIcon sizeVariant={iconSizeVariant} />,
-	'REST Services': <JestIcon sizeVariant={iconSizeVariant} />,
-	Python: <PythonIcon sizeVariant={iconSizeVariant} />,
-	Go: <GoIcon sizeVariant={iconSizeVariant} />,
-	Webpack: <WebpackIcon sizeVariant={iconSizeVariant} />,
-	Rollup: <RollupIcon sizeVariant={iconSizeVariant} />,
-	Gatsby: <GatsbyIcon sizeVariant={iconSizeVariant} />,
-};

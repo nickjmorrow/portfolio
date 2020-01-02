@@ -1,4 +1,13 @@
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import {
+	Column,
+	Entity,
+	JoinColumn,
+	JoinTable,
+	ManyToMany,
+	ManyToOne,
+	PrimaryGeneratedColumn,
+	OneToMany,
+} from 'typeorm';
 import { Technology } from './models/Technology';
 
 @Entity({ schema: 'portfolio', name: 'technology_types' })
@@ -9,7 +18,7 @@ export class TechnologyType {
 	@Column()
 	public name!: string;
 
-	@Column({name: 'order_id'})
+	@Column({ name: 'order_id' })
 	public orderId!: number;
 
 	@OneToMany(type => Technology, technology => technology.technologyType)
