@@ -5,6 +5,9 @@
 	"version": "0.1.0",
 	"license": "MIT",
 	"author": "Nicholas Morrow <njmorrow95@gmail.com>",
+	"engines": {
+		"node": "12.14.0"
+	},
 	"dependencies": {
 		"@material-ui/core": "^4.5.2",
 		"@nickjmorrow/react-component-library": "0.0.52",
