@@ -76,4 +76,5 @@ const ExperienceListWrapper = styled('div')<{ theme: Theme }>`
 const Wrapper = styled('section')<{ theme: Theme }>`
 	position: relative;
 	background-color: ${p => p.theme.colors.background};
+	min-height: 75vh;
 `;

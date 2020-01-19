@@ -144,6 +144,15 @@ UNION SELECT 6, 'Professional Portfolio v1', 'Portfolio to showcase experiences,
 UNION SELECT 7, 'Blogging Platform', 'Personal blog to jot down thoughts on technology, software, and general development.', 'https://github.com/nickjmorrow/blog', NULL, 'blog.png', 7 
 UNION SELECT 8, 'Chore Scheduler', 'Predictably schedule chores for the NY Mastercard WeWork office.', 'https://github.com/nickjmorrow/wework-scheduler', 'https://fervent-saha-b4b2b7.netlify.com/', 'wework_scheduler.png', 2;
 
+INSERT INTO portfolio.projects (project_id, name, tagline, github_link, site_link, file_name, order_id)
+OVERRIDING SYSTEM VALUE
+SELECT 9, 'Breakbuilder', 'TODO1', 'https://github.com/nickjmorrow/breakbuilder', NULL, 'breakbuilder.png', 9
+UNION SELECT 10, 'Ventr', 'TODO2', 'https://github.com/nickjmorrow/ventr', NULL, 'ventr.png', 10
+UNION SELECT 11, 'COSDNA Clone', 'TODO3', 'https://github.com/nickjmorrow/cosdnaclone', NULL, 'cosdnaclone.png', 11
+UNION SELECT 12, 'Places to Live', 'TODO4', 'https://github.com/nickjmorrow/placestolive', NULL, 'placestolive.png', 12;
+UNION SELECT 13, 'Forsvarkten Clone', 'TODO5', 'https://github.com/nickjmorrow/forsvarktenclone', NULL, 'forsvarktenclone.png', 13
+
+
 CREATE TABLE portfolio."Project_Project__technologies" (
     "projectsProjectId" INT NOT NULL REFERENCES portfolio.projects(project_id)
     , "technologiesTechnologyId" INT NOT NULL REFERENCES portfolio.technologies(technology_id)

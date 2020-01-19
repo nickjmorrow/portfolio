@@ -1,12 +1,26 @@
 {
 	"name": "@nickmorrow/portfolio-client",
 	"private": true,
-	"description": "A simple starter to get up and developing quickly with Gatsby",
+	"description": "Portfolio front-end built with Gatsby.",
 	"version": "0.1.0",
 	"license": "MIT",
 	"author": "Nicholas Morrow <njmorrow95@gmail.com>",
 	"engines": {
 		"node": "12.14.0"
+	},
+	"scripts": {
+		"prebuild": "npm install -g gatsby && npm install && rm -rf .cache",
+		"build": "gatsby build",
+		"build:watch": "gatsby develop",
+		"deploy": "npm install -g gatsby && npm install && npm run serve",
+		"serve": "NODE_ENV=production gatsby serve",
+		"test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+		"format": "prettier --write \"src/**/*.{ts,tsx}\"",
+		"lint": "eslint '*/**/*.{ts,tsx}' --quiet --fix"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nickjmororw/portfolio"
 	},
 	"dependencies": {
 		"@material-ui/core": "^4.5.2",
@@ -48,25 +62,5 @@
 		"prettier": "^1.17.1",
 		"prettier-eslint": "^8.8.2",
 		"typescript": "^3.5.1"
-	},
-	"keywords": [
-		"gatsby"
-	],
-	"scripts": {
-		"prebuild": "npm install -g gatsby && npm install && rm -rf .cache",
-		"build": "gatsby build",
-		"dev": "gatsby develop",
-		"deploy": "npm install -g gatsby && npm install && npm run serve",
-		"serve": "NODE_ENV=production gatsby serve",
-		"test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-		"format": "prettier --write \"src/**/*.{ts,tsx}\"",
-		"lint": "eslint '*/**/*.{ts,tsx}' --quiet --fix"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/gatsbyjs/gatsby-starter-default"
-	},
-	"bugs": {
-		"url": "https://github.com/gatsbyjs/gatsby/issues"
 	}
 }

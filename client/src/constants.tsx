@@ -70,6 +70,8 @@ export enum SkillLevel {
 
 const iconSizeVariant = 3;
 
+export const moduleHeight = '75vh';
+
 export const iconMap = {
 	'C#': <CSharpIcon sizeVariant={iconSizeVariant} />,
 	'SQL Server': <SQLServerIcon sizeVariant={iconSizeVariant} />,

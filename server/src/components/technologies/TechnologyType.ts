@@ -1,13 +1,4 @@
-import {
-	Column,
-	Entity,
-	JoinColumn,
-	JoinTable,
-	ManyToMany,
-	ManyToOne,
-	PrimaryGeneratedColumn,
-	OneToMany,
-} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Technology } from './models/Technology';
 
 @Entity({ schema: 'portfolio', name: 'technology_types' })

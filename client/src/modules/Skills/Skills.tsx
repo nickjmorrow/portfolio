@@ -1,38 +1,11 @@
-import * as React from 'react';
-import { Header } from '../Core/Header';
-import { DelayedSlideInFade } from '../Core/DelayedSlideInFade';
-import {
-	Paper,
-	ExpansionPanel,
-	Typography,
-	Theme,
-	CSharpIcon,
-	SQLServerIcon,
-	ReactJSIcon,
-	NodeJSIcon,
-	MongoDBIcon,
-	NETCoreIcon,
-	JavaScriptIcon,
-	TypeScriptIcon,
-	GitIcon,
-	ReduxIcon,
-	PostgreSQLIcon,
-	JenkinsCIIcon,
-	StyledComponentsIcon,
-	JestIcon,
-	SeleniumIcon,
-	PythonIcon,
-	GoIcon,
-	WebpackIcon,
-	RollupIcon,
-	GatsbyIcon,
-	useThemeContext,
-} from '@nickjmorrow/react-component-library';
-import { getTitleCased } from '../../utilities';
-import { SkillLevel, iconMap } from '../../constants';
-import styled from 'styled-components';
+import { ExpansionPanel, Paper, Theme, Typography, useThemeContext } from '@nickjmorrow/react-component-library';
 import { graphql, useStaticQuery } from 'gatsby';
+import * as React from 'react';
+import styled from 'styled-components';
+import { iconMap, SkillLevel } from '../../constants';
 import { Technology, TechnologyType } from '../../types';
+import { getTitleCased } from '../../utilities';
+import { Header } from '../Core/Header';
 
 export const GatsbyQuery = graphql`
 	{
@@ -72,66 +45,53 @@ export const Skills: React.FC = () => {
 
 	return (
 		<SkillsWrapper>
-			<DelayedSlideInFade enterTimeout={1000} style={{ padding: '16px 0' }}>
-				<div>
-					<Header link="#skills" id="skills">
-						Skills
-					</Header>
+			<div>
+				<Header link="#skills" id="skills">
+					Skills
+				</Header>
+				<Paper style={{ minWidth: theme.spacing.ss128 }}>
+					<TechnologiesWrapper theme={theme}>
+						{technologyTypes
+							.sort((a, b) => (a.orderId > b.orderId ? 1 : -1))
+							.map(tti => {
+								const relevantTechnologies = technologies.filter(
+									t => t.technologyType.technologyTypeId === tti.technologyTypeId,
+								);
 
-					<Paper style={{ minWidth: theme.spacing.ss128 }}>
-						<TechnologiesWrapper theme={theme}>
-							{technologyTypes
-								.sort((a, b) => (a.orderId > b.orderId ? 1 : -1))
-								.map(tti => {
-									const relevantTechnologies = technologies.filter(
-										t => t.technologyType.technologyTypeId === tti.technologyTypeId,
-									);
-									const proficientTechnologies = relevantTechnologies.filter(
-										rt => rt.skillLevel.skillLevelId === SkillLevel.Proficient,
-									);
-									const familiarTechnologies = relevantTechnologies.filter(
-										rt => rt.skillLevel.skillLevelId === SkillLevel.Familiar,
-									);
+								const technologyTypeLabel = relevantTechnologies
+									.filter(
+										rt =>
+											rt.skillLevel.skillLevelId === SkillLevel.Proficient && rt.orderId !== null,
+									)
+									.sort((a, b) => (a.orderId > b.orderId ? 1 : -1))[0];
 
-									const technologyTypeLabel = proficientTechnologies
-										.filter(rt => rt.orderId !== null)
-										.sort((a, b) => (a.orderId > b.orderId ? 1 : -1))[0];
-
-									return (
-										<ExpansionPanel
-											key={tti.technologyTypeId}
-											styleApi={{
-												wrapperStyle: {
-													boxShadow: 'none',
-													padding: '0 16px',
-												},
-											}}
-											isFullWidth={true}
-											rightComponent={() => iconMap[technologyTypeLabel.name]}
-											visibleContent={
-												<Typography sizeVariant={5} colorVariant={'primaryDark'}>
-													{getTitleCased(tti.name)}
-												</Typography>
-											}
-											hiddenContent={
-												<div style={{ display: 'flex', flexFlow: 'row' }}>
-													<TechnologyList
-														title={'Proficient'}
-														technologies={proficientTechnologies}
-													/>
-													<TechnologyList
-														title={'Familiar'}
-														technologies={familiarTechnologies}
-													/>
-												</div>
-											}
-										/>
-									);
-								})}
-						</TechnologiesWrapper>
-					</Paper>
-				</div>
-			</DelayedSlideInFade>
+								return (
+									<ExpansionPanel
+										key={tti.technologyTypeId}
+										styleApi={{
+											wrapperStyle: {
+												boxShadow: 'none',
+												padding: '0 16px',
+											},
+										}}
+										isFullWidth={true}
+										rightComponent={() => iconMap[technologyTypeLabel.name]}
+										visibleContent={
+											<Typography sizeVariant={5} colorVariant={'primaryDark'}>
+												{getTitleCased(tti.name)}
+											</Typography>
+										}
+										hiddenContent={
+											<div style={{ display: 'flex', flexFlow: 'row' }}>
+												<TechnologyList technologies={relevantTechnologies} />
+											</div>
+										}
+									/>
+								);
+							})}
+					</TechnologiesWrapper>
+				</Paper>
+			</div>
 		</SkillsWrapper>
 	);
 };

@@ -1,39 +1,11 @@
+import { ExpansionPanel, Paper, Typography, useThemeContext } from '@nickjmorrow/react-component-library';
+import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import styled from 'styled-components';
-import { graphql, useStaticQuery } from 'gatsby';
-import { Technology, Theme, TechnologyType } from '../../types';
 import { iconMap } from '../../constants';
-import { Popover } from '@material-ui/core';
-import {
-	Typography,
-	SeleniumIcon,
-	GitIcon,
-	ReduxIcon,
-	PostgreSQLIcon,
-	JenkinsCIIcon,
-	JestIcon,
-	StyledComponentsIcon,
-	useThemeContext,
-	ArrowIcon,
-	CSharpIcon,
-	SQLServerIcon,
-	ReactJSIcon,
-	NodeJSIcon,
-	MongoDBIcon,
-	NETCoreIcon,
-	JavaScriptIcon,
-	TypeScriptIcon,
-	PythonIcon,
-	GoIcon,
-	WebpackIcon,
-	RollupIcon,
-	GatsbyIcon,
-	Paper,
-	ExpansionPanel,
-} from '@nickjmorrow/react-component-library';
-import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
+import { Technology, TechnologyType, Theme } from '../../types';
 import { getTitleCased } from '../../utilities';
-import { SkillLevel } from '../../constants';
+import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
 export const GatsbyQuery = graphql`
 	{
 		data {
@@ -61,15 +33,7 @@ export const TechnologyList: React.FC = () => {
 		return null;
 	}
 	const [anchorEl, setAnchorEl] = React.useState(null);
-	const [currentTechnology, setTechnology] = React.useState<Technology>(null);
 	const [isHoveringOverPopover, setIsHoveringOverPopover] = React.useState(false);
-	const [isHoveringOverTechnology, setIsHoveringOverTechnology] = React.useState(false);
-
-	const handlePopoverOpen = (event: React.MouseEvent, technology: Technology) => {
-		event.preventDefault();
-		setTechnology(technology);
-		setAnchorEl(event.currentTarget);
-	};
 
 	const handlePopoverClose = (event: React.MouseEvent) => {
 		if (isHoveringOverPopover) {
@@ -100,9 +64,6 @@ export const TechnologyList: React.FC = () => {
 							const relevantTechnologies = technologies.filter(
 								t => t.technologyType.technologyTypeId === tti.technologyTypeId,
 							);
-							const proficientTechnology = relevantTechnologies
-								.filter(rt => rt.orderId !== null)
-								.sort((a, b) => (a.orderId > b.orderId ? 1 : -1))[0];
 
 							return (
 								<ExpansionPanel
@@ -131,10 +92,6 @@ export const TechnologyList: React.FC = () => {
 															marginLeft: '24px',
 															display: 'flex',
 															marginBottom: '16px',
-															opacity:
-																rt.skillLevel.skillLevelId === SkillLevel.Proficient
-																	? 1
-																	: 0.6,
 														}}
 													>
 														<div

@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { useThemeContext, Typography, InvisibleLink } from '@nickjmorrow/react-component-library';
+import { Typography, useThemeContext } from '@nickjmorrow/react-component-library';
 import { Theme } from '@nickjmorrow/react-component-library/dist/typeUtilities';
-import styled from 'styled-components';
+import * as React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
+import styled from 'styled-components';
 
 export const SideMenu: React.FC<{ navLinks: { route: string; label: string }[] }> = ({ navLinks }) => {
 	const theme = useThemeContext();
@@ -25,6 +25,7 @@ const StyledSideMenu = styled('div')<{ theme: Theme }>`
 	height: 100vh;
 	display: grid;
 	grid-auto-flow: row;
+	z-index: 1;
 `;
 
 const StyledTypography = styled(Typography)<{ theme: Theme }>`

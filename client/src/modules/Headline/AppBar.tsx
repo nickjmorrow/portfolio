@@ -20,6 +20,7 @@ import { SlideInFade } from '../Core/SlideInFade';
 import { withPrefix } from 'gatsby';
 import Media from 'react-media';
 import { SideMenu } from './SideMenu';
+import { ResumeButton } from './ResumeButton';
 import { Transition } from 'react-transition-group';
 
 export const AppBar: React.FC = () => {
@@ -60,7 +61,8 @@ export const AppBar: React.FC = () => {
 		exiting: unmounted,
 		exited: unmounted,
 	};
-	const timeout = 100;
+	const sideMenuTimeout = 350;
+	const colorVariant = 'secondaryDark';
 	return (
 		<Media
 			queries={{
@@ -75,13 +77,13 @@ export const AppBar: React.FC = () => {
 							<SlideInFade enterTimeout={enterTimeout.appBarAppears}>
 								<LeftWrapper theme={theme}>
 									<InvisibleLink target="_blank" href={GITHUB_LINK}>
-										<GithubIcon colorVariant={'secondaryLight'} style={{ cursor: 'pointer' }} />
+										<GithubIcon colorVariant={colorVariant} style={{ cursor: 'pointer' }} />
 									</InvisibleLink>
 									<InvisibleLink target="_blank" href={LINKED_IN_LINK}>
-										<LinkedInIcon colorVariant={'secondaryLight'} style={{ cursor: 'pointer' }} />
+										<LinkedInIcon colorVariant={colorVariant} style={{ cursor: 'pointer' }} />
 									</InvisibleLink>
 									<InvisibleLink href={'mailto:njmorrow95@gmail.com'}>
-										<MailIcon colorVariant={'secondaryLight'} style={{ cursor: 'pointer' }} />
+										<MailIcon colorVariant={colorVariant} style={{ cursor: 'pointer' }} />
 									</InvisibleLink>
 								</LeftWrapper>
 							</SlideInFade>
@@ -94,53 +96,46 @@ export const AppBar: React.FC = () => {
 									</AnchorLink>
 								))}
 								<SlideInFade enterTimeout={enterTimeout.resumeAppears}>
-									<a
-										rel="noopener noreferrer"
-										style={{ textDecoration: 'none' }}
-										target="_blank"
-										href={withPrefix('/resume.pdf')}
-										download
-									>
-										<StyledButton theme={theme} styleVariant={2}>
-											<StyledTypography theme={theme}>Resume</StyledTypography>
-										</StyledButton>
-									</a>
+									<ResumeButton />
 								</SlideInFade>
 							</RightWrapper>
 						</StyledAppBar>
 					)}
 					{matches.mobile && (
-						<header style={{ position: 'relative' }}>
-							<StyledMenuIcon
-								theme={theme}
-								style={{
-									cursor: 'pointer',
-									position: 'absolute',
-									zIndex: 1,
-									top: theme.spacing.ss4,
-									left: theme.spacing.ss4,
-								}}
-								onClick={() => setIsOpen(currentIsOpen => !currentIsOpen)}
-							/>
-							{
-								<div style={{}} onClick={() => setIsOpen(false)}>
-									<Transition in={isOpen} timeout={timeout} unmountOnExit={true}>
-										{state => (
-											<div
-												style={{
-													position: 'absolute',
-													width: '40%',
-													transition: `transform ${timeout}ms`,
-													...transitionStyles[state],
-												}}
-											>
-												<SideMenu navLinks={navLinks} />
-											</div>
-										)}
-									</Transition>
-								</div>
-							}
-						</header>
+						<SlideInFade enterTimeout={enterTimeout.appBarAppears}>
+							<header style={{ position: 'relative' }}>
+								<StyledMenuIcon
+									theme={theme}
+									style={{
+										cursor: 'pointer',
+										position: 'absolute',
+										zIndex: 2,
+										top: theme.spacing.ss4,
+										left: theme.spacing.ss4,
+									}}
+									onClick={() => setIsOpen(currentIsOpen => !currentIsOpen)}
+								/>
+								{
+									<div style={{}} onClick={() => setIsOpen(false)}>
+										<Transition in={isOpen} timeout={sideMenuTimeout} unmountOnExit={true}>
+											{state => (
+												<div
+													style={{
+														position: 'absolute',
+														zIndex: 1,
+														width: '40%',
+														transition: `transform ${sideMenuTimeout}ms`,
+														...transitionStyles[state],
+													}}
+												>
+													<SideMenu navLinks={navLinks} />
+												</div>
+											)}
+										</Transition>
+									</div>
+								}
+							</header>
+						</SlideInFade>
 					)}
 				</>
 			)}
@@ -149,9 +144,9 @@ export const AppBar: React.FC = () => {
 };
 
 const StyledMenuIcon = styled(MenuIcon)<{ theme: Theme }>`
-	color: ${p => p.theme.colors.neutral.cs4};
+	color: ${p => p.theme.colors.neutral.cs7};
 	&: hover {
-		color: ${p => p.theme.colors.neutral.cs2};
+		color: ${p => p.theme.colors.neutral.cs5};
 	}
 `;
 
@@ -176,19 +171,13 @@ const StyledTypography = styled(Typography)<{ theme: Theme }>`
 const LinkTypography: React.FC = ({ children }) => {
 	const theme = useThemeContext();
 	const StyledTypography = styled(Typography)<{ theme: Theme }>`
-		color: ${p => p.theme.colors.neutral.cs3};
+		color: ${p => p.theme.colors.neutral.cs6};
 		&: hover {
-			color: ${p => p.theme.colors.neutral.cs1};
+			color: ${p => p.theme.colors.neutral.cs7};
 		}
 	`;
 	return (
-		<StyledTypography
-			weightVariant={8}
-			colorVariant={'primaryLight'}
-			sizeVariant={4}
-			theme={theme}
-			style={{ textDecoration: 'none' }}
-		>
+		<StyledTypography weightVariant={8} sizeVariant={4} theme={theme} style={{ textDecoration: 'none' }}>
 			{children}
 		</StyledTypography>
 	);
@@ -205,7 +194,6 @@ const StyledAppBar = styled('header')<{ spacing: StyleConstant<'spacing'> }>`
 	padding: 0 120px;
 	right: 0;
 	left: 0;
-	position: fixed;
 	opacity: 0.8;
 	z-index: 0;
 `;
