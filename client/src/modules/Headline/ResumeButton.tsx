@@ -22,8 +22,9 @@ export const ResumeButton: React.FC = () => {
 
 const StyledButton = styled(Button)<{ theme: Theme }>`
 	border-color: ${p => p.theme.colors.background};
-	background: -webkit-linear-gradient(60deg, hsl(179.5, 93.4%, 55.6%), hsl(54.6, 100%, 38.9%));
+	background: -webkit-linear-gradient(60deg, hsl(178.3, 100%, 50%), hsl(288, 100%, 50%));
 	padding: 12px 18px;
+	margin: 0;
 	&: hover {
 		border-color: ${p => p.theme.colors.background};
 	}

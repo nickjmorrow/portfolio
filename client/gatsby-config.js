@@ -1,5 +1,11 @@
 var getServerUrl = require('./getServerUrl');
 const path = require('path');
+const { readdirSync } = require('fs');
+
+const getDirectories = source =>
+	readdirSync(source, { withFileTypes: true })
+		.filter(dirent => dirent.isDirectory())
+		.map(dirent => dirent.name);
 
 module.exports = {
 	siteMetadata: {
@@ -71,5 +77,14 @@ module.exports = {
 		},
 		`gatsby-transformer-sharp`,
 		`gatsby-plugin-sharp`,
+		{
+			resolve: `gatsby-plugin-root-import`,
+			options: {
+				...getDirectories('src').reduce((agg, cur) => {
+					agg[cur] = path.join(__dirname, 'src', cur);
+					return agg;
+				}, {}),
+			},
+		},
 	],
 };

@@ -3,15 +3,15 @@ import { Project } from '../../types';
 import { Typography } from '@nickjmorrow/react-component-library';
 import { FeaturedProject } from './FeaturedProject';
 import styled from 'styled-components';
-import { Header } from '../Core/Header';
+import { HeaderTypography } from '../Core/Header';
 
 export const FeaturedProjectList: React.FC<{ projects: Project[] }> = ({ projects }) => {
 	return (
 		<FeaturedProjectListWrapper>
 			<InnerWrapper>
-				<Header id="work" link="#work">
+				<HeaderTypography id="work" link="#work">
 					Work
-				</Header>
+				</HeaderTypography>
 				<Typography styleVariant={'h2'} style={{ margin: '0' }}>
 					Featured Projects
 				</Typography>

@@ -2,10 +2,10 @@ import { ExpansionPanel, Paper, Theme, Typography, useThemeContext } from '@nick
 import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import styled from 'styled-components';
-import { iconMap, SkillLevel } from '../../constants';
+import { iconMap, SkillLevel } from '../../core/constants';
 import { Technology, TechnologyType } from '../../types';
 import { getTitleCased } from '../../utilities';
-import { Header } from '../Core/Header';
+import { HeaderTypography } from '../Core/Header';
 
 export const GatsbyQuery = graphql`
 	{
@@ -46,10 +46,10 @@ export const Skills: React.FC = () => {
 	return (
 		<SkillsWrapper>
 			<div>
-				<Header link="#skills" id="skills">
+				<HeaderTypography link="#skills" id="skills">
 					Skills
-				</Header>
-				<Paper style={{ minWidth: theme.spacing.ss128 }}>
+				</HeaderTypography>
+				<Paper style={{ minWidth: theme.spacing.ss192, marginBottom: '6px' }}>
 					<TechnologiesWrapper theme={theme}>
 						{technologyTypes
 							.sort((a, b) => (a.orderId > b.orderId ? 1 : -1))
@@ -141,8 +141,9 @@ const TechnologiesWrapper = styled('ul')<{ theme: Theme }>`
 
 const SkillsWrapper = styled('section')<{ theme: Theme }>`
 	margin: 0 auto;
+	margin-bottom: 16px;
 	position: relative;
-	min-height: 60vh;
+	min-height: 90vh;
 	display: flex;
 	justify-content: center;
 	background-color: white;

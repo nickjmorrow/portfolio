@@ -6,39 +6,22 @@ import {
 	Typography,
 	useThemeContext,
 } from '@nickjmorrow/react-component-library';
-import { graphql, useStaticQuery } from 'gatsby';
-import Img from 'gatsby-image';
 import * as React from 'react';
 import Typist from 'react-typist';
 import TypistLoop from 'react-typist-loop';
 import 'react-typist/dist/Typist.css';
 import styled from 'styled-components';
-import { enterTimeout } from '../../constants';
-import { SlideInFade } from '../Core/SlideInFade';
-
-export const query = graphql`
-	query {
-		file(relativePath: { eq: "space.jpg" }) {
-			childImageSharp {
-				# Specify the image processing specifications right in the query.
-				# Makes it trivial to update as your page's design changes.
-				fluid {
-					...GatsbyImageSharpFluid
-				}
-			}
-		}
-	}
-`;
+import './cursor.css';
+import { enterTimeout, accentColors } from '../../core/constants';
 
 export const Headline: React.FC = () => {
 	const theme = useThemeContext();
-	const { file } = useStaticQuery(query);
 
 	return (
-		<section style={{ minHeight: '100vh' }}>
+		<section style={{ height: '100vh', width: '100%', zIndex: -1 }}>
 			<Fade in={true} appear={true} enterTimeout={enterTimeout.headlineAppears} transitionVariant={'slow'}>
 				<HeadlineWrapper theme={theme}>
-					<div style={{ marginBottom: theme.spacing.ss4 }}>
+					<div style={{ marginBottom: theme.spacing.ss4, marginLeft: theme.spacing.ss16 }}>
 						<Content spacing={theme.spacing}>
 							<Typography
 								colorVariant={'primaryDark'}
@@ -67,7 +50,7 @@ export const Headline: React.FC = () => {
 								>
 									Let's build something{' '}
 								</Typography>
-								<Typography
+								<PrettyWordTypography
 									colorVariant={'primaryDark	'}
 									sizeVariant={6}
 									weightVariant={7}
@@ -81,7 +64,7 @@ export const Headline: React.FC = () => {
 											</Typist>
 										))}
 									</TypistLoop>
-								</Typography>
+								</PrettyWordTypography>
 							</div>
 						</Content>
 					</div>
@@ -90,6 +73,12 @@ export const Headline: React.FC = () => {
 		</section>
 	);
 };
+
+const PrettyWordTypography = styled(Typography)`
+	background: -webkit-linear-gradient(180deg, ${accentColors.colorOne}, ${accentColors.colorTwo});
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+`;
 
 const HeadlineWrapper = styled('div')<{ theme: Theme }>`
 	height: 100vh;

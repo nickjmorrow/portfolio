@@ -52,7 +52,7 @@ const TimelineExperience = styled('div')<{ theme: Theme; isFirst: boolean; isLas
 	transition-property: border, background-color;
 	transition-timing-function: ${p => p.theme.transitions.transitionTimingFunction};
 	transition-duration: ${p => p.theme.transitions.durations.fast}ms;
-	min-width: ${p => p.theme.spacing.ss64};
+	min-width: ${p => p.theme.spacing.ss48};
 	cursor: pointer;
 	border-top-left-radius: ${p => (p.isFirst ? p.theme.border.borderRadius.br1 : 'none')};
 	border-top-right-radius: ${p => (p.isFirst ? p.theme.border.borderRadius.br1 : 'none')};

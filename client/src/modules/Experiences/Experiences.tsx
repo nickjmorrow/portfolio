@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import styled from 'styled-components';
 import { Experience as ExperienceType } from '../../types';
-import { Header } from '../Core/Header';
+import { HeaderTypography } from '../Core/Header';
 import { Experience } from './Experience';
 import { Timeline } from './Timeline';
 
@@ -37,21 +37,19 @@ export const Experiences: React.FC = () => {
 
 	return (
 		<Wrapper theme={theme}>
-			<ExperienceListWrapper theme={theme}>
-				<Header id={'experience'} link={'#experience'}>
-					Experience
-				</Header>
-				<ExperiencesWrapper theme={theme}>
-					<Timeline
-						setActiveExperience={setActiveExperience}
-						experiences={experiences}
-						activeExperience={activeExperience}
-					>
-						Timeline
-					</Timeline>
-					<Experience experience={activeExperience} />
-				</ExperiencesWrapper>
-			</ExperienceListWrapper>
+			<HeaderTypography id={'experience'} link={'#experience'}>
+				Experience
+			</HeaderTypography>
+			<ExperiencesWrapper theme={theme}>
+				<Timeline
+					setActiveExperience={setActiveExperience}
+					experiences={experiences}
+					activeExperience={activeExperience}
+				>
+					Timeline
+				</Timeline>
+				<Experience experience={activeExperience} />
+			</ExperiencesWrapper>
 		</Wrapper>
 	);
 };
@@ -63,18 +61,11 @@ const ExperiencesWrapper = styled('div')`
 	max-width: 800px;
 `;
 
-const ExperienceListWrapper = styled('div')<{ theme: Theme }>`
+const Wrapper = styled('div')<{ theme: Theme }>`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding: 64px;
-	background-color: ${p => p.theme.colors.background};
 	margin: 0 auto;
-	max-width: max-content;
-`;
-
-const Wrapper = styled('section')<{ theme: Theme }>`
-	position: relative;
-	background-color: ${p => p.theme.colors.background};
+	max-width: ${p => p.theme.spacing.ss192};
 	min-height: 75vh;
 `;

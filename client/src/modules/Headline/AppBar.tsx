@@ -1,54 +1,31 @@
 import {
+	GithubIcon,
+	GITHUB_LINK,
+	InvisibleLink,
+	LinkedInIcon,
+	LINKED_IN_LINK,
+	MailIcon,
+	MenuIcon,
 	StyleConstant,
+	Theme,
 	Typography,
 	useThemeContext,
-	GithubIcon,
-	LinkedInIcon,
-	GITHUB_LINK,
-	LINKED_IN_LINK,
-	InvisibleLink,
-	MailIcon,
-	Button,
-	Theme,
-	MenuIcon,
 } from '@nickjmorrow/react-component-library';
 import * as React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
-import styled from 'styled-components';
-import { enterTimeout } from '../../constants';
-import { SlideInFade } from '../Core/SlideInFade';
-import { withPrefix } from 'gatsby';
 import Media from 'react-media';
-import { SideMenu } from './SideMenu';
-import { ResumeButton } from './ResumeButton';
 import { Transition } from 'react-transition-group';
+import styled from 'styled-components';
+import { enterTimeout, OVERRIDE_DESKTOP_SIZE, components } from '../../core/constants';
+import { SlideInFade } from '../Core/SlideInFade';
+import { ResumeButton } from './ResumeButton';
+import { SideMenu } from './SideMenu';
 
 export const AppBar: React.FC = () => {
 	const theme = useThemeContext();
 	const { spacing } = theme;
 	const [isOpen, setIsOpen] = React.useState(false);
-	const navLinks = [
-		{
-			label: 'About',
-			route: '#about',
-			enterTimeout: enterTimeout.aboutAppears,
-		},
-		{
-			label: 'Experience',
-			route: '#experience',
-			enterTimeout: enterTimeout.experienceAppears,
-		},
-		{
-			label: 'Work',
-			route: '#work',
-			enterTimeout: enterTimeout.workAppears,
-		},
-		{
-			label: 'Contact',
-			route: '#contact',
-			enterTimeout: enterTimeout.contactAppears,
-		},
-	];
+
 	const unmounted = {
 		transform: 'translateX(-320px)',
 	};
@@ -66,13 +43,13 @@ export const AppBar: React.FC = () => {
 	return (
 		<Media
 			queries={{
-				large: '(min-width: 1200px)',
+				large: `(min-width: 1200px)`,
 				mobile: `(max-width: 1199px)`,
 			}}
 		>
 			{matches => (
 				<>
-					{matches.large && (
+					{(OVERRIDE_DESKTOP_SIZE || matches.large) && (
 						<StyledAppBar spacing={spacing}>
 							<SlideInFade enterTimeout={enterTimeout.appBarAppears}>
 								<LeftWrapper theme={theme}>
@@ -88,7 +65,7 @@ export const AppBar: React.FC = () => {
 								</LeftWrapper>
 							</SlideInFade>
 							<RightWrapper theme={theme}>
-								{navLinks.map(nl => (
+								{components.map(nl => (
 									<AnchorLink key={nl.label} href={nl.route} style={{ textDecoration: 'none' }}>
 										<SlideInFade enterTimeout={nl.enterTimeout}>
 											<LinkTypography>{nl.label}</LinkTypography>
@@ -101,7 +78,7 @@ export const AppBar: React.FC = () => {
 							</RightWrapper>
 						</StyledAppBar>
 					)}
-					{matches.mobile && (
+					{!OVERRIDE_DESKTOP_SIZE && matches.mobile && (
 						<SlideInFade enterTimeout={enterTimeout.appBarAppears}>
 							<header style={{ position: 'relative' }}>
 								<StyledMenuIcon
@@ -128,7 +105,7 @@ export const AppBar: React.FC = () => {
 														...transitionStyles[state],
 													}}
 												>
-													<SideMenu navLinks={navLinks} />
+													<SideMenu navLinks={components} />
 												</div>
 											)}
 										</Transition>
@@ -150,32 +127,18 @@ const StyledMenuIcon = styled(MenuIcon)<{ theme: Theme }>`
 	}
 `;
 
-const StyledButton = styled(Button)<{ theme: Theme }>`
-	border-color: ${p => p.theme.colors.neutral.cs1};
-	&: hover {
-		border-color: ${p => p.theme.colors.neutral.cs1};
-		background-color: hsla(0, 0%, 100%, 30%);
-		transition: ${p => p.theme.transitions.fast} all;
-	}
-	&: active {
-		border-color: ${p => p.theme.colors.neutral.cs1};
-	}
-`;
-
 const StyledTypography = styled(Typography)<{ theme: Theme }>`
-	background: -webkit-linear-gradient(60deg, hsl(179.5, 93.4%, 75.6%), hsl(54.6, 100%, 58.9%));
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: ${p => p.theme.colors.transparent};
+	color: ${p => p.theme.colors.neutral.cs9};
+	font-size: 18px;
+	font-weight: 500;
+	&: hover {
+		color: ${p => p.theme.colors.neutral.cs7};
+	}
 `;
 
 const LinkTypography: React.FC = ({ children }) => {
 	const theme = useThemeContext();
-	const StyledTypography = styled(Typography)<{ theme: Theme }>`
-		color: ${p => p.theme.colors.neutral.cs6};
-		&: hover {
-			color: ${p => p.theme.colors.neutral.cs7};
-		}
-	`;
+
 	return (
 		<StyledTypography weightVariant={8} sizeVariant={4} theme={theme} style={{ textDecoration: 'none' }}>
 			{children}
@@ -191,7 +154,7 @@ const StyledAppBar = styled('header')<{ spacing: StyleConstant<'spacing'> }>`
 	grid-column-gap: ${p => p.spacing.ss8};
 	height: ${p => p.spacing.ss24};
 	align-items: center;
-	padding: 0 120px;
+	padding: 0 180px;
 	right: 0;
 	left: 0;
 	opacity: 0.8;

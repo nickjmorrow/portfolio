@@ -21,8 +21,11 @@ import {
 	RollupIcon,
 	GatsbyIcon,
 } from '@nickjmorrow/react-component-library';
-
-import { style } from '@material-ui/system';
+import { About } from '../modules/About/About';
+import { Skills } from '../modules/Skills/Skills';
+import { Projects } from '../modules/Projects/Projects';
+import { Contact } from '../modules/Contact/Contact';
+import { Experiences } from '../modules/Experiences/Experiences';
 
 export const INITIAL_DELAY = 100;
 
@@ -31,7 +34,8 @@ const INCREMENTAL_DELAY = 200;
 const APP_BAR_APPEARS = INITIAL_DELAY;
 const APP_BAR_DELAY = 400;
 const ABOUT_APPEARS = APP_BAR_APPEARS + APP_BAR_DELAY + INCREMENTAL_DELAY;
-const EXPERIENCE_APPEARS = ABOUT_APPEARS + INCREMENTAL_DELAY;
+const SKILLS_APPEARS = ABOUT_APPEARS + INCREMENTAL_DELAY;
+const EXPERIENCE_APPEARS = SKILLS_APPEARS + INCREMENTAL_DELAY;
 const WORK_APPEARS = EXPERIENCE_APPEARS + INCREMENTAL_DELAY;
 const CONTACT_APPEARS = WORK_APPEARS + INCREMENTAL_DELAY;
 const RESUME_APPEARS = CONTACT_APPEARS + INCREMENTAL_DELAY;
@@ -46,6 +50,7 @@ const CONTACT_SEND_MESSAGE_APPEARS = CONTACT_MESSAGE_APPEARS + INCREMENTAL_DELAY
 export const enterTimeout = {
 	appBarAppears: APP_BAR_APPEARS,
 	aboutAppears: ABOUT_APPEARS,
+	skillsAppears: SKILLS_APPEARS,
 	experienceAppears: EXPERIENCE_APPEARS,
 	workAppears: WORK_APPEARS,
 	contactAppears: CONTACT_APPEARS,
@@ -68,7 +73,47 @@ export enum SkillLevel {
 	Familiar = 2,
 }
 
+export const accentColors = {
+	colorOne: 'hsl(179.7, 100%, 50%)',
+	colorTwo: 'hsl(276.7, 100%, 50%)',
+};
+
+export const components = [
+	{
+		component: <About />,
+		label: 'About',
+		route: '#about',
+		enterTimeout: enterTimeout.aboutAppears,
+	},
+	{
+		component: <Skills />,
+		label: 'Skills',
+		route: '#skills',
+		enterTimeout: enterTimeout.skillsAppears,
+	},
+	{
+		component: <Experiences />,
+		label: 'Experience',
+		route: '#experience',
+		enterTimeout: enterTimeout.experienceAppears,
+	},
+	{
+		component: <Projects />,
+		label: 'Work',
+		route: '#work',
+		enterTimeout: enterTimeout.workAppears,
+	},
+	{
+		component: <Contact />,
+		label: 'Contact',
+		route: '#contact',
+		enterTimeout: enterTimeout.contactAppears,
+	},
+];
+
 const iconSizeVariant = 3;
+
+export const OVERRIDE_DESKTOP_SIZE = false;
 
 export const moduleHeight = '75vh';
 

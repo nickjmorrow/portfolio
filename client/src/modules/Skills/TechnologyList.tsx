@@ -2,10 +2,10 @@ import { ExpansionPanel, Paper, Typography, useThemeContext } from '@nickjmorrow
 import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import styled from 'styled-components';
-import { iconMap } from '../../constants';
+import { iconMap } from '../../core/constants';
 import { Technology, TechnologyType, Theme } from '../../types';
 import { getTitleCased } from '../../utilities';
-import { DelayedSlideInFade } from './shared/DelayedSlideInFade';
+import { DelayedSlideInFade } from '../Core/DelayedSlideInFade';
 export const GatsbyQuery = graphql`
 	{
 		data {

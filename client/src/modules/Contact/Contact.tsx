@@ -8,9 +8,9 @@ import {
 import * as React from 'react';
 import styled from 'styled-components';
 import { Theme } from '../../types';
-import { Header } from '../Core/Header';
+import { HeaderTypography } from '../Core/Header';
 import { DelayedSlideInFade } from '../Core/DelayedSlideInFade';
-import { enterTimeout } from '../../constants';
+import { enterTimeout } from '../../core/constants';
 
 export const Contact: React.FC = () => {
 	const theme = useThemeContext();
@@ -22,7 +22,7 @@ export const Contact: React.FC = () => {
 			>
 				<div id="contact">
 					<ContactWrapper theme={theme}>
-						<Header>Contact</Header>
+						<HeaderTypography>Contact</HeaderTypography>
 						<Typography>
 							Although I'm not actively looking for new opportunities, my inbox is always open. Whether
 							for a potential project or just to connect, I'll try my best to answer your email!

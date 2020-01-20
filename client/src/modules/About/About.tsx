@@ -2,21 +2,18 @@ import { Typography, useThemeContext, Theme } from '@nickjmorrow/react-component
 import * as React from 'react';
 import styled from 'styled-components';
 import { DelayedSlideInFade } from '../Core/DelayedSlideInFade';
-import { Header } from '../Core/Header';
-import { moduleHeight } from '../../constants';
+import { HeaderTypography } from '../Core/Header';
+import { moduleHeight } from '../../core/constants';
 
 // TODO: Why am I hitting key errors when using technologyId?
 export const About: React.FC = () => {
 	const theme = useThemeContext();
 	return (
-		<AboutWrapper
-			theme={theme}
-			style={{ minHeight: moduleHeight, display: 'flex', margin: '0 auto', width: 'max-content' }}
-		>
-			<Header link="#about" id="about">
+		<AboutWrapper theme={theme}>
+			<HeaderTypography link="#about" id="about">
 				About
-			</Header>
-			<div style={{ maxWidth: theme.spacing.ss160, marginBottom: theme.spacing.ss24 }}>
+			</HeaderTypography>
+			<div style={{ marginBottom: theme.spacing.ss24 }}>
 				<StyledTypography theme={theme}>
 					Hi! I'm Nick, and I live and work in New York. I enjoy creating web applications with an emphasis on
 					user experience and code quality.
@@ -42,9 +39,9 @@ const AboutWrapper = styled('section')<{ theme: Theme }>`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	min-height: 50vh;
-	position: relative;
 	background-color: ${p => p.theme.colors.background};
-	margin-top: 100vh;
-	padding: ${p => p.theme.spacing.ss16};
+	margin: 0 auto;
+	height: 90vh;
+	display: flex;
+	max-width: ${p => p.theme.spacing.ss192};
 `;

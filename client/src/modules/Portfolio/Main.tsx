@@ -8,7 +8,7 @@ import {
 } from '@nickjmorrow/react-component-library';
 import React from 'react';
 import styled from 'styled-components';
-import { FOOTER_HEIGHT } from '../../constants';
+import { FOOTER_HEIGHT, components } from '../../core/constants';
 import { About } from '../About/About';
 import { AppBar } from '../Headline/AppBar';
 import { Contact } from '../Contact/Contact';
@@ -37,22 +37,23 @@ const themeInputs: ArgumentType<typeof updateThemeInputs>[0] = {
 			fs11: 72,
 		},
 	},
+	colors: {
+		neutral: {
+			middleLightness: 60,
+			lightnessDecrement: 15,
+		},
+	},
 	defaultShowBoxShadow: false,
 };
 
 export const Main: React.FC = () => {
-	const theme = useThemeContext();
 	return (
 		<ThemeContext.Provider value={getThemeFromNewInputs(themeInputs)}>
 			<Wrapper>
 				<AppBar />
 				<Headline />
 				<main>
-					<About />
-					<Skills />
-					<Experiences />
-					<Projects />
-					<Contact />
+					{components.map(c => c.component)}
 					<PopulatedFooter />
 				</main>
 			</Wrapper>
