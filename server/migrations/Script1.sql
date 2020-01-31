@@ -1,3 +1,5 @@
+BEGIN;
+
 DROP TABLE portfolio.experience_details;
 
 DROP TABLE portfolio."Experience_Experience__technologies";
@@ -142,16 +144,18 @@ UNION SELECT 4, 'TV Show Information Aggregator', 'Check out various analytics f
 UNION SELECT 5, 'Subreddit Subscription Automated Job', 'Automically import top posts from selected subreddits into your Pocket account.', 'https://github.com/nickjmorrow/subreddit-subscriber', NULL, 'subreddit_subscriber.png', 5
 UNION SELECT 6, 'Professional Portfolio v1', 'Portfolio to showcase experiences, projects, and technologies.', 'https://github.com/nickjmorrow/portfolio', 'https://nickjmorrow.com/', 'portfolio.png', 6 
 UNION SELECT 7, 'Blogging Platform', 'Personal blog to jot down thoughts on technology, software, and general development.', 'https://github.com/nickjmorrow/blog', NULL, 'blog.png', 7 
-UNION SELECT 8, 'Chore Scheduler', 'Predictably schedule chores for the NY Mastercard WeWork office.', 'https://github.com/nickjmorrow/wework-scheduler', 'https://fervent-saha-b4b2b7.netlify.com/', 'wework_scheduler.png', 2;
-
-INSERT INTO portfolio.projects (project_id, name, tagline, github_link, site_link, file_name, order_id)
-OVERRIDING SYSTEM VALUE
-SELECT 9, 'Breakbuilder', 'TODO1', 'https://github.com/nickjmorrow/breakbuilder', NULL, 'breakbuilder.png', 9
+UNION SELECT 8, 'Chore Scheduler', 'Predictably schedule chores for the NY Mastercard WeWork office.', 'https://github.com/nickjmorrow/wework-scheduler', 'https://chorescheduler.netlify.com/', 'wework_scheduler.png', 2
+UNION SELECT 9, 'Breakbuilder', 'TODO1', 'https://github.com/nickjmorrow/breakbuilder', 'https://breakbuilder.netlify.com/', 'breakbuilder.png', 9
 UNION SELECT 10, 'Ventr', 'TODO2', 'https://github.com/nickjmorrow/ventr', NULL, 'ventr.png', 10
 UNION SELECT 11, 'COSDNA Clone', 'TODO3', 'https://github.com/nickjmorrow/cosdnaclone', NULL, 'cosdnaclone.png', 11
-UNION SELECT 12, 'Places to Live', 'TODO4', 'https://github.com/nickjmorrow/placestolive', NULL, 'placestolive.png', 12;
-UNION SELECT 13, 'Forsvarkten Clone', 'TODO5', 'https://github.com/nickjmorrow/forsvarktenclone', NULL, 'forsvarktenclone.png', 13
+UNION SELECT 12, 'Places to Live', 'TODO4', 'https://github.com/nickjmorrow/placestolive', 'https://wheretolive.netlify.com/', 'placestolive.png', 12
+UNION SELECT 13, 'Forsvarkten Clone', 'TODO5', 'https://github.com/nickjmorrow/forsvarktenclone', NULL, 'forsvarktenclone.png', 13;
 
+UPDATE portfolio.projects
+SET date_deleted = CURRENT_DATE
+WHERE project_id IN (
+    2, 5, 13
+);
 
 CREATE TABLE portfolio."Project_Project__technologies" (
     "projectsProjectId" INT NOT NULL REFERENCES portfolio.projects(project_id)
@@ -207,3 +211,6 @@ CREATE TABLE portfolio.project_details (
     , project_id INT NOT NULL REFERENCES portfolio.projects(project_id)
     , description VARCHAR(255) NOT NULL
 );
+
+COMMIT;
+
