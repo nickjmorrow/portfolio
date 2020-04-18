@@ -6,7 +6,7 @@ import { Experience as ExperienceType } from '../../types';
 import { HeaderTypography } from '../Core/Header';
 import { Experience } from './Experience';
 import { Timeline } from './Timeline';
-import { PAGE_HORIZONTAL_MARGIN } from '../../core/constants';
+import { pageDimensions } from '../../core/constants';
 
 export const GatsbyQuery = graphql`
 	{
@@ -40,10 +40,12 @@ export const Experiences: React.FC = () => {
 		<Wrapper theme={theme}>
 			<InnerWrapper>
 				<InnerInnerWrapper>
-					<HeaderTypography id={'experience'} Text={'#experience'}>
-						Experience
-					</HeaderTypography>
 					<ExperiencesWrapper theme={theme}>
+						<div style={{ width: '100%' }}>
+							<HeaderTypography id={'experience'} Text={'#experience'}>
+								Experience
+							</HeaderTypography>
+						</div>
 						<Timeline
 							setActiveExperience={setActiveExperience}
 							experiences={experiences}
@@ -61,21 +63,22 @@ const ExperiencesWrapper = styled('div')`
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: space-between;
 `;
 
 const Wrapper = styled('div')<{ theme: Theme }>`
 	flex-direction: column;
 	justify-content: center;
-	margin: 16px auto;
 	min-height: 75vh;
+	margin-top: 64px;
+	padding: 0 64px;
 `;
 
 const InnerWrapper = styled.div`
-	max-width: ${p => p.theme.njmTheme.spacing.ss192};
+	max-width: ${pageDimensions.sectionMaxWidth};
 	margin: 0 auto;
 `;
 
 const InnerInnerWrapper = styled.div`
-	margin: 0 ${p => p.theme.njmTheme.spacing.ss4};
+	margin: 0 auto;
 `;

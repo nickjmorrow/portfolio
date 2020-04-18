@@ -61,7 +61,7 @@ const FeaturedProjectWrapper = styled('div')<{ shouldRightAlign: boolean }>`
 	grid-template-columns: repeat(12, 1fr);
 	justify-content: ${p => (p.shouldRightAlign ? 'flex-end' : 'flex-start')};
 	align-items: center;
-	margin: 96px 0;
+	margin: 64px 0;
 	overflow: hidden;
 	border-radius: ${p => p.theme.njmTheme.border.borderRadius.br1};
 	box-shadow: ${p => p.theme.njmTheme.boxShadow.bs1};

@@ -64,7 +64,7 @@ const FeaturedProjectWrapper = styled('div')<{ shouldRightAlign: boolean }>`
 	height: 400px;
 	justify-content: ${p => (p.shouldRightAlign ? 'flex-end' : 'flex-start')};
 	align-items: center;
-	margin: 96px 0;
+	margin: 64px 0;
 	width: 100%;
 	overflow: hidden;
 `;
