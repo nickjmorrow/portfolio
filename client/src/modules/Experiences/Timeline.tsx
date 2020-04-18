@@ -39,10 +39,10 @@ const TimelineWrapper = styled.div`
 	flex-direction: column;
 	margin-right: ${p => p.theme.njmTheme.spacing.ss6};
 	margin-bottom: ${p => p.theme.njmTheme.spacing.ss16};
-	border-radius: 60px;
 	overflow: none;
 	height: min-content;
 	box-sizing: border-box;
+	width: 200px;
 `;
 
 const TimelineExperience = styled('div')<{ theme: Theme; isFirst: boolean; isLast: boolean }>`
@@ -53,7 +53,6 @@ const TimelineExperience = styled('div')<{ theme: Theme; isFirst: boolean; isLas
 	transition-property: border, background-color;
 	transition-timing-function: ${p => p.theme.transitions.transitionTimingFunction};
 	transition-duration: ${p => p.theme.transitions.durations.fast}ms;
-	min-width: ${p => p.theme.spacing.ss48};
 	cursor: pointer;
 	border-top-left-radius: ${p => (p.isFirst ? p.theme.border.borderRadius.br1 : 'none')};
 	border-top-right-radius: ${p => (p.isFirst ? p.theme.border.borderRadius.br1 : 'none')};

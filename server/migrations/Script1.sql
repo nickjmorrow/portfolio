@@ -212,6 +212,9 @@ UNION SELECT 1, 10
 UNION SELECT 1, 11
 UNION SELECT 1, 17;
 
+-- TODO: generate SQL that's essentially the above but 
+-- with comments to explain what project maps to what technology
+
 CREATE TABLE portfolio.project_details (
     project_detail_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
     , project_id INT NOT NULL REFERENCES portfolio.projects(project_id)

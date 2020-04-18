@@ -46,11 +46,13 @@ export const Experiences: React.FC = () => {
 								Experience
 							</HeaderTypography>
 						</div>
+
 						<Timeline
 							setActiveExperience={setActiveExperience}
 							experiences={experiences}
 							activeExperience={activeExperience}
 						/>
+
 						<Experience experience={activeExperience} />
 					</ExperiencesWrapper>
 				</InnerInnerWrapper>
@@ -59,14 +61,14 @@ export const Experiences: React.FC = () => {
 	);
 };
 
-const ExperiencesWrapper = styled('div')`
+const ExperiencesWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-between;
 `;
 
-const Wrapper = styled('div')<{ theme: Theme }>`
+const Wrapper = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	min-height: 75vh;

@@ -9,7 +9,7 @@ export const Experience: React.FC<{ experience: ExperienceType }> = ({ experienc
 	const theme = useThemeContext();
 
 	return (
-		<ExperienceWrapper theme={theme}>
+		<ExperienceWrapper>
 			<div style={{ display: 'grid', gridAutoFlow: 'row', gridRowGap: theme.spacing.ss2 }}>
 				<Typography style={{ display: 'block' }} sizeVariant={5}>
 					{experience.roleName}
@@ -19,7 +19,7 @@ export const Experience: React.FC<{ experience: ExperienceType }> = ({ experienc
 				</Link>
 				<Timeframe experience={experience} />
 			</div>
-			<ExperienceDetailList theme={theme}>
+			<ExperienceDetailList>
 				{experience.experienceDetails.map(ed => (
 					<ExperienceDetail key={ed.description}>
 						<BulletPointWrapper>
@@ -49,16 +49,16 @@ const Timeframe: React.FC<{ experience: ExperienceType }> = ({ experience }) => 
 	</Typography>
 );
 
-const ExperienceWrapper = styled('div')<{ theme: Theme }>`
-	max-width: 500px;
+const ExperienceWrapper = styled.div`
+	max-width: 600px;
 `;
 
-const ExperienceDetailList = styled('ul')<{ theme: Theme }>`
+const ExperienceDetailList = styled.ul`
 	margin: 0;
-	margin-top: ${p => p.theme.spacing.ss6};
+	margin-top: ${p => p.theme.njmTheme.spacing.ss6};
 `;
 
-const ExperienceDetail = styled('li')<{ theme: Theme }>`
+const ExperienceDetail = styled.li`
 	list-style-type: none;
 	display: flex;
 	flex-direction: row;
