@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { Experience as ExperienceType, Theme } from '../../types';
 import { getFormattedDate } from '../../utilities';
 import { TechnologyEmphasizedTypography } from '../Core/TechnologyEmphasizedTypography';
-import { DelayedSlideInFade } from '../Core/DelayedSlideInFade';
 
 export const Experience: React.FC<{ experience: ExperienceType }> = ({ experience }) => {
 	const theme = useThemeContext();
@@ -21,18 +20,16 @@ export const Experience: React.FC<{ experience: ExperienceType }> = ({ experienc
 				<Timeframe experience={experience} />
 			</div>
 			<ExperienceDetailList theme={theme}>
-				<DelayedSlideInFade enterTimeout={500}>
-					{experience.experienceDetails.map(ed => (
-						<ExperienceDetail key={ed.description}>
-							<BulletPointWrapper>
-								<ArrowIcon style={{ position: 'relative', top: '5px' }} sizeVariant={1} />
-							</BulletPointWrapper>
-							<div>
-								<TechnologyEmphasizedTypography text={ed.description} />
-							</div>
-						</ExperienceDetail>
-					))}
-				</DelayedSlideInFade>
+				{experience.experienceDetails.map(ed => (
+					<ExperienceDetail key={ed.description}>
+						<BulletPointWrapper>
+							<ArrowIcon style={{ position: 'relative', top: '5px' }} sizeVariant={1} />
+						</BulletPointWrapper>
+						<div>
+							<TechnologyEmphasizedTypography text={ed.description} />
+						</div>
+					</ExperienceDetail>
+				))}
 			</ExperienceDetailList>
 		</ExperienceWrapper>
 	);
@@ -53,7 +50,7 @@ const Timeframe: React.FC<{ experience: ExperienceType }> = ({ experience }) => 
 );
 
 const ExperienceWrapper = styled('div')<{ theme: Theme }>`
-	min-width: ${p => p.theme.spacing.ss96};
+	max-width: 500px;
 `;
 
 const ExperienceDetailList = styled('ul')<{ theme: Theme }>`

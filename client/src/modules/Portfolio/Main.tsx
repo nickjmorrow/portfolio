@@ -4,19 +4,13 @@ import {
 	PopulatedFooter,
 	ThemeContext,
 	updateThemeInputs,
-	useThemeContext,
 } from '@nickjmorrow/react-component-library';
 import React from 'react';
-import styled from 'styled-components';
-import { FOOTER_HEIGHT, components } from '../../core/constants';
-import { About } from '../About/About';
-import { AppBar } from '../Headline/AppBar';
-import { Contact } from '../Contact/Contact';
-import { Experiences } from '../Experiences/Experiences';
-import { Headline } from '../Headline/Headline';
+import styled, { ThemeProvider } from 'styled-components';
+import { components, FOOTER_HEIGHT } from '../../core/constants';
 import '../Core/layout.css';
-import { Projects } from '../Projects/Projects';
-import { Skills } from '../Skills/Skills';
+import { AppBar } from '../Headline/AppBar';
+import { Headline } from '../Headline/Headline';
 
 const themeInputs: ArgumentType<typeof updateThemeInputs>[0] = {
 	typography: {
@@ -47,17 +41,20 @@ const themeInputs: ArgumentType<typeof updateThemeInputs>[0] = {
 };
 
 export const Main: React.FC = () => {
+	const theme = getThemeFromNewInputs(themeInputs);
 	return (
-		<ThemeContext.Provider value={getThemeFromNewInputs(themeInputs)}>
-			<Wrapper>
-				<AppBar />
-				<Headline />
-				<main>
-					{components.map(c => c.component)}
-					<PopulatedFooter />
-				</main>
-			</Wrapper>
-		</ThemeContext.Provider>
+		<ThemeProvider theme={{ njmTheme: theme }}>
+			<ThemeContext.Provider value={theme}>
+				<Wrapper>
+					<AppBar />
+					<Headline />
+					<main>
+						{components.map(c => c.component)}
+						<PopulatedFooter />
+					</main>
+				</Wrapper>
+			</ThemeContext.Provider>
+		</ThemeProvider>
 	);
 };
 

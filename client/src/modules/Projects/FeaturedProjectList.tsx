@@ -9,7 +9,7 @@ export const FeaturedProjectList: React.FC<{ projects: Project[] }> = ({ project
 	return (
 		<FeaturedProjectListWrapper>
 			<InnerWrapper>
-				<HeaderTypography id="work" link="#work">
+				<HeaderTypography id="wpork" link="#work">
 					Work
 				</HeaderTypography>
 				<Typography styleVariant={'h2'} style={{ margin: '0' }}>

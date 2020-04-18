@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import { useThemeContext, Theme } from '@nickjmorrow/react-component-library';
+import { useThemeContext } from '@nickjmorrow/react-component-library';
 import { StyledImage } from './StyledImage';
 
 export const fluidImage = graphql`
 	fragment fluidImage on File {
 		childImageSharp {
-			fixed(width: 700, height: 450) {
-				...GatsbyImageSharpFixed
+			fluid(maxWidth: 700) {
+				...GatsbyImageSharpFluid_noBase64
 			}
 		}
 	}
@@ -27,13 +27,20 @@ export const imageQuery = graphql`
 		weworkScheduler: file(relativePath: { eq: "wework_scheduler.png" }) {
 			...fluidImage
 		}
+		breakbuilder: file(relativePath: { eq: "breakbuilder.png" }) {
+			...fluidImage
+		}
 	}
 `;
 
-export const Image: React.FC<{ fileName: string; url: string }> = ({ fileName, url }): React.ReactNode => {
+export const Image: React.FC<{ fileName: string; url: string; className?: string }> = ({
+	fileName,
+	url,
+	className,
+}): React.ReactNode => {
 	const theme = useThemeContext();
 	const result = useStaticQuery(imageQuery);
-	const { mapClustering, reactComponentLibrary, weirdWeather, weworkScheduler } = result;
+	const { mapClustering, reactComponentLibrary, weirdWeather, weworkScheduler, breakbuilder } = result;
 
 	const handleClick = () => {
 		window.location.href = url;
@@ -56,6 +63,10 @@ export const Image: React.FC<{ fileName: string; url: string }> = ({ fileName, u
 			name: 'wework_scheduler.png',
 			component: weworkScheduler,
 		},
+		{
+			name: 'breakbuilder.png',
+			component: breakbuilder,
+		},
 	];
 
 	const { component } = mappings.find(m => m.name === fileName)!;
@@ -66,7 +77,12 @@ export const Image: React.FC<{ fileName: string; url: string }> = ({ fileName, u
 			rel="noopener noreferrer"
 			style={{ position: 'absolute', width: '100%', height: '100%' }}
 		>
-			<StyledImage onClick={handleClick} fixed={component.childImageSharp.fixed} theme={theme} />
+			<StyledImage
+				className={className}
+				onClick={handleClick}
+				fluid={component.childImageSharp.fluid}
+				theme={theme}
+			/>
 		</a>
 	);
 };

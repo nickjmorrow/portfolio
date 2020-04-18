@@ -13,7 +13,7 @@ export const Timeline: React.FC<{
 	const theme = useThemeContext();
 
 	return (
-		<TimelineWrapper theme={theme}>
+		<TimelineWrapper>
 			{experiences
 				.sort((a, b) => (parseInt(a.startDate, 10) < parseInt(b.startDate, 10) ? 1 : -1))
 				.map((e, i, arr) => (
@@ -34,10 +34,11 @@ export const Timeline: React.FC<{
 	);
 };
 
-const TimelineWrapper = styled('div')<{ theme: Theme }>`
+const TimelineWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	margin-right: ${p => p.theme.spacing.ss6};
+	margin-right: ${p => p.theme.njmTheme.spacing.ss6};
+	margin-bottom: ${p => p.theme.njmTheme.spacing.ss16};
 	border-radius: 60px;
 	overflow: none;
 	height: min-content;

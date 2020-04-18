@@ -6,6 +6,7 @@ import { Experience as ExperienceType } from '../../types';
 import { HeaderTypography } from '../Core/Header';
 import { Experience } from './Experience';
 import { Timeline } from './Timeline';
+import { PAGE_HORIZONTAL_MARGIN } from '../../core/constants';
 
 export const GatsbyQuery = graphql`
 	{
@@ -37,19 +38,21 @@ export const Experiences: React.FC = () => {
 
 	return (
 		<Wrapper theme={theme}>
-			<HeaderTypography id={'experience'} link={'#experience'}>
-				Experience
-			</HeaderTypography>
-			<ExperiencesWrapper theme={theme}>
-				<Timeline
-					setActiveExperience={setActiveExperience}
-					experiences={experiences}
-					activeExperience={activeExperience}
-				>
-					Timeline
-				</Timeline>
-				<Experience experience={activeExperience} />
-			</ExperiencesWrapper>
+			<InnerWrapper>
+				<InnerInnerWrapper>
+					<HeaderTypography id={'experience'} link={'#experience'}>
+						Experience
+					</HeaderTypography>
+					<ExperiencesWrapper theme={theme}>
+						<Timeline
+							setActiveExperience={setActiveExperience}
+							experiences={experiences}
+							activeExperience={activeExperience}
+						/>
+						<Experience experience={activeExperience} />
+					</ExperiencesWrapper>
+				</InnerInnerWrapper>
+			</InnerWrapper>
 		</Wrapper>
 	);
 };
@@ -57,15 +60,23 @@ export const Experiences: React.FC = () => {
 const ExperiencesWrapper = styled('div')`
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	justify-content: center;
-	max-width: 800px;
 `;
 
 const Wrapper = styled('div')<{ theme: Theme }>`
 	flex-direction: column;
-	align-items: center;
 	justify-content: center;
-	margin: 0 auto;
-	max-width: ${p => p.theme.spacing.ss192};
+	margin: 16px auto;
 	min-height: 75vh;
+	border: 1px solid red;
+`;
+
+const InnerWrapper = styled.div`
+	max-width: ${p => p.theme.njmTheme.spacing.ss192};
+	margin: 0 auto;
+`;
+
+const InnerInnerWrapper = styled.div`
+	margin: 0 ${p => p.theme.njmTheme.spacing.ss4};
 `;

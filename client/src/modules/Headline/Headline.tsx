@@ -18,7 +18,7 @@ export const Headline: React.FC = () => {
 	const theme = useThemeContext();
 
 	return (
-		<section style={{ height: '100vh', width: '100%', zIndex: -1 }}>
+		<Section>
 			<Fade in={true} appear={true} enterTimeout={enterTimeout.headlineAppears} transitionVariant={'slow'}>
 				<HeadlineWrapper theme={theme}>
 					<div style={{ marginBottom: theme.spacing.ss4, marginLeft: theme.spacing.ss16 }}>
@@ -36,7 +36,7 @@ export const Headline: React.FC = () => {
 								styleVariant={'h1'}
 								sizeVariant={11}
 								colorVariant={'primaryDark'}
-								style={{ display: 'block', marginBottom: '48px' }}
+								style={{ display: 'block', marginBottom: '48px', lineHeight: theme.spacing.ss16 }}
 							>
 								Nicholas Morrow
 							</Typography>
@@ -70,7 +70,7 @@ export const Headline: React.FC = () => {
 					</div>
 				</HeadlineWrapper>
 			</Fade>
-		</section>
+		</Section>
 	);
 };
 
@@ -81,20 +81,18 @@ const PrettyWordTypography = styled(Typography)`
 `;
 
 const HeadlineWrapper = styled('div')<{ theme: Theme }>`
-	height: 100vh;
 	display: flex;
 	align-items: flex-start;
 	flex-direction: column;
 	justify-content: flex-start;
-	position: relative;
-	top: 180px;
-	margin-left: ${p => p.theme.spacing.ss24};
-	width: max-content;
-	height: max-content;
-	padding: 18px;
-	border-radius: 6px;
 `;
 
 const Content = styled('div')<{ spacing: StyleConstant<'spacing'> }>`
 	margin: ${p => p.spacing.ss6} 0px;
+`;
+
+const Section = styled.section`
+	height: 100vh;
+	display: flex;
+	align-items: center;
 `;
