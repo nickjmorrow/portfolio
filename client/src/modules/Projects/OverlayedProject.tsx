@@ -1,17 +1,22 @@
-import { GithubIcon, Theme, Typography, useThemeContext, ShareIcon } from '@nickjmorrow/react-component-library';
+import { GithubIcon, Typography, useThemeContext, ShareIcon } from '@nickjmorrow/react-component-library';
 import * as React from 'react';
 import styled from 'styled-components';
 import { Project } from '../../types';
-import { DelayedSlideInFade } from '../Core/DelayedSlideInFade';
 import { Image } from '../Core/Image';
 
 export const OverlayedProject: React.FC<{ project: Project; rightAlign: boolean }> = ({ project, rightAlign }) => {
 	const theme = useThemeContext();
-	const styles: React.CSSProperties = { position: 'absolute', height: '100%', width: '100%', zIndex: -1 };
+	const styles: React.CSSProperties = {
+		position: 'absolute',
+		height: '100%',
+		width: '100%',
+		minWidth: '600px',
+		zIndex: -1,
+	};
 	const rightAlignProxy = true;
 	return (
 		<FeaturedProjectWrapper shouldRightAlign={rightAlignProxy}>
-			<div style={{ width: '100%', height: '100%', position: 'absolute', opacity: 0.3 }}>
+			<div style={{ width: '100%', minWidth: '600px', height: '100%', position: 'absolute', opacity: 0.2 }}>
 				<Image styles={styles} fileName={project.fileName} url={project.demoUrl} />
 			</div>
 			<ProjectInfoWrapper shouldRightAlign={rightAlignProxy}>
@@ -57,15 +62,9 @@ const FeaturedProjectWrapper = styled('div')<{ shouldRightAlign: boolean }>`
 	justify-content: ${p => (p.shouldRightAlign ? 'flex-end' : 'flex-start')};
 	align-items: center;
 	margin: 96px 0;
-	overflow: none;
+	overflow: hidden;
 	border-radius: ${p => p.theme.njmTheme.border.borderRadius.br1};
 	box-shadow: ${p => p.theme.njmTheme.boxShadow.bs1};
-	transition: all ${p => p.theme.njmTheme.transitions.fast};
-	top: 0px;
-	&: hover {
-		top: -4px;
-		transition: all ${p => p.theme.njmTheme.transitions.fast};
-	}
 `;
 
 const ProjectInfoWrapper = styled('div')<{ shouldRightAlign: boolean }>`
@@ -84,8 +83,6 @@ const Description = styled('div')`
 	margin-bottom: ${p => p.theme.njmTheme.spacing.ss6};
 	z-index: 1;
 `;
-
-const Name = styled.div``;
 
 const Links = styled.div`
 	display: flex;

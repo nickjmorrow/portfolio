@@ -16,7 +16,7 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Media from 'react-media';
 import { Transition } from 'react-transition-group';
 import styled from 'styled-components';
-import { enterTimeout, OVERRIDE_DESKTOP_SIZE, components } from '../../core/constants';
+import { enterTimeout, OVERRIDE_DESKTOP_SIZE, components } from '../../core/constants/constants';
 import { SlideInFade } from '../Core/SlideInFade';
 import { ResumeButton } from './ResumeButton';
 import { SideMenu } from './SideMenu';

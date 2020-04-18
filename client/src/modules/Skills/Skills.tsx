@@ -46,7 +46,7 @@ export const Skills: React.FC = () => {
 	return (
 		<SkillsWrapper>
 			<div>
-				<HeaderTypography link="#skills" id="skills">
+				<HeaderTypography Text="#skills" id="skills">
 					Skills
 				</HeaderTypography>
 				<Paper style={{ minWidth: theme.spacing.ss192, marginBottom: '6px' }}>

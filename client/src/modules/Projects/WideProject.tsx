@@ -10,7 +10,17 @@ export const WideProject: React.FC<{ project: Project; rightAlign: boolean }> = 
 	const rightAlignProxy = true;
 	return (
 		<FeaturedProjectWrapper shouldRightAlign={rightAlignProxy}>
-			<Image fileName={project.fileName} url={project.demoUrl} />
+			<div
+				style={{
+					width: '75%',
+					maxWidth: '700px',
+					position: 'absolute',
+					boxShadow: theme.boxShadow.bs1,
+					borderRadius: '8px',
+				}}
+			>
+				<Image style={{ borderRadius: '80px' }} fileName={project.fileName} url={project.demoUrl} />
+			</div>
 			<ProjectInfoWrapper shouldRightAlign={rightAlignProxy}>
 				<Typography
 					colorVariant={'primaryDark'}
@@ -47,28 +57,6 @@ export const WideProject: React.FC<{ project: Project; rightAlign: boolean }> = 
 	);
 };
 
-const SeparateImage = styled(Image)`
-	background-color: lightblue;
-	opacity: 0.2;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 0;
-	box-shadow: ${p => p.theme.njmTheme.boxShadow.bs2};
-	transition: all ${p => p.theme.njmTheme.transitions.medium};
-	top: 0px;
-	cursor: pointer;
-	max-width: 700px;
-	margin: 0 auto;
-	&: hover {
-		top: -4px;
-		box-shadow: ${p => p.theme.njmTheme.boxShadow.bs3};
-		transition: all ${p => p.theme.njmTheme.transitions.medium};
-		background-color: ${p => p.theme.njmTheme.colors.background};
-		opacity: 1;
-	}
-`;
-
 const FeaturedProjectWrapper = styled('div')<{ shouldRightAlign: boolean }>`
 	position: relative;
 	display: grid;
@@ -77,6 +65,8 @@ const FeaturedProjectWrapper = styled('div')<{ shouldRightAlign: boolean }>`
 	justify-content: ${p => (p.shouldRightAlign ? 'flex-end' : 'flex-start')};
 	align-items: center;
 	margin: 96px 0;
+	width: 100%;
+	overflow: hidden;
 `;
 
 const ProjectInfoWrapper = styled('div')<{ shouldRightAlign: boolean }>`
@@ -86,6 +76,8 @@ const ProjectInfoWrapper = styled('div')<{ shouldRightAlign: boolean }>`
 	text-align: ${p => (p.shouldRightAlign ? 'right' : 'left')};
 	flex-direction: column;
 	min-width: ${p => p.theme.njmTheme.spacing.ss64};
+	position: relative;
+	right: 0;
 `;
 
 const Description = styled('div')`

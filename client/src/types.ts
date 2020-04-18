@@ -36,6 +36,7 @@ export interface Technology {
 	skillLevel: SkillLevel;
 	version: string;
 	technologyType: TechnologyType;
+	isFrontPage: boolean;
 }
 
 export interface TechnologyType {

@@ -54,9 +54,10 @@ CREATE TABLE portfolio.experiences (
 
 INSERT INTO portfolio.experiences (experience_id, name, start_date, end_date, role_name, location, company_url)
 OVERRIDING SYSTEM VALUE 
-SELECT 1, 'Mastercard', CAST('2017-07-01' AS DATE), NULL, 'Software Quality Engineer', 'New York, NY', 'https://www.mastercard.com' UNION
-SELECT 2, 'BWX Technologies', '2016-05-01', CAST('2016-08-01' AS DATE), 'Engineering Intern', 'Johnson City, TN', 'http://www.nuclearfuelservices.com' UNION
-SELECT 3, 'UVA Process Modelling', '2015-12-01', '2017-03-01', 'Teaching Assistant', 'Charlottesville, VA', 'https://engineering.virginia.edu/departments/chemical-engineering';
+SELECT 1, 'Mastercard', CAST('2017-07-01' AS DATE), CAST('2020-01-03' AS DATE), 'Software Quality Engineer', 'New York, NY', 'https://www.mastercard.com' 
+UNION SELECT 2, 'BWX Technologies', '2016-05-01', CAST('2016-08-01' AS DATE), 'Engineering Intern', 'Johnson City, TN', 'http://www.nuclearfuelservices.com' 
+UNION SELECT 3, 'UVA Process Modelling', '2015-12-01', '2017-03-01', 'Teaching Assistant', 'Charlottesville, VA', 'https://engineering.virginia.edu/departments/chemical-engineering'
+UNION SELECT 4, 'Fora Financial', CAST('2020-01-06' AS DATE), NULL, 'Software Engineer', 'New York, NY', 'https://www.forafinancial.com/';
 
 CREATE TABLE portfolio.experience_details (
     experience_detail_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
@@ -65,13 +66,16 @@ CREATE TABLE portfolio.experience_details (
 );
 
 INSERT INTO portfolio.experience_details (experience_id, description)
-SELECT 1, 'Worked in a team of 7 on a React, .NET application for optimizing instance setup and automating data model configuration for clients of the MasterCard analytic engine, enabling scalability by reducing instance setup time by 70%. Focused on unit testing and rollout simulation in a testing environment.' UNION
-SELECT 1, 'Implemented integration testing of .NET analytics API and inclusion in Jenkins CI pipeline, preventing unexpected regressions from reaching production and improving deployment efficiency by 30%.' UNION
-SELECT 1, 'Worked in a team of 8 to design, implement, and test a .NET application that would provide analytic insights using the MasterCard transaction log persisted in SQL Server and enable banks to make data-driven decisions. Focused on automated testing of data source features and data model configurations.' UNION
-SELECT 1, 'Designed and implemented user interface testing infrastructure in C# Selenium for React application, reducing production defects and increasing Jenkins deployment efficiency.' UNION
-SELECT 1, 'Implemented database setting management component in C# and React to enable delivery team to change product behavior for any instance without reliance on the engineering team, improving product scalability.' UNION
-SELECT 2, 'Designed chemical tank transfer system using AutoCAD to be used during plant operations involving a streamlined and reliable transfer of blended low-enriched Uranium.' UNION
-SELECT 3, 'I absolutely loved solving chemical engineering problems using a little bit of MATLAB magic. Cracking the puzzle, coding it up, and seeing some beautiful 2D diffusion gradient for some chemical process was cool enough to make me want to be a teaching assistant. Getting others to that "Aha!" moment made it such a fun time.';
+SELECT 1, 'Worked in a team of 7 on a React, .NET application for optimizing instance setup and automating data model configuration for clients of the MasterCard analytic engine, enabling scalability by reducing instance setup time by 70%. Focused on unit testing and rollout simulation in a testing environment.' 
+UNION SELECT 1, 'Implemented integration testing of .NET analytics API and inclusion in Jenkins CI pipeline, preventing unexpected regressions from reaching production and improving deployment efficiency by 30%.' 
+UNION SELECT 1, 'Worked in a team of 8 to design, implement, and test a .NET application that would provide analytic insights using the MasterCard transaction log persisted in SQL Server and enable banks to make data-driven decisions. Focused on automated testing of data source features and data model configurations.' 
+UNION SELECT 1, 'Designed and implemented user interface testing infrastructure in C# Selenium for React application, reducing production defects and increasing Jenkins deployment efficiency.' 
+UNION SELECT 1, 'Implemented database setting management component in C# and React to enable delivery team to change product behavior for any instance without reliance on the engineering team, improving product scalability.' 
+UNION SELECT 2, 'Designed chemical tank transfer system using AutoCAD to be used during plant operations involving a streamlined and reliable transfer of blended low-enriched Uranium.' 
+UNION SELECT 3, 'I absolutely loved solving chemical engineering problems using a little bit of MATLAB magic. Cracking the puzzle, coding it up, and seeing some beautiful 2D diffusion gradient for some chemical process was cool enough to make me want to be a teaching assistant. Getting others to that "Aha!" moment made it such a fun time.'
+UNION SELECT 4, 'Designed and implemented features for a C# / .NET transaction recording application to enable and automate lending processes throughout the company. Focused on SQL Server query performance, deal lifecycle, and microservice migration.'
+UNION SELECT 4, 'Developed features for an online merchant application software (.NET Core) to streamline the process of small businesses applying for credit advances.'
+UNION SELECT 4, 'Created build and deploy pipelines with integration between Azure, Octopus Deploy, and TeamCity with Git version control, improving developer and QA efficiency.';
 
 CREATE TABLE portfolio.technology_types (
     technology_type_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
@@ -94,30 +98,32 @@ CREATE TABLE portfolio.technologies (
     , version VARCHAR(255) NULL
     , technology_type_id INT NOT NULL REFERENCES portfolio.technology_types(technology_type_id)
     , order_id INT NULL
+    , is_front_page BOOLEAN NOT NULL
 );
 
-INSERT INTO portfolio.technologies (technology_id, name, skill_level_id, technology_type_id, order_id)
+INSERT INTO portfolio.technologies (technology_id, name, skill_level_id, technology_type_id, order_id, is_front_page)
 OVERRIDING SYSTEM VALUE 
-SELECT 1, 'C#', 1, 1, 2
-UNION SELECT 2, 'TypeScript', 1, 1, 1
-UNION SELECT 3, 'JavaScript', 1, 1, 3 
-UNION SELECT 4, 'Node.js', 2, 1, 4 
-UNION SELECT 5, 'Go', 2, 1, 5
-UNION SELECT 6, 'Python', 2, 1, 4 
-UNION SELECT 7, 'React', 1, 2, 1
-UNION SELECT 8, 'Redux', 1, 2, 2
-UNION SELECT 9, 'Styled Components', 1, 2, 3
-UNION SELECT 10, '.NET Core', 2, 2, 4
-UNION SELECT 11, 'SQL Server', 1, 3, 1
-UNION SELECT 12, 'PostgreSQL', 2, 3, 3
-UNION SELECT 13, 'MongoDB', 2, 3, 2
-UNION SELECT 14, 'Git', 1, 4, 1
-UNION SELECT 15, 'Jenkins CI', 2, 4, 2
-UNION SELECT 16, 'Gatsby', 2, 2, 5
-UNION SELECT 17, 'Webpack', 2, 4, 4 
-UNION SELECT 18, 'Rollup', 2, 4, 3
-UNION SELECT 19, 'Selenium', 1, 5, 1
-UNION SELECT 20, 'Jest', 2, 5, 2; 
+SELECT 1, 'C#', 1, 1, 2, true
+UNION SELECT 2, 'TypeScript', 1, 1, 1, true
+UNION SELECT 3, 'JavaScript', 1, 1, 3, true
+UNION SELECT 4, 'Node.js', 2, 1, 4, true 
+UNION SELECT 5, 'Go', 2, 1, 5, false
+UNION SELECT 6, 'Python', 2, 1, 4, false 
+UNION SELECT 7, 'React', 1, 2, 1, true
+UNION SELECT 8, 'Redux', 1, 2, 2, false
+UNION SELECT 9, 'Styled Components', 1, 2, 3, false
+UNION SELECT 10, '.NET Core', 2, 2, 4, false
+UNION SELECT 11, 'SQL Server', 1, 3, 1, false
+UNION SELECT 12, 'PostgreSQL', 2, 3, 3, true
+UNION SELECT 13, 'MongoDB', 2, 3, 2, false
+UNION SELECT 14, 'Git', 1, 4, 1, false
+UNION SELECT 15, 'Jenkins CI', 2, 4, 2, false
+UNION SELECT 16, 'Gatsby', 2, 2, 5, false
+UNION SELECT 17, 'Webpack', 2, 4, 4, false
+UNION SELECT 18, 'Rollup', 2, 4, 3, false
+UNION SELECT 19, 'Selenium', 1, 5, 1, false
+UNION SELECT 20, 'Jest', 2, 5, 2, false
+UNION SELECT 21, 'HTML & CSS', 1, 1, 1, true; 
 
 CREATE TABLE portfolio."Experience_Experience__technologies" (
     "experiencesExperienceId" INT NOT NULL REFERENCES portfolio.experiences(experience_id)

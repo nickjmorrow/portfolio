@@ -5,6 +5,7 @@ export const technologyTypeDefs = `
         skillLevel: SkillLevel!
 		version: String
 		orderId: Int
+		isFrontPage: Boolean!
 		technologyType: TechnologyType!
     }
 

@@ -17,6 +17,9 @@ export class Technology {
 	@Column({ name: 'order_id' })
 	public orderId!: number;
 
+	@Column({ name: 'is_front_page' })
+	public isFrontPage!: boolean;
+
 	@ManyToMany(type => Experience, experience => experience.experienceId)
 	@JoinTable({ name: 'Experience_Experience__technologies' })
 	public experiences!: Experience[];

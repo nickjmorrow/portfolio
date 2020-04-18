@@ -6,7 +6,7 @@ import { StyledImage } from './StyledImage';
 export const fluidImage = graphql`
 	fragment fluidImage on File {
 		childImageSharp {
-			fluid(maxWidth: 700) {
+			fluid(maxWidth: 600) {
 				...GatsbyImageSharpFluid_noBase64
 			}
 		}

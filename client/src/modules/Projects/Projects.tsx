@@ -2,7 +2,7 @@ import { Theme, useThemeContext } from '@nickjmorrow/react-component-library';
 import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import styled from 'styled-components';
-import { NUM_FEATURED_PROJECTS } from '../../core/constants';
+import { NUM_FEATURED_PROJECTS } from 'core/constants';
 import { Project } from '../../types';
 import { FeaturedProjectList } from './FeaturedProjectList';
 import { OtherProjectList } from './OtherProjectList';
@@ -58,4 +58,5 @@ const ProjectsWrapper = styled('section')<{ theme: Theme }>`
 	flex-direction: column;
 	background-color: ${p => p.theme.colors.background};
 	position: relative;
+	padding-top: 64px;
 `;

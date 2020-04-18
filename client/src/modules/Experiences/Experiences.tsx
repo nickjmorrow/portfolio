@@ -40,7 +40,7 @@ export const Experiences: React.FC = () => {
 		<Wrapper theme={theme}>
 			<InnerWrapper>
 				<InnerInnerWrapper>
-					<HeaderTypography id={'experience'} link={'#experience'}>
+					<HeaderTypography id={'experience'} Text={'#experience'}>
 						Experience
 					</HeaderTypography>
 					<ExperiencesWrapper theme={theme}>
@@ -69,7 +69,6 @@ const Wrapper = styled('div')<{ theme: Theme }>`
 	justify-content: center;
 	margin: 16px auto;
 	min-height: 75vh;
-	border: 1px solid red;
 `;
 
 const InnerWrapper = styled.div`

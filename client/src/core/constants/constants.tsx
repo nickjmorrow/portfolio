@@ -21,15 +21,15 @@ import {
 	RollupIcon,
 	GatsbyIcon,
 } from '@nickjmorrow/react-component-library';
-import { About } from '../modules/About/About';
-import { Skills } from '../modules/Skills/Skills';
-import { Projects } from '../modules/Projects/Projects';
-import { Contact } from '../modules/Contact/Contact';
-import { Experiences } from '../modules/Experiences/Experiences';
+import { About } from '../../modules/About/About';
+import { Skills } from '../../modules/Skills/Skills';
+import { Projects } from '../../modules/Projects/Projects';
+import { Contact } from '../../modules/Contact/Contact';
+import { Experiences } from '../../modules/Experiences/Experiences';
 
 export const INITIAL_DELAY = 100;
 
-const INCREMENTAL_DELAY = 200;
+const INCREMENTAL_DELAY = 100;
 
 const APP_BAR_APPEARS = INITIAL_DELAY;
 const APP_BAR_DELAY = 400;
@@ -84,12 +84,6 @@ export const components = [
 		label: 'About',
 		route: '#about',
 		enterTimeout: enterTimeout.aboutAppears,
-	},
-	{
-		component: <Skills />,
-		label: 'Skills',
-		route: '#skills',
-		enterTimeout: enterTimeout.skillsAppears,
 	},
 	{
 		component: <Experiences />,

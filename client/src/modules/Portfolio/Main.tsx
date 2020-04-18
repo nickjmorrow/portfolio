@@ -7,9 +7,8 @@ import {
 } from '@nickjmorrow/react-component-library';
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import { components, FOOTER_HEIGHT } from '../../core/constants';
+import { components, FOOTER_HEIGHT } from '../../core/constants/constants';
 import '../Core/layout.css';
-import { AppBar } from '../Headline/AppBar';
 import { Headline } from '../Headline/Headline';
 
 const themeInputs: ArgumentType<typeof updateThemeInputs>[0] = {
@@ -46,7 +45,6 @@ export const Main: React.FC = () => {
 		<ThemeProvider theme={{ njmTheme: theme }}>
 			<ThemeContext.Provider value={theme}>
 				<Wrapper>
-					<AppBar />
 					<Headline />
 					<main>
 						{components.map(c => c.component)}
