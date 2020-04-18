@@ -33,10 +33,10 @@ export const imageQuery = graphql`
 	}
 `;
 
-export const Image: React.FC<{ fileName: string; url: string; className?: string }> = ({
+export const Image: React.FC<{ fileName: string; url: string; styles: React.CSSProperties }> = ({
 	fileName,
 	url,
-	className,
+	styles,
 }): React.ReactNode => {
 	const theme = useThemeContext();
 	const result = useStaticQuery(imageQuery);
@@ -70,19 +70,5 @@ export const Image: React.FC<{ fileName: string; url: string; className?: string
 	];
 
 	const { component } = mappings.find(m => m.name === fileName)!;
-	return (
-		<a
-			href={url}
-			target="_blank"
-			rel="noopener noreferrer"
-			style={{ position: 'absolute', width: '100%', height: '100%' }}
-		>
-			<StyledImage
-				className={className}
-				onClick={handleClick}
-				fluid={component.childImageSharp.fluid}
-				theme={theme}
-			/>
-		</a>
-	);
+	return <StyledImage styles={styles} onClick={handleClick} fluid={component.childImageSharp.fluid} theme={theme} />;
 };

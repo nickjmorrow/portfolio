@@ -46,10 +46,8 @@ export const Projects: React.FC = () => {
 
 	return (
 		<ProjectsWrapper theme={theme}>
-			<div style={{ padding: '72px' }}>
-				<FeaturedProjectList projects={featuredProjects} />
-				<OtherProjectList projects={otherProjects} />
-			</div>
+			<FeaturedProjectList projects={featuredProjects} />
+			<OtherProjectList projects={otherProjects} />
 		</ProjectsWrapper>
 	);
 };

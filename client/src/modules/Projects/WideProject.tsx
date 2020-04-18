@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Project } from '../../types';
 import { useThemeContext, Typography, GithubIcon, ShareIcon } from '@nickjmorrow/react-component-library';
 import styled from 'styled-components';
+import { Image } from '../Core/Image';
 
 export const WideProject: React.FC<{ project: Project; rightAlign: boolean }> = ({ project, rightAlign }) => {
 	const theme = useThemeContext();
