@@ -141,21 +141,21 @@ CREATE TABLE portfolio.projects (
     , date_deleted DATE NULL
 );
 
-INSERT INTO portfolio.projects (project_id, name, tagline, github_link, site_link, file_name, order_id)
+INSERT INTO portfolio.projects (project_id, name, tagline, github_link, site_link, file_name, order_id, date_deleted)
 OVERRIDING SYSTEM VALUE 
-SELECT 1, 'Geospatial Clustering', 'Cluster locations in popular cities and view optimal paths between them for better sight-seeing.', 'https://github.com/nickjmorrow/maps-clustering', 'https://nickjmorrow.github.io/maps-clustering', 'map_clustering.png', 1 
-UNION SELECT 2, 'Weird Weather', 'Analyze weather extrema across various lookback periods to surface trends across time and region.', 'https://github.com/nickjmorrow/weird-weather', 'https://nickjmorrow.github.io/weird-weather', 'weird_weather.png', 8
-UNION SELECT 3, 'Component Library', 'Define design-decisions up-front with a component library while leaving space for one-off departures.', 'https://github.com/nickjmorrow/react-component-library', 'https://nickjmorrow.github.io/react-component-library', 'react_component_library.png', 3 
-UNION SELECT 4, 'TV Show Information Aggregator', 'Check out various analytics for a TV show before watching it.', 'https://github.com/nickjmorrow/first-few', 'https://nickjmorrow.github.io/first-few', 'first_few.png', 4 
-UNION SELECT 5, 'Subreddit Subscription Automated Job', 'Automically import top posts from selected subreddits into your Pocket account.', 'https://github.com/nickjmorrow/subreddit-subscriber', NULL, 'subreddit_subscriber.png', 5
-UNION SELECT 6, 'Professional Portfolio v1', 'Portfolio to showcase experiences, projects, and technologies.', 'https://github.com/nickjmorrow/portfolio', 'https://nickjmorrow.com/', 'portfolio.png', 6 
-UNION SELECT 7, 'Blogging Platform', 'Personal blog to jot down thoughts on technology, software, and general development.', 'https://github.com/nickjmorrow/blog', NULL, 'blog.png', 7 
-UNION SELECT 8, 'Chore Scheduler', 'Predictably schedule chores for the NY Mastercard WeWork office.', 'https://github.com/nickjmorrow/wework-scheduler', 'https://chorescheduler.netlify.com/', 'wework_scheduler.png', 2
-UNION SELECT 9, 'Breakbuilder', 'TODO1', 'https://github.com/nickjmorrow/breakbuilder', 'https://breakbuilder.netlify.com/', 'breakbuilder.png', 9
-UNION SELECT 10, 'Ventr', 'TODO2', 'https://github.com/nickjmorrow/ventr', NULL, 'ventr.png', 10
-UNION SELECT 11, 'COSDNA Clone', 'TODO3', 'https://github.com/nickjmorrow/cosdnaclone', NULL, 'cosdnaclone.png', 11
-UNION SELECT 12, 'Places to Live', 'TODO4', 'https://github.com/nickjmorrow/placestolive', 'https://wheretolive.netlify.com/', 'placestolive.png', 12
-UNION SELECT 13, 'Forsvarkten Clone', 'TODO5', 'https://github.com/nickjmorrow/forsvarktenclone', NULL, 'forsvarktenclone.png', 13;
+SELECT 1, 'Geoclustering', 'Cluster locations in popular cities and view optimal paths between them for better sight-seeing.', 'https://github.com/nickjmorrow/maps-clustering', 'https://nickjmorrow.github.io/maps-clustering', 'map_clustering.png', 1, CAST(NULL AS DATE)
+UNION SELECT 2, 'Weird Weather', 'Analyze weather extrema across various lookback periods to surface trends across time and region.', 'https://github.com/nickjmorrow/weird-weather', 'https://nickjmorrow.github.io/weird-weather', 'weird_weather.png', 8, CAST(NULL AS DATE)
+UNION SELECT 3, 'Component Library', 'Define design-decisions up-front with a component library while leaving space for one-off departures.', 'https://github.com/nickjmorrow/react-component-library', 'https://nickjmorrow.github.io/react-component-library', 'react_component_library.png', 3, CAST(NULL AS DATE) 
+UNION SELECT 4, 'TV Show Information Aggregator', 'Check out various analytics for a TV show before watching it.', 'https://github.com/nickjmorrow/first-few', 'https://nickjmorrow.github.io/first-few', 'first_few.png', 4, CAST(NULL AS DATE) 
+UNION SELECT 5, 'Subreddit Subscription Automated Job', 'Automically import top posts from selected subreddits into your Pocket account.', 'https://github.com/nickjmorrow/subreddit-subscriber', NULL, 'subreddit_subscriber.png', 5, CAST(NULL AS DATE)
+UNION SELECT 6, 'Professional Portfolio v1', 'Portfolio to showcase experiences, projects, and technologies.', 'https://github.com/nickjmorrow/portfolio', 'https://nickjmorrow.com/', 'portfolio.png', 6, CAST(NULL AS DATE) 
+UNION SELECT 7, 'Blogging Platform', 'Personal blog to jot down thoughts on technology, software, and general development.', 'https://github.com/nickjmorrow/blog', NULL, 'blog.png', 7, CAST(NULL AS DATE) 
+UNION SELECT 8, 'Chore Scheduler', 'Predictably schedule chores for the NY Mastercard WeWork office.', 'https://github.com/nickjmorrow/wework-scheduler', 'https://chorescheduler.netlify.com/', 'wework_scheduler.png', 2, CAST(NULL AS DATE)
+UNION SELECT 9, 'Breakbuilder', 'Plan out yearly vacation and view related seasonal analytics.', 'https://github.com/nickjmorrow/breakbuilder', 'https://breakbuilder.netlify.com/', 'breakbuilder.png', 9, CAST(NULL AS DATE)
+UNION SELECT 10, 'Ventr', 'TODO2', 'https://github.com/nickjmorrow/ventr', NULL, 'ventr.png', 10, CAST('2020-04-18' AS DATE)
+UNION SELECT 11, 'COSDNA Clone', 'TODO3', 'https://github.com/nickjmorrow/cosdnaclone', NULL, 'cosdnaclone.png', 11, CAST('2020-04-18' AS DATE)
+UNION SELECT 12, 'Places to Live', 'Rank places to live by useful metrics like population and job prospects.', 'https://github.com/nickjmorrow/placestolive', 'https://wheretolive.netlify.com/', 'placestolive.png', 12, CAST(NULL AS DATE)
+UNION SELECT 13, 'Forsvarkten Clone', 'TODO5', 'https://github.com/nickjmorrow/forsvarktenclone', NULL, 'forsvarktenclone.png', 13, CAST('2020-04-18' AS DATE);
 
 UPDATE portfolio.projects
 SET date_deleted = CURRENT_DATE
@@ -169,51 +169,53 @@ CREATE TABLE portfolio."Project_Project__technologies" (
 );
 
 INSERT INTO portfolio."Project_Project__technologies" ("projectsProjectId", "technologiesTechnologyId")
-SELECT 8, 2
-UNION SELECT 8, 4
-UNION SELECT 8, 7
-UNION SELECT 8, 12
-UNION SELECT 8, 16
-UNION SELECT 7, 2
-UNION SELECT 7, 5
-UNION SELECT 7, 7
-UNION SELECT 7, 12
-UNION SELECT 7, 16
-UNION SELECT 6, 2
-UNION SELECT 6, 4
-UNION SELECT 6, 7
-UNION SELECT 6, 12
-UNION SELECT 6, 16
-UNION SELECT 5, 2
-UNION SELECT 5, 7
-UNION SELECT 5, 13
-UNION SELECT 5, 4
-UNION SELECT 4, 2
-UNION SELECT 4, 4
-UNION SELECT 4, 7
-UNION SELECT 4, 13
-UNION SELECT 3, 2
-UNION SELECT 3, 7
-UNION SELECT 3, 9
-UNION SELECT 3, 17
-UNION SELECT 3, 20
-UNION SELECT 2, 1
-UNION SELECT 2, 2
-UNION SELECT 2, 7
-UNION SELECT 2, 10
-UNION SELECT 2, 11
-UNION SELECT 2, 17
-UNION SELECT 1, 1
-UNION SELECT 1, 2
-UNION SELECT 1, 7
-UNION SELECT 1, 8
-UNION SELECT 1, 9
-UNION SELECT 1, 10
-UNION SELECT 1, 11
-UNION SELECT 1, 17;
-
--- TODO: generate SQL that's essentially the above but 
--- with comments to explain what project maps to what technology
+SELECT 1, 1 -- Geoclustering, C#
+UNION SELECT 1, 2 -- Geoclustering, TypeScript
+UNION SELECT 1, 7 -- Geoclustering, React
+UNION SELECT 1, 8 -- Geoclustering, Redux
+UNION SELECT 1, 9 -- Geoclustering, Styled Components
+UNION SELECT 1, 10 -- Geoclustering, .NET Core
+UNION SELECT 1, 11 -- Geoclustering, SQL Server
+UNION SELECT 1, 17 -- Geoclustering, Webpack
+UNION SELECT 2, 1 -- Weird Weather, C#
+UNION SELECT 2, 2 -- Weird Weather, TypeScript
+UNION SELECT 2, 7 -- Weird Weather, React
+UNION SELECT 2, 10 -- Weird Weather, .NET Core
+UNION SELECT 2, 11 -- Weird Weather, SQL Server
+UNION SELECT 2, 17 -- Weird Weather, Webpack
+UNION SELECT 3, 2 -- Component Library, TypeScript
+UNION SELECT 3, 7 -- Component Library, React
+UNION SELECT 3, 9 -- Component Library, Styled Components
+UNION SELECT 3, 17 -- Component Library, Webpack
+UNION SELECT 3, 20 -- Component Library, Jest
+UNION SELECT 4, 2 -- TV Show Information Aggregator, TypeScript
+UNION SELECT 4, 4 -- TV Show Information Aggregator, Node.js
+UNION SELECT 4, 7 -- TV Show Information Aggregator, React
+UNION SELECT 4, 13 -- TV Show Information Aggregator, MongoDB
+UNION SELECT 5, 2 -- Subreddit Subscription Automated Job, TypeScript
+UNION SELECT 5, 4 -- Subreddit Subscription Automated Job, Node.js
+UNION SELECT 5, 7 -- Subreddit Subscription Automated Job, React
+UNION SELECT 5, 13 -- Subreddit Subscription Automated Job, MongoDB
+UNION SELECT 6, 2 -- Professional Portfolio v1, TypeScript
+UNION SELECT 6, 4 -- Professional Portfolio v1, Node.js
+UNION SELECT 6, 7 -- Professional Portfolio v1, React
+UNION SELECT 6, 12 -- Professional Portfolio v1, PostgreSQL
+UNION SELECT 6, 16 -- Professional Portfolio v1, Gatsby
+UNION SELECT 6, 9 -- Professional Portfolio v1, Styled Components
+UNION SELECT 7, 2 -- Blogging Platform, TypeScript
+UNION SELECT 7, 7 -- Blogging Platform, React
+UNION SELECT 7, 16 -- Blogging Platform, Gatsby
+UNION SELECT 8, 2 -- Chore Scheduler, TypeScript
+UNION SELECT 8, 4 -- Chore Scheduler, Node.js
+UNION SELECT 8, 7 -- Chore Scheduler, React
+UNION SELECT 8, 12 -- Chore Scheduler, PostgreSQL
+UNION SELECT 8, 16 -- Chore Scheduler, Gatsby
+UNION SELECT 12, 2 -- Where to Live, TypeScript
+UNION SELECT 12, 4 -- Where to Live, Node.js
+UNION SELECT 12, 7 -- Where to Live, React
+UNION SELECT 12, 12 -- Where to Live, PostgreSQL
+UNION SELECT 12, 17 -- Where to Live, Webpack
+UNION SELECT 12, 9; -- Where to Live, Styled Components
 
 CREATE TABLE portfolio.project_details (
     project_detail_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
