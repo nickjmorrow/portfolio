@@ -5,6 +5,7 @@ import { moduleHeight, SkillLevel } from '../../core/constants';
 import { HeaderTypography } from '../Core/Header';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Technology } from '../../types';
+import { Image } from '../Core/Image';
 
 export const GatsbyQuery = graphql`
 	{
@@ -61,7 +62,18 @@ export const About: React.FC = () => {
 								))}
 						</TechnologyList>
 					</Text>
-					<ImagePlaceholder />
+					{/* <ImagePlaceholder /> */}
+					<div
+						style={{
+							height: '250px',
+							width: '250px',
+							borderRadius: theme.border.borderRadius.br2,
+							border: `4px solid ${theme.colors.neutral.cs6}`,
+							overflow: 'hidden',
+						}}
+					>
+						<Image fileName={'profile_picture.jpeg'} />
+					</div>
 				</Content>
 			</InnerWrapper>
 		</AboutWrapper>

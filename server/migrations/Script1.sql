@@ -210,12 +210,16 @@ UNION SELECT 8, 4 -- Chore Scheduler, Node.js
 UNION SELECT 8, 7 -- Chore Scheduler, React
 UNION SELECT 8, 12 -- Chore Scheduler, PostgreSQL
 UNION SELECT 8, 16 -- Chore Scheduler, Gatsby
-UNION SELECT 12, 2 -- Where to Live, TypeScript
+UNION SELECT 12, 2 -- Where to Live, TypeScript 
 UNION SELECT 12, 4 -- Where to Live, Node.js
 UNION SELECT 12, 7 -- Where to Live, React
 UNION SELECT 12, 12 -- Where to Live, PostgreSQL
 UNION SELECT 12, 17 -- Where to Live, Webpack
-UNION SELECT 12, 9; -- Where to Live, Styled Components
+UNION SELECT 12, 9 -- Where to Live, Styled Components
+UNION SELECT 9, 2 -- Breakbuilder, TypeScript
+UNION SELECT 9, 7 -- Breakbuilder, React
+UNION SELECT 9, 9 -- Breakbuilder, Styled Components
+UNION SELECT 9, 17; -- Breakbuilder, Webpack
 
 CREATE TABLE portfolio.project_details (
     project_detail_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY

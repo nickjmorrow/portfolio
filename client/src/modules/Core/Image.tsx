@@ -30,6 +30,9 @@ export const imageQuery = graphql`
 		breakbuilder: file(relativePath: { eq: "breakbuilder.png" }) {
 			...fluidImage
 		}
+		profilePicture: file(relativePath: { eq: "profile_picture.jpeg" }) {
+			...fluidImage
+		}
 	}
 `;
 
@@ -40,11 +43,14 @@ export const Image: React.FC<{ fileName: string; url: string; styles: React.CSSP
 }): React.ReactNode => {
 	const theme = useThemeContext();
 	const result = useStaticQuery(imageQuery);
-	const { mapClustering, reactComponentLibrary, weirdWeather, weworkScheduler, breakbuilder } = result;
-
-	const handleClick = () => {
-		window.location.href = url;
-	};
+	const {
+		mapClustering,
+		reactComponentLibrary,
+		weirdWeather,
+		weworkScheduler,
+		breakbuilder,
+		profilePicture,
+	} = result;
 
 	const mappings = [
 		{
@@ -67,8 +73,12 @@ export const Image: React.FC<{ fileName: string; url: string; styles: React.CSSP
 			name: 'breakbuilder.png',
 			component: breakbuilder,
 		},
+		{
+			name: 'profile_picture.jpeg',
+			component: profilePicture,
+		},
 	];
 
 	const { component } = mappings.find(m => m.name === fileName)!;
-	return <StyledImage styles={styles} onClick={handleClick} fluid={component.childImageSharp.fluid} theme={theme} />;
+	return <StyledImage styles={styles} fluid={component.childImageSharp.fluid} theme={theme} />;
 };
