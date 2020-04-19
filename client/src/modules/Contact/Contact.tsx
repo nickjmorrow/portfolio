@@ -11,32 +11,31 @@ import { Theme } from '../../types';
 import { HeaderTypography } from '../Core/Header';
 import { DelayedSlideInFade } from '../Core/DelayedSlideInFade';
 import { enterTimeout } from '../../core/constants';
+import { ModuleWrapper } from '../Core/ModuleWrapper';
+import { ModuleCard } from '../Core/ModuleCard';
 
 export const Contact: React.FC = () => {
 	const theme = useThemeContext();
 	return (
-		<Wrapper theme={theme}>
-			<DelayedSlideInFade
-				enterTimeout={enterTimeout.contactAppears}
-				style={{ backgroundColor: 'white', position: 'relative' }}
-			>
+		<ModuleWrapper>
+			<ModuleCard>
 				<div id="contact">
-					<ContactWrapper theme={theme}>
-						<HeaderTypography>Contact</HeaderTypography>
-						<Typography>
-							Although I'm not actively looking for new opportunities, my inbox is always open. Whether
-							for a potential project or just to connect, I'll try my best to answer your email!
-						</Typography>
-						<InvisibleLink
-							style={{ textDecoration: 'none', marginTop: '32px' }}
-							href={'mailto:njmorrow95@gmail.com'}
-						>
-							<StyledButton styleVariant={1}>Send Message</StyledButton>
-						</InvisibleLink>
-					</ContactWrapper>
+					<HeaderTypography>Contact</HeaderTypography>
+					<Typography>
+						Although I'm not actively looking for new opportunities, my inbox is always open. Whether for a
+						potential project or just to connect, I'll try my best to answer your email!
+					</Typography>
+					<InvisibleLink
+						style={{ textDecoration: 'none', marginTop: '32px' }}
+						href={'mailto:njmorrow95@gmail.com'}
+					>
+						<StyledButton styleVariant={1} style={{ marginTop: '32px' }}>
+							Send Message
+						</StyledButton>
+					</InvisibleLink>
 				</div>
-			</DelayedSlideInFade>
-		</Wrapper>
+			</ModuleCard>
+		</ModuleWrapper>
 	);
 };
 
@@ -50,7 +49,6 @@ const StyledButton = styled(Button)`
 `;
 
 const ContactWrapper = styled('div')<{ theme: Theme }>`
-	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

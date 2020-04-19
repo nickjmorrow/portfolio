@@ -152,9 +152,9 @@ const StyledAppBar = styled('header')<{ spacing: StyleConstant<'spacing'> }>`
 	justify-content: space-between;
 	grid-auto-flow: column;
 	grid-column-gap: ${p => p.spacing.ss8};
-	height: ${p => p.spacing.ss24};
+	height: ${p => p.spacing.ss32};
 	align-items: center;
-	padding: 0 180px;
+	padding: 0 12%;
 	right: 0;
 	left: 0;
 	opacity: 0.8;

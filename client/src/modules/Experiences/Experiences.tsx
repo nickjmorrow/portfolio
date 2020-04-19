@@ -6,7 +6,8 @@ import { Experience as ExperienceType } from '../../types';
 import { HeaderTypography } from '../Core/Header';
 import { Experience } from './Experience';
 import { Timeline } from './Timeline';
-import { pageDimensions } from '../../core/constants';
+import { ModuleCard } from '../Core/ModuleCard';
+import { ModuleWrapper } from '../Core/ModuleWrapper';
 
 export const GatsbyQuery = graphql`
 	{
@@ -37,10 +38,10 @@ export const Experiences: React.FC = () => {
 	const theme = useThemeContext();
 
 	return (
-		<Wrapper theme={theme}>
-			<InnerWrapper>
+		<ModuleWrapper theme={theme}>
+			<ModuleCard>
 				<InnerInnerWrapper>
-					<ExperiencesWrapper theme={theme}>
+					<TimelineExperienceWrapper theme={theme}>
 						<div style={{ width: '100%' }}>
 							<HeaderTypography id={'experience'} Text={'#experience'}>
 								Experience
@@ -54,31 +55,18 @@ export const Experiences: React.FC = () => {
 						/>
 
 						<Experience experience={activeExperience} />
-					</ExperiencesWrapper>
+					</TimelineExperienceWrapper>
 				</InnerInnerWrapper>
-			</InnerWrapper>
-		</Wrapper>
+			</ModuleCard>
+		</ModuleWrapper>
 	);
 };
 
-const ExperiencesWrapper = styled.div`
+const TimelineExperienceWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-between;
-`;
-
-const Wrapper = styled.div`
-	flex-direction: column;
-	justify-content: center;
-	min-height: 75vh;
-	margin-top: 64px;
-	padding: 0 64px;
-`;
-
-const InnerWrapper = styled.div`
-	max-width: ${pageDimensions.sectionMaxWidth};
-	margin: 0 auto;
 `;
 
 const InnerInnerWrapper = styled.div`

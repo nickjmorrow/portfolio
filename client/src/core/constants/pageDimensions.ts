@@ -1,3 +1,3 @@
 export const pageDimensions = {
-	sectionMaxWidth: '900px',
+	sectionMaxWidth: '1000px',
 };

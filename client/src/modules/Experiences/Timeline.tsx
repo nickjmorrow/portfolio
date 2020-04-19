@@ -42,7 +42,7 @@ const TimelineWrapper = styled.div`
 	overflow: none;
 	height: min-content;
 	box-sizing: border-box;
-	width: 200px;
+	max-width: 360px;
 `;
 
 const TimelineExperience = styled('div')<{ theme: Theme; isFirst: boolean; isLast: boolean }>`

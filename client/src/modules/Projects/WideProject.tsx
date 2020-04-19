@@ -3,13 +3,13 @@ import { Project } from '../../types';
 import { useThemeContext, Typography, GithubIcon, ShareIcon } from '@nickjmorrow/react-component-library';
 import styled from 'styled-components';
 import { Image } from '../Core/Image';
+import { pageDimensions } from '../../core/constants';
 
-export const WideProject: React.FC<{ project: Project; rightAlign: boolean }> = ({ project, rightAlign }) => {
+export const WideProject: React.FC<{ project: Project }> = ({ project }) => {
 	const theme = useThemeContext();
 
-	const rightAlignProxy = true;
 	return (
-		<FeaturedProjectWrapper shouldRightAlign={rightAlignProxy}>
+		<FeaturedProjectWrapper>
 			<div
 				style={{
 					width: '75%',
@@ -21,7 +21,7 @@ export const WideProject: React.FC<{ project: Project; rightAlign: boolean }> = 
 			>
 				<Image style={{ borderRadius: '80px' }} fileName={project.fileName} url={project.demoUrl} />
 			</div>
-			<ProjectInfoWrapper shouldRightAlign={rightAlignProxy}>
+			<ProjectInfoWrapper>
 				<Typography
 					colorVariant={'primaryDark'}
 					sizeVariant={5}
@@ -30,16 +30,19 @@ export const WideProject: React.FC<{ project: Project; rightAlign: boolean }> = 
 				>
 					{project.name}
 				</Typography>
-				<Description>
-					<Typography>{project.tagline}</Typography>
-				</Description>
-				<Typography
-					style={{ marginBottom: theme.spacing.ss6, display: 'block', maxWidth: '60%' }}
-					sizeVariant={2}
-					fontFamilyVariant={'monospace'}
-				>
-					{project.technologies.map(t => t.name).join(', ')}
-				</Typography>
+				<Card>
+					<Description>
+						<Typography>{project.tagline}</Typography>
+					</Description>
+
+					<Typography
+						style={{ marginBottom: theme.spacing.ss1, display: 'block' }}
+						sizeVariant={2}
+						fontFamilyVariant={'monospace'}
+					>
+						{project.technologies.map(t => t.name).join(', ')}
+					</Typography>
+				</Card>
 				<Links>
 					<a href={project.githubUrl}>
 						<GithubIcon sizeVariant={3} colorVariant={'secondaryDark'} style={{ display: 'block' }} />
@@ -57,43 +60,46 @@ export const WideProject: React.FC<{ project: Project; rightAlign: boolean }> = 
 	);
 };
 
-const FeaturedProjectWrapper = styled('div')<{ shouldRightAlign: boolean }>`
+const FeaturedProjectWrapper = styled.div`
 	position: relative;
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
 	height: 400px;
-	justify-content: ${p => (p.shouldRightAlign ? 'flex-end' : 'flex-start')};
+	justify-content: flex-end;
 	align-items: center;
-	margin: 64px 0;
-	width: 100%;
+	margin-bottom: 64px;
+	margin-top: 32px;
 	overflow: hidden;
+	max-width: ${pageDimensions.sectionMaxWidth};
 `;
 
-const ProjectInfoWrapper = styled('div')<{ shouldRightAlign: boolean }>`
+const ProjectInfoWrapper = styled.div`
 	display: flex;
 	grid-column: 7 / -1;
-	align-items: ${p => (p.shouldRightAlign ? 'flex-end' : 'flex-start')};
-	text-align: ${p => (p.shouldRightAlign ? 'right' : 'left')};
+	align-items: flex-end;
+	text-align: right;
 	flex-direction: column;
 	min-width: ${p => p.theme.njmTheme.spacing.ss64};
 	position: relative;
 	right: 0;
 `;
 
-const Description = styled('div')`
-	background-color: ${p => p.theme.njmTheme.colors.neutral.cs2};
+const Card = styled.div`
+	background-color: hsl(0, 0%, 96.6%);
+	box-shadow: ${p => p.theme.njmTheme.boxShadow.bs2};
 	padding: 16px;
 	border-radius: ${p => p.theme.njmTheme.border.borderRadius.br1};
-	margin-bottom: ${p => p.theme.njmTheme.spacing.ss6};
-	box-shadow: ${p => p.theme.njmTheme.boxShadow.bs1};
-	z-index: 1;
 `;
 
-const Name = styled.div``;
+const Description = styled.div`
+	margin-bottom: ${p => p.theme.njmTheme.spacing.ss6};
+	z-index: 1;
+`;
 
 const Links = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	width: 60px;
+	margin-top: ${p => p.theme.njmTheme.spacing.ss8};
 `;

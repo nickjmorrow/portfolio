@@ -56,7 +56,5 @@ const ProjectsWrapper = styled('section')<{ theme: Theme }>`
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	background-color: ${p => p.theme.colors.background};
-	position: relative;
 	padding-top: 64px;
 `;

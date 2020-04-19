@@ -1,19 +1,12 @@
-import {
-	ArrowIcon,
-	Fade,
-	StyleConstant,
-	Theme,
-	Typography,
-	useThemeContext,
-} from '@nickjmorrow/react-component-library';
+import { StyleConstant, Theme, Typography, useThemeContext } from '@nickjmorrow/react-component-library';
 import * as React from 'react';
 import Typist from 'react-typist';
 import TypistLoop from 'react-typist-loop';
 import 'react-typist/dist/Typist.css';
 import styled from 'styled-components';
-import './cursor.css';
-import { enterTimeout, accentColors } from '../../core/constants/constants';
+import { accentColors } from '../../core/constants/constants';
 import { AppBar } from './AppBar';
+import './cursor.css';
 
 export const Headline: React.FC = () => {
 	const theme = useThemeContext();
@@ -83,10 +76,6 @@ const HeadlineWrapper = styled('div')<{ theme: Theme }>`
 	flex-direction: column;
 	position: absolute;
 	margin-left: 12%;
-`;
-
-const Content = styled('div')<{ spacing: StyleConstant<'spacing'> }>`
-	margin: ${p => p.spacing.ss6} 0px;
 `;
 
 const Section = styled.section`

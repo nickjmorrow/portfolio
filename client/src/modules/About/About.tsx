@@ -1,11 +1,13 @@
-import { Theme, Typography, useThemeContext, BulletPointTypography } from '@nickjmorrow/react-component-library';
+import { BulletPointTypography, Theme, Typography, useThemeContext } from '@nickjmorrow/react-component-library';
+import { ModuleCard } from '../Core/ModuleCard';
+import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import styled from 'styled-components';
-import { moduleHeight, SkillLevel } from '../../core/constants';
-import { HeaderTypography } from '../Core/Header';
-import { useStaticQuery, graphql } from 'gatsby';
+import { moduleHeight } from '../../core/constants';
 import { Technology } from '../../types';
+import { HeaderTypography } from '../Core/Header';
 import { Image } from '../Core/Image';
+import { ModuleWrapper } from '../Core/ModuleWrapper';
 
 export const GatsbyQuery = graphql`
 	{
@@ -33,8 +35,8 @@ export const About: React.FC = () => {
 	const theme = useThemeContext();
 	const { data } = useStaticQuery<{ data: { technologies: Technology[] } }>(GatsbyQuery);
 	return (
-		<AboutWrapper>
-			<InnerWrapper>
+		<ModuleWrapper>
+			<ModuleCard>
 				<HeaderTypography link="#about" id="about">
 					About
 				</HeaderTypography>
@@ -68,32 +70,16 @@ export const About: React.FC = () => {
 							height: '250px',
 							width: '250px',
 							borderRadius: theme.border.borderRadius.br2,
-							border: `4px solid ${theme.colors.neutral.cs6}`,
 							overflow: 'hidden',
 						}}
 					>
 						<Image fileName={'profile_picture.jpeg'} />
 					</div>
 				</Content>
-			</InnerWrapper>
-		</AboutWrapper>
+			</ModuleCard>
+		</ModuleWrapper>
 	);
 };
-
-const AboutWrapper = styled('section')<{ theme: Theme }>`
-	min-height: 50vh;
-	position: relative;
-	background-color: ${p => p.theme.njmTheme.colors.background};
-	min-height: ${moduleHeight};
-	padding: ${p => p.theme.njmTheme.spacing.ss16};
-`;
-
-const ImagePlaceholder = styled.div`
-	height: 200px;
-	width: 200px;
-	background-color: hotpink;
-	margin: 0 auto;
-`;
 
 const TechnologyList = styled.div`
 	display: flex;
@@ -122,11 +108,6 @@ const Text = styled.div`
 	max-width: 600px;
 	margin-right: 32px;
 	margin-bottom: 32px;
-`;
-
-const InnerWrapper = styled.div`
-	margin: 0 auto;
-	max-width: 900px;
 `;
 
 const Content = styled.div`
