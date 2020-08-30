@@ -30,11 +30,7 @@ export interface Technology {
   technologyId: number;
   name: string;
   orderId: number | null;
-  experiences: Experience[];
-  skillLevel: SkillLevel;
-  version: string;
-  technologyType: TechnologyType;
-  isFrontPage: boolean;
+  version: string | null;
 }
 
 export interface TechnologyType {

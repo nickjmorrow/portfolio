@@ -1,21 +1,14 @@
 // external
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { Diagonal } from "modules/core/Diagonal";
-import { diagonalColors } from "modules/core/diagonalColors";
-import { Image } from "modules/landing/Image";
 import { theme } from "modules/theming";
 
 export const Landing: React.FC = () => {
   return (
     <Container>
       <BackgroundContainer>
-        <Name>Nicholas Morrow</Name>
-        {/* <Image /> */}
+        <Name>Lorem Ipsum</Name>
       </BackgroundContainer>
-      {/* <Diagonal colorScheme={diagonalColors.gray} variant={"alternate"}>
-        About
-      </Diagonal> */}
     </Container>
   );
 };
@@ -36,7 +29,7 @@ const BackgroundContainer = styled.div`
   animation: ${animate} 5s infinite alternate;
   background: radial-gradient(
         circle at top left,
-        hsla(334, 100%, 50%, 0.7) 10%,
+        hsla(334, 100%, 50%, 0.4) 10%,
         transparent 80%
       )
       100% 100%/200% 200%,
@@ -67,7 +60,7 @@ const Container = styled.div`
 
 const Name = styled.span`
   font-size: ${theme.fontSizes.fs9};
-  font-family: ${theme.fontFamilies.default};
+  font-family: ${theme.fontFamilies.title};
   color: ${theme.backgroundColor};
   margin-left: 20%;
 `;

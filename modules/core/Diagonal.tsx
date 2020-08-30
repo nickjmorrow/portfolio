@@ -22,11 +22,13 @@ const animate = keyframes`
 	}
 `;
 
+const skew = 4;
+
 export const Diagonal = styled("div")<Props>`
   animation: ${animate} 5s ease infinite;
   ${p => css`
-    position: absolute;
-    height: 40%;
+    // position: absolute;
+    height: 300px;
     width: 100%;
     transform-origin: 0;
     z-index: 0;
@@ -34,7 +36,7 @@ export const Diagonal = styled("div")<Props>`
     align-items: center;
     justify-content: center;
     font-size: ${theme.fontSizes.fs10};
-    font-family: ${theme.fontFamilies.default};
+    font-family: ${theme.fontFamilies.title};
     color: ${theme.backgroundColor};
   `}
   ${p => getSwitchStyling(p)}
@@ -44,8 +46,7 @@ const getSwitchStyling = ({ variant, colorScheme }: Props) => {
   switch (variant) {
     case "default":
       return css`
-        top: 0;
-        transform: skewY(-12deg);
+        transform: skewY(-${skew}deg);
         background: linear-gradient(
             150deg,
             ${colorScheme.first},
@@ -56,8 +57,7 @@ const getSwitchStyling = ({ variant, colorScheme }: Props) => {
       `;
     case "alternate":
       return css`
-        bottom: 0;
-        transform: skewY(12deg);
+        transform: skewY(-${skew}deg);
         background: linear-gradient(
             30deg,
             ${colorScheme.first},

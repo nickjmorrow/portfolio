@@ -5,6 +5,7 @@ import { diagonalColors } from "modules/core/diagonalColors";
 import { Diagonal } from "modules/core/Diagonal";
 import { Card } from "modules/core/Card";
 import { theme } from "modules/theming";
+import { Container } from "modules/core/Container";
 
 export const Contact: React.FC = () => {
   return (
@@ -12,27 +13,7 @@ export const Contact: React.FC = () => {
       <Diagonal colorScheme={diagonalColors.hard} variant={"default"}>
         Contact
       </Diagonal>
-      <InnerContainer>
-        <Diagonal colorScheme={diagonalColors.hard} variant={"alternate"} />
-        <Card />
-      </InnerContainer>
+      <Card />
     </Container>
   );
 };
-
-const Container = styled.div`
-  height: 100vh;
-  display: grid;
-  place-items: center;
-  position: relative;
-  background-color: ${theme.backgroundColor};
-`;
-
-const InnerContainer = styled.div`
-  height: 100vh;
-  display: grid;
-  place-items: center;
-  position: relative;
-  overflow-y: hidden;
-  width: 100%;
-`;

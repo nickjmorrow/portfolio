@@ -5,6 +5,7 @@ import { Diagonal } from "modules/core/Diagonal";
 import { diagonalColors } from "modules/core/diagonalColors";
 import { Card } from "modules/core/Card";
 import { theme } from "modules/theming";
+import { Container } from "modules/core/Container";
 
 export const Projects: React.FC = () => {
   return (
@@ -16,11 +17,3 @@ export const Projects: React.FC = () => {
     </Container>
   );
 };
-
-const Container = styled.div`
-  height: 100vh;
-  display: grid;
-  place-items: center;
-  position: relative;
-  background-color: ${theme.backgroundColor};
-`;

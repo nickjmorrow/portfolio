@@ -3,18 +3,17 @@ import React from "react";
 import styled from "styled-components";
 import { Card } from "modules/core/Card";
 import { theme } from "modules/theming";
+import { Container } from "modules/core/Container";
+import { diagonalColors } from "modules/core/diagonalColors";
+import { Diagonal } from "modules/core/Diagonal";
 
 export const Experiences: React.FC = () => {
   return (
     <Container>
+      <Diagonal colorScheme={diagonalColors.warm} variant={"alternate"}>
+        Experiences
+      </Diagonal>
       <Card />
     </Container>
   );
 };
-
-const Container = styled.div`
-  height: 100vh;
-  display: grid;
-  place-items: center;
-  background-color: ${theme.backgroundColor};
-`;

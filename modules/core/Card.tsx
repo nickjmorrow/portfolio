@@ -11,4 +11,5 @@ export const Card = styled.div`
   background-color: white;
   opacity: 0.8;
   z-index: 1;
+  padding: ${theme.spacing.ss8};
 `;
