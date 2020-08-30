@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from "styled-components";
+import { theme } from "modules/theming";
 
 interface Props {
   colorScheme: {
@@ -25,10 +26,16 @@ export const Diagonal = styled("div")<Props>`
   animation: ${animate} 5s ease infinite;
   ${p => css`
     position: absolute;
-    height: 300px;
+    height: 40%;
     width: 100%;
     transform-origin: 0;
-    z-index: -1;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: ${theme.fontSizes.fs10};
+    font-family: ${theme.fontFamilies.default};
+    color: ${theme.backgroundColor};
   `}
   ${p => getSwitchStyling(p)}
 `;

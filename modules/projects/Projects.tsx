@@ -4,12 +4,15 @@ import styled from "styled-components";
 import { Diagonal } from "modules/core/Diagonal";
 import { diagonalColors } from "modules/core/diagonalColors";
 import { Card } from "modules/core/Card";
+import { theme } from "modules/theming";
 
 export const Projects: React.FC = () => {
   return (
     <Container>
-      <Diagonal colorScheme={diagonalColors.soft} variant={"default"} />
-      <Card>Projects</Card>
+      <Diagonal colorScheme={diagonalColors.soft} variant={"default"}>
+        Projects
+      </Diagonal>
+      <Card />
     </Container>
   );
 };
@@ -19,4 +22,5 @@ const Container = styled.div`
   display: grid;
   place-items: center;
   position: relative;
+  background-color: ${theme.backgroundColor};
 `;

@@ -18,5 +18,10 @@ export const diagonalColors = {
     first: "hsl(165.7, 61.2%, 62.6%)",
     second: "hsl(78.5, 99.7%, 72%)",
     third: "hsl(123.5, 99.7%, 72%)"
+  },
+  gray: {
+    first: "hsl(250, 10%, 12.6%)",
+    second: "hsl(250, 10%, 52%)",
+    third: "hsl(250, 10%, 92%)"
   }
 };
