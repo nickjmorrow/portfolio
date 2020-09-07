@@ -1,11 +1,11 @@
 export interface Experience {
   experienceId: number;
   name: string;
+  roleName: string;
   experienceDetails: ExperienceDetail[];
   technologies: Technology[];
-  startDate: string;
-  endDate: string | null;
-  roleName: string;
+  startDate: Date;
+  endDate: Date | null;
   companyUrl: string;
 }
 
@@ -16,7 +16,7 @@ export interface Project {
   githubUrl: string;
   demoUrl: string | null;
   fileName: string;
-  projectDetails: ProjectDetail[];
+  projectDetails?: ProjectDetail[];
   technologies: Technology[];
   orderId: number;
 }
@@ -41,13 +41,11 @@ export interface TechnologyType {
 
 export interface ExperienceDetail {
   experienceDetailId: number;
-  experience: Experience;
   description: string;
 }
 
 export interface ProjectDetail {
   projectDetailId: number;
-  project: Project;
   description: string;
 }
 

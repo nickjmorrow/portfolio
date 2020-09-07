@@ -9,7 +9,7 @@ export const Skills: React.FC = () => {
     <Container>
       <SkillListContainer>
         {data.technologies.map(t => (
-          <SkillContainer key={t.technologyId}>{t.name}</SkillContainer>
+          <SkillContainer key={t.technologyId}>- {t.name}</SkillContainer>
         ))}
       </SkillListContainer>
     </Container>
@@ -29,7 +29,7 @@ const SkillListContainer = styled.ul`
 
 const SkillContainer = styled.li`
   font-family: ${theme.fontFamilies.default};
-  margin: ${theme.spacing.ss4} 0;
+  margin: ${theme.spacing.ss2} 0;
   display: flex;
   justify-content: flex-start;
 `;

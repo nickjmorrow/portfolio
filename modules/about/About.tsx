@@ -11,7 +11,7 @@ import { Container as OriginalContainer } from "modules/core/Container";
 
 export const About: React.FC = () => {
   return (
-    <Container>
+    <Container id="about">
       <Title>About</Title>
 
       <CustomCard>
@@ -45,8 +45,9 @@ const Title = styled.span`
 
 const Content = styled.div`
   font-family: ${theme.fontFamilies.default};
-  max-width: 600px;
+  max-width: 500px;
   line-height: 1.5rem;
+  margin-bottom: ${theme.spacing.ss8};
 `;
 
 const Left = styled.div``;
@@ -56,4 +57,5 @@ const CustomCard = styled(Card)`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  gap: ${theme.spacing.ss8};
 `;

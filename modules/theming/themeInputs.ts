@@ -18,7 +18,7 @@ const defaultNeutralPaletteInputs = {
   saturation: 10,
   middleLightness: 60,
   lightnessIncrement: 12,
-  lightnessDecrement: 10,
+  lightnessDecrement: 13,
   hue: 200 // hsl(200, 10%, 50%)
 };
 
@@ -129,7 +129,8 @@ export const themeInputs = {
       monospace: "Fira Mono, monospace"
     },
     lineHeights: {
-      default: "24px"
+      default: "24px",
+      title: "32px"
     }
   },
   spacing: defaultSpacingSystemInputs,
