@@ -1,5 +1,3 @@
-import { useThemeContext } from '@nickjmorrow/react-component-library';
-
 export interface Experience {
 	experienceId: number;
 	name: string;
@@ -62,5 +60,3 @@ export interface SkillLevel {
 	description: string;
 	technology: Technology;
 }
-
-export type Theme = ReturnType<typeof useThemeContext>;

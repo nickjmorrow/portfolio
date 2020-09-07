@@ -33,6 +33,9 @@ export const imageQuery = graphql`
 		profilePicture: file(relativePath: { eq: "profile_picture.jpeg" }) {
 			...fluidImage
 		}
+		rankedChoice: file(relativePath: { eq: "ranked_choice.png" }) {
+			...fluidImage
+		}
 	}
 `;
 
