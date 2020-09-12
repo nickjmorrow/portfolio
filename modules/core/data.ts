@@ -55,6 +55,33 @@ const sqlServer: Technology = {
   version: null
 };
 
+const tempus: Experience = {
+  experienceId: 4,
+  name: "Tempus",
+  roleName: "Software Engineer",
+  startDate: new Date(2020, 9, 28),
+  endDate: null,
+  companyUrl: "https://tempus.com",
+  technologies: [react, typescript, nodejs],
+  experienceDetails: [
+    {
+      experienceDetailId: 1,
+      description:
+        "Designed and implemented user interface testing infrastructure for React application."
+    },
+    {
+      experienceDetailId: 2,
+      description:
+        "Application that would provide analytic insights using the MasterCard transaction log persisted in SQL Server and enable banks to make data-driven decisions."
+    },
+    {
+      experienceDetailId: 3,
+      description:
+        "Worked in a team of 7 on a React .NET application for optimizing instance setup and automating data model configuration."
+    }
+  ]
+};
+
 const mastercard: Experience = {
   experienceId: 1,
   name: "Mastercard",
@@ -67,17 +94,17 @@ const mastercard: Experience = {
     {
       experienceDetailId: 1,
       description:
-        "Designed and implemented user interface testing infrastructure in C# Selenium for React application, reducing production defects and increasing Jenkins deployment efficiency."
+        "Designed and implemented user interface testing infrastructure for React application."
     },
     {
       experienceDetailId: 2,
       description:
-        "Worked in a team of 8 to design, implement, and test a .NET application that would provide analytic insights using the MasterCard transaction log persisted in SQL Server and enable banks to make data-driven decisions. Focused on automated testing of data source features and data model configurations."
+        "Application that would provide analytic insights using the MasterCard transaction log persisted in SQL Server and enable banks to make data-driven decisions."
     },
     {
       experienceDetailId: 3,
       description:
-        "Worked in a team of 7 on a React .NET application for optimizing instance setup and automating data model configuration for clients of the MasterCard analytic engine, enabling scalability by reducing instance setup time by 70%. Focused on unit testing and rollout simulation in a testing environment."
+        "Worked in a team of 7 on a React .NET application for optimizing instance setup and automating data model configuration."
     }
   ]
 };
@@ -94,17 +121,17 @@ const fora: Experience = {
     {
       experienceDetailId: 1,
       description:
-        "Designed and implemented user interface testing infrastructure in C# Selenium for React application, reducing production defects and increasing Jenkins deployment efficiency."
+        "Designed and implemented user interface testing infrastructure for React application."
     },
     {
       experienceDetailId: 2,
       description:
-        "Worked in a team of 8 to design, implement, and test a .NET application that would provide analytic insights using the MasterCard transaction log persisted in SQL Server and enable banks to make data-driven decisions. Focused on automated testing of data source features and data model configurations."
+        "Application that would provide analytic insights using the MasterCard transaction log persisted in SQL Server and enable banks to make data-driven decisions."
     },
     {
       experienceDetailId: 3,
       description:
-        "Worked in a team of 7 on a React .NET application for optimizing instance setup and automating data model configuration for clients of the MasterCard analytic engine, enabling scalability by reducing instance setup time by 70%. Focused on unit testing and rollout simulation in a testing environment."
+        "Worked in a team of 7 on a React .NET application for optimizing instance setup and automating data model configuration."
     }
   ]
 };
@@ -121,17 +148,17 @@ const bwx: Experience = {
     {
       experienceDetailId: 1,
       description:
-        "Designed and implemented user interface testing infrastructure in C# Selenium for React application, reducing production defects and increasing Jenkins deployment efficiency."
+        "Designed and implemented user interface testing infrastructure for React application."
     },
     {
       experienceDetailId: 2,
       description:
-        "Worked in a team of 8 to design, implement, and test a .NET application that would provide analytic insights using the MasterCard transaction log persisted in SQL Server and enable banks to make data-driven decisions. Focused on automated testing of data source features and data model configurations."
+        "Application that would provide analytic insights using the MasterCard transaction log persisted in SQL Server and enable banks to make data-driven decisions."
     },
     {
       experienceDetailId: 3,
       description:
-        "Worked in a team of 7 on a React .NET application for optimizing instance setup and automating data model configuration for clients of the MasterCard analytic engine, enabling scalability by reducing instance setup time by 70%. Focused on unit testing and rollout simulation in a testing environment."
+        "Worked in a team of 7 on a React .NET application for optimizing instance setup and automating data model configuration."
     }
   ]
 };
@@ -228,7 +255,7 @@ export const data: Data = {
     weworkScheduler,
     blog
   ],
-  experiences: [fora, mastercard, bwx],
+  experiences: [fora, mastercard, bwx, tempus],
   technologies: [
     react,
     nodejs,

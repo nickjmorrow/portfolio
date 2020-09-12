@@ -9,6 +9,10 @@ import { Diagonal } from "modules/core/Diagonal";
 import { data } from "modules/core/data";
 import { Typography } from "modules/core/Typography";
 import { CurrentExperience } from "modules/experiences/CurrentExperience";
+import { radialGradient } from "modules/core/radialGradient";
+import { animateRadialGradient } from "modules/core/animateRadialGradient";
+import { GradientText } from "modules/core/GradientText";
+import { ExperienceTimeline } from "modules/experiences/ExperienceTimeline";
 
 export const Experiences: React.FC = () => {
   const { experiences } = data;
@@ -19,96 +23,57 @@ export const Experiences: React.FC = () => {
     sortedExperiences[0]
   );
 
-  const getPosition = (index: number): Position => {
-    switch (index) {
-      case 0:
-        return "first";
-      case sortedExperiences.length - 1:
-        return "last";
-      default:
-        return "middle";
-    }
-  };
-
   return (
-    <Container id="experiences">
-      <Diagonal colorScheme={diagonalColors.warm} variant={"alternate"}>
-        Experiences
-      </Diagonal>
-      <CustomCard>
-        <ExperienceTimeline>
-          {sortedExperiences.map((e, i) => (
-            <ExperienceTimelinePart
-              key={e.experienceId}
-              onClick={() => setActiveExperience(e)}
-              position={getPosition(i)}
-              isActive={e.experienceId === activeExperience.experienceId}
-            >
-              {e.name}
-            </ExperienceTimelinePart>
-          ))}
-        </ExperienceTimeline>
-        <CurrentExperience experience={activeExperience} />
-      </CustomCard>
-    </Container>
+    <>
+      <CustomContainer id="experiences">
+        <CustomCard>
+          <GradientText>Experiences</GradientText>
+          <Content>
+            <ExperienceTimeline
+              experiences={sortedExperiences}
+              activeExperience={activeExperience}
+              setActiveExperience={setActiveExperience}
+            />
+            <CurrentExperience experience={activeExperience} />
+          </Content>
+        </CustomCard>
+        <BottomCard />
+      </CustomContainer>
+    </>
   );
 };
 
-type Position = "first" | "middle" | "last";
+const CustomContainer = styled(Container)`
+  background-color: transparent;
+  ${animateRadialGradient}
+  ${radialGradient}
+`;
 
-type Props = { position: Position; isActive: boolean };
-
-const ExperienceTimelinePart = styled("div")<Props>`
-  padding: ${theme.spacing.ss4};
-  background-color: ${p => getBackgroundColor(p, "default")};
-  font-family: ${theme.fontFamilies.default};
-  cursor: pointer;
-  ${p => getPositionalCss(p)}
-  &: hover {
-    background-color: ${p => getBackgroundColor(p, "hover")};
-  }
+const BottomCard = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 80px;
+  background-color: ${theme.neutralColor.cs1};
+  transform: skewY(10deg) scale(1.2, 4) rotate(-2deg);
+  border-radius: 30% 0% 30% 0%;
+  top: -50px;
+  z-index: -1;
 `;
 
 const CustomCard = styled(Card)`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: ${theme.spacing.ss8};
+  justify-content: center;
+  position: relative;
+  top: 100px;
+`;
+
+const Content = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: ${theme.spacing.ss8};
   justify-content: center;
-`;
-
-type UiState = "default" | "hover";
-
-const getBackgroundColor = (props: Props, uiState: UiState) => {
-  if (props.isActive) {
-    return theme.coreColor.cs4;
-  }
-  switch (uiState) {
-    case "hover":
-      return theme.coreColor.cs2;
-    case "default":
-      return theme.neutralColor.cs2;
-  }
-};
-
-const getPositionalCss = (props: Props) => {
-  switch (props.position) {
-    case "first":
-      return css`
-        border-top-left-radius: ${theme.borderRadius.br1};
-        border-top-right-radius: ${theme.borderRadius.br1};
-      `;
-    case "last":
-      return css`
-        border-bottom-left-radius: ${theme.borderRadius.br1};
-        border-bottom-right-radius: ${theme.borderRadius.br1};
-      `;
-  }
-};
-
-const ExperienceTimeline = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: ${theme.spacing.ss8};
-  max-width: 130px;
 `;

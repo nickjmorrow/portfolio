@@ -15,7 +15,7 @@ const defaultAccentPaletteInputs = {
 
 const defaultNeutralPaletteInputs = {
   ...defaultCorePaletteInputs,
-  saturation: 10,
+  saturation: 5,
   middleLightness: 60,
   lightnessIncrement: 12,
   lightnessDecrement: 13,

@@ -1,8 +1,9 @@
 // external
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled, { keyframes } from "styled-components";
 import { Experience } from "modules/core/types";
 import { theme } from "modules/theming";
+import { Fade } from "modules/core/Fade";
 
 const monthNames = [
   "January",
@@ -29,9 +30,9 @@ const getFormattedDate = (date: Date | null): string => {
   return `${month} ${year}`;
 };
 
-export const CurrentExperience: React.FC<{ experience: Experience }> = ({
-  experience
-}) => {
+export const CurrentExperience: React.FC<{
+  experience: Experience;
+}> = ({ experience }) => {
   return (
     <Container>
       <Header>
@@ -52,8 +53,19 @@ export const CurrentExperience: React.FC<{ experience: Experience }> = ({
   );
 };
 
+const fade = keyframes`
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+`;
+
 const Container = styled.div`
   max-width: 700px;
+  animation: ${fade} 100ms ease linear;
 `;
 
 const Header = styled.span`
@@ -68,6 +80,7 @@ const Timeline = styled.div`
 
 const ExperienceDetailList = styled.ul`
   margin-left: 0;
+  max-width: 500px;
 `;
 
 const ExperienceDetail = styled.li`

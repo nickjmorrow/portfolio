@@ -8,39 +8,63 @@ import { theme } from "modules/theming";
 import { Skills } from "modules/about/Skills";
 import { Profile } from "modules/about/Profile";
 import { Container as OriginalContainer } from "modules/core/Container";
+import { animateRadialGradient } from "modules/core/animateRadialGradient";
+import { radialGradient } from "modules/core/radialGradient";
+import { GradientText } from "modules/core/GradientText";
 
 export const About: React.FC = () => {
   return (
     <Container id="about">
-      <Title>About</Title>
-
+      <TopRight />
       <CustomCard>
-        <Left>
-          <Content>
-            Hello! I'm Nick, and I live and work in New York. I'm passionate
-            about building beautiful web applications with an emphasis on user
-            experience with a modern feel. <br />
-            <br />
-            Shortly after graduating from University of Virginia with an
-            entirely unrelated degree, I accrued experience in fintech and
-            healthcare domains.
-          </Content>
-          <Skills />
-        </Left>
-        <Profile />
+        <GradientText>About</GradientText>
+        <Bottom>
+          <Left>
+            <Content>
+              Hello! I'm Nick, and I live and work in New York. I'm passionate
+              about building beautiful web applications with an emphasis on user
+              experience with a modern feel. <br />
+              <br />
+              Shortly after graduating from University of Virginia with an
+              entirely unrelated degree, I accrued experience in fintech and
+              healthcare domains.
+            </Content>
+            <Skills />
+          </Left>
+          <Profile />
+        </Bottom>
       </CustomCard>
     </Container>
   );
 };
 
+const TopRight = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 80px;
+  background-color: ${theme.neutralColor.cs1};
+  transform: skewY(10deg) scale(1.2, 4) rotate(0deg);
+  border-radius: 30% 0% 30% 0%;
+  top: -10px;
+`;
+
+const Bottom = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: ${theme.spacing.ss8};
+`;
+
 const Container = styled(OriginalContainer)`
-  box-shadow: 0px -20px 30px hsla(0, 0%, 40%, 0.4);
+  background-color: white;
+  min-height: 60vh;
+//   ${animateRadialGradient}
+//   ${radialGradient}
 `;
 
 const Title = styled.span`
   font-family: ${theme.fontFamilies.title};
   font-size: ${theme.fontSizes.fs9};
-  margin: ${theme.spacing.ss16} 0;
+  margin: ${theme.spacing.ss4} 0;
 `;
 
 const Content = styled.div`
@@ -54,8 +78,5 @@ const Left = styled.div``;
 
 const CustomCard = styled(Card)`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: ${theme.spacing.ss8};
+  flex-direction: column;
 `;

@@ -1,10 +1,9 @@
-import * as React from "react";
+import React from "react";
 import { Transition } from "react-transition-group";
-import { Theme } from "modules/theming";
-import { useTheme } from "modules/theming/useTheme";
 
 export const Fade: React.SFC<{
   in: boolean;
+  appear?: boolean;
   style?: React.CSSProperties;
   styleKeys?: any[];
   mounted?: React.CSSProperties;
@@ -15,13 +14,14 @@ export const Fade: React.SFC<{
 }> = ({
   children,
   in: inProp,
+  appear = true,
   style,
   styleKeys = [],
   unmounted: customUnmounted = {},
   mounted: customMounted = {},
   enterTimeout = 200,
   mountOnEnter = true,
-  unmountOnExit = false,
+  unmountOnExit = true,
   ...props
 }) => {
   const defaultMounted = { opacity: 1 };
@@ -56,13 +56,14 @@ export const Fade: React.SFC<{
   return (
     <Transition
       in={inProp}
-      appear={true}
+      appear={appear}
       timeout={timeout}
       unmountOnExit={unmountOnExit}
       mountOnEnter={mountOnEnter}
       {...props}
     >
       {state => {
+        console.log(state);
         return (
           <div style={{ ...defaultStyle, ...transitionStyles[state] }}>
             {children}

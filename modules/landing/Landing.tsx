@@ -6,28 +6,35 @@ import { SlideInFade } from "modules/core/SlideInFade";
 import { Typography } from "modules/core/Typography";
 import { enterTimeouts } from "modules/core/enterTimeouts";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import { Button } from "modules/core/Button";
+import { animateRadialGradient } from "modules/core/animateRadialGradient";
+import { radialGradient } from "modules/core/radialGradient";
 
 export const Landing: React.FC = () => {
   return (
-    <Container>
-      <NavLinkContainer>
-        {navLinks.map(nl => (
-          <SlideInFade enterTimeout={nl.enterTimeout}>
-            <AnchorLink
-              href={`#${nl.label}`}
-              style={{ textDecoration: "none" }}
-            >
-              <NavLink>{nl.label}</NavLink>
-            </AnchorLink>
+    <>
+      <TopRight />
+      <Container>
+        <NavLinkContainer>
+          {navLinks.map(nl => (
+            <SlideInFade enterTimeout={nl.enterTimeout} key={nl.label}>
+              <AnchorLink
+                href={`#${nl.label}`}
+                style={{ textDecoration: "none" }}
+              >
+                <NavLink>{nl.label}</NavLink>
+              </AnchorLink>
+            </SlideInFade>
+          ))}
+          <ResumeButton>Resume</ResumeButton>
+        </NavLinkContainer>
+        <BackgroundContainer>
+          <SlideInFade enterTimeout={enterTimeouts.name}>
+            <Name>Lorem Ipsum</Name>
           </SlideInFade>
-        ))}
-      </NavLinkContainer>
-      <BackgroundContainer>
-        <SlideInFade enterTimeout={enterTimeouts.name}>
-          <Name>Lorem Ipsum</Name>
-        </SlideInFade>
-      </BackgroundContainer>
-    </Container>
+        </BackgroundContainer>
+      </Container>
+    </>
   );
 };
 
@@ -50,27 +57,60 @@ const navLinks = [
   }
 ];
 
+const TopRight = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  background-color: ${theme.neutralColor.cs9};
+  transform: skewY(10deg) scale(1.2, 4) rotate(0deg);
+  border-radius: 0% 0% 30% 30%;
+  top: -10px;
+`;
+
+const changeBackgroundPosition = keyframes`
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+`;
+
+const ResumeButton = styled(Button)`
+  background: linear-gradient(
+    60deg,
+    #f79533,
+    #f37055,
+    #ef4e7b,
+    #a166ab,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6fba82
+  );
+  background-size: 300% 300%;
+  animation: ${changeBackgroundPosition} 5s ease infinite;
+`;
+
 const NavLink = styled(Typography)`
   color: ${theme.neutralColor.cs1};
   display: block;
+  padding: ${theme.spacing.ss4} ${theme.spacing.ss2};
 `;
 
 const NavLinkContainer = styled.div`
   position: fixed;
   top: 0;
-  left: 50%;
+  left: 80%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: row;
   gap: ${theme.spacing.ss4};
   margin-top: ${theme.spacing.ss4};
   z-index: 0;
-`;
-
-const animate = keyframes`
-  to {
-    background-position: 50% 50%;
-  }
 `;
 
 const BackgroundContainer = styled.div`
@@ -80,29 +120,8 @@ const BackgroundContainer = styled.div`
   position: fixed;
   z-index: -2;
   width: 100%;
-  animation: ${animate} 5s infinite alternate;
-  background: radial-gradient(
-        circle at top left,
-        hsla(334, 100%, 50%, 0.4) 10%,
-        transparent 80%
-      )
-      100% 100%/200% 200%,
-    radial-gradient(circle at bottom left, #6a00ff 30%, transparent 80%) 100%
-      100%/200% 200%,
-    radial-gradient(
-        circle at top right,
-        hsla(232, 90%, 61%, 0.7) 30%,
-        transparent 60%
-      )
-      100% 100%/200% 200%,
-    radial-gradient(
-        circle at 75% 75%,
-        hsla(155, 90%, 61%, 0.7) 10%,
-        transparent 90%
-      )
-      100% 100%/200% 200%,
-    radial-gradient(circle at 50% 50%, #ffd900 70%, transparent 100%) 100% 100%/200%
-      200%;
+  ${animateRadialGradient}
+  ${radialGradient}
 `;
 
 const Container = styled.div`
