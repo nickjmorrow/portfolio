@@ -1,18 +1,16 @@
 // external
-import React, { useState } from "react";
-import styled, { css } from "styled-components";
-import { Card } from "modules/core/Card";
-import { theme } from "modules/theming";
-import { Container } from "modules/core/Container";
-import { diagonalColors } from "modules/core/diagonalColors";
-import { Diagonal } from "modules/core/Diagonal";
-import { data } from "modules/core/data";
-import { Typography } from "modules/core/Typography";
-import { CurrentExperience } from "modules/experiences/CurrentExperience";
-import { radialGradient } from "modules/core/radialGradient";
 import { animateRadialGradient } from "modules/core/animateRadialGradient";
+import { Card } from "modules/core/Card";
+import { Container } from "modules/core/Container";
+import { data } from "modules/core/data";
 import { GradientText } from "modules/core/GradientText";
+import { radialGradient } from "modules/core/radialGradient";
+import { CurrentExperience } from "modules/experiences/CurrentExperience";
 import { ExperienceTimeline } from "modules/experiences/ExperienceTimeline";
+import { theme } from "modules/theming";
+import React, { useState } from "react";
+import styled from "styled-components";
+import { CardHeader } from "modules/core/CardHeader";
 
 export const Experiences: React.FC = () => {
   const { experiences } = data;
@@ -27,7 +25,7 @@ export const Experiences: React.FC = () => {
     <>
       <CustomContainer id="experiences">
         <CustomCard>
-          <GradientText>Experiences</GradientText>
+          <CardHeader>Experiences</CardHeader>
           <Content>
             <ExperienceTimeline
               experiences={sortedExperiences}

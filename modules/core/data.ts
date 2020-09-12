@@ -43,7 +43,7 @@ const typescript: Technology = {
 
 const csharp: Technology = {
   technologyId: 6,
-  name: "C#",
+  name: "C# / .NET",
   orderId: 6,
   version: null
 };

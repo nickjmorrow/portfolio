@@ -63,7 +63,6 @@ export const Fade: React.SFC<{
       {...props}
     >
       {state => {
-        console.log(state);
         return (
           <div style={{ ...defaultStyle, ...transitionStyles[state] }}>
             {children}

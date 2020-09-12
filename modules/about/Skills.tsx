@@ -3,13 +3,16 @@ import React from "react";
 import styled from "styled-components";
 import { data } from "modules/core/data";
 import { theme } from "modules/theming";
+import { TechnologyLink } from "modules/about/TechnologyLink";
 
 export const Skills: React.FC = () => {
   return (
     <Container>
       <SkillListContainer>
-        {data.technologies.map(t => (
-          <SkillContainer key={t.technologyId}>- {t.name}</SkillContainer>
+        {data.technologies.map((t, i) => (
+          <SkillContainer key={t.technologyId}>
+            <TechnologyLink technology={t} index={i} />
+          </SkillContainer>
         ))}
       </SkillListContainer>
     </Container>

@@ -11,13 +11,14 @@ import { Container as OriginalContainer } from "modules/core/Container";
 import { animateRadialGradient } from "modules/core/animateRadialGradient";
 import { radialGradient } from "modules/core/radialGradient";
 import { GradientText } from "modules/core/GradientText";
+import { CardHeader } from "modules/core/CardHeader";
 
 export const About: React.FC = () => {
   return (
     <Container id="about">
       <TopRight />
       <CustomCard>
-        <GradientText>About</GradientText>
+        <CardHeader>About</CardHeader>
         <Bottom>
           <Left>
             <Content>
@@ -52,13 +53,12 @@ const Bottom = styled.div`
   display: flex;
   flex-direction: row;
   gap: ${theme.spacing.ss8};
+  flex-wrap: wrap;
 `;
 
 const Container = styled(OriginalContainer)`
   background-color: white;
-  min-height: 60vh;
-//   ${animateRadialGradient}
-//   ${radialGradient}
+  height: 60vh;
 `;
 
 const Title = styled.span`

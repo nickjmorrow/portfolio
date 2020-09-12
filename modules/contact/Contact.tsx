@@ -21,7 +21,7 @@ export const Contact: React.FC = () => {
           always open. Whether for a potential project or just to connect, I'll
           try my best to answer your email!
         </Content>
-        <Button>Send Email</Button>
+        <GetInTouchButton>Get In Touch</GetInTouchButton>
       </CustomCard>
     </Container>
   );
@@ -33,3 +33,9 @@ const CustomCard = styled(Card)`
 `;
 
 const Content = styled(Typography)``;
+
+const GetInTouchButton = styled(Button)`
+  background-color: hsl(260, 100%, 50%);
+  padding: ${theme.spacing.ss4} ${theme.spacing.ss6};
+  font-size: ${theme.fontSizes.fs2};
+`;

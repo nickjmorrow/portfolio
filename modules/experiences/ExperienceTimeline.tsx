@@ -51,16 +51,21 @@ const getBackgroundColor = (
   { index, numEntries, isActive }: Props,
   uiState: UiState
 ) => {
-  const hue = 240;
-
   const lowestLightness = 70;
   const highestLightness = 95;
+  const maxHue = 220;
+  const minHue = 240;
 
   const lightnesses = new Array(numEntries).fill(null).map((e, i) => {
-    const lightness =
-      lowestLightness +
-      (i / (numEntries - 1)) * (highestLightness - lowestLightness);
-    return lightness;
+    const getValue = (high: number, low: number) =>
+      low + (i / (numEntries - 1)) * (high - low);
+    const lightness = getValue(highestLightness, lowestLightness);
+    const hue = getValue(maxHue, minHue);
+
+    return {
+      lightness,
+      hue
+    };
   });
 
   const getSaturation = () => {
@@ -69,14 +74,14 @@ const getBackgroundColor = (
     }
     switch (uiState) {
       case "default":
-        return 20;
-      case "hover":
         return 40;
+      case "hover":
+        return 60;
     }
   };
 
   const colors = lightnesses.map(
-    l => `hsla(${hue}, ${getSaturation()}%, ${l}%)`
+    l => `hsla(${l.hue}, ${getSaturation()}%, ${l.lightness}%)`
   );
 
   const color = colors[index];
@@ -87,14 +92,14 @@ const getBackgroundColor = (
 const getBorderRadiusCss = ({ index, numEntries }: Props) => {
   if (index === 0) {
     return css`
-    //   border-top-left-radius: ${theme.borderRadius.br1};
+      border-top-left-radius: ${theme.borderRadius.br1};
       border-top-right-radius: ${theme.borderRadius.br1};
     `;
   }
 
   if (index === numEntries - 1) {
     return css`
-    //   border-bottom-left-radius: ${theme.borderRadius.br1};
+      border-bottom-left-radius: ${theme.borderRadius.br1};
       border-bottom-right-radius: ${theme.borderRadius.br1};
     `;
   }

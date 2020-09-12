@@ -10,7 +10,4 @@ export const GradientText = styled(Typography)`
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: ${theme.fontSizes.fs9};
-  margin-bottom: ${theme.spacing.ss4};
-  font-weight: bold;
 `;

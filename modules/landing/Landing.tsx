@@ -9,25 +9,42 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import { Button } from "modules/core/Button";
 import { animateRadialGradient } from "modules/core/animateRadialGradient";
 import { radialGradient } from "modules/core/radialGradient";
+import Media from "react-media";
 
 export const Landing: React.FC = () => {
   return (
     <>
       <TopRight />
       <Container>
-        <NavLinkContainer>
-          {navLinks.map(nl => (
-            <SlideInFade enterTimeout={nl.enterTimeout} key={nl.label}>
-              <AnchorLink
-                href={`#${nl.label}`}
-                style={{ textDecoration: "none" }}
-              >
-                <NavLink>{nl.label}</NavLink>
-              </AnchorLink>
-            </SlideInFade>
-          ))}
-          <ResumeButton>Resume</ResumeButton>
-        </NavLinkContainer>
+        <Media
+          queries={{
+            mobile: "(max-width: 599px)",
+            desktop: "(min-width: 600px)"
+          }}
+        >
+          {matches => (
+            <>
+              {matches.mobile && null}
+              {matches.desktop && (
+                <NavLinkContainer>
+                  {navLinks.map(nl => (
+                    <SlideInFade enterTimeout={nl.enterTimeout} key={nl.label}>
+                      <AnchorLink
+                        href={`#${nl.label}`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <NavLink>{nl.label}</NavLink>
+                      </AnchorLink>
+                    </SlideInFade>
+                  ))}
+                  <SlideInFade enterTimeout={enterTimeouts.resume}>
+                    <ResumeButton>Resume</ResumeButton>
+                  </SlideInFade>
+                </NavLinkContainer>
+              )}
+            </>
+          )}
+        </Media>
         <BackgroundContainer>
           <SlideInFade enterTimeout={enterTimeouts.name}>
             <Name>Lorem Ipsum</Name>
@@ -103,14 +120,13 @@ const NavLink = styled(Typography)`
 
 const NavLinkContainer = styled.div`
   position: fixed;
-  top: 0;
-  left: 80%;
-  transform: translateX(-50%);
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   gap: ${theme.spacing.ss4};
   margin-top: ${theme.spacing.ss4};
   z-index: 0;
+  right: 20px;
 `;
 
 const BackgroundContainer = styled.div`
@@ -135,5 +151,9 @@ const Name = styled.span`
   font-size: ${theme.fontSizes.fs9};
   font-family: ${theme.fontFamilies.title};
   color: ${theme.backgroundColor};
-  margin-left: 20%;
+  margin-left: 15%;
+  font-weight: 700;
+  letter-spacing: 2px;
+  position: relative;
+  top: -70px;
 `;

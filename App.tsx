@@ -1,7 +1,6 @@
 // external
 import React from "react";
 import styled from "styled-components";
-import { Button } from "modules/core/Button";
 import { Landing } from "modules/landing";
 import { About } from "modules/about";
 import { Experiences } from "modules/experiences";
@@ -20,4 +19,6 @@ export const App: React.FC = () => {
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  overflow-x: hidden;
+`;

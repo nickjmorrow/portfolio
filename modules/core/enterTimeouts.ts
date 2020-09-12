@@ -6,7 +6,8 @@ const raw = {
   projects: 1,
   experiences: 2,
   contact: 3,
-  name: 4
+  resume: 4,
+  name: 5
 };
 
 type T = typeof raw;
