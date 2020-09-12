@@ -14,9 +14,7 @@ import { OtherProject } from "modules/projects/OtherProject";
 export const Projects: React.FC = () => {
   return (
     <Container id="projects">
-      <Diagonal colorScheme={diagonalColors.soft} variant={"default"}>
-        Projects
-      </Diagonal>
+      <Top />
       <FeaturedProjectListContainer>
         {data.projects
           .sort(byOrderId)
@@ -57,4 +55,15 @@ const OtherProjectListContainer = styled.div`
   flex-wrap: wrap;
   max-width: 700px;
   gap: ${theme.spacing.ss8};
+`;
+
+const Top = styled.div`
+  height: 200px;
+  background-color: white;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  top: -100px;
+  transform: skewY(5deg) scale(1.05, 1);
+  border-radius: 200px;
 `;

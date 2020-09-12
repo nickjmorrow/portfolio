@@ -47,7 +47,7 @@ export const Landing: React.FC = () => {
         </Media>
         <BackgroundContainer>
           <SlideInFade enterTimeout={enterTimeouts.name}>
-            <Name>Lorem Ipsum</Name>
+            <Name>Nicholas Morrow</Name>
           </SlideInFade>
         </BackgroundContainer>
       </Container>
@@ -148,7 +148,7 @@ const Container = styled.div`
 `;
 
 const Name = styled.span`
-  font-size: ${theme.fontSizes.fs9};
+  font-size: ${theme.fontSizes.fs11};
   font-family: ${theme.fontFamilies.title};
   color: ${theme.backgroundColor};
   margin-left: 15%;

@@ -59,6 +59,7 @@ const Bottom = styled.div`
 const Container = styled(OriginalContainer)`
   background-color: white;
   height: 60vh;
+  z-index: 2;
 `;
 
 const Title = styled.span`

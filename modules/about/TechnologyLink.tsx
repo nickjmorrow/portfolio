@@ -32,12 +32,23 @@ const StyledLink = styled("a")<{ index: number }>`
   background-color: ${p =>
     `hsla(${
       colorPairs[p.index].hue
-    }, ${backgroundSaturation}%, ${backgroundLightness}%, 1)}`};
+    }, ${backgroundSaturation}%, ${backgroundLightness}%, 0.8)}`};
   padding: ${theme.spacing.ss2};
   border-radius: ${theme.borderRadius.br1};
   margin-bottom: ${theme.spacing.ss1};
   display: block;
   cursor: pointer;
+  transition: all ${theme.transitions.fast};
+  &:hover {
+    transition: all ${theme.transitions.fast};
+    background-color: ${p =>
+      `hsla(${
+        colorPairs[p.index].hue
+      }, ${backgroundSaturation}%, ${backgroundLightness + 10}%, 1)}`};
+    color: ${p =>
+      `hsla(${colorPairs[p.index].hue}, ${textSaturation}%, ${textLightness +
+        10}%, 1)}`};
+  }
 `;
 
 interface ColorPair {

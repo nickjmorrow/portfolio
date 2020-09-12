@@ -43,6 +43,7 @@ export const Experiences: React.FC = () => {
 
 const CustomContainer = styled(Container)`
   background-color: transparent;
+  min-height: 110vh;
   ${animateRadialGradient}
   ${radialGradient}
 `;
@@ -54,7 +55,7 @@ const BottomCard = styled.div`
   background-color: ${theme.neutralColor.cs1};
   transform: skewY(10deg) scale(1.2, 4) rotate(-2deg);
   border-radius: 30% 0% 30% 0%;
-  top: -50px;
+  top: -150px;
   z-index: -1;
 `;
 
@@ -65,7 +66,7 @@ const CustomCard = styled(Card)`
   gap: ${theme.spacing.ss8};
   justify-content: center;
   position: relative;
-  top: 100px;
+  top: -20px;
 `;
 
 const Content = styled.div`

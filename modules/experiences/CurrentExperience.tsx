@@ -88,6 +88,7 @@ const Timeline = styled.div`
 const ExperienceDetailList = styled.ul`
   margin-left: 0;
   max-width: 500px;
+  padding-left: 20px;
 `;
 
 const ExperienceDetail = styled.li`
