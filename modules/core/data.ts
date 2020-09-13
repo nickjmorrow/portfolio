@@ -44,6 +44,8 @@ const typescript: Technology = {
 const csharp: Technology = {
   technologyId: 6,
   name: "C# / .NET",
+  shortName: ".NET",
+  highlightedNames: ["C#", ".NET"],
   orderId: 6,
   version: null
 };

@@ -106,8 +106,13 @@ const defaultTransitionInputs = {
   slow: 800
 };
 
+const boxShadowColor = "hsla(0, 0%, 20%, 0.1)";
+
+const backgroundColor = "hsla(0, 0%, 100%, 1)";
+
 export const themeInputs = {
   colors: {
+    backgroundColor,
     core: defaultCorePaletteInputs,
     accent: defaultAccentPaletteInputs,
     neutral: defaultNeutralPaletteInputs,
@@ -119,13 +124,14 @@ export const themeInputs = {
     borderRadius: defaultBorderRadiusInputs,
     borderStyle: defaultBorderStyleInputs
   },
+  boxShadowColor,
   transitions: defaultTransitionInputs,
   typography: {
     fontSizes: defaultFontSizeInputs,
     fontWeights: defaultFontWeightInputs,
     fontFamilies: {
       default: "Open Sans, sans-serif",
-      title: "Roboto Slab, serif",
+      title: "Poppins, sans-serif",
       monospace: "Fira Mono, monospace"
     },
     lineHeights: {

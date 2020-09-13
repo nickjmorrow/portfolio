@@ -29,6 +29,8 @@ export interface Setting {
 export interface Technology {
   technologyId: number;
   name: string;
+  highlightedNames?: string[];
+  shortName?: string;
   orderId: number | null;
   version: string | null;
 }

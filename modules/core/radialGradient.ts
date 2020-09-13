@@ -18,7 +18,7 @@ export const radialGradient = css`
     radial-gradient(
         circle at 75% 75%,
         hsla(155, 90%, 61%, 0.7) 10%,
-        transparent 90%
+        transparent 60%
       )
       100% 100%/200% 200%,
     radial-gradient(circle at 50% 50%, #ffd900 70%, transparent 100%) 100% 100%/200%

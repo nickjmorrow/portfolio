@@ -6,12 +6,11 @@ import {
   getBorderRadius,
   getBorderStyle,
   getFontSize,
-  getSpacing,
-  getIconSize
+  getSpacing
 } from "modules/theming/styleProviders";
 
 export const getTheme = (themeInputs: typeof themeInputsValue) => ({
-  backgroundColor: "white",
+  backgroundColor: themeInputs.colors.backgroundColor,
   coreColor: generateColorShades(themeInputs.colors.core),
   accentColor: generateColorShades(themeInputs.colors.accent),
   neutralColor: generateColorShades(themeInputs.colors.neutral),
@@ -21,7 +20,7 @@ export const getTheme = (themeInputs: typeof themeInputsValue) => ({
   transitions: getTransitions(themeInputs.transitions),
   borderRadius: getBorderRadius(themeInputs.border.borderRadius),
   borderStyle: getBorderStyle(themeInputs.border.borderStyle),
-  boxShadow: getBoxShadow("hsla(0, 0%, 0%, 0.1)"),
+  boxShadow: getBoxShadow(themeInputs.boxShadowColor),
   fontSizes: getFontSize(themeInputs.typography.fontSizes),
   fontFamilies: themeInputs.typography.fontFamilies,
   fontWeights: themeInputs.typography.fontWeights,

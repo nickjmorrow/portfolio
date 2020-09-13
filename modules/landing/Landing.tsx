@@ -18,38 +18,67 @@ export const Landing: React.FC = () => {
       <Container>
         <Media
           queries={{
-            mobile: "(max-width: 599px)",
-            desktop: "(min-width: 600px)"
+            mobile: "(max-width: 639px)",
+            mid: "(min-width: 640px)",
+            desktop: "(min-width: 800px)"
           }}
         >
           {matches => (
             <>
-              {matches.mobile && null}
-              {matches.desktop && (
-                <NavLinkContainer>
-                  {navLinks.map(nl => (
-                    <SlideInFade enterTimeout={nl.enterTimeout} key={nl.label}>
-                      <AnchorLink
-                        href={`#${nl.label}`}
-                        style={{ textDecoration: "none" }}
-                      >
-                        <NavLink>{nl.label}</NavLink>
-                      </AnchorLink>
+              {matches.mobile && (
+                <>
+                  {" "}
+                  <BackgroundContainer>
+                    <SlideInFade enterTimeout={enterTimeouts.name}>
+                      <Name style={{ fontSize: theme.fontSizes.fs7 }}>
+                        Nicholas Morrow
+                      </Name>
                     </SlideInFade>
-                  ))}
-                  <SlideInFade enterTimeout={enterTimeouts.resume}>
-                    <ResumeButton>Resume</ResumeButton>
-                  </SlideInFade>
-                </NavLinkContainer>
+                  </BackgroundContainer>
+                </>
+              )}
+              {matches.mid && (
+                <>
+                  {" "}
+                  <BackgroundContainer>
+                    <SlideInFade enterTimeout={enterTimeouts.name}>
+                      <Name style={{ fontSize: theme.fontSizes.fs10 }}>
+                        Nicholas Morrow
+                      </Name>
+                    </SlideInFade>
+                  </BackgroundContainer>
+                </>
+              )}
+              {matches.desktop && (
+                <>
+                  <NavLinkContainer>
+                    {navLinks.map(nl => (
+                      <SlideInFade
+                        enterTimeout={nl.enterTimeout}
+                        key={nl.label}
+                      >
+                        <AnchorLink
+                          href={`#${nl.label}`}
+                          style={{ textDecoration: "none" }}
+                        >
+                          <NavLink>{nl.label}</NavLink>
+                        </AnchorLink>
+                      </SlideInFade>
+                    ))}
+                    <SlideInFade enterTimeout={enterTimeouts.resume}>
+                      <ResumeButton>Resume</ResumeButton>
+                    </SlideInFade>
+                  </NavLinkContainer>
+                  <BackgroundContainer>
+                    <SlideInFade enterTimeout={enterTimeouts.name}>
+                      <Name>Nicholas Morrow</Name>
+                    </SlideInFade>
+                  </BackgroundContainer>
+                </>
               )}
             </>
           )}
         </Media>
-        <BackgroundContainer>
-          <SlideInFade enterTimeout={enterTimeouts.name}>
-            <Name>Nicholas Morrow</Name>
-          </SlideInFade>
-        </BackgroundContainer>
       </Container>
     </>
   );
@@ -155,5 +184,4 @@ const Name = styled.span`
   font-weight: 700;
   letter-spacing: 2px;
   position: relative;
-  top: -70px;
 `;

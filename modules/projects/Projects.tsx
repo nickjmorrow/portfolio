@@ -10,17 +10,27 @@ import { data } from "modules/core/data";
 import { Project } from "modules/core/types";
 import { FeaturedProject } from "modules/projects/FeaturedProject";
 import { OtherProject } from "modules/projects/OtherProject";
+import { CardHeader } from "modules/core/CardHeader";
 
 export const Projects: React.FC = () => {
   return (
-    <Container id="projects">
+    <CustomContainer id="projects">
       <Top />
+      <CardHeader
+        style={{
+          zIndex: 2,
+          marginBottom: theme.spacing.ss16,
+          width: "80%"
+        }}
+      >
+        Projects
+      </CardHeader>
       <FeaturedProjectListContainer>
         {data.projects
           .sort(byOrderId)
           .filter((p, i) => i < 3)
-          .map(p => (
-            <FeaturedProject project={p} key={p.projectId} />
+          .map((p, i) => (
+            <FeaturedProject project={p} key={p.projectId} index={i} />
           ))}
       </FeaturedProjectListContainer>
       <OtherProjectListContainer>
@@ -31,11 +41,16 @@ export const Projects: React.FC = () => {
             <OtherProject project={p} key={p.projectId} />
           ))}
       </OtherProjectListContainer>
-    </Container>
+    </CustomContainer>
   );
 };
 
 const byOrderId = (a: Project, b: Project) => (a.orderId < b.orderId ? -1 : 1);
+
+const CustomContainer = styled(Container)`
+  box-shadow: none;
+  padding-bottom: ${theme.spacing.ss32};
+`;
 
 const FeaturedProjectListContainer = styled.div`
   height: 100%;
@@ -43,6 +58,8 @@ const FeaturedProjectListContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  gap: ${theme.spacing.ss16};
+  margin-bottom: ${theme.spacing.ss16};
 `;
 
 const OtherProjectListContainer = styled.div`
