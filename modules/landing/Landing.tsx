@@ -19,13 +19,13 @@ export const Landing: React.FC = () => {
         <Media
           queries={{
             mobile: "(max-width: 639px)",
-            mid: "(min-width: 640px)",
+            mid: "(min-width: 640px) and (max-width: 799px)",
             desktop: "(min-width: 800px)"
           }}
         >
           {matches => (
             <>
-              {matches.mobile && (
+              {/* {matches.mobile && (
                 <>
                   {" "}
                   <BackgroundContainer>
@@ -48,7 +48,7 @@ export const Landing: React.FC = () => {
                     </SlideInFade>
                   </BackgroundContainer>
                 </>
-              )}
+              )} */}
               {matches.desktop && (
                 <>
                   <NavLinkContainer>
@@ -173,7 +173,7 @@ const Container = styled.div`
   height: 100vh;
   display: grid;
   align-items: center;
-  swidth: 100%;
+  width: 100%;
 `;
 
 const Name = styled.span`
