@@ -18,16 +18,15 @@ export const Landing: React.FC = () => {
       <Container>
         <Media
           queries={{
-            mobile: "(max-width: 639px)",
-            mid: "(min-width: 640px) and (max-width: 799px)",
+            mobile: "(max-width: 799px)",
+            // mid: "(min-width: 640px) and (max-width: 799px)",
             desktop: "(min-width: 800px)"
           }}
         >
           {matches => (
             <>
-              {/* {matches.mobile && (
+              {matches.mobile ? (
                 <>
-                  {" "}
                   <BackgroundContainer>
                     <SlideInFade enterTimeout={enterTimeouts.name}>
                       <Name style={{ fontSize: theme.fontSizes.fs7 }}>
@@ -36,20 +35,7 @@ export const Landing: React.FC = () => {
                     </SlideInFade>
                   </BackgroundContainer>
                 </>
-              )}
-              {matches.mid && (
-                <>
-                  {" "}
-                  <BackgroundContainer>
-                    <SlideInFade enterTimeout={enterTimeouts.name}>
-                      <Name style={{ fontSize: theme.fontSizes.fs10 }}>
-                        Nicholas Morrow
-                      </Name>
-                    </SlideInFade>
-                  </BackgroundContainer>
-                </>
-              )} */}
-              {matches.desktop && (
+              ) : (
                 <>
                   <NavLinkContainer>
                     {navLinks.map(nl => (
