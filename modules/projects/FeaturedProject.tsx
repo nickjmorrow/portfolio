@@ -1,18 +1,15 @@
 // external
-import React from "react";
-import styled from "styled-components";
-import { Project } from "modules/core/types";
-import { theme } from "modules/theming";
 import { Card } from "modules/core/Card";
-import { Typography } from "modules/core/Typography";
-import { GithubIcon } from "modules/core/icons/GithubIcon";
-import { ShareIcon } from "modules/core/icons/ShareIcon";
-import Media from "react-media";
+import { Project } from "modules/core/types";
 import { FeaturedProjectWide } from "modules/projects/FeaturedProjectWide";
-import { ProjectTechnologyList } from "modules/projects/ProjectTechnologyList";
-import { ProjectIcons } from "modules/projects/ProjectIcons";
-import { Tagline } from "modules/projects/Tagline";
 import { Name } from "modules/projects/Name";
+import { ProjectIcons } from "modules/projects/ProjectIcons";
+import { ProjectTechnologyList } from "modules/projects/ProjectTechnologyList";
+import { Tagline } from "modules/projects/Tagline";
+import { theme } from "modules/theming";
+import React from "react";
+import Media from "react-media";
+import styled from "styled-components";
 
 export const FeaturedProject: React.FC<{ project: Project; index: number }> = ({
   project,

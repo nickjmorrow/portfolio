@@ -42,7 +42,7 @@ const ProjectDetails = styled("div")<{ alignment: Alignment }>`
   display: flex;
   flex-direction: column;
   align-items: ${({ alignment }) =>
-    alignment === "right" ? "flex-start" : "flex-start"};
+    alignment === "right" ? "flex-end" : "flex-start"};
   z-index: 2;
   box-shadow: ${theme.boxShadow.bs2};
 `;

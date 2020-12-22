@@ -23,7 +23,8 @@ export const Contact: React.FC = () => {
         <GetInTouchButton>Get In Touch</GetInTouchButton>
       </CustomCard>
       <Diag />
-      <OtherDiag />
+      <SecondDiag />
+      <ThirdDiag />
     </CustomContainer>
   );
 };
@@ -36,20 +37,9 @@ const Diag = styled.div`
   background-color: ${altColor};
   position: absolute;
   transform: skewY(5deg) scale(1, 2);
-  &:before {
-    content: "";
-    position: absolute;
-
-    background-color: transparent;
-    bottom: -50px;
-    height: 60px;
-    width: 50px;
-    border-top-left-radius: 40px;
-    box-shadow: -15px -15px 0 0 ${altColor}; /* This is where the magic happens! */
-  }
 `;
 
-const OtherDiag = styled.div`
+const SecondDiag = styled.div`
   height: 80px;
   width: 100%;
   background-color: hsl(333, 100%, 71.1%);
@@ -57,10 +47,18 @@ const OtherDiag = styled.div`
   transform: skewY(10deg) scale(1, 2);
 `;
 
+const ThirdDiag = styled.div`
+  height: 80px;
+  width: 100%;
+  background-color: hsl(37, 100%, 71.1%);
+  position: absolute;
+  transform: skewY(15deg) scale(1, 2);
+`;
+
 const CustomCard = styled(Card)`
   height: 400px;
   width: 50%;
-  background-color: hsla(0, 0%, 20%, 0.3);
+  background-color: hsla(0, 0%, 10%, 0.8);
   backdrop-filter: blur(6px);
 `;
 
@@ -68,6 +66,7 @@ const Content = styled(Typography)`
   display: block;
   margin: ${theme.spacing.ss16} 0;
   color: white;
+  line-height: 36px;
 `;
 
 const GetInTouchButton = styled(Button)`

@@ -1,16 +1,11 @@
 // external
 import React from "react";
 import styled from "styled-components";
-import { diagonalColors } from "modules/core/diagonalColors";
-import { Diagonal } from "modules/core/Diagonal";
 import { Card } from "modules/core/Card";
 import { theme } from "modules/theming";
 import { Skills } from "modules/about/Skills";
 import { Profile } from "modules/about/Profile";
 import { Container as OriginalContainer } from "modules/core/Container";
-import { animateRadialGradient } from "modules/core/animateRadialGradient";
-import { radialGradient } from "modules/core/radialGradient";
-import { GradientText } from "modules/core/GradientText";
 import { CardHeader } from "modules/core/CardHeader";
 
 export const About: React.FC = () => {
@@ -60,12 +55,6 @@ const Container = styled(OriginalContainer)`
   background-color: white;
   height: 60vh;
   z-index: 2;
-`;
-
-const Title = styled.span`
-  font-family: ${theme.fontFamilies.title};
-  font-size: ${theme.fontSizes.fs9};
-  margin: ${theme.spacing.ss4} 0;
 `;
 
 const Content = styled.div`
