@@ -18,10 +18,10 @@ export const FeaturedProjectWide: React.FC<{
   return (
     <Container>
       <ImageContainer alignment={alignment}>
-        <ProjectImage fileName={project.fileName} />
+        <ProjectImage alignment={alignment} fileName={project.fileName} />
       </ImageContainer>
       <ProjectInfo alignment={alignment}>
-        <Name alignment={alignment}>{project.name}</Name>
+        <Name>{project.name}</Name>
         <ProjectDetails alignment={alignment}>
           <Tagline>{project.tagline}</Tagline>
           <ProjectTechnologyList project={project} />

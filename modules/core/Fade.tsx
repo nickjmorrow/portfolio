@@ -62,9 +62,9 @@ export const Fade: React.SFC<{
       mountOnEnter={mountOnEnter}
       {...props}
     >
-      {state => {
+      {(state: any) => {
         return (
-          <div style={{ ...defaultStyle, ...transitionStyles[state] }}>
+          <div style={{ ...defaultStyle, ...(transitionStyles as any)[state] }}>
             {children}
           </div>
         );

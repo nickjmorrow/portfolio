@@ -17,7 +17,7 @@ type Initial = { [P in keyof T]: number };
 const enterTimeoutsBuilder = (): Initial => {
   const initial: Initial = { ...raw };
   Object.keys(initial).forEach(key => {
-    initial[key] = INITIAL + DELAY * initial[key];
+    (initial as any)[key] = INITIAL + DELAY * (initial as any)[key];
   });
   return initial as Initial;
 };

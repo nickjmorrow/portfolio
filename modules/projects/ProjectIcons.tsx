@@ -24,7 +24,7 @@ export const ProjectIcons: React.FC<{ project: Project }> = ({ project }) => {
           }}
         />
       </a>
-      <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+      <a href={project.demoUrl!} target="_blank" rel="noopener noreferrer">
         <HoverableShareIcon style={{ position: "relative", top: "2px" }} />
       </a>
     </IconContainer>
