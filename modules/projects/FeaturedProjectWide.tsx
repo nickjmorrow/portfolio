@@ -14,7 +14,7 @@ export const FeaturedProjectWide: React.FC<{
   project: Project;
   index: number;
 }> = ({ project, index }) => {
-  const alignment = index % 2 == 0 ? "right" : "left";
+  const alignment = "left";
   return (
     <Container>
       <ImageContainer alignment={alignment}>

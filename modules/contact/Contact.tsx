@@ -16,11 +16,14 @@ export const Contact: React.FC = () => {
       <CustomCard>
         <CardHeader>Contact</CardHeader>
         <Content>
-          Although I'm not actively looking for new opportunities, my inbox is
-          always open. Whether for a potential project or just to connect, I'll
-          try my best to answer your email!
+          I'm currently pursuing new opportunities for software engineering
+          roles, with a particular focus on the healthcare and education spaces.
+          Email me at{" "}
+          <a href="mailto:njmorrow95@gmail.com">njmorrow95@gmail.com</a>.
         </Content>
-        <GetInTouchButton>Get In Touch</GetInTouchButton>
+        {/* <GetInTouchButton href={`mailto:njmorrow95@gmail.com`}>
+          Get In Touch
+        </GetInTouchButton> */}
       </CustomCard>
       <Diag />
       <SecondDiag />
@@ -58,14 +61,13 @@ const ThirdDiag = styled.div`
 const CustomCard = styled(Card)`
   height: 400px;
   width: 50%;
-  background-color: hsla(0, 0%, 10%, 0.8);
+  background-color: hsla(0, 0%, 95%, 0.8);
   backdrop-filter: blur(6px);
 `;
 
 const Content = styled(Typography)`
   display: block;
   margin: ${theme.spacing.ss16} 0;
-  color: white;
   line-height: 36px;
 `;
 

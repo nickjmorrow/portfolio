@@ -259,11 +259,11 @@ export const data: Data = {
   ],
   experiences: [fora, mastercard, bwx, tempus],
   technologies: [
+    typescript,
     react,
     nodejs,
     postgres,
     htmlCss,
-    typescript,
     csharp,
     sqlServer
   ]

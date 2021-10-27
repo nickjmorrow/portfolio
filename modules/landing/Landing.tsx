@@ -139,9 +139,9 @@ const NavLinkContainer = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   gap: ${theme.spacing.ss4};
-  margin-top: ${theme.spacing.ss4};
+  top: ${theme.spacing.ss6};
+  right: ${theme.spacing.ss8};
   z-index: 0;
-  right: 20px;
 `;
 
 const BackgroundContainer = styled.div`
