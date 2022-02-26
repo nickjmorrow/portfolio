@@ -16,55 +16,27 @@ export const Landing: React.FC = () => {
     <>
       <TopRight />
       <Container>
-        <Media
-          queries={{
-            mobile: "(max-width: 799px)",
-            // mid: "(min-width: 640px) and (max-width: 799px)",
-            desktop: "(min-width: 800px)"
-          }}
-        >
-          {matches => (
-            <>
-              {matches.mobile ? (
-                <>
-                  <BackgroundContainer>
-                    <SlideInFade enterTimeout={enterTimeouts.name}>
-                      <Name style={{ fontSize: theme.fontSizes.fs7 }}>
-                        Nicholas Morrow
-                      </Name>
-                    </SlideInFade>
-                  </BackgroundContainer>
-                </>
-              ) : (
-                <>
-                  <NavLinkContainer>
-                    {navLinks.map(nl => (
-                      <SlideInFade
-                        enterTimeout={nl.enterTimeout}
-                        key={nl.label}
-                      >
-                        <AnchorLink
-                          href={`#${nl.label}`}
-                          style={{ textDecoration: "none" }}
-                        >
-                          <NavLink>{nl.label}</NavLink>
-                        </AnchorLink>
-                      </SlideInFade>
-                    ))}
-                    <SlideInFade enterTimeout={enterTimeouts.resume}>
-                      <ResumeButton>Resume</ResumeButton>
-                    </SlideInFade>
-                  </NavLinkContainer>
-                  <BackgroundContainer>
-                    <SlideInFade enterTimeout={enterTimeouts.name}>
-                      <Name>Nicholas Morrow</Name>
-                    </SlideInFade>
-                  </BackgroundContainer>
-                </>
-              )}
-            </>
-          )}
-        </Media>
+        <NavLinkContainer>
+          <InnerNavLinkContainer>
+            {navLinks.map(nl => (
+              <AnchorLink
+                href={`#${nl.label}`}
+                style={{ textDecoration: "none" }}
+              >
+                <NavLink>{nl.label}</NavLink>
+              </AnchorLink>
+            ))}
+            <SlideInFade enterTimeout={enterTimeouts.resume}>
+              <ResumeButton>Resume</ResumeButton>
+            </SlideInFade>
+          </InnerNavLinkContainer>
+        </NavLinkContainer>
+        <ColoredBackgroundContainer>
+          <SlideInFade enterTimeout={enterTimeouts.name}>
+            <Name>Nicholas Morrow</Name>
+          </SlideInFade>
+        </ColoredBackgroundContainer>
+
       </Container>
     </>
   );
@@ -94,9 +66,9 @@ const TopRight = styled.div`
   width: 100%;
   height: 80px;
   background-color: ${theme.neutralColor.cs9};
-  transform: skewY(10deg) scale(1.2, 4) rotate(0deg);
+  transform: skewY(3deg) scale(2, 4) rotate(0deg);
   border-radius: 0% 0% 30% 30%;
-  top: -10px;
+  top:-50px;
 `;
 
 const changeBackgroundPosition = keyframes`
@@ -128,28 +100,33 @@ const ResumeButton = styled(Button)`
 `;
 
 const NavLink = styled(Typography)`
-  color: ${theme.neutralColor.cs1};
   display: block;
   padding: ${theme.spacing.ss4} ${theme.spacing.ss2};
+  color: ${theme.neutralColor.cs1};
 `;
 
 const NavLinkContainer = styled.div`
   position: fixed;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
-  gap: ${theme.spacing.ss4};
-  top: ${theme.spacing.ss6};
-  right: ${theme.spacing.ss8};
-  z-index: 0;
+  justify-content: flex-end;
+  top: 0px;
+  width: 100%;
+  background-color: ${theme.neutralColor.cs9};
 `;
 
-const BackgroundContainer = styled.div`
+const InnerNavLinkContainer = styled.div`
+    display: flex;
+    gap: 0px ${theme.spacing.ss8};
+    padding: ${theme.spacing.ss8} ${theme.spacing.ss8};
+`;
+
+const ColoredBackgroundContainer = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
   position: fixed;
-  z-index: -2;
+  z-index: -1;
   width: 100%;
   ${animateRadialGradient}
   ${radialGradient}
@@ -157,9 +134,6 @@ const BackgroundContainer = styled.div`
 
 const Container = styled.div`
   height: 100vh;
-  display: grid;
-  align-items: center;
-  width: 100%;
 `;
 
 const Name = styled.span`

@@ -4,12 +4,13 @@ import styled from "styled-components";
 import { data } from "modules/core/data";
 import { theme } from "modules/theming";
 import { TechnologyLink } from "modules/about/TechnologyLink";
+import { Technology } from 'modules/core/types'
 
 export const Skills: React.FC = () => {
   return (
     <Container>
       <SkillListContainer>
-        {data.technologies.map((t, i) => (
+        {data.technologies.sort((t1, t2) => t1.orderId < t2.orderId ? -1 : 1).map((t, i) => (
           <SkillContainer key={t.technologyId}>
             <TechnologyLink technology={t} index={i} />
           </SkillContainer>

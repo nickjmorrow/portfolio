@@ -31,7 +31,7 @@ export interface Technology {
   name: string;
   highlightedNames?: string[];
   shortName?: string;
-  orderId: number | null;
+  orderId: number;
   version: string | null;
 }
 

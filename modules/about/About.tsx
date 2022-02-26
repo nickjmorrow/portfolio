@@ -17,12 +17,12 @@ export const About: React.FC = () => {
         <Bottom>
           <Left>
             <Content>
-              Hello! I'm Nick, and I live and work in New York. I'm passionate
+              Hello! I'm Nick, and I live and work in Chicago. I'm passionate
               about building beautiful web applications with an emphasis on user
-              experience with a modern feel. <br />
+              experience and accessibility. <br />
               <br />
               Shortly after graduating from University of Virginia with an
-              entirely unrelated degree, I accrued experience in fintech and
+              entirely unrelated degree, I accrued software development experience in fintech and
               healthcare domains.
             </Content>
             <Skills />
@@ -39,7 +39,7 @@ const TopRight = styled.div`
   width: 100%;
   height: 80px;
   background-color: ${theme.neutralColor.cs1};
-  transform: skewY(10deg) scale(1.2, 4) rotate(0deg);
+  transform: skewY(4deg) scale(1.2, 4) rotate(0deg);
   border-radius: 30% 0% 30% 0%;
   top: -10px;
 `;

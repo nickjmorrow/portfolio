@@ -37,7 +37,7 @@ const htmlCss: Technology = {
 const typescript: Technology = {
   technologyId: 5,
   name: "TypeScript",
-  orderId: 5,
+  orderId: -1,
   version: null
 };
 
@@ -173,14 +173,14 @@ const geoclustering: Project = {
   tagline:
     "Cluster locations in popular cities and view optimal paths between them for better sight-seeing.",
   githubUrl: "https://github.com/nickjmorrow/geoclustering",
-  demoUrl: "https://geoclustering.netlify.app",
+  demoUrl: null,
   fileName: "geoclustering.png"
 };
 
 const componentLibrary: Project = {
   projectId: 2,
   orderId: 2,
-  technologies: [csharp, react, typescript],
+  technologies: [react, typescript, htmlCss],
   name: "Component Library",
   tagline:
     "Define design-decisions up-front with a component library while leaving space for one-off departures.",
@@ -197,7 +197,7 @@ const rankedChoice: Project = {
   tagline:
     "Create, vote, and simulate polls that use the ranked choice voting algorithm.",
   githubUrl: "https://github.com/nickjmorrow/ranked-choice",
-  demoUrl: "https://ranked-choice.netlify.app",
+  demoUrl: null,
   fileName: "ranked_choice.png"
 };
 
@@ -220,7 +220,7 @@ const whereToLive: Project = {
   tagline:
     "Rank places to live by useful metrics like population and job prospects.",
   githubUrl: "https://github.com/nickjmorrow/where-to-live",
-  demoUrl: "https://wheretolive.netlify.app/",
+  demoUrl: null,
   fileName: "where_to_live.png"
 };
 
@@ -231,7 +231,7 @@ const weworkScheduler: Project = {
   name: "WeWork Scheduler",
   tagline: "Randomized chore scheduling for the Mastercard WeWork office.",
   githubUrl: "https://github.com/nickjmorrow/wework-scheduler",
-  demoUrl: "https://chorescheduler.netlify.app/",
+  demoUrl: null,
   fileName: "wework_scheduler.png"
 };
 

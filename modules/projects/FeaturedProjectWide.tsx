@@ -14,7 +14,7 @@ export const FeaturedProjectWide: React.FC<{
   project: Project;
   index: number;
 }> = ({ project, index }) => {
-  const alignment = "left";
+  const alignment = index % 2 === 0 ? "left" : "right";
   return (
     <Container>
       <ImageContainer alignment={alignment}>
@@ -34,7 +34,7 @@ export const FeaturedProjectWide: React.FC<{
 
 type Alignment = "left" | "right";
 
-const ProjectDetails = styled("div")<{ alignment: Alignment }>`
+const ProjectDetails = styled("div") <{ alignment: Alignment }>`
   background-color: ${theme.backgroundColor};
   padding: ${theme.spacing.ss4};
   border-radius: ${theme.borderRadius.br1};
@@ -47,7 +47,7 @@ const ProjectDetails = styled("div")<{ alignment: Alignment }>`
   box-shadow: ${theme.boxShadow.bs2};
 `;
 
-const ProjectInfo = styled("div")<{ alignment: Alignment }>`
+const ProjectInfo = styled("div") <{ alignment: Alignment }>`
   grid-row: 1;
   display: flex;
   flex-direction: column;
@@ -59,7 +59,7 @@ const ProjectInfo = styled("div")<{ alignment: Alignment }>`
   `}
 `;
 
-const ImageContainer = styled("div")<{ alignment: Alignment }>`
+const ImageContainer = styled("div") <{ alignment: Alignment }>`
   height: 120%;
   grid-column: ${({ alignment }) =>
     alignment === "right" ? "1 / 7" : "7 / -1"};
@@ -69,7 +69,7 @@ const ImageContainer = styled("div")<{ alignment: Alignment }>`
   z-index: 1;
 `;
 
-const ProjectImage = styled("div")<{ fileName: string; alignment: Alignment }>`
+const ProjectImage = styled("div") <{ fileName: string; alignment: Alignment }>`
   grid-column: 1 / 8;
   grid-row: 1;
   width: 90%;
@@ -83,7 +83,6 @@ const ProjectImage = styled("div")<{ fileName: string; alignment: Alignment }>`
     ),
     url("images/${p => p.fileName}");
   background-size: cover;
-  cursor: pointer;
   filter: blur(4px);
 transform: scale(1.3);
 transition: all ${theme.transitions.medium};
