@@ -15,9 +15,10 @@ export const Projects: React.FC = () => {
       <Top />
       <CardHeader
         style={{
-          zIndex: 2,
+          zIndex: 1,
+          paddingBottom: '3px',
           marginBottom: theme.spacing.ss16,
-          width: "80%"
+          width: "80%",
         }}
       >
         Projects

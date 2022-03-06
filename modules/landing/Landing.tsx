@@ -1,15 +1,13 @@
 // external
-import React from "react";
-import styled, { keyframes } from "styled-components";
-import { theme } from "modules/theming";
-import { SlideInFade } from "modules/core/SlideInFade";
-import { Typography } from "modules/core/Typography";
-import { enterTimeouts } from "modules/core/enterTimeouts";
-import AnchorLink from "react-anchor-link-smooth-scroll";
-import { Button } from "modules/core/Button";
 import { animateRadialGradient } from "modules/core/animateRadialGradient";
+import { Button } from "modules/core/Button";
+import { enterTimeouts } from "modules/core/enterTimeouts";
 import { radialGradient } from "modules/core/radialGradient";
-import Media from "react-media";
+import { Typography } from "modules/core/Typography";
+import { theme } from "modules/theming";
+import React from "react";
+import AnchorLink from "react-anchor-link-smooth-scroll";
+import styled, { keyframes } from "styled-components";
 
 export const Landing: React.FC = () => {
   return (
@@ -26,17 +24,14 @@ export const Landing: React.FC = () => {
                 <NavLink>{nl.label}</NavLink>
               </AnchorLink>
             ))}
-            <SlideInFade enterTimeout={enterTimeouts.resume}>
+            <a download href="/resume.pdf">
               <ResumeButton>Resume</ResumeButton>
-            </SlideInFade>
+            </a>
           </InnerNavLinkContainer>
         </NavLinkContainer>
         <ColoredBackgroundContainer>
-          <SlideInFade enterTimeout={enterTimeouts.name}>
-            <Name>Nicholas Morrow</Name>
-          </SlideInFade>
+          <Name>Nicholas Morrow</Name>
         </ColoredBackgroundContainer>
-
       </Container>
     </>
   );

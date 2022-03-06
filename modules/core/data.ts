@@ -60,7 +60,7 @@ const sqlServer: Technology = {
 const tempus: Experience = {
   experienceId: 4,
   name: "Tempus",
-  roleName: "Software Engineer",
+  roleName: "Senior Software Engineer",
   startDate: new Date(2020, 9, 28),
   endDate: null,
   companyUrl: "https://tempus.com",
@@ -69,44 +69,17 @@ const tempus: Experience = {
     {
       experienceDetailId: 1,
       description:
-        "Designed and implemented user interface testing infrastructure for React application."
+        "Worked in a team of 3 on Tempus' UI component library (React, TypeScript) of over 50 design system-adherent components, consumed by 43 other engineering teams throughout the company. "
     },
     {
       experienceDetailId: 2,
       description:
-        "Application that would provide analytic insights using the MasterCard transaction log persisted in SQL Server and enable banks to make data-driven decisions."
+        "Worked in team of 8 on web application (React, TypeScript, NodeJS) to model lab management processes for the conversion of human tissue into sequenced DNA."
     },
     {
       experienceDetailId: 3,
       description:
-        "Worked in a team of 7 on a React .NET application for optimizing instance setup and automating data model configuration."
-    }
-  ]
-};
-
-const mastercard: Experience = {
-  experienceId: 1,
-  name: "Mastercard",
-  roleName: "Software Quality Engineer",
-  startDate: new Date(2017, 6, 7),
-  endDate: new Date(2020, 0, 8),
-  companyUrl: "https://mastercard.com",
-  technologies: [csharp, react, typescript],
-  experienceDetails: [
-    {
-      experienceDetailId: 1,
-      description:
-        "Designed and implemented user interface testing infrastructure for React application."
-    },
-    {
-      experienceDetailId: 2,
-      description:
-        "Application that would provide analytic insights using the MasterCard transaction log persisted in SQL Server and enable banks to make data-driven decisions."
-    },
-    {
-      experienceDetailId: 3,
-      description:
-        "Worked in a team of 7 on a React .NET application for optimizing instance setup and automating data model configuration."
+        "Contributed to architectural design and implementation that would allow lab processes to be modeled in multiple labs at different locations, enabling Tempus to increase its lab throughput by 30%."
     }
   ]
 };
@@ -123,17 +96,44 @@ const fora: Experience = {
     {
       experienceDetailId: 1,
       description:
-        "Designed and implemented user interface testing infrastructure for React application."
+        "Worked in a team of 5 on a React, .NET financial management web application to automate tracking of credit advance request pipeline and deal parameter calculation. Personal focus on query performance optimization and microservice migration."
     },
     {
       experienceDetailId: 2,
       description:
-        "Application that would provide analytic insights using the MasterCard transaction log persisted in SQL Server and enable banks to make data-driven decisions."
+        "Lead development of React/Redux (TypeScript) frontend migration, speeding up average completion time of common user actions by 20%. Implemented Cypress end-to-end testing."
     },
     {
       experienceDetailId: 3,
       description:
-        "Worked in a team of 7 on a React .NET application for optimizing instance setup and automating data model configuration."
+        "Created build and deploy pipelines in Azure DevOps to support feature branch testing, continuous integration, and automated integration testing, reducing the number of defects released to master by 15%."
+    }
+  ]
+};
+
+const mastercard: Experience = {
+  experienceId: 1,
+  name: "Mastercard",
+  roleName: "Software Quality Engineer",
+  startDate: new Date(2017, 6, 7),
+  endDate: new Date(2020, 0, 8),
+  companyUrl: "https://mastercard.com",
+  technologies: [csharp, react, typescript],
+  experienceDetails: [
+    {
+      experienceDetailId: 1,
+      description:
+        "Collaborated in a team of 8 to design and implement a web application (React, .NET) to provide data visualizations using the Mastercard transaction log that would and enable financial institutions to make data-driven decisions. Focused on automated testing."
+    },
+    {
+      experienceDetailId: 2,
+      description:
+        "Worked in a team of 7 on a React, .NET application for optimizing instance setup and automating data model configuration for clients of the Mastercard analytic engine, enabling scalability by reducing instance setup time by 70%."
+    },
+    {
+      experienceDetailId: 3,
+      description:
+        "Developed user interface testing infrastructure in C# Selenium for React application, reducing production defects and increasing Jenkins deployment efficiency."
     }
   ]
 };
@@ -150,24 +150,14 @@ const bwx: Experience = {
     {
       experienceDetailId: 1,
       description:
-        "Designed and implemented user interface testing infrastructure for React application."
-    },
-    {
-      experienceDetailId: 2,
-      description:
-        "Application that would provide analytic insights using the MasterCard transaction log persisted in SQL Server and enable banks to make data-driven decisions."
-    },
-    {
-      experienceDetailId: 3,
-      description:
-        "Worked in a team of 7 on a React .NET application for optimizing instance setup and automating data model configuration."
+        "Designed chemical tank transfer system using AutoCAD to be used during plant operations involving a streamlined and reliable transfer of blended low-enriched Uranium."
     }
   ]
 };
 
 const geoclustering: Project = {
   projectId: 1,
-  orderId: 1,
+  orderId: 2,
   technologies: [csharp, react, typescript],
   name: "Geoclustering",
   tagline:
@@ -179,7 +169,7 @@ const geoclustering: Project = {
 
 const componentLibrary: Project = {
   projectId: 2,
-  orderId: 2,
+  orderId: 1,
   technologies: [react, typescript, htmlCss],
   name: "Component Library",
   tagline:

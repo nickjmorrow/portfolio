@@ -64,9 +64,9 @@ const CustomCard = styled(Card)`
   flex-direction: column;
   flex-wrap: wrap;
   gap: ${theme.spacing.ss8};
-  justify-content: center;
   position: relative;
   top: -20px;
+  min-height: 520px;
 `;
 
 const Content = styled.div`

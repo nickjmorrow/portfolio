@@ -1,10 +1,9 @@
 // external
-import React, { useState } from "react";
-import styled, { keyframes } from "styled-components";
+import { TextLink } from "modules/core/TextLink";
 import { Experience } from "modules/core/types";
 import { theme } from "modules/theming";
-import { Fade } from "modules/core/Fade";
-import { TextLink } from "modules/core/TextLink";
+import React from "react";
+import styled, { keyframes } from "styled-components";
 
 const monthNames = [
   "January",
@@ -37,7 +36,7 @@ export const CurrentExperience: React.FC<{
   return (
     <Container>
       <Header>
-        {experience.roleName} at <TextLink>{experience.name}</TextLink>
+        {experience.roleName} at <TextLink target="_blank" href={experience.companyUrl}>{experience.name}</TextLink>
       </Header>
       <Timeline>
         {getFormattedDate(experience.startDate)} -{" "}

@@ -1,14 +1,12 @@
 // external
-import React from "react";
-import styled from "styled-components";
-import { diagonalColors } from "modules/core/diagonalColors";
-import { Diagonal } from "modules/core/Diagonal";
+import { Button } from "modules/core/Button";
 import { Card } from "modules/core/Card";
-import { theme } from "modules/theming";
+import { CardHeader } from "modules/core/CardHeader";
 import { Container } from "modules/core/Container";
 import { Typography } from "modules/core/Typography";
-import { Button } from "modules/core/Button";
-import { CardHeader } from "modules/core/CardHeader";
+import { theme } from "modules/theming";
+import React from "react";
+import styled from "styled-components";
 
 export const Contact: React.FC = () => {
   return (
@@ -16,8 +14,8 @@ export const Contact: React.FC = () => {
       <CustomCard>
         <CardHeader>Contact</CardHeader>
         <Content>
-          I'm currently pursuing new opportunities for software engineering
-          roles, with a particular focus on the healthcare and education spaces.
+          I'm open to new opportunities for software engineering
+          roles.
           Email me at{" "}
           <a href="mailto:njmorrow95@gmail.com">njmorrow95@gmail.com</a>.
         </Content>
