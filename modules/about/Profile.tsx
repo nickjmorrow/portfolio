@@ -1,15 +1,10 @@
 // external
+import Image from 'next/image';
 import React from "react";
-import styled from "styled-components";
-import { theme } from "modules/theming";
+import profilePic from '../../public/images/profile_picture.jpeg';
 
 export const Profile: React.FC = () => {
-  return <Container />;
+  return <div style={{ width: '250px', height: '250px' }}>
+    <Image src={profilePic} />
+  </div>;
 };
-
-const Container = styled.div`
-  height: 300px;
-  width: 300px;
-  background-color: pink;
-  border-radius: ${theme.borderRadius.br1};
-`;

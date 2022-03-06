@@ -1,14 +1,13 @@
 // external
+import { Card } from "modules/core/Card";
+import { Project } from "modules/core/types";
+import { Name } from "modules/projects/Name";
+import { ProjectIcons } from "modules/projects/ProjectIcons";
+import { ProjectTechnologyList } from "modules/projects/ProjectTechnologyList";
+import { Tagline } from "modules/projects/Tagline";
+import { theme } from "modules/theming";
 import React from "react";
 import styled from "styled-components";
-import { Project } from "modules/core/types";
-import { Card } from "modules/core/Card";
-import { theme } from "modules/theming";
-import { Typography } from "modules/core/Typography";
-import { ProjectTechnologyList } from "modules/projects/ProjectTechnologyList";
-import { ProjectIcons } from "modules/projects/ProjectIcons";
-import { Tagline } from "modules/projects/Tagline";
-import { Name } from "modules/projects/Name";
 
 export const FeaturedProjectWide: React.FC<{
   project: Project;
