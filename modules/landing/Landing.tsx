@@ -18,6 +18,7 @@ export const Landing: React.FC = () => {
           <InnerNavLinkContainer>
             {navLinks.map(nl => (
               <AnchorLink
+                key={nl.label}
                 href={`#${nl.label}`}
                 style={{ textDecoration: "none" }}
               >

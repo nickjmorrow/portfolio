@@ -187,7 +187,7 @@ const rankedChoice: Project = {
   tagline:
     "Create, vote, and simulate polls that use the ranked choice voting algorithm.",
   githubUrl: "https://github.com/nickjmorrow/ranked-choice",
-  demoUrl: null,
+  demoUrl: "https://ranked-choice.netlify.app/",
   fileName: "ranked_choice.png"
 };
 
