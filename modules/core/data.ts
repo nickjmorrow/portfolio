@@ -10,35 +10,35 @@ const react: Technology = {
   technologyId: 1,
   name: "React.js",
   orderId: 1,
-  version: "16.8"
+  version: "16.8",
 };
 
 const nodejs: Technology = {
   technologyId: 2,
   name: "Node.js",
   orderId: 2,
-  version: null
+  version: null,
 };
 
 const postgres: Technology = {
   technologyId: 3,
   name: "Postgres",
   orderId: 3,
-  version: null
+  version: null,
 };
 
 const htmlCss: Technology = {
   technologyId: 4,
   name: "HTML & CSS",
   orderId: 4,
-  version: null
+  version: null,
 };
 
 const typescript: Technology = {
   technologyId: 5,
   name: "TypeScript",
   orderId: -1,
-  version: null
+  version: null,
 };
 
 const csharp: Technology = {
@@ -47,68 +47,68 @@ const csharp: Technology = {
   shortName: ".NET",
   highlightedNames: ["C#", ".NET"],
   orderId: 6,
-  version: null
+  version: null,
 };
 
 const sqlServer: Technology = {
   technologyId: 7,
   name: "SQL Server",
   orderId: 7,
-  version: null
+  version: null,
 };
 
 const tempus: Experience = {
   experienceId: 4,
   name: "Tempus",
   roleName: "Senior Software Engineer",
-  startDate: new Date(2020, 9, 28),
-  endDate: null,
+  startDate: new Date(2020, 8, 28),
+  endDate: new Date(2022, 5, 0),
   companyUrl: "https://tempus.com",
   technologies: [react, typescript, nodejs],
   experienceDetails: [
     {
       experienceDetailId: 1,
       description:
-        "Worked in a team of 3 on Tempus' UI component library (React, TypeScript) of over 50 design system-adherent components, consumed by 43 other engineering teams throughout the company. "
+        "Worked in a team of 3 on Tempus' UI component library (React, TypeScript) of over 50 design system-adherent components, consumed by 43 other engineering teams throughout the company. ",
     },
     {
       experienceDetailId: 2,
       description:
-        "Worked in team of 8 on web application (React, TypeScript, NodeJS) to model lab management processes for the conversion of human tissue into sequenced DNA."
+        "Worked in team of 8 on web application (React, TypeScript, NodeJS) to model lab management processes for the conversion of human tissue into sequenced DNA.",
     },
     {
       experienceDetailId: 3,
       description:
-        "Contributed to architectural design and implementation that would allow lab processes to be modeled in multiple labs at different locations, enabling Tempus to increase its lab throughput by 30%."
-    }
-  ]
+        "Contributed to architectural design and implementation that would allow lab processes to be modeled in multiple labs at different locations, enabling Tempus to increase its lab throughput by 30%.",
+    },
+  ],
 };
 
 const fora: Experience = {
   experienceId: 2,
   name: "Fora",
   roleName: "Software Engineer",
-  startDate: new Date(2020, 0, 8),
-  endDate: null,
+  startDate: new Date(2020, 0, 1),
+  endDate: new Date(2020, 9, 0),
   companyUrl: "https://forafinancial.com",
   technologies: [csharp, react, typescript],
   experienceDetails: [
     {
       experienceDetailId: 1,
       description:
-        "Worked in a team of 5 on a React, .NET financial management web application to automate tracking of credit advance request pipeline and deal parameter calculation. Personal focus on query performance optimization and microservice migration."
+        "Worked in a team of 5 on a React, .NET financial management web application to automate tracking of credit advance request pipeline and deal parameter calculation. Personal focus on query performance optimization and microservice migration.",
     },
     {
       experienceDetailId: 2,
       description:
-        "Lead development of React/Redux (TypeScript) frontend migration, speeding up average completion time of common user actions by 20%. Implemented Cypress end-to-end testing."
+        "Lead development of React/Redux (TypeScript) frontend migration, speeding up average completion time of common user actions by 20%. Implemented Cypress end-to-end testing.",
     },
     {
       experienceDetailId: 3,
       description:
-        "Created build and deploy pipelines in Azure DevOps to support feature branch testing, continuous integration, and automated integration testing, reducing the number of defects released to master by 15%."
-    }
-  ]
+        "Created build and deploy pipelines in Azure DevOps to support feature branch testing, continuous integration, and automated integration testing, reducing the number of defects released to master by 15%.",
+    },
+  ],
 };
 
 const mastercard: Experience = {
@@ -123,19 +123,19 @@ const mastercard: Experience = {
     {
       experienceDetailId: 1,
       description:
-        "Collaborated in a team of 8 to design and implement a web application (React, .NET) to provide data visualizations using the Mastercard transaction log that would and enable financial institutions to make data-driven decisions. Focused on automated testing."
+        "Collaborated in a team of 8 to design and implement a web application (React, .NET) to provide data visualizations using the Mastercard transaction log that would and enable financial institutions to make data-driven decisions. Focused on automated testing.",
     },
     {
       experienceDetailId: 2,
       description:
-        "Worked in a team of 7 on a React, .NET application for optimizing instance setup and automating data model configuration for clients of the Mastercard analytic engine, enabling scalability by reducing instance setup time by 70%."
+        "Worked in a team of 7 on a React, .NET application for optimizing instance setup and automating data model configuration for clients of the Mastercard analytic engine, enabling scalability by reducing instance setup time by 70%.",
     },
     {
       experienceDetailId: 3,
       description:
-        "Developed user interface testing infrastructure in C# Selenium for React application, reducing production defects and increasing Jenkins deployment efficiency."
-    }
-  ]
+        "Developed user interface testing infrastructure in C# Selenium for React application, reducing production defects and increasing Jenkins deployment efficiency.",
+    },
+  ],
 };
 
 const bwx: Experience = {
@@ -150,9 +150,9 @@ const bwx: Experience = {
     {
       experienceDetailId: 1,
       description:
-        "Designed chemical tank transfer system using AutoCAD to be used during plant operations involving a streamlined and reliable transfer of blended low-enriched Uranium."
-    }
-  ]
+        "Designed chemical tank transfer system using AutoCAD to be used during plant operations involving a streamlined and reliable transfer of blended low-enriched Uranium.",
+    },
+  ],
 };
 
 const geoclustering: Project = {
@@ -164,7 +164,7 @@ const geoclustering: Project = {
     "Cluster locations in popular cities and view optimal paths between them for better sight-seeing.",
   githubUrl: "https://github.com/nickjmorrow/geoclustering",
   demoUrl: null,
-  fileName: "geoclustering.png"
+  fileName: "geoclustering.png",
 };
 
 const componentLibrary: Project = {
@@ -176,7 +176,7 @@ const componentLibrary: Project = {
     "Define design-decisions up-front with a component library while leaving space for one-off departures.",
   githubUrl: "https://github.com/nickjmorrow/react-component-library",
   demoUrl: "https://nickjmorrow.github.io/react-component-library/",
-  fileName: "react_component_library.png"
+  fileName: "react_component_library.png",
 };
 
 const rankedChoice: Project = {
@@ -188,7 +188,7 @@ const rankedChoice: Project = {
     "Create, vote, and simulate polls that use the ranked choice voting algorithm.",
   githubUrl: "https://github.com/nickjmorrow/ranked-choice",
   demoUrl: "https://ranked-choice.netlify.app/",
-  fileName: "ranked_choice.png"
+  fileName: "ranked_choice.png",
 };
 
 const breakbuilder: Project = {
@@ -199,7 +199,7 @@ const breakbuilder: Project = {
   tagline: "Plan out your yearly vacation and view related analytics.",
   githubUrl: "https://github.com/nickjmorrow/breakbuilder",
   demoUrl: "https://breakbuilder.netlify.app",
-  fileName: "breakbuilder.png"
+  fileName: "breakbuilder.png",
 };
 
 const whereToLive: Project = {
@@ -211,7 +211,7 @@ const whereToLive: Project = {
     "Rank places to live by useful metrics like population and job prospects.",
   githubUrl: "https://github.com/nickjmorrow/where-to-live",
   demoUrl: null,
-  fileName: "where_to_live.png"
+  fileName: "where_to_live.png",
 };
 
 const weworkScheduler: Project = {
@@ -222,7 +222,7 @@ const weworkScheduler: Project = {
   tagline: "Randomized chore scheduling for the Mastercard WeWork office.",
   githubUrl: "https://github.com/nickjmorrow/wework-scheduler",
   demoUrl: null,
-  fileName: "wework_scheduler.png"
+  fileName: "wework_scheduler.png",
 };
 
 const blog: Project = {
@@ -234,7 +234,7 @@ const blog: Project = {
     "Personal blog to jot down thoughts on technology, software, and general development.",
   githubUrl: "https://github.com/nickjmorrow/blog",
   demoUrl: "https://alterview.io",
-  fileName: ""
+  fileName: "",
 };
 
 export const data: Data = {
@@ -245,7 +245,7 @@ export const data: Data = {
     breakbuilder,
     whereToLive,
     weworkScheduler,
-    blog
+    blog,
   ],
   experiences: [fora, mastercard, bwx, tempus],
   technologies: [
@@ -255,6 +255,6 @@ export const data: Data = {
     postgres,
     htmlCss,
     csharp,
-    sqlServer
-  ]
+    sqlServer,
+  ],
 };
