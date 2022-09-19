@@ -22,8 +22,8 @@ export const About: React.FC = () => {
               experience and accessibility. <br />
               <br />
               Shortly after graduating from University of Virginia with an
-              entirely unrelated degree, I accrued software development experience in fintech and
-              healthcare domains.
+              entirely unrelated Chemical Engineering degree, I accrued software
+              development experience in fintech and healthcare domains.
             </Content>
             <Skills />
           </Left>
